@@ -27,7 +27,8 @@
     </div>
     <div class="main-index">
       <div class="white-content-secondary">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et urna vitae ex mollis tincidunt.</p>
+        <h1>Liste des Utilisateurs</h1>
+    <?php include 'afficher_utilisateurs.php'; ?>
       </div>
       <div class="white-content">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et urna vitae ex mollis tincidunt.</p>
