@@ -24,6 +24,16 @@ body, html {
     width: 91px;
     height: 40px;
   }
+
+  h1{
+    font-family: "Josefin Sans", sans-serif;
+    color: white;
+  }
+
+  h3{
+    font-family: "Josefin Sans", sans-serif;
+  }
+  
   
   .search-container {
     position: relative;
@@ -94,6 +104,8 @@ body, html {
     max-width: 600px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     margin-top: -10px;
+    margin-left: 5vh;
+    margin-right: 5vh;
   }
   
   .main-index {
@@ -110,4 +122,59 @@ body, html {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     margin-top: -10px;
   }
+
+  /* White Content Milieu */
+
+  .post-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-options {
+    display: flex;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.post-option {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.iceberg-select select {
+    border: none;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.post-textarea {
+    width: 96%;
+    height: 100px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #e8e8e8;
+}
   
