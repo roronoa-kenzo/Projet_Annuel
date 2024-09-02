@@ -5,12 +5,22 @@ $dbname = "Abyss";
 $username = "bddAbyss";
 $password = "Fraise200307";
 
-// Vérifier la connexion
 try {
-    /* Connexion à la base de données */
+    // Connexion à la base de données
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    /* Si tout se passe bien, je n'affiche rien */
+    
+    // Configuration des options PDO
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    // Requête pour récupérer les pseudos des utilisateurs
+    $sql = "SELECT pseudo FROM Utilisateurs";
+    $stmt = $pdo->query($sql);
+    
+    // Récupération des résultats
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 } catch (PDOException $e) {
-    /* Si la connexion échoue j'affiche un message d'erreur */
+    // Gestion des erreurs
     echo "Échec de la connexion : " . $e->getMessage();
 }
+
