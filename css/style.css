@@ -107,7 +107,16 @@ body, html {
     margin-left: 5vh;
     margin-right: 5vh;
   }
-  
+  .white-content-admin {
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    width: 90vh;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-top: -10px;
+    margin-left: 5vh;
+    margin-right: 5vh;
+  }
   .main-index {
     display: flex;
     justify-content: space-around;
@@ -124,7 +133,14 @@ body, html {
   }
 
   /* White Content Milieu */
-
+  .post-container-admin{
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 2%;
+  }
   .post-container {
     background-color: white;
     border-radius: 10px;
@@ -177,4 +193,14 @@ body, html {
     font-size: 16px;
     background-color: #e8e8e8;
 }
+  .href-admin{
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding:10px;
+    color: black;
+    font-family: "Josefin Sans", sans-serif;
+  }
+  .href-admin:hover{
+    background-color:#808080;
+  }
   

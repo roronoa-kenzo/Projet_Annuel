@@ -11,11 +11,14 @@ document.addEventListener('DOMContentLoaded', function () {
       const paragraphs = document.querySelectorAll('p');
       const li = document.querySelectorAll('li');
       const postContainer = document.querySelectorAll('.post-container');
+      const postContainerAdmin = document.querySelectorAll('.post-container-admin');
       const postOption = document.querySelectorAll('.post-options button');  // Les boutons doivent aussi changer
       const postTextarea = document.querySelectorAll('.post-textarea');
       const postSelect = document.querySelectorAll('.iceberg-select select');
       const content = document.querySelectorAll('.white-content');
+      const contentAdmin = document.querySelectorAll('.white-content-admin');
       const contentSec = document.querySelectorAll('.white-content-secondary');
+      const a = document.querySelectorAll('a');
 
       // Application des styles
       paragraphs.forEach(paragraph => {
@@ -25,6 +28,9 @@ document.addEventListener('DOMContentLoaded', function () {
       h3.forEach(header => {
           header.style.color = isDarkMode ? 'white' : 'black';
       });
+      a.forEach(header => {
+        header.style.color = isDarkMode ? 'white' : 'black';
+        });
 
       li.forEach(listItem => {
           listItem.style.color = isDarkMode ? 'white' : 'black';
@@ -33,6 +39,10 @@ document.addEventListener('DOMContentLoaded', function () {
       postContainer.forEach(container => {
           container.style.backgroundColor = isDarkMode ? '#212020' : 'white';
       });
+
+      postContainerAdmin.forEach(postSelect => {
+        postSelect.style.backgroundColor = isDarkMode ? '#212020' : 'white';
+    });
 
       postOption.forEach(option => {
           option.style.color = isDarkMode ? 'white' : 'black';
@@ -52,6 +62,9 @@ document.addEventListener('DOMContentLoaded', function () {
           element.style.backgroundColor = isDarkMode ? '#212020' : 'white';
       });
 
+      contentAdmin.forEach(element => {
+        element.style.backgroundColor = isDarkMode ? '#212020' : 'white';
+    });
       contentSec.forEach(element => {
           element.style.backgroundColor = isDarkMode ? '#212020' : 'white';
       });
