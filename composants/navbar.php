@@ -10,4 +10,5 @@
         </div>
     </div>
     <button id="darkModeButton">Nuit</button>
-</nav>
+    <a href="connexion/connexion.php"><img src="img/connexion.png" alt="lien page" class="logo-connexion"></a>
+    </nav>
