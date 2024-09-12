@@ -1,4 +1,5 @@
 <!-- composants/navbar.php -->
+
 <nav class="navbar">
     <img src="img/icon.png" alt="Abyss" class="logo">
     <div id="searchBar" class="search-container">
@@ -11,4 +12,4 @@
     </div>
     <button id="darkModeButton">Nuit</button>
     <a href="connexion/connexion.php"><img src="img/connexion.png" alt="lien page" class="logo-connexion"></a>
-    </nav>
+</nav>
