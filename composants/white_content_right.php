@@ -8,7 +8,7 @@
             echo "<li>" . htmlspecialchars($user['pseudo']) . "</li>";
         }
         ?>
-        <a href="Admin/Back-log.php">Admin</a>
+        <a href="../Admin/Back-log.php">Admin</a>
         <a href="index.php">index</a>
 
     </ul>

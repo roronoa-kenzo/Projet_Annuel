@@ -5,29 +5,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../public/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <title>Abyss</title>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="image/png" href="../img/abyssicon.png">
+    <link rel="icon" type="image/png" href="../public/img/abyssicon.png">
 </head>
 
 <body>
-    <?php include 'composants/navbar.php'; ?>
+    <?php include '../composants/navbar.php'; ?>
 
     <main class="container">
         <div class="black-frame">
             <h1>Welcome in Abyss</h1>
         </div>
         <div class="main-index">
-            <?php include 'composants/white_content_left.php'; ?>
+            <?php include '../composants/white_content_left.php'; ?>
             <div class="white-content">
                 <div class="post-container">
                     <div class="post-header">
-                        <img src="img/user-avatar.png" alt="User Avatar" class="user-avatar">
-                        <?php include 'composants/post-options.php'; ?>
+                        <img src="../img/user-avatar.png" alt="User Avatar" class="user-avatar">
+                        <?php include '../composants/post-options.php'; ?>
                         <div class="iceberg-select">
                             <select>
                                 <?php
@@ -65,12 +65,12 @@
                     </style>
                 </div>
             </div>
-            <?php include 'composants/white_content_right.php'; ?>
+            <?php include '../composants/white_content_right.php'; ?>
         </div>
     </main>
-    <script src="js/searchbar.js"></script>
-    <script src="js/darkmode.js"></script>
-    <script src="js/upload.js"></script>
+    <script src="../public/js/searchbar.js"></script>
+    <script src="../public/js/darkmode.js"></script>
+    <script src="../public/js/upload.js"></script>
 
     <!-- Ajout du script pour gérer l'affichage dynamique -->
     <script>
@@ -92,3 +92,6 @@
             document.getElementById("linkContent").style.display = "block";
         });
     </script>
+</body>
+
+</html>
