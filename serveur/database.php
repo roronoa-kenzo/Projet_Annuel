@@ -2,8 +2,8 @@
 
 $host = "localhost";
 $dbname = "Abyss";
-$username = "bddAbyss";
-$password = "Fraise200307";
+$username = "root";
+$password = "root";
 
 try {
     // Connexion à la base de données
