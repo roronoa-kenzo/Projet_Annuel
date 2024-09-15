@@ -14,25 +14,62 @@
 </head>
 
 <body>
-    <?php include '../composants/navbar.php'; ?>
-<div class="container-sign">
-    <div>
-      <h3>Register</h3>
+    <nav>
+        <img src="../public/img/icon.png" alt="">
+    </nav>
+    <div class="container-sign">
+        <div>
+            <h3>Register</h3>
+        </div>
+        <form action="login.php" method="post">
+
+            <div>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name">
+
+                <label for="firstname">First Name</label>
+                <input type="text" name="firstname" id="firstname">
+            </div>
+
+            <!--a faire autrement -->
+            <div>
+                <label for="gender">Gender</label>
+                <select name="gender" required>
+                    <option value="man">man</option>
+                    <option value="woman">woman</option>
+                    <option value="other">other</option>
+                </select>
+
+                <!--a faire autrement -->
+                <label for="Age">Age</label>
+
+                <label for="phone">Phone Number</label>
+                <input type="text" name="phone" id="phone" required>
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" required>
+            </div>
+
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+
+                <label for="passwordbis">Passeword confirm</label>
+                <input type="password" name="passwordbis" id="passwordbis" required>
+            </div>
+
+            <div>
+                <input type="checkbox" name="condition" id="condition" required>
+                <label for="condition">Accept terms and conditions</label>
+            </div>
+            <button type="submit">Sign up</button>
+        </form>
     </div>
-    <form action="capcha.php" method="post">
-      <label for="Name">Name</label>
-      <input type="text" name="Name" id="Name">
-
-      <label for="FirstName">First Name</label>
-      <input type="text" name="FirstName" id="FirstName">
-
-
-<!--a faire autrement -->
-      <label for="Gender">Gender</label>
-      <input type="text" name="Gender" id="Gender">
-
-      <!--a faire autrement -->
-      <label for="Age">Age</label>
-      <input type="text" name="Age" id="Age">
 </body>
+
 </html>

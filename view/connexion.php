@@ -19,29 +19,29 @@
 </head>
 
 <body>
-  <nav class="navbar">
-
+  <nav class="">
     <img src="../public/img/icon.png" alt="Abyss" class="logo">
   </nav>
   <div class="containerForm">
     <div>
-
       <h1 class="fontSignIn">Sign in</h1>
     </div>
     <div>
       <form action="home-user.php" method="post">
-        <div>
+        <div >
           <label for="email">Email</label>
-          <input type="email" name="email" id="email" placeholder="Email" required>
+          <input class="inputText" type="email" name="email" id="email" placeholder="Email" required>
         </div>
         <div>
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Password" required>
+          <input class="inputText" type="password" id="password" name="password" placeholder="Password" required>
+        </div>
+        <div>
+          <a href="register.php">Resgister ?</a>
+          <a href="ForgetPass.php">Forget PassWord ?</a>
         </div>
         <button type="submit">Enter</button>
 
-        <a href="register.php">Resgister ?</a>
-        <a href="ForgetPass.php">Forget PassWord ?</a>
 
       </form>
     </div>
