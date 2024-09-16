@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../public/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <title>Sing in</title>
+  <title>Login</title>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
     rel="stylesheet">
   <link rel="icon" type="image/png" href="../public/img/abyssicon.png">
@@ -35,7 +35,7 @@
       border-radius: 15px 15px 0 0;
       display: flex;
       justify-content: center;
-      margin: -30px;
+      margin: -30px 0 0 -15rem;
       z-index: 200;
     }
     
@@ -54,6 +54,7 @@
       margin-top:5px;
       width: 20rem;
       padding: 2%;
+      background-color: #e9ecef;
     }
   </style>
 </head>
@@ -64,7 +65,7 @@
   </nav>
   <div class="DivAll">
     <div class="Divtilte" >
-      <h3 >Login</h3>
+      <h3>Login</h3>
     </div>
     <div class="FormSign">
       <form action="home-user.php" class="form" method="post">
@@ -80,7 +81,7 @@
           <a href="register.php">Resgister ?</a>
           <a href="ForgetPass.php">Forget PassWord ?</a>
         </div>
-        <button type="submit">Enter</button>
+        <button type="submit">Entre</button>
 
 
       </form>
