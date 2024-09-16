@@ -12,7 +12,7 @@
     rel="stylesheet">
   <link rel="icon" type="image/png" href="../public/img/abyssicon.png">
   <style>
-    body {
+    body{
       background-color: black;
       width: 100%;
       height: 100%;
@@ -20,23 +20,22 @@
       justify-content: center;
       font-family: "Josefin Sans", sans-serif;
     }
+
     .FormSign{
       background-color: white;
-      width: 29rem;
-      position: relative;
-      border-radius: 15px 15px 15px 15px;
+      border-radius: 0 15px 15px 15px;
       margin: -4px;
+      width: 80vh;
     }
 
     .Divtilte{
       background-color: white;
-      width: 7rem;
-      padding: 0 1vh 0 0;
+      width: 10rem;
       border-radius: 15px 15px 0 0;
       display: flex;
       justify-content: center;
-      margin: -30px 0 0 -15rem;
-      z-index: 200;
+      margin: -45px 0 0 0;
+      padding-top: 1rem;
     }
     
     .DivAll {
@@ -46,15 +45,56 @@
         align-items: center;
     }
     .form{
-      padding: 10%;
-      
+      margin: 0% 0 5% 5%;
     }
     .inputText{
       border-radius: 10px;
       margin-top:5px;
-      width: 20rem;
-      padding: 2%;
+      width: 68vh;
+      padding: 1vh;
       background-color: #e9ecef;
+      font-size: 20px;
+      font-family: "Josefin Sans", sans-serif;
+      border: none;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    .h3{
+      margin-top: 2%;
+      font-size: 30px;
+    }
+    .label{
+      font-size: 20px;
+      font-weight: bolder;
+    }
+    .a{
+      display: inline-block;
+      color: black;
+    }
+    .divLink{
+      display: flex;
+      justify-content: space-between;
+      gap:10vh;
+      font-size: 16px;
+      color: black;
+      padding-top:1vh;
+    }
+    .buttonSubmit{
+      margin: 5% 0% 0% 17%;
+      padding: 1vh;
+      width: 60%;
+      font-family: "Josefin Sans", sans-serif;
+      font-size: 20px;
+      background-color: black;
+      color: white;
+      border-radius: 10px;
+      font-weight: bolder;
+      border: none;
+    }
+    .inputText:hover{
+      color:black;
+    }
+    .buttonSubmit:hover{
+      background-color: grey;
     }
   </style>
 </head>
@@ -64,24 +104,24 @@
     <img src="../public/img/icon.png" alt="Abyss" class="logo">
   </nav>
   <div class="DivAll">
-    <div class="Divtilte" >
-      <h3>Login</h3>
-    </div>
     <div class="FormSign">
+        <div class="Divtilte" >
+          <h3 class="h3">Login</h3>
+          </div>
       <form action="home-user.php" class="form" method="post">
-        <div style="padding: 5%;">
-          <label for="email">Email</label>
+        <div style="margin-top:5%;">
+          <label class="label" for="email">Email</label>
           <input class="inputText" type="email" name="email" id="email" placeholder="Email" required>
         </div>
-        <div style="padding: 5%;">
-          <label for="password">Password</label>
+        <div style="padding-top:7%;">
+          <label class="label" for="password">Password</label>
           <input class="inputText" type="password" id="password" name="password" placeholder="Password" required>
         </div>
-        <div>
-          <a href="register.php">Resgister ?</a>
-          <a href="ForgetPass.php">Forget PassWord ?</a>
+        <div class="divLink" style="">
+          <a href="register.php" >Resgister ?</a>
+          <a href="ForgetPass.php" style="margin-right:8%;">Forget PassWord ?</a>
         </div>
-        <button type="submit">Entre</button>
+        <button type="submit" class="buttonSubmit">Login</button>
 
 
       </form>
