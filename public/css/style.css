@@ -40,7 +40,7 @@ body, html {
     display: inline-block;
   }
   
-  input[type="text"] {
+  .inpuText {
     padding: 3px 12px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -207,7 +207,7 @@ body, html {
     width : 100px;
     height : 100px;
   }
-
+/*------------------------------ COnnexion page ----------------------------*/
   .containerForm{
     display: flex;
     flex-direction: column;
@@ -215,10 +215,197 @@ body, html {
     justify-content: center;
     border: 5px solid #FFFF;
     width: 50%;
-    border-radius: 10px;
+    border-radius: 20px;
     color: white;
   }
 
   .fontSignIn{
     font-size: 2rem;
   }
+  .inputText{
+      width: 100%;
+  }
+  .Loginbody{
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  .FormSign{
+    background-color: white;
+    border-radius: 0 15px 15px 15px;
+    margin: -4px;
+    width: 80vh;
+  }
+
+  .Divtilte{
+    background-color: white;
+    width: 10rem;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    justify-content: center;
+    margin: -45px 0 0 0;
+    padding-top: 1rem;
+  }
+  
+  .DivAll {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  .formLogin{
+    margin: 0% 0 5% 5%;
+  }
+  .inputText{
+    border-radius: 10px;
+    margin-top:5px;
+    width: 68vh;
+    padding: 1vh;
+    background-color: #e9ecef;
+    font-size: 20px;
+    font-family: "Josefin Sans", sans-serif;
+    border: none;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  .h3Login{
+    margin-top: 2%;
+    font-size: 30px;
+  }
+  .labeLogin{
+    font-size: 20px;
+    font-weight: bolder;
+  }
+  .alogin{
+    display: inline-block;
+    color: black;
+  }
+  .divLink{
+    display: flex;
+    justify-content: space-between;
+    gap:10vh;
+    font-size: 16px;
+    color: black;
+    padding-top:1vh;
+  }
+  .buttonSubmit{
+    margin: 5% 0% 0% 17%;
+    padding: 1vh;
+    width: 60%;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    font-weight: bolder;
+    border: none;
+  }
+  .inputText:hover{
+    color:black;
+  }
+  .buttonSubmit:hover{
+    background-color: grey;
+  }
+  /*-------------------- register page ------------------------------*/
+  .FormRegister {
+    background-color: white;
+    border-radius: 0 15px 15px 15px;
+    font-family: "Josefin Sans", sans-serif;
+    padding: 3rem;
+}
+
+.labelRegister {
+    display: flex;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.bodyRegister {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+}
+
+.containerSign {
+    width: 40vh;
+}
+
+.h3Div {
+    background-color: white;
+    width: 10rem;
+    padding: 4px;
+    border-radius: 15px 15px 0 0;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+}
+.h3Register{
+    margin-top: 10%;
+    font-size: 30px;
+    z-index: 1;
+}
+.divcenter {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.doubleDiv {
+    display: flex;
+    gap: 5vh;
+    margin-top: 3vh;
+    justify-content: space-between;
+}
+
+.inputSign {
+    border-radius: 10px;
+    margin-top: 5px;
+    width: 68vh;
+    padding: 1vh;
+    background-color: #e9ecef;
+    font-size: 20px;
+    font-family: "Josefin Sans", sans-serif;
+    border: none;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.demiInput {
+    border-radius: 10px;
+    margin-top: 7px;
+    width: 38vh;
+    padding: 1vh;
+    background-color: #e9ecef;
+    font-size: 20px;
+    font-family: "Josefin Sans", sans-serif;
+    border-color: #f1f1f1;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.triDiv {
+    border-radius: 10px;
+    margin-top: 7px;
+    width: 30vh;
+    padding: 1vh;
+    background-color: #e9ecef;
+    font-size: 20px;
+    font-family: "Josefin Sans", sans-serif;
+    border-color: #f1f1f1;
+
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.DivAllResgister {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.LastDiv {
+    display: flex;
+    gap: 1vh;
+    margin-top: 3vh;
+}
