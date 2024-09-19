@@ -1,7 +1,7 @@
 <?php
 
 $host = "localhost";
-$dbname = "Abyss";
+$dbname = "abyss";
 $username = "root";
 $password = "root";
 

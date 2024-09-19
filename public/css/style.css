@@ -4,6 +4,12 @@ body, html {
     width: 100%;
     height: 100%;
   }
+
+  .body_secondary{
+    background-color: black;
+    width: 100%;
+    height: 100%;
+  }
   
   header {
     width: 100%;
@@ -207,114 +213,14 @@ body, html {
     width : 100px;
     height : 100px;
   }
-/*------------------------------ COnnexion page ----------------------------*/
-  .containerForm{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 5px solid #FFFF;
-    width: 50%;
-    border-radius: 20px;
-    color: white;
-  }
 
-  .fontSignIn{
-    font-size: 2rem;
-  }
-  .inputText{
-      width: 100%;
-  }
-  .Loginbody{
-    background-color: black;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    font-family: "Josefin Sans", sans-serif;
-  }
-
-  .FormSign{
-    background-color: white;
-    border-radius: 0 15px 15px 15px;
-    margin: -4px;
-    width: 80vh;
-  }
-
-  .Divtilte{
-    background-color: white;
-    width: 10rem;
-    border-radius: 15px 15px 0 0;
-    display: flex;
-    justify-content: center;
-    margin: -45px 0 0 0;
-    padding-top: 1rem;
-  }
-  
-  .DivAll {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-  }
-  .formLogin{
-    margin: 0% 0 5% 5%;
-  }
-  .inputText{
-    border-radius: 10px;
-    margin-top:5px;
-    width: 68vh;
-    padding: 1vh;
-    background-color: #e9ecef;
-    font-size: 20px;
-    font-family: "Josefin Sans", sans-serif;
-    border: none;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-  }
-  .h3Login{
-    margin-top: 2%;
-    font-size: 30px;
-  }
-  .labeLogin{
-    font-size: 20px;
-    font-weight: bolder;
-  }
-  .alogin{
-    display: inline-block;
-    color: black;
-  }
-  .divLink{
-    display: flex;
-    justify-content: space-between;
-    gap:10vh;
-    font-size: 16px;
-    color: black;
-    padding-top:1vh;
-  }
-  .buttonSubmit{
-    margin: 5% 0% 0% 17%;
-    padding: 1vh;
-    width: 60%;
-    font-family: "Josefin Sans", sans-serif;
-    font-size: 20px;
-    background-color: black;
-    color: white;
-    border-radius: 10px;
-    font-weight: bolder;
-    border: none;
-  }
-  .inputText:hover{
-    color:black;
-  }
-  .buttonSubmit:hover{
-    background-color: grey;
-  }
-  /*-------------------- register page ------------------------------*/
-  .FormRegister {
+  /*-------------------- form page ------------------------------*/
+  .Form {
     background-color: white;
     border-radius: 0 15px 15px 15px;
     font-family: "Josefin Sans", sans-serif;
     padding: 3rem;
+    box-shadow: inset gray 20px 0px 5px -12px;
 }
 
 .labelRegister {
@@ -323,24 +229,19 @@ body, html {
     font-weight: bolder;
 }
 
-.bodyRegister {
-    background-color: black;
-    width: 100%;
-    height: 100%;
-}
-
 .containerSign {
     width: 40vh;
 }
 
 .h3Div {
-    background-color: white;
-    width: 10rem;
-    padding: 4px;
-    border-radius: 15px 15px 0 0;
-    height: 2rem;
-    display: flex;
-    justify-content: center;
+  background-color: white;
+  width: 15rem;
+  padding: 4px;
+  border-radius: 15px 15px 0 0;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  box-shadow: inset gray 20px 0px 5px -12px;
 }
 .h3Register{
     margin-top: 10%;
@@ -398,14 +299,72 @@ body, html {
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.DivAllResgister {
+.DivAllForm {
     display: grid;
     justify-content: center;
     align-items: center;
+    margin-top: 5%;
 }
 
 .LastDiv {
     display: flex;
     gap: 1vh;
     margin-top: 3vh;
+}
+
+.divLink{
+  display: flex;
+  justify-content: space-between;
+  gap:10vh;
+  font-size: 16px;
+  color: black;
+  padding-top:1vh;
+}
+.buttonSubmit{
+  margin: 5% 0% 0% 17%;
+  padding: 1vh;
+  width: 60%;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 20px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  font-weight: bolder;
+  border: none;
+  transition: 1s;
+}
+.inputText:hover{
+  color:black;
+}
+.buttonSubmit:hover{
+  transition: 1s;
+  background-color: grey;
+}
+
+/*----------------------------------------------------------------------------------------------No_User_navbar---------------*/
+
+.no_user_navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5vh;
+}
+
+.nav_btn{
+  font-family: "Josefin Sans", sans-serif;
+  height: 3vh;
+  width: 12vh;
+  box-shadow: inset gray 9px 20px 5px -12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.nav_btn:hover{
+  transform: translateY(-5px);
+}
+
+.nav_btn:active {
+  transform: translateY(2px);
+  
 }

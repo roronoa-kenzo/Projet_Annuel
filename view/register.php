@@ -13,20 +13,18 @@
     <link rel="icon" type="../image/png" href="../public/img/abyssicon.png">
 </head>
 
-<body class="bodyRegister">
-    <nav>
-        <img src="../public/img/icon.png" class="logo" alt="">
-    </nav>
-    <div class="DivAllResgister">
+<body class="body_secondary">
+    <?php include '../composants/no_user_navbar.php'; ?>
+    <div class="DivAllForm">
         <div class="h3Div">
             <h3 class="h3Register">Register</h3>
         </div>
-        <form action="login.php" class="FormRegister" method="post">
+        <form action="register.php" class="Form" method="post">
 
             <div class="doubleDiv">
                 <div>
-                    <label for="name" class="labelRegister">Name</label>
-                    <input type="text" class="demiInput" name="name" placeholder="Name" id="name">
+                    <label for="lastname" class="labelRegister">Last Name</label>
+                    <input type="text" class="demiInput" name="lastname" placeholder="Last Name" id="lastname">
                 </div>
                 <div>
                     <label for="firstname" class="labelRegister">First Name</label>
