@@ -13,16 +13,37 @@
   <link rel="icon" type="image/png" href="../public/img/abyssicon.png">
 </head>
 
-<body class="Loginbody">
-  <nav class="">
-    <img src="../public/img/icon.png" alt="Abyss" class="logo">
-  </nav>
-  <div class="DivAll">
-    <div class="FormSign">
-        <div class="Divtilte" >
-          <h3 class="h3Login">Login</h3>
-          </div>
-      <form action="home-user.php" class="formLogin" method="post">
+<body class="body_secondary">
+    <?php include '../composants/no_user_navbar.php'; ?>
+    <div class="DivAllForm">
+        <div class="h3Div">
+            <h3 class="h3Register">Register</h3>
+        </div>
+        <form action="login.php" class="Form" method="post">
+
+            <div class="doubleDiv">
+                <div>
+                    <label for="lastname" class="labelRegister">Last Name</label>
+                    <input type="text" class="demiInput" name="lastname" placeholder="Last Name" id="lastname">
+                </div>
+                <div>
+                    <label for="firstname" class="labelRegister">First Name</label>
+                    <input type="text" class="demiInput" name="firstname" placeholder="First Name" id="firstname">
+                </div>
+            </div>
+
+            
+            <div class="LastDiv">
+                <input type="checkbox" name="condition" id="condition" required>
+                <label for="condition">Accept conditions</label>
+            </div>
+            <button class="buttonSubmit" type="submit">Sign up</button>
+        </form>
+    </div>
+</body>
+</html>
+<!-- /
+ <form action="login.php" class="formRegistero" method="post">
         <div style="margin-top:5%;">
           <label class="labeLogin" for="email">Email</label>
           <input class="inputText" type="email" name="email" id="email" placeholder="Email" required>
@@ -38,9 +59,4 @@
         <button type="submit" class="buttonSubmit">Login</button>
 
 
-      </form>
-    </div>
-  </div>
-</body>
-
-</html>
+      </form> -->
