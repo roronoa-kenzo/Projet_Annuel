@@ -76,8 +76,7 @@
                 </div>
                 <div>
                     <label for="passwordbis" class="labelRegister">Passeword confirm</label>
-                    <input type="password" class="demiInput" name="passwordbis" placeholder="Passeword confirm"
-                        id="passwordbis" required>
+                    <input type="password" class="demiInput" name="passwordbis" placeholder="Passeword confirm" id="passwordbis" required>
                 </div>
             </div>
 
