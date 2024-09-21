@@ -1,26 +1,20 @@
 <?php
 
-$host = "localhost";
+/* Ici, nous définissons les informations de connexion */
+$host = "127.0.0.1";
 $dbname = "abyss";
 $username = "root";
 $password = "root";
 
+/* Création d'une instance PDO */
+/* https://www.php.net/manual/fr/pdo.connections.php */
 try {
-    // Connexion à la base de données
+    /* Connexion à la base de données */
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    
-    // Configuration des options PDO
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-    // Requête pour récupérer les pseudos des utilisateurs
-    $sql = "SELECT pseudo FROM Utilisateurs";
-    $stmt = $pdo->query($sql);
-    
-    // Récupération des résultats
-    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+    /* Si tout se passe bien, je n'affiche rien */
 } catch (PDOException $e) {
-    // Gestion des erreurs
+    /* Si la connexion échoue j'affiche un message d'erreur */
     echo "Échec de la connexion : " . $e->getMessage();
 }
+
 
