@@ -35,7 +35,7 @@
     $is_banned = 0;
 
     require_once('../serveur/sessionStart.php');
-    if(){}else if(){}
+    if(){}else if(){}else if(){}else if(){}else if(){}else if(){}else if(){}
     if (empty($lastname) || empty($firstName) || empty($gender) || empty($datebrith) || empty($phone) || empty($email) || empty($formusername) || empty($formpassword) || empty($passwordbis)) {
         echo "Tous les champs sont obligatoires.";
     }
