@@ -13,23 +13,20 @@
     <link rel="icon" type="../image/png" href="../public/img/abyssicon.png">
 </head>
 
-<body class="bodyRegister">
-    <nav>
-        <img src="../public/img/icon.png" class="logo" alt="">
-    </nav>
+<body class="body_secondary">
+    <?php include '../composants/no_user_navbar.php'; ?>
     <?php require_once('../serveur/sessionStart.php'); ?>
     <?php require_once ("../serveur/database.php") ?>
-
-    <div class="DivAllResgister">
+    <div class="DivAllForm">
         <div class="h3Div">
             <h3 class="h3Register">Register</h3>
         </div>
-        <form action="registerResult.php" class="FormRegister" method="POST">
+        <form action="registerResult.php" class="Form" method="post">
 
             <div class="doubleDiv">
                 <div>
                     <label for="lastname" class="labelRegister">Last Name</label>
-                    <input type="text" class="demiInput" name="lastname" placeholder="Name" id="lastname">
+                    <input type="text" class="demiInput" name="lastname" placeholder="Last Name" id="lastname">
                 </div>
                 <div>
                     <label for="firstname" class="labelRegister">First Name</label>
@@ -79,7 +76,8 @@
                 </div>
                 <div>
                     <label for="passwordbis" class="labelRegister">Passeword confirm</label>
-                    <input type="password" class="demiInput" name="passwordbis" placeholder="Passeword confirm" id="passwordbis" required>
+                    <input type="password" class="demiInput" name="passwordbis" placeholder="Passeword confirm"
+                        id="passwordbis" required>
                 </div>
             </div>
 
