@@ -26,17 +26,11 @@
             <div class="white-content">
                 <div class="post-container">
                     <div class="post-header">
-                        <img src="../img/user-avatar.png" alt="User Avatar" class="user-avatar">
+                        <img src="../public/img/user-avatar.png" alt="User Avatar" class="user-avatar">
                         <?php include '../composants/post-options.php'; ?>
                         <div class="iceberg-select">
                             <select>
-                                <?php
-                                // Requête pour récupérer les forums (icebergs) depuis la base de données
-                                $forums = $pdo->query("SELECT titre_forum FROM Forum")->fetchAll(PDO::FETCH_ASSOC);
-                                foreach ($forums as $forum) {
-                                    echo "<option value='{$forum['titre_forum']}'>a/ Select an Iceberg</option>";
-                                }
-                                ?>
+                                
                             </select>
                         </div>
                     </div>
@@ -71,6 +65,7 @@
     <script src="../public/js/searchbar.js"></script>
     <script src="../public/js/darkmode.js"></script>
     <script src="../public/js/upload.js"></script>
+    <script src="../public/js/createpost.js"></script>
 
     <!-- Ajout du script pour gérer l'affichage dynamique -->
     <script>
