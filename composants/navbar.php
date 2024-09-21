@@ -10,6 +10,10 @@
             <p>Sonic</p>
         </div>
     </div>
+    <div class='nav_third'>
     <button id="darkModeButton">Nuit</button>
-    <a href="../view/connexion.php"><img src="../public/img/connexion.png" alt="lien page" class="logo-connexion"></a>
+    <a href="../view/connexion.php">
+        <img src="../public/img/connexion.png" alt="lien page" class="logo-connexion">
+    </a>
+    </div>
 </nav>
