@@ -1,7 +1,7 @@
 <?php
 
 /* Ici, nous définissons les informations de connexion */
-$host = "127.0.0.1";
+$host = "localhost";
 $dbname = "abyss";
 $username = "root";
 $password = "root";
