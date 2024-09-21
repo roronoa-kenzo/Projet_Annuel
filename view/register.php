@@ -17,16 +17,19 @@
     <nav>
         <img src="../public/img/icon.png" class="logo" alt="">
     </nav>
+    <?php require_once('../serveur/sessionStart.php'); ?>
+    <?php require_once ("../serveur/database.php") ?>
+
     <div class="DivAllResgister">
         <div class="h3Div">
             <h3 class="h3Register">Register</h3>
         </div>
-        <form action="login.php" class="FormRegister" method="post">
+        <form action="registerResult.php" class="FormRegister" method="POST">
 
             <div class="doubleDiv">
                 <div>
-                    <label for="name" class="labelRegister">Name</label>
-                    <input type="text" class="demiInput" name="name" placeholder="Name" id="name">
+                    <label for="lastname" class="labelRegister">Last Name</label>
+                    <input type="text" class="demiInput" name="lastname" placeholder="Name" id="lastname">
                 </div>
                 <div>
                     <label for="firstname" class="labelRegister">First Name</label>

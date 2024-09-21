@@ -12,64 +12,67 @@
         rel="stylesheet">
     <link rel="icon" type="../image/png" href="../public/img/abyssicon.png">
 </head>
-<htm>
+
+<body>
+    <?php require_once("../serveur/database.php"); ?>
+
+    <?php require_once('../serveur/sessionStart.php'); ?>
 
     <?php
 
-    require_once('../serveur/database.php');
-    require_once('../serveur/sessionStart.php');
-
     $lastname = $_POST['lastname'];
-    $firstName = $_POST['firstname'];
+    $firstname = $_POST['firstname'];
     $gender = $_POST['gender'];
-    $date = $_POST['date'];
+    $datebrith = $_POST['date'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $formusername = $_POST['username'];
+    $formpassword = $_POST['password'];
     $passwordbis = $_POST['passwordbis'];
     $xp = 10;
     $level = 1;
-    $is_admin = FALSE;
-    $is_banned = FALSE;
+    $is_admin = 0;
+    $is_banned = 0;
 
-    if (empty($lastname) || empty($firstName) || empty($gender) || empty($date) || empty($phone) || empty($email) || empty($username) || empty($password) || empty($passwordbis)) {
-        header:
-        ('Locacation: registerResult.php');
+    require_once('../serveur/sessionStart.php');
+    if(){}else if(){}
+    if (empty($lastname) || empty($firstName) || empty($gender) || empty($datebrith) || empty($phone) || empty($email) || empty($formusername) || empty($formpassword) || empty($passwordbis)) {
+        echo "Tous les champs sont obligatoires.";
     }
 
-    if ($password == $passwordbis) {
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        $request = $pdo->prepare('INSERT INTO users (username, email, password_hash, first_name, last_name, date_of_birth, xp, level, is_admin, is_banned) VALUES (:username, :email, :password, :firstname, :lastname, :date , :xp, :level, :is_admin, :is_banned)');
-        $request->bindParam(':username', $username);
+    if ($formpassword == $passwordbis) {
+
+        // Préparation de la requête
+        $formpassword = password_hash($formpassword, PASSWORD_DEFAULT);
+
+        $request = $pdo->prepare('INSERT INTO users (username, email, password_hash, first_name, last_name, date_of_birth, xp, level, is_admin, is_banned) VALUES (:username, :email, :password_hash, :first_name, :last_name, :date_of_birth, :xp, :level, :is_admin, :is_banned)');
+        $request->bindParam(':username', $formusername);
         $request->bindParam(':email', $email);
-        $request->bindParam(':password', $password_hash);
-        $request->bindParam(':firstname', $first_name);
-        $request->bindParam(':lastname', $last_name);
-        $request->bindParam(':date_of_birth', $date_of_birth);
+        $request->bindParam(':password_hash', $formpassword);
+        $request->bindParam(':first_name', $firstname);
+        $request->bindParam(':last_name', $lastname);
+        $request->bindParam(':date_of_birth', $datebrith);
         $request->bindParam(':xp', $xp);
         $request->bindParam(':level', $level);
         $request->bindParam(':is_admin', $is_admin);
         $request->bindParam(':is_banned', $is_banned);
-
+        echo "sa marche";
         // assure-toi que la date est au bon format (YYYY-MM-DD)
-        $request->execute();
-
-
-        if ($request->rowCount() === 1) {
-            /* Si l'utilisateur a bien été crée, j'affiche un message de succès */
-            echo "L'utilisateur a été ajouté avec succès.";
-        } else {
-            /* Sinon j'affiche un message d'erreur */
-            echo "Une erreur est survenue lors de l'ajout de l'utilisateur.";
+        try {
+            $request->execute();
+            if ($request->rowCount() === 1) {
+                // Redirection avant tout affichage
+                header('Location: homeUser.php');
+                exit(); // Assurez-vous de terminer le script après la redirection
+            }
+        } catch (PDOException $e) {
+            echo "Erreur lors de l'exécution de la requête : " . $e->getMessage();
         }
     } else {
-        /* J'affiche un message d'erreur si les mots de passe ne correspondent pas */
         echo 'Les mots de passe ne correspondent pas';
     }
 
     /* On ferme la connexion à la base de données */
-    $pdo = null;
 
 
     ?>
@@ -77,6 +80,4 @@
 INSERT INTO users (username, email, password_hash, first_name, last_name, date_of_birth, xp, level, is_admin, is_banned) VALUES
 ('john_doe', 'john@example.com', 'hash_password_1', 'John', 'Doe', '1990-01-01', 150, 2, FALSE, FALSE), 
 -->
-    </body>
-
-</html>
+</body>
