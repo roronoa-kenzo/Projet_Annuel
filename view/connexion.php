@@ -17,27 +17,24 @@
     <?php include '../composants/no_user_navbar.php'; ?>
     <div class="DivAllForm">
         <div class="h3Div">
-            <h3 class="h3Register">Register</h3>
+            <h3 class="h3Register">Login</h3>
         </div>
         <form action="login.php" class="Form" method="post">
 
             <div class="doubleDiv">
                 <div>
-                    <label for="lastname" class="labelRegister">Last Name</label>
-                    <input type="text" class="demiInput" name="lastname" placeholder="Last Name" id="lastname">
+                    <label for="EmaiLogin" class="labelRegister">Email</label>
+                    <input type="text" class="demiInput" name="EmaiLogin" placeholder="Email" id="EmaiLogin">
                 </div>
                 <div>
-                    <label for="firstname" class="labelRegister">First Name</label>
-                    <input type="text" class="demiInput" name="firstname" placeholder="First Name" id="firstname">
+                    <label for="PasswordLogin" class="labelRegister">Password</label>
+                    <input type="password" class="demiInput" name="PasswordLogin" placeholder="Password" id="PasswordLogin">
                 </div>
             </div>
-
-            
-            <div class="LastDiv">
-                <input type="checkbox" name="condition" id="condition" required>
-                <label for="condition">Accept conditions</label>
+            <div>
+              <a href="forgetaccount.php" class="divLink">Forget password or email ?</a>
             </div>
-            <button class="buttonSubmit" type="submit">Sign up</button>
+            <button class="buttonSubmit" type="submit">Login</button>
         </form>
     </div>
 </body>

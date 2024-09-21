@@ -318,7 +318,7 @@ justify-content: space-between;
 gap:10vh;
 font-size: 16px;
 color: black;
-padding-top:1vh;
+margin-top:2vh;
 }
 .buttonSubmit{
 margin: 5% 0% 0% 17%;
