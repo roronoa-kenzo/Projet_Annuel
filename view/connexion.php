@@ -19,16 +19,16 @@
         <div class="h3Div">
             <h3 class="h3Register">Login</h3>
         </div>
-        <form action="login.php" class="Form" method="post">
+        <form action="loginResult.php" class="Form" method="post">
 
             <div class="doubleDiv">
                 <div>
-                    <label for="EmaiLogin" class="labelRegister">Email</label>
-                    <input type="text" class="demiInput" name="EmaiLogin" placeholder="Email" id="EmaiLogin">
+                    <label for="email" class="labelRegister">Email</label>
+                    <input type="email" class="demiInput" name="email" placeholder="Email" id="email" required>
                 </div>
                 <div>
-                    <label for="PasswordLogin" class="labelRegister">Password</label>
-                    <input type="password" class="demiInput" name="PasswordLogin" placeholder="Password" id="PasswordLogin">
+                    <label for="password" class="labelRegister">Password</label>
+                    <input type="password" class="demiInput" name="password" placeholder="Password" id="password" required>
                 </div>
             </div>
             <div>
@@ -39,21 +39,3 @@
     </div>
 </body>
 </html>
-<!-- /
- <form action="login.php" class="formRegistero" method="post">
-        <div style="margin-top:5%;">
-          <label class="labeLogin" for="email">Email</label>
-          <input class="inputText" type="email" name="email" id="email" placeholder="Email" required>
-        </div>
-        <div style="padding-top:7%;">
-          <label class="labeLogin" for="password">Password</label>
-          <input class="inputText" type="password" id="password" name="password" placeholder="Password" required>
-        </div>
-        <div class="divLink" style="">
-          <a href="register.php" class="alogin">Resgister ?</a>
-          <a href="ForgetPass.php" class="alogin" style="margin-right:8%;">Forget PassWord ?</a>
-        </div>
-        <button type="submit" class="buttonSubmit">Login</button>
-
-
-      </form> -->
