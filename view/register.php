@@ -15,11 +15,13 @@
 
 <body class="body_secondary">
     <?php include '../composants/no_user_navbar.php'; ?>
+    <?php require_once('../serveur/sessionStart.php'); ?>
+    <?php require_once ("../serveur/database.php") ?>
     <div class="DivAllForm">
         <div class="h3Div">
             <h3 class="h3Register">Register</h3>
         </div>
-        <form action="register.php" class="Form" method="post">
+        <form action="registerResult.php" class="Form" method="post">
 
             <div class="doubleDiv">
                 <div>
