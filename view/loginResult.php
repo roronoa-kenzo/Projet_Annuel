@@ -35,8 +35,14 @@
         $result = $request->fetchAll();
 
         if(count($result)> 0 && password_verify($formpassword, $result[0]["password_hash"])){
-            $_SESSION["email"] = $result[0]["email"];
-            //header("Location:index.php");      // a mettre a la fin si sa marche
+          $_SESSION["username"] = $result[0]["username"];
+          $_SESSION["firstname"] = $result[0]["first_name"];  // Assurez-vous que ce champ existe dans la table
+          $_SESSION["lastname"] = $result[0]["last_name"];  // Assurez-vous que ce champ existe dans la table
+          $_SESSION["gender"] = $result[0]["gender"];  // Si nécessaire
+          $_SESSION["date_of_birth"] = $result[0]["date_of_birth"];  // Si nécessaire
+          $_SESSION["phone"] = $result[0]["phone"];  // Si nécessaire
+          $_SESSION["email"] = $result[0]["email"];
+              header("Location:index.php");      // a mettre a la fin si sa marche
             echo "session commencer";
         }else {
             echo "mot de passe ou email mal pris";

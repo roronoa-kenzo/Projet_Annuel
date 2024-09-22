@@ -60,8 +60,19 @@
         try {
             $request->execute();
             if ($request->rowCount() === 1) {
+                $_SESSION["username"] = $formusername;
+                $_SESSION["email"] = $email;
+                $_SESSION["firstname"] = $firstname;
+                $_SESSION["lastname"] = $lastname;
+                $_SESSION["gender"] = $gender;
+                $_SESSION["date_of_birth"] = $datebrith;
+                $_SESSION["phone"] = $phone;
+                $_SESSION["xp"] = $xp;
+                $_SESSION["level"] = $level;
+                $_SESSION["is_admin"] = $is_admin;
+                $_SESSION["is_banned"] = $is_banned;
                 // Redirection avant tout affichage
-                header('Location: homeUser.php');
+                header('Location: index.php');
                 exit(); // Assurez-vous de terminer le script après la redirection
             }
         } catch (PDOException $e) {
