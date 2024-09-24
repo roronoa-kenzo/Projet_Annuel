@@ -6,4 +6,3 @@ $conn = mysqli_connect("localhost", "root", "root", "abyss");
 if (!$conn) {
     die("Erreur de connexion : " . mysqli_connect_error());
 }
-?>

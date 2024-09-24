@@ -5,16 +5,21 @@ require_once 'co_database.php';
 // Récupération du token de confirmation
 $token = $_GET['token'];
 
-// Vérification du token de confirmation
-$query = "SELECT * FROM subscribers WHERE token = '$token'";
-$result = mysqli_query($conn, $query);
+// Vérification si le token est valide
+$stmt = mysqli_prepare($conn, "SELECT * FROM subscribers WHERE token = ?");
+mysqli_stmt_bind_param($stmt, "s", $token);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 
-if (mysqli_num_rows($result) > 0) {
-    // Mise à jour de la colonne confirmed à 1
-    $query = "UPDATE subscribers SET confirmed = 1 WHERE token = '$token'";
-    mysqli_query($conn, $query);
-    echo 'Votre adresse email a été confirmée avec succès !';
+if ($result->num_rows > 0) {
+    // Le token est valide, on met à jour le statut de l'abonné
+    $stmt = mysqli_prepare($conn, "UPDATE subscribers SET confirmed = 1 WHERE token = ?");
+    mysqli_stmt_bind_param($stmt, "s", $token);
+    mysqli_stmt_execute($stmt);
+
+    // Affichage d'un message de confirmation
+    echo "Votre adresse email a été confirmée avec succès !";
 } else {
-    echo 'Erreur : token de confirmation invalide';
+    // Le token est invalide, on affiche un message d'erreur
+    echo "Erreur : le token de confirmation est invalide.";
 }
-?>
