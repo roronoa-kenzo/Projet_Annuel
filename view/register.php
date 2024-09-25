@@ -30,18 +30,19 @@
                     <input type="text" class="demiInput" name="lastname" placeholder="Last Name" id="lastname" required>
                     <?php
                     if (isset($_SESSION['Errorlastname'])) {
-                        echo '<p style="color: red;">' . $_SESSION['Errorlastname'] . '</p>'; 
-                        unset($_SESSION['Errorlastname']); 
+                        echo '<p style="color: red;">' . $_SESSION['Errorlastname'] . '</p>';
+                        unset($_SESSION['Errorlastname']);
                     }
                     ?>
                 </div>
                 <div>
                     <label for="firstname" class="labelRegister">First Name</label>
-                    <input type="text" class="demiInput" name="firstname" placeholder="First Name" id="firstname" required>
+                    <input type="text" class="demiInput" name="firstname" placeholder="First Name" id="firstname"
+                        required>
                     <?php
                     if (isset($_SESSION['Errorfirstname'])) {
-                        echo '<p style="color: red;">' . $_SESSION['Errorfirstname'] . '</p>'; 
-                        unset($_SESSION['Errorfirstname']); 
+                        echo '<p style="color: red;">' . $_SESSION['Errorfirstname'] . '</p>';
+                        unset($_SESSION['Errorfirstname']);
                     }
                     ?>
                 </div>
@@ -59,8 +60,8 @@
                     </select>
                     <?php
                     if (isset($_SESSION['Errorgender'])) {
-                        echo '<p style="color: red;">' . $_SESSION['Errorgender'] . '</p>'; 
-                        unset($_SESSION['Errorgender']); 
+                        echo '<p style="color: red;">' . $_SESSION['Errorgender'] . '</p>';
+                        unset($_SESSION['Errorgender']);
                     }
                     ?>
                 </div>
@@ -72,8 +73,8 @@
                         required>
                     <?php
                     if (isset($_SESSION['Errordatebrith'])) {
-                        echo '<p style="color: red;">' . $_SESSION['Errordatebrith'] . '</p>'; 
-                        unset($_SESSION['Errordatebrith']); 
+                        echo '<p style="color: red;">' . $_SESSION['Errordatebrith'] . '</p>';
+                        unset($_SESSION['Errordatebrith']);
                     }
                     ?>
                 </div>
@@ -82,8 +83,8 @@
                     <input type="text" name="phone" class="triDiv" placeholder="Phone Number" id="phone" required>
                     <?php
                     if (isset($_SESSION['Errorphone'])) {
-                        echo '<p style="color: red;">' . $_SESSION['Errorphone'] . '</p>'; 
-                        unset($_SESSION['Errorphone']); 
+                        echo '<p style="color: red;">' . $_SESSION['Errorphone'] . '</p>';
+                        unset($_SESSION['Errorphone']);
                     }
                     ?>
                 </div>
@@ -100,8 +101,8 @@
                     <input type="text" class="demiInput" name="username" placeholder="Username" id="username" required>
                     <?php
                     if (isset($_SESSION['Errorformusername'])) {
-                        echo '<p style="color: red;">' . $_SESSION['Errorformusername'] . '</p>'; 
-                        unset($_SESSION['Errorformusername']); 
+                        echo '<p style="color: red;">' . $_SESSION['Errorformusername'] . '</p>';
+                        unset($_SESSION['Errorformusername']);
                     }
                     ?>
                 </div>
@@ -110,11 +111,12 @@
             <div class="doubleDiv">
                 <div>
                     <label for="password" class="labelRegister">Password</label>
-                    <input type="password" class="demiInput" name="password" placeholder="Password" id="password" required>
+                    <input type="password" class="demiInput" name="password" placeholder="Password" id="password"
+                        required>
                     <?php
                     if (isset($_SESSION['Errorformpassword'])) {
-                        echo '<p style="color: red;">' . $_SESSION['Errorformpassword'] . '</p>'; 
-                        unset($_SESSION['Errorformpassword']); 
+                        echo '<p style="color: red;">' . $_SESSION['Errorformpassword'] . '</p>';
+                        unset($_SESSION['Errorformpassword']);
                     }
                     ?>
                 </div>
@@ -124,8 +126,8 @@
                         id="passwordbis" required>
                     <?php
                     if (isset($_SESSION['Errorpasswordbis'])) {
-                        echo '<p style="color: red;">' . $_SESSION['Errorpasswordbis'] . '</p>'; 
-                        unset($_SESSION['Errorpasswordbis']); 
+                        echo '<p style="color: red;">' . $_SESSION['Errorpasswordbis'] . '</p>';
+                        unset($_SESSION['Errorpasswordbis']);
                     }
                     ?>
                 </div>

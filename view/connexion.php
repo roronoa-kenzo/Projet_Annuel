@@ -15,6 +15,8 @@
 
 <body class="body_secondary">
     <?php include '../composants/no_user_navbar.php'; ?>
+    <?php require_once('../serveur/sessionStart.php'); ?>
+    <?php require_once("../serveur/database.php") ?>
     <div class="DivAllForm">
         <div class="h3Div">
             <h3 class="h3Register">Login</h3>
@@ -24,7 +26,13 @@
             <div class="doubleDiv">
                 <div>
                     <label for="email" class="labelRegister">Email</label>
-                    <input type="email" class="demiInput" name="email" placeholder="Email" id="email" required>
+                    <input type="email" class="demiInput" name="email" placeholder="Email" id="email" >
+                <?php
+                    if (isset($_SESSION['ErrorLoginPass'])) {
+                        echo '<p style="color: red;">' . $_SESSION['ErrorLoginPass'] . '</p>';
+                        unset($_SESSION['ErrorLoginPass']);
+                    }
+                    ?>
                 </div>
                 <div>
                     <label for="password" class="labelRegister">Password</label>

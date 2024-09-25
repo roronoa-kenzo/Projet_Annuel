@@ -34,67 +34,52 @@
     $is_admin = 0;
     $is_banned = 0;
 
-    if(empty($lastname))
-    {
-        $_SESSION['Errorlastname'] = 'Incorrect lastname';
+    if (empty($lastname)) {
+        $_SESSION['Errorlastname'] = 'Incorrect lastname.';
         header('Location: register.php');
-        exit(); 
-    }
-    else if(empty($firstname))
-    {
-        $_SESSION['Errorfirstname'] = 'Incorrect firstname';
+        exit();
+    } else if (empty($firstname)) {
+        $_SESSION['Errorfirstname'] = 'Incorrect firstname.';
         header('Location: register.php');
-        exit(); 
-    }
-    else if(empty($gender))
-    {
-        $_SESSION['Errorgender'] = 'Incorrect gender';
+        exit();
+    } else if (empty($gender)) {
+        $_SESSION['Errorgender'] = 'Incorrect gender.';
         header('Location: register.php');
-        exit(); 
-    }
-    else if(empty($datebrith))
-    {
-        $_SESSION['Errordatebrith'] = 'Incorrect birthday';
+        exit();
+    } else if (empty($datebrith)) {
+        $_SESSION['Errordatebrith'] = 'Incorrect birthday.';
         header('Location: register.php');
-        exit(); 
-    }else if(!empty($datebrith))//verifier l'age de la personne
+        exit();
+    } else if (!empty($datebrith))//verifier l'age de la personne
     {
         $calcAge = date('Y-m-d', strtotime('-18 years'));
-        if($datebrith > $calcAge){
-            $_SESSION['Errordatebrith'] = 'Too young';
+        if ($datebrith > $calcAge) {
+            $_SESSION['Errordatebrith'] = 'Too young.';
             header('Location: register.php');
-            exit(); 
+            exit();
         }
-    }
-    else if(empty($phone))
-    {
-        $_SESSION['Errorphone'] = 'Incorrect phone number';
+    } else if (empty($phone)) {
+        $_SESSION['Errorphone'] = 'Incorrect phone number.';
         header('Location: register.php');
-        exit(); 
-    }
-    else if(empty($email))// verification dans bdd aussi
+        exit();
+    } else if (empty($email))// verification dans bdd aussi
     {
-        $_SESSION['Erroremail'] = 'Incorrect email';
+        $_SESSION['Erroremail'] = 'Incorrect email.';
         header('Location: register.php');
-        exit(); 
-    }
-    else if(empty($formusername))// verification dans bdd aussi
+        exit();
+    } else if (empty($formusername))// verification dans bdd aussi
     {
-        $_SESSION['Errorformusername'] = 'Incorrect username';
+        $_SESSION['Errorformusername'] = 'Incorrect username.';
         header('Location: register.php');
-        exit(); 
-    }
-    else if(empty($formpassword))
-    {
-        $_SESSION['Errorformpassword'] = 'Incorrect password';
+        exit();
+    } else if (empty($formpassword)) {
+        $_SESSION['Errorformpassword'] = 'Incorrect password.';
         header('Location: register.php');
-        exit(); 
-    }
-    else if(empty($passwordbis))
-    {
-        $_SESSION['Errorpasswordbis'] = 'Incorrect password';
+        exit();
+    } else if (empty($passwordbis)) {
+        $_SESSION['Errorpasswordbis'] = 'Incorrect password.';
         header('Location: register.php');
-        exit(); 
+        exit();
     }
 
     if ($formpassword == $passwordbis) {

@@ -12,35 +12,40 @@
     rel="stylesheet">
   <link rel="icon" type="image/png" href="../public/img/abyssicon.png">
 </head>
+
 <body>
-<?php require_once('../serveur/sessionStart.php'); ?>
-<?php require_once('../serveur/database.php')?>
+  <?php require_once('../serveur/sessionStart.php'); ?>
+  <?php require_once('../serveur/database.php') ?>
 
-<?php 
-        $email = $_POST['email'];
-        $formpassword = $_POST['password'];
-        echo $email.".</br>";
-        echo $formpassword.".</br>";
-        if(empty($email) || empty($formpassword)){
-            header('Location:connexion.php');
-        }
-        
-        $request = $pdo->prepare("SELECT * FROM users WHERE email =:email");
+  <?php
+  $email = $_POST['email'];
+  $formpassword = $_POST['password'];
 
-        $request->bindParam(':email', $email);
+  if (empty($email) || empty($formpassword)) {
+    $_SESSION['ErrorLoginPass'] = 'Email or Password wrong';
+    header('Location:connexion.php');
+    exit();
+  }
 
-        $request ->execute();
+  $request = $pdo->prepare("SELECT * FROM users WHERE email =:email");
+
+  $request->bindParam(':email', $email);
+
+  $request->execute();
 
 
-        $result = $request->fetchAll();
+  $result = $request->fetchAll();
 
-        if(count($result)> 0 && password_verify($formpassword, $result[0]["password_hash"])){
-            $_SESSION["email"] = $result[0]["email"];
-            //header("Location:index.php");      // a mettre a la fin si sa marche
-            echo "session commencer";
-        }else {
-            echo "mot de passe ou email mal pris";
-        }
-?>
+  if (count($result) > 0 && password_verify($formpassword, $result[0]["password_hash"])) {
+    $_SESSION["email"] = $result[0]["email"];
+    //header("Location:index.php");      // a mettre a la fin si sa marche
+    echo "session commencer";
+  } else {
+    $_SESSION['ErrorLoginPass'] = 'Email or Password wrong.';
+    header('Location:connexion.php');
+    exit();
+  }
+  ?>
 </body>
+
 </html>
