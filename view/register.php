@@ -94,6 +94,12 @@
                 <div>
                     <label for="email" class="labelRegister">Email</label>
                     <input type="email" class="demiInput" name="email" placeholder="Email" id="email" required>
+                    <?php
+                    if (isset($_SESSION['Erroremail'])) {
+                        echo '<p style="color: red;">' . $_SESSION['Erroremail'] . '</p>';
+                        unset($_SESSION['Erroremail']);
+                    }
+                    ?>
                 </div>
 
                 <div>

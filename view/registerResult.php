@@ -82,6 +82,31 @@
         exit();
     }
 
+    //verification si le mail existe deja dans la bdd
+    $query = "SELECT * FROM users WHERE email = :email";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->execute();
+
+
+    if ($stmt->rowCount() > 0) {
+        $_SESSION['Erroremail'] = 'This email is already registered.';
+        header('Location: register.php');
+        exit();
+    }
+    
+    //verification si le username existe deja dans la bdd
+    $query = "SELECT * FROM users WHERE username = :username";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':username', $formusername, PDO::PARAM_STR);
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
+        $_SESSION['Errorformusername'] = 'This username is already registered.';
+        header('Location: register.php');
+        exit();
+    }
+
     if ($formpassword == $passwordbis) {
 
         // Préparation de la requête
@@ -98,7 +123,6 @@
         $request->bindParam(':level', $level);
         $request->bindParam(':is_admin', $is_admin);
         $request->bindParam(':is_banned', $is_banned);
-        echo "sa marche";
         // assure-toi que la date est au bon format (YYYY-MM-DD)
         try {
             $request->execute();
