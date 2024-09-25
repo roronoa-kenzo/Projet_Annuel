@@ -25,8 +25,8 @@
     $gender = $_POST['gender'];
     $datebrith = $_POST['date'];
     $phone = $_POST['phone'];
-    $email = $_POST['email'];
-    $formusername = $_POST['username'];
+    $email = $_POST['email'];//doit etre unique
+    $formusername = $_POST['username'];//doit etre unique
     $formpassword = $_POST['password'];
     $passwordbis = $_POST['passwordbis'];
     $xp = 10;
@@ -34,9 +34,67 @@
     $is_admin = 0;
     $is_banned = 0;
 
-    require_once('../serveur/sessionStart.php');
-    if (empty($lastname) || empty($firstName) || empty($gender) || empty($datebrith) || empty($phone) || empty($email) || empty($formusername) || empty($formpassword) || empty($passwordbis)) {
-        echo "Tous les champs sont obligatoires.";
+    if(empty($lastname))
+    {
+        $_SESSION['Errorlastname'] = 'Incorrect lastname';
+        header('Location: register.php');
+        exit(); 
+    }
+    else if(empty($firstname))
+    {
+        $_SESSION['Errorfirstname'] = 'Incorrect firstname';
+        header('Location: register.php');
+        exit(); 
+    }
+    else if(empty($gender))
+    {
+        $_SESSION['Errorgender'] = 'Incorrect gender';
+        header('Location: register.php');
+        exit(); 
+    }
+    else if(empty($datebrith))
+    {
+        $_SESSION['Errordatebrith'] = 'Incorrect birthday';
+        header('Location: register.php');
+        exit(); 
+    }else if(!empty($datebrith))//verifier l'age de la personne
+    {
+        $calcAge = date('Y-m-d', strtotime('-18 years'));
+        if($datebrith > $calcAge){
+            $_SESSION['Errordatebrith'] = 'Too young';
+            header('Location: register.php');
+            exit(); 
+        }
+    }
+    else if(empty($phone))
+    {
+        $_SESSION['Errorphone'] = 'Incorrect phone number';
+        header('Location: register.php');
+        exit(); 
+    }
+    else if(empty($email))// verification dans bdd aussi
+    {
+        $_SESSION['Erroremail'] = 'Incorrect email';
+        header('Location: register.php');
+        exit(); 
+    }
+    else if(empty($formusername))// verification dans bdd aussi
+    {
+        $_SESSION['Errorformusername'] = 'Incorrect username';
+        header('Location: register.php');
+        exit(); 
+    }
+    else if(empty($formpassword))
+    {
+        $_SESSION['Errorformpassword'] = 'Incorrect password';
+        header('Location: register.php');
+        exit(); 
+    }
+    else if(empty($passwordbis))
+    {
+        $_SESSION['Errorpasswordbis'] = 'Incorrect password';
+        header('Location: register.php');
+        exit(); 
     }
 
     if ($formpassword == $passwordbis) {
