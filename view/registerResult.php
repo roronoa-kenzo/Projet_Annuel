@@ -132,18 +132,13 @@
                 exit(); // Assurez-vous de terminer le script après la redirection
             }
         } catch (PDOException $e) {
-            echo "Erreur lors de l'exécution de la requête : " . $e->getMessage();
+            echo "Erreur lors de l'exécution de la requête : " . $e->getMessage();// faire une page d'erreur
         }
     } else {
-        echo 'Les mots de passe ne correspondent pas';
+        $_SESSION['Errorformpassword'] = 'Password don\'t match.';
+        header('Location: register.php');
+        exit();
     }
 
-    /* On ferme la connexion à la base de données */
-
-
     ?>
-    <!-- 
-INSERT INTO users (username, email, password_hash, first_name, last_name, date_of_birth, xp, level, is_admin, is_banned) VALUES
-('john_doe', 'john@example.com', 'hash_password_1', 'John', 'Doe', '1990-01-01', 150, 2, FALSE, FALSE), 
--->
 </body>
