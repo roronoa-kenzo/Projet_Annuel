@@ -1,4 +1,3 @@
-<!-- index.php -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,9 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
     <link rel="icon" type="image/png" href="../public/img/abyssicon.png">
+    <?php require_once("../composants/ResquestDarkMode.php"); ?>
 </head>
 
-<body>
+<body class="<?php echo $darkMode ? 'dark-mode' : ''; ?> indexBody">
+    
     <?php include '../composants/navbar.php'; ?>
 
     <main class="container">
@@ -35,7 +36,6 @@
                         </div>
                     </div>
 
-                    <!-- Contenus à afficher selon le bouton cliqué -->
                     <div id="textContent" style="display: none;">
                         <textarea class="post-textarea" placeholder="Text..."></textarea>
                     </div>
@@ -85,6 +85,10 @@
             document.getElementById("textContent").style.display = "none";
             document.getElementById("imageVideoContent").style.display = "none";
             document.getElementById("linkContent").style.display = "block";
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+        // Supprime la classe qui empêche la transition après le chargement de la page
+        document.body.classList.remove('no-transition');
         });
     </script>
 </body>

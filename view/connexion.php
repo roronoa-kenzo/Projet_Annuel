@@ -11,12 +11,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
     rel="stylesheet">
   <link rel="icon" type="image/png" href="../public/img/abyssicon.png">
+  <?php require_once("../composants/ResquestDarkMode.php"); ?>
+
 </head>
 
 <body class="body_secondary">
     <?php include '../composants/no_user_navbar.php'; ?>
     <?php require_once('../serveur/sessionStart.php'); ?>
-    <?php require_once("../serveur/database.php") ?>
+
     <div class="DivAllForm">
         <div class="h3Div">
             <h3 class="h3Register">Login</h3>
@@ -39,8 +41,11 @@
                     <input type="password" class="demiInput" name="password" placeholder="Password" id="password" required>
                 </div>
             </div>
+            
             <div>
               <a href="forgetaccount.php" class="divLink">Forget password or email ?</a>
+              <a href="test.php" class="divLink">test ?</a>
+
             </div>
             <button class="buttonSubmit" type="submit">Login</button>
         </form>
