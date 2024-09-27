@@ -15,7 +15,7 @@
 
 </head>
 
-<body class="body_secondary">
+<body class="<?php echo $darkMode ? 'dark-mode' : ''; ?> body_secondary">
     <?php include '../composants/no_user_navbar.php'; ?>
     <?php require_once('../serveur/sessionStart.php'); ?>
     <?php require_once("../serveur/database.php") ?>
@@ -24,7 +24,7 @@
         <div class="h3Div">
             <h3 class="h3Register">Register</h3>
         </div>
-        <form action="registerResult.php" class="Form" method="post">
+        <form action="registerResult.php" class=" Form" method="post">
 
             <div class="doubleDiv">
                 <div>
@@ -148,6 +148,11 @@
             <button class="buttonSubmit" type="submit">Sign up</button>
         </form>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.body.classList.remove('no-transition');
+        });
+    </script>
 </body>
 
 </html>

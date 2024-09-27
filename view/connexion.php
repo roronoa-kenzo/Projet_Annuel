@@ -15,7 +15,7 @@
 
 </head>
 
-<body class="body_secondary">
+<body class="<?php echo $darkMode ? 'dark-mode' : ''; ?> body_secondary">
     <?php include '../composants/no_user_navbar.php'; ?>
     <?php require_once('../serveur/sessionStart.php'); ?>
 
@@ -48,5 +48,10 @@
             <button class="buttonSubmit" type="submit">Login</button>
         </form>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.body.classList.remove('no-transition');
+        });
+    </script>
 </body>
 </html>

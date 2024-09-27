@@ -13,6 +13,9 @@ body, html {
   background-color: #121212;
   color: white;
 }
+.body_secondary.no-transition * {
+  transition: none !important;
+}
 .indexBody.no-transition * {
   transition: none !important;
 }
@@ -20,6 +23,7 @@ body, html {
   background-color: black;
   width: 100%;
   height: 100%;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 header {
@@ -128,10 +132,14 @@ h3{
   margin-top: -10px;
   margin-left: 5vh;
   margin-right: 5vh;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .dark-mode .white-content{
   background-color: #212020;
+}
+.white-content.no-transition * {
+  transition: none !important;
 }
 .white-content-admin {
   background-color: white;
@@ -160,7 +168,9 @@ h3{
 }
 .dark-mode .white-content-secondary{
   background-color: #212020;
-  transition: background-color 0.5s, color 0.5s;
+}
+.white-content-secondary.no-transition * {
+  transition: none !important;
 }
 
 /* White Content Milieu */
@@ -179,10 +189,14 @@ h3{
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   margin: 0 auto;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 .dark-mode .post-container{
   background-color: #121212;
   color: white;
+}
+.post-container.no-transition * {
+  transition: none !important;
 }
 .post-header {
   display: flex;
@@ -200,11 +214,14 @@ h3{
   display: flex;
   gap: 15px;
   flex-grow: 1;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 .dark-mode .post-option{
   color: white;
 }
-
+.post-option.no-transition * {
+  transition: none !important;
+}
 .post-option {
   background: none;
   border: none;
@@ -268,13 +285,16 @@ h3{
   font-family: "Josefin Sans", sans-serif;
   padding: 3rem;
   box-shadow: inset gray 20px 0px 5px -12px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 .dark-mode .Form{
   background-color: #212020;
   color: white;
   box-shadow: none;
 }
-
+.Form.no-transition * {
+  transition: none !important;
+}
 .labelRegister {
   display: flex;
   font-size: 20px;
@@ -294,11 +314,15 @@ height: 2rem;
 display: flex;
 justify-content: center;
 box-shadow: inset gray 20px 0px 5px -12px;
+transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 .dark-mode .h3Div{
   background-color: #212020;
   color: white;
   box-shadow:none ;
+}
+.h3Div.no-transition * {
+  transition: none !important;
 }
 .h3Register{
   margin-top: 10%;
@@ -376,9 +400,13 @@ gap:10vh;
 font-size: 16px;
 color: black;
 margin-top:2vh;
+transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 .dark-mode .divLink{
   color: white;
+}
+.divLink.no-transition * {
+  transition: none !important;
 }
 .buttonSubmit{
 margin: 5% 0% 0% 17%;

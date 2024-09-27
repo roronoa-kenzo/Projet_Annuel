@@ -87,7 +87,6 @@
             document.getElementById("linkContent").style.display = "block";
         });
         document.addEventListener('DOMContentLoaded', function () {
-        // Supprime la classe qui empêche la transition après le chargement de la page
         document.body.classList.remove('no-transition');
         });
     </script>
