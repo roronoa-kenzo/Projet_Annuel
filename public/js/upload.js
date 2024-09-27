@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             /* soumission du formulaire */
             uploadForm.submit();
+
+            
         }
     });
 });

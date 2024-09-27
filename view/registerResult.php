@@ -29,10 +29,12 @@
     $formusername = $_POST['username'];
     $formpassword = $_POST['password'];
     $passwordbis = $_POST['passwordbis'];
+    $imgprofile = $_POST['user_profile'];
     $xp = 10;
     $level = 1;
     $is_admin = 0;
     $is_banned = 0;
+    $imgprofile = !empty($_POST['user_profile']) ? $_POST['user_profile'] : '../public/img/abyssicon.png';
 
     require_once('../serveur/sessionStart.php');
     if (empty($lastname) || empty($firstName) || empty($gender) || empty($datebrith) || empty($phone) || empty($email) || empty($formusername) || empty($formpassword) || empty($passwordbis)) {
@@ -44,8 +46,9 @@
         // Préparation de la requête
         $formpassword = password_hash($formpassword, PASSWORD_DEFAULT);
 
-        $request = $pdo->prepare('INSERT INTO users (username, email, password_hash, first_name, last_name, date_of_birth, xp, level, is_admin, is_banned) VALUES (:username, :email, :password_hash, :first_name, :last_name, :date_of_birth, :xp, :level, :is_admin, :is_banned)');
+        $request = $pdo->prepare('INSERT INTO users (username, email, password_hash, first_name, last_name, user_profile, date_of_birth, xp, level, is_admin, is_banned) VALUES (:username, :email, :password_hash, :first_name, :last_name, :user_profile, :date_of_birth, :xp, :level, :is_admin, :is_banned)');
         $request->bindParam(':username', $formusername);
+        $request->bindParam(':user_profile', $imgprofile);
         $request->bindParam(':email', $email);
         $request->bindParam(':password_hash', $formpassword);
         $request->bindParam(':first_name', $firstname);
@@ -61,6 +64,7 @@
             $request->execute();
             if ($request->rowCount() === 1) {
                 $_SESSION["username"] = $formusername;
+                $_SESSION["user_profile"] = $imgprofile;
                 $_SESSION["email"] = $email;
                 $_SESSION["firstname"] = $firstname;
                 $_SESSION["lastname"] = $lastname;

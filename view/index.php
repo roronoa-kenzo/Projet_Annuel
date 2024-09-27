@@ -1,7 +1,6 @@
 <!-- index.php -->
 <?php include '../composants/header.php'; ?>
-
-    <?php include '../composants/navbar.php'; ?>
+<?php include '../composants/navbar.php'; ?>
     <main class="container">
         <div class="black-frame">
             <h1>Welcome in Abyss</h1>
@@ -11,7 +10,7 @@
             <div class="white-content">
                 
                     <div class="post-header">
-                        <img src="../public/img/user-avatar.png" alt="User Avatar" class="user-avatar">
+                        <img src="<?php echo htmlspecialchars($_SESSION["user_profile"]); ?>" alt="User Avatar" class="user-avatar">
                         <?php include '../composants/post-options.php'; ?>
                         <div class="iceberg-select">
                             <select>

@@ -3,6 +3,7 @@
     session_start(); 
     
     ?>
+<header>
 <nav class="navbar">
     <img src="../public/img/icon.png" alt="Abyss" class="logo">
     <?php if (isset($_SESSION['email'])): ?>
@@ -32,3 +33,4 @@
         <?php endif; ?>
     </div>
 </nav>
+</header>
