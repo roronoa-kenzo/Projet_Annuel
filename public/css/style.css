@@ -38,7 +38,6 @@ header {
     width: 100%;
     justify-content: space-around;
     align-items: center;
-    padding-top: 2em;
   }
 
 .nav_third{
@@ -104,14 +103,11 @@ h3{
 .suggestions p:hover {
   background-color: #f0f0f0;
 }
-
-.container {
-  display: flex;
-  flex-direction: column;
+.profile_first{
+  display:flex;
   align-items: center;
-  justify-content: center;
+  flex-direction: column;
 }
-
 .black-frame {
   background-color: black;
   color: white;

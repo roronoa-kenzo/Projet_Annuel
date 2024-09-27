@@ -29,10 +29,12 @@
     $formusername = $_POST['username'];//doit etre unique
     $formpassword = $_POST['password'];
     $passwordbis = $_POST['passwordbis'];
+    $imgprofile = $_POST['user_profile'];
     $xp = 10;
     $level = 1;
     $is_admin = 0;
     $is_banned = 0;
+    $imgprofile = !empty($_POST['user_profile']) ? $_POST['user_profile'] : '../public/img/abyssicon.png';
 
     if (empty($lastname)) {
         $_SESSION['Errorlastname'] = 'Incorrect lastname.';
@@ -124,10 +126,11 @@
         // Préparation de la requête
         $formpassword = password_hash($formpassword, PASSWORD_DEFAULT);
 
-        $request = $pdo->prepare('INSERT INTO users (username, email, password_hash, first_name, last_name, date_of_birth, xp, level, is_admin, is_banned) VALUES (:username, :email, :password_hash, :first_name, :last_name, :date_of_birth, :xp, :level, :is_admin, :is_banned)');
+        $request = $pdo->prepare('INSERT INTO users (username, email, password_hash, first_name, last_name, user_profile, date_of_birth, xp, level, is_admin, is_banned) VALUES (:username, :email, :password_hash, :first_name, :last_name, :user_profile, :date_of_birth, :xp, :level, :is_admin, :is_banned)');
         $request->bindParam(':username', $formusername);
         $request->bindParam(':email', $email);
         $request->bindParam(':password_hash', $formpassword);
+        $request->bindParam(':user_profile', $imgprofile);
         $request->bindParam(':first_name', $firstname);
         $request->bindParam(':last_name', $lastname);
         $request->bindParam(':date_of_birth', $datebrith);
@@ -140,6 +143,9 @@
             $request->execute();
             if ($request->rowCount() === 1) {
                 // Redirection avant tout affichage
+                $_SESSION["username"] = $formusername;
+                $_SESSION["user_profile"] = $imgprofile;
+                $_SESSION["email"] = $email;
                 header('Location: homeUser.php');
                 $pdo=null;
                 exit(); // Assurez-vous de terminer le script après la redirection
