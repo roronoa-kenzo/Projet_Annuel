@@ -40,8 +40,8 @@
   if (count($result) > 0 && password_verify($formpassword, $result[0]["password_hash"])) {
     $_SESSION["email"] = $result[0]["email"];
     //header("Location:index.php");      // a mettre a la fin si sa marche
-    echo "session commencer";
-  } else {
+    header("Location:index.php");
+    } else {
     $_SESSION['ErrorLoginPass'] = 'Email or Password wrong.';
     header('Location:connexion.php');
     $pdo=null;

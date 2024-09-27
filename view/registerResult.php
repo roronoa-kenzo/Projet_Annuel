@@ -146,7 +146,7 @@
                 $_SESSION["username"] = $formusername;
                 $_SESSION["user_profile"] = $imgprofile;
                 $_SESSION["email"] = $email;
-                header('Location: homeUser.php');
+                header('Location: index.php');
                 $pdo=null;
                 exit(); // Assurez-vous de terminer le script après la redirection
             }
