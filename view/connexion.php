@@ -44,8 +44,6 @@
             
             <div>
               <a href="forgetaccount.php" class="divLink">Forget password or email ?</a>
-              <a href="test.php" class="divLink">test ?</a>
-
             </div>
             <button class="buttonSubmit" type="submit">Login</button>
         </form>
