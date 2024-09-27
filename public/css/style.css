@@ -9,16 +9,8 @@ body, html {
   color: black;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-.indexBody.dark-mode {
-  background-color: #121212;
-  color: white;
-}
-.body_secondary.no-transition * {
-  transition: none !important;
-}
-.indexBody.no-transition * {
-  transition: none !important;
-}
+
+
 .body_secondary{
   background-color: black;
   width: 100%;
@@ -38,6 +30,8 @@ header {
     width: 100%;
     justify-content: space-around;
     align-items: center;
+    padding-top: 2em;
+    
   }
 
 .nav_third{
@@ -45,17 +39,26 @@ header {
   align-items: center;
 }
   
-  .logo {
+.logo {
     width: 91px;
     height: 40px;
-  }
+}
+
+p{
+  font-family: "Josefin Sans", sans-serif;
+} 
 
 h1{
   font-family: "Josefin Sans", sans-serif;
   color: white;
+  font-size: 52px;
 }
 
 h3{
+  font-family: "Josefin Sans", sans-serif;
+}
+
+option{
   font-family: "Josefin Sans", sans-serif;
 }
 
@@ -71,9 +74,10 @@ h3{
   border: 1px solid #ccc;
   border-radius: 20px;
   outline: none;
-  width: 30em;
+  width: 50em;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
   overflow: hidden;
+
 }
 
 .suggestions {
@@ -103,11 +107,7 @@ h3{
 .suggestions p:hover {
   background-color: #f0f0f0;
 }
-.profile_first{
-  display:flex;
-  align-items: center;
-  flex-direction: column;
-}
+
 .black-frame {
   background-color: black;
   color: white;
@@ -122,20 +122,12 @@ h3{
   background-color: white;
   padding: 20px;
   border-radius: 20px;
-  width: 80%;
+  width: 50em;
   max-width: 600px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
   margin-top: -10px;
   margin-left: 5vh;
   margin-right: 5vh;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-.dark-mode .white-content{
-  background-color: #212020;
-}
-.white-content.no-transition * {
-  transition: none !important;
+  box-shadow: inset gray 1px 1px 8px 3px;
 }
 .white-content-admin {
   background-color: white;
@@ -156,17 +148,13 @@ h3{
   background-color: white;
   padding: 20px;
   border-radius: 20px;
-  width: 20%;
+  width: 14em;
   max-width: 600px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
   margin-top: -10px;
-  transition: background-color 0.5s, color 0.5s;
-}
-.dark-mode .white-content-secondary{
-  background-color: #212020;
-}
-.white-content-secondary.no-transition * {
-  transition: none !important;
+  box-shadow: inset gray 1px 1px 8px 3px;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* White Content Milieu */
@@ -185,18 +173,16 @@ h3{
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   margin: 0 auto;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-.dark-mode .post-container{
-  background-color: #121212;
-  color: white;
+
+textarea{
+  background-color: #e8e8e8;
 }
-.post-container.no-transition * {
-  transition: none !important;
-}
+
 .post-header {
   display: flex;
   align-items: center;
+  padding: 6px;
 }
 
 .user-avatar {
@@ -210,14 +196,8 @@ h3{
   display: flex;
   gap: 15px;
   flex-grow: 1;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-.dark-mode .post-option{
-  color: white;
-}
-.post-option.no-transition * {
-  transition: none !important;
-}
+
 .post-option {
   background: none;
   border: none;
@@ -232,6 +212,7 @@ h3{
     padding: 5px 10px;
     transition: 1s;
     border-radius: 15px;
+    -webkit-transition: width .2s;
 }
 
 .post-option:hover {
@@ -245,6 +226,7 @@ h3{
   border-radius: 8px;
   padding: 5px 10px;
   font-size: 14px;
+  background-color: #e8e8e8;
 }
 
 
@@ -281,16 +263,8 @@ h3{
   font-family: "Josefin Sans", sans-serif;
   padding: 3rem;
   box-shadow: inset gray 20px 0px 5px -12px;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-.dark-mode .Form{
-  background-color: #212020;
-  color: white;
-  box-shadow: none;
-}
-.Form.no-transition * {
-  transition: none !important;
-}
+
 .labelRegister {
   display: flex;
   font-size: 20px;
@@ -310,15 +284,6 @@ height: 2rem;
 display: flex;
 justify-content: center;
 box-shadow: inset gray 20px 0px 5px -12px;
-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-.dark-mode .h3Div{
-  background-color: #212020;
-  color: white;
-  box-shadow:none ;
-}
-.h3Div.no-transition * {
-  transition: none !important;
 }
 .h3Register{
   margin-top: 10%;
@@ -396,13 +361,6 @@ gap:10vh;
 font-size: 16px;
 color: black;
 margin-top:2vh;
-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-.dark-mode .divLink{
-  color: white;
-}
-.divLink.no-transition * {
-  transition: none !important;
 }
 .buttonSubmit{
 margin: 5% 0% 0% 17%;
@@ -451,4 +409,10 @@ transform: translateY(-5px);
 .nav_btn:active {
 transform: translateY(2px);
 
+}
+
+.profile_first{
+  display:flex;
+  align-items: center;
+  flex-direction: column;
 }

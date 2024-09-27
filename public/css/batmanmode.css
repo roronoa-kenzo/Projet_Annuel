@@ -1,0 +1,60 @@
+/*--------------------------------------- transition de batman en batman ---------------------------------------*/
+.indexBody.dark-mode {
+    background-color: #121212;
+    color: white;
+  }
+  .dark-mode .white-content{
+    background-color: #212020;
+  }
+  .dark-mode .white-content-secondary{
+    background-color: #212020;
+  }
+  .dark-mode .post-container{
+    background-color: #121212;
+    color: white;
+  }
+  .dark-mode .post-option{
+    color: white;
+  }
+  .dark-mode .Form{
+    background-color: #212020;
+    color: white;
+    box-shadow: none;
+  }
+  .dark-mode .h3Div{
+    background-color: #212020;
+    color: white;
+    box-shadow:none ;
+  }
+  .dark-mode .divLink{
+    color: white;
+  }
+/*--------------------------------------- transition de batman en femme ---------------------------------------*/
+  .body_secondary.no-transition * {
+    transition: none !important;
+  }
+  
+.indexBody.no-transition * {
+    transition: none !important;
+  }
+  .white-content.no-transition * {
+    transition: none !important;
+  }
+  .white-content-secondary.no-transition * {
+    transition: none !important;
+  }
+  .post-container.no-transition * {
+    transition: none !important;
+  }  
+  .post-option.no-transition * {
+    transition: none !important;
+  }
+  .Form.no-transition * {
+    transition: none !important;
+  }
+.h3Div.no-transition * {
+    transition: none !important;
+  }
+  .divLink.no-transition * {
+    transition: none !important;
+  }
