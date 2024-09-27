@@ -24,6 +24,7 @@
   if (empty($email) || empty($formpassword)) {
     $_SESSION['ErrorLoginPass'] = 'Email or Password wrong';
     header('Location:connexion.php');
+    $pdo=null;
     exit();
   }
 
@@ -43,6 +44,7 @@
   } else {
     $_SESSION['ErrorLoginPass'] = 'Email or Password wrong.';
     header('Location:connexion.php');
+    $pdo=null;
     exit();
   }
   ?>

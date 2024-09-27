@@ -18,7 +18,6 @@
 <body class="<?php echo $darkMode ? 'dark-mode' : ''; ?> body_secondary">
     <?php include '../composants/no_user_navbar.php'; ?>
     <?php require_once('../serveur/sessionStart.php'); ?>
-    <?php require_once("../serveur/database.php") ?>
 
     <div class="DivAllForm">
         <div class="h3Div">

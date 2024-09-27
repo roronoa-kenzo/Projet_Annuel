@@ -37,18 +37,22 @@
     if (empty($lastname)) {
         $_SESSION['Errorlastname'] = 'Incorrect lastname.';
         header('Location: register.php');
+        $pdo=null;
         exit();
     } else if (empty($firstname)) {
         $_SESSION['Errorfirstname'] = 'Incorrect firstname.';
         header('Location: register.php');
+        $pdo=null;
         exit();
     } else if (empty($gender)) {
         $_SESSION['Errorgender'] = 'Incorrect gender.';
         header('Location: register.php');
+        $pdo=null;
         exit();
     } else if (empty($datebrith)) {
         $_SESSION['Errordatebrith'] = 'Incorrect birthday.';
         header('Location: register.php');
+        $pdo=null;
         exit();
     } else if (!empty($datebrith))//verifier l'age de la personne
     {
@@ -56,29 +60,35 @@
         if ($datebrith > $calcAge) {
             $_SESSION['Errordatebrith'] = 'Too young.';
             header('Location: register.php');
+            $pdo=null;
             exit();
         }
     } else if (empty($phone)) {
         $_SESSION['Errorphone'] = 'Incorrect phone number.';
         header('Location: register.php');
+        $pdo=null;
         exit();
     } else if (empty($email))// verification dans bdd aussi
     {
         $_SESSION['Erroremail'] = 'Incorrect email.';
         header('Location: register.php');
+        $pdo=null;
         exit();
     } else if (empty($formusername))// verification dans bdd aussi
     {
         $_SESSION['Errorformusername'] = 'Incorrect username.';
         header('Location: register.php');
+        $pdo=null;
         exit();
     } else if (empty($formpassword)) {
         $_SESSION['Errorformpassword'] = 'Incorrect password.';
         header('Location: register.php');
+        $pdo=null;
         exit();
     } else if (empty($passwordbis)) {
         $_SESSION['Errorpasswordbis'] = 'Incorrect password.';
         header('Location: register.php');
+        $pdo=null;
         exit();
     }
 
@@ -92,6 +102,7 @@
     if ($stmt->rowCount() > 0) {
         $_SESSION['Erroremail'] = 'This email is already registered.';
         header('Location: register.php');
+        $pdo=null;
         exit();
     }
     
@@ -104,6 +115,7 @@
     if ($stmt->rowCount() > 0) {
         $_SESSION['Errorformusername'] = 'This username is already registered.';
         header('Location: register.php');
+        $pdo=null;
         exit();
     }
 
@@ -129,6 +141,7 @@
             if ($request->rowCount() === 1) {
                 // Redirection avant tout affichage
                 header('Location: homeUser.php');
+                $pdo=null;
                 exit(); // Assurez-vous de terminer le script après la redirection
             }
         } catch (PDOException $e) {
@@ -137,6 +150,7 @@
     } else {
         $_SESSION['Errorformpassword'] = 'Password don\'t match.';
         header('Location: register.php');
+        $pdo=null;
         exit();
     }
 
