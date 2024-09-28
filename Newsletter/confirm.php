@@ -18,8 +18,28 @@ if ($result->num_rows > 0) {
     mysqli_stmt_execute($stmt);
 
     // Affichage d'un message de confirmation
-    echo "Votre adresse email a été confirmée avec succès !";
+    ?>
+    <html>
+    <head>
+        <title>Confirmation d'adresse email</title>
+    </head>
+    <body>
+        <h1>Votre adresse email a été confirmée avec succès !</h1>
+        <p>Merci de vous être inscrit à notre newsletter. Vous recevrez désormais nos dernières actualités et offres spéciales.</p>
+    </body>
+    </html>
+    <?php
 } else {
     // Le token est invalide, on affiche un message d'erreur
-    echo "Erreur : le token de confirmation est invalide.";
+    ?>
+    <html>
+    <head>
+        <title>Erreur de confirmation</title>
+    </head>
+    <body>
+        <h1>Erreur : le token de confirmation est invalide.</h1>
+        <p>Veuillez réessayer ou contacter notre équipe pour obtenir de l'aide.</p>
+    </body>
+    </html>
+    <?php
 }
