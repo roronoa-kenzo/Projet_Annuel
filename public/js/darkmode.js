@@ -1,11 +1,17 @@
 function toggleDarkMode() {
-    // Alterne la classe dark-mode sur le body
-    document.body.classList.toggle('dark-mode');
+    // Récupère l'élément du lien de la feuille de style
+    const link = document.getElementById('theme-stylesheet');
+    
+    // Vérifie si le lien pointe vers style.css ou darkmode.css
+    const isDarkMode = link.getAttribute('href').includes('darkmode.css');
+    
+    // Alterne entre style.css et darkmode.css
+    link.setAttribute('href', isDarkMode ? '../public/css/style.css' : '../public/css/darkmode.css');
 
-    // Détermine si le mode sombre est activé
-    const isDarkMode = document.body.classList.contains('dark-mode');
+    // Optionnel : Si vous avez un champ caché pour enregistrer l'état
+    document.getElementById('darkModeInput').value = isDarkMode ? 'off' : 'on';
 
-    // Met à jour la valeur du champ caché et soumet le formulaire
-    document.getElementById('darkModeInput').value = isDarkMode ? 'on' : 'off';
-    document.getElementById('darkModeForm').submit();
+    // Ne soumettez pas le formulaire si ce n'est pas nécessaire
+    // document.getElementById('darkModeForm').submit();
 }
+
