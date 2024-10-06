@@ -28,7 +28,7 @@
             <div class="doubleDiv">
                 <div>
                     <label for="email" class="labelRegister">Email</label>
-                    <input type="email" class="demiInput" name="email" placeholder="Email" id="email" >
+                    <input type="email" class="demiInput" name="email" placeholder="Email" id="email" require>
                 <?php
                     if (isset($_SESSION['ErrorLoginPass'])) {
                         echo '<p style="color: red;">' . $_SESSION['ErrorLoginPass'] . '</p>';
@@ -38,14 +38,34 @@
                 </div>
                 <div>
                     <label for="password" class="labelRegister">Password</label>
-                    <input type="password" class="demiInput" name="password" placeholder="Password" id="password" required>
+                    <input type="password" class="demiInput" name="password" placeholder="Password" id="password" require>
                 </div>
-            </div>
-            
-            <div>
+            </div></br>
+
+    <div class="captchaDiv" id="captchaDiv" style="display: none;">
+        <img src="../capcha/test.php" alt="CAPTCHA" /><br/>
+        <input type="text" name="captcha" class="demiInput" placeholder="Captcha" required />
+
+        <?php
+            if (isset($_SESSION['ErrorCaptcha'])) {
+                echo '<p style="color: red;">' . $_SESSION['ErrorCaptcha'] . '</p>';
+                unset($_SESSION['ErrorCaptcha']);
+            }
+        ?>
+    </div>
+    <div>
               <a href="forgetaccount.php" class="divLink">Forget password or email ?</a>
             </div>
-            <button class="buttonSubmit" type="submit">Login</button>
+            
+            <button class="buttonSubmit" name="valid" onclick="showCaptcha()" type="submit">Login</button>
+            <script>
+                function showCaptcha() {
+
+                    document.getElementById('captchaDiv').style.display = 'block';
+
+                    document.getElementById('submitBtn').style.display = 'block';
+                }
+            </script>
         </form>
     </div>
     <script>

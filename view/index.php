@@ -3,7 +3,7 @@
 <?php include '../composants/navbar.php'; ?>
 <main class="container">
     <div class="black-frame">
-        <h1>Welcome in Abyss</h1>
+        <h1>Welcome in Abyss <a href="../capcha/test.php">click</a></h1>
     </div>
     <div class="main-index">
         <?php include '../composants/white_content_left.php'; ?>
@@ -16,7 +16,7 @@
                 <div class="iceberg-select">
                     <select>
                         <option value="" disabled selected>
-                            <p>Select an iceberg</p>
+                            <p>Select an iceberg </p>
                         </option>
                         <!-- Ajoute d'autres options ici -->
                     </select>

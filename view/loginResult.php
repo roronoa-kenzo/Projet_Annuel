@@ -17,16 +17,16 @@
   <?php require_once('../serveur/sessionStart.php'); ?>
   <?php require_once('../serveur/database.php') ?>
 
-  <?php
-  $email = $_POST['email'];
-  $formpassword = $_POST['password'];
+    <?php
+    $email = $_POST['email'];
+    $formpassword = $_POST['password'];
 
-  if (empty($email) || empty($formpassword)) {
-    $_SESSION['ErrorLoginPass'] = 'Email or Password wrong';
-    header('Location:connexion.php');
-    $pdo=null;
-    exit();
-  }
+    if (empty($email) || empty($formpassword)) {
+      $_SESSION['ErrorLoginPass'] = 'Email or Password wrong';
+      header('Location:connexion.php');
+      $pdo=null;
+      exit();
+    }
 
   $request = $pdo->prepare("SELECT * FROM users WHERE email =:email");
 
@@ -36,12 +36,24 @@
 
 
   $result = $request->fetchAll();
-
+    //verification mod de pass 
   if (count($result) > 0 && password_verify($formpassword, $result[0]["password_hash"])) {
-    $_SESSION["email"] = $result[0]["email"];
-    //header("Location:index.php");      // a mettre a la fin si sa marche
-    header("Location:index.php");
+    //verification captcha 
+      if(isset($_POST['valid'])){
+          if(isset($_POST['captcha'],$_SESSION['code']) && $_POST['captcha'] == $_SESSION['code']){
+          $_SESSION["email"] = $result[0]["email"];
+          //header("Location:index.php");      // a mettre a la fin si sa marche
+          header("Location:index.php");
+      }else{
+        $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
+        $pdo=null;
+        header("Location:connexion.php");
+        exit();
+      }
+    }
+
     } else {
+
     $_SESSION['ErrorLoginPass'] = 'Email or Password wrong.';
     header('Location:connexion.php');
     $pdo=null;
