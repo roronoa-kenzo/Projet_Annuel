@@ -138,18 +138,33 @@
                     }
                     ?>
                 </div>
-            </div>
+            </div><br />
+            <div class="captchaDiv" id="captchaDiv" style="display: none;">
+                <img src="../capcha/test.php" alt="CAPTCHA" /><br />
+                <input type="text" name="captcha" class="demiInput" placeholder="Captcha" required />
 
+                <?php
+                if (isset($_SESSION['ErrorCaptcha'])) {
+                    echo '<p style="color: red;">' . $_SESSION['ErrorCaptcha'] . '</p>';
+                    unset($_SESSION['ErrorCaptcha']);
+                }
+                ?>
+            </div>
             <div class="LastDiv">
                 <input type="checkbox" name="condition" id="condition" required>
                 <label for="condition">Accept conditions</label>
             </div>
-            <button class="buttonSubmit" type="submit">Sign up</button>
+            <button class="buttonSubmit" name="valid" onclick="showCaptcha()" type="submit">Sign up</button>
         </form>
     </div>
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        document.body.classList.remove('no-transition');
+        function showCaptcha() {
+            document.getElementById('captchaDiv').style.display = 'block';
+            document.getElementById('submitBtn').style.display = 'block';
+
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            document.body.classList.remove('no-transition');
         });
     </script>
 </body>

@@ -39,22 +39,22 @@
     if (empty($lastname)) {
         $_SESSION['Errorlastname'] = 'Incorrect lastname.';
         header('Location: register.php');
-        $pdo=null;
+        $pdo = null;
         exit();
     } else if (empty($firstname)) {
         $_SESSION['Errorfirstname'] = 'Incorrect firstname.';
         header('Location: register.php');
-        $pdo=null;
+        $pdo = null;
         exit();
     } else if (empty($gender)) {
         $_SESSION['Errorgender'] = 'Incorrect gender.';
         header('Location: register.php');
-        $pdo=null;
+        $pdo = null;
         exit();
     } else if (empty($datebrith)) {
         $_SESSION['Errordatebrith'] = 'Incorrect birthday.';
         header('Location: register.php');
-        $pdo=null;
+        $pdo = null;
         exit();
     } else if (!empty($datebrith))//verifier l'age de la personne
     {
@@ -62,35 +62,35 @@
         if ($datebrith > $calcAge) {
             $_SESSION['Errordatebrith'] = 'Too young.';
             header('Location: register.php');
-            $pdo=null;
+            $pdo = null;
             exit();
         }
     } else if (empty($phone)) {
         $_SESSION['Errorphone'] = 'Incorrect phone number.';
         header('Location: register.php');
-        $pdo=null;
+        $pdo = null;
         exit();
     } else if (empty($email))// verification dans bdd aussi
     {
         $_SESSION['Erroremail'] = 'Incorrect email.';
         header('Location: register.php');
-        $pdo=null;
+        $pdo = null;
         exit();
     } else if (empty($formusername))// verification dans bdd aussi
     {
         $_SESSION['Errorformusername'] = 'Incorrect username.';
         header('Location: register.php');
-        $pdo=null;
+        $pdo = null;
         exit();
     } else if (empty($formpassword)) {
         $_SESSION['Errorformpassword'] = 'Incorrect password.';
         header('Location: register.php');
-        $pdo=null;
+        $pdo = null;
         exit();
     } else if (empty($passwordbis)) {
         $_SESSION['Errorpasswordbis'] = 'Incorrect password.';
         header('Location: register.php');
-        $pdo=null;
+        $pdo = null;
         exit();
     }
 
@@ -104,10 +104,10 @@
     if ($stmt->rowCount() > 0) {
         $_SESSION['Erroremail'] = 'This email is already registered.';
         header('Location: register.php');
-        $pdo=null;
+        $pdo = null;
         exit();
     }
-    
+
     //verification si le username existe deja dans la bdd
     $query = "SELECT * FROM users WHERE username = :username";
     $stmt = $pdo->prepare($query);
@@ -117,47 +117,56 @@
     if ($stmt->rowCount() > 0) {
         $_SESSION['Errorformusername'] = 'This username is already registered.';
         header('Location: register.php');
-        $pdo=null;
+        $pdo = null;
         exit();
     }
 
     if ($formpassword == $passwordbis) {
+        if (isset($_POST['valid'])) {
+            if (isset($_POST['captcha'], $_SESSION['code']) && $_POST['captcha'] == $_SESSION['code']) {
+                $formpassword = password_hash($formpassword, PASSWORD_DEFAULT);
 
-        // Préparation de la requête
-        $formpassword = password_hash($formpassword, PASSWORD_DEFAULT);
+                $request = $pdo->prepare('INSERT INTO users (username, email, password_hash, first_name, last_name, user_profile, date_of_birth, xp, level, is_admin, is_banned) VALUES (:username, :email, :password_hash, :first_name, :last_name, :user_profile, :date_of_birth, :xp, :level, :is_admin, :is_banned)');
+                $request->bindParam(':username', $formusername);
+                $request->bindParam(':email', $email);
+                $request->bindParam(':password_hash', $formpassword);
+                $request->bindParam(':user_profile', $imgprofile);
+                $request->bindParam(':first_name', $firstname);
+                $request->bindParam(':last_name', $lastname);
+                $request->bindParam(':date_of_birth', $datebrith);
+                $request->bindParam(':xp', $xp);
+                $request->bindParam(':level', $level);
+                $request->bindParam(':is_admin', $is_admin);
+                $request->bindParam(':is_banned', $is_banned);
 
-        $request = $pdo->prepare('INSERT INTO users (username, email, password_hash, first_name, last_name, user_profile, date_of_birth, xp, level, is_admin, is_banned) VALUES (:username, :email, :password_hash, :first_name, :last_name, :user_profile, :date_of_birth, :xp, :level, :is_admin, :is_banned)');
-        $request->bindParam(':username', $formusername);
-        $request->bindParam(':email', $email);
-        $request->bindParam(':password_hash', $formpassword);
-        $request->bindParam(':user_profile', $imgprofile);
-        $request->bindParam(':first_name', $firstname);
-        $request->bindParam(':last_name', $lastname);
-        $request->bindParam(':date_of_birth', $datebrith);
-        $request->bindParam(':xp', $xp);
-        $request->bindParam(':level', $level);
-        $request->bindParam(':is_admin', $is_admin);
-        $request->bindParam(':is_banned', $is_banned);
-        // assure-toi que la date est au bon format (YYYY-MM-DD)
-        try {
-            $request->execute();
-            if ($request->rowCount() === 1) {
-                // Redirection avant tout affichage
-                $_SESSION["username"] = $formusername;
-                $_SESSION["user_profile"] = $imgprofile;
-                $_SESSION["email"] = $email;
-                header('Location: index.php');
-                $pdo=null;
-                exit(); // Assurez-vous de terminer le script après la redirection
+                $request->execute();
+
+                if ($request->rowCount() === 1) {
+                    $_SESSION["username"] = $formusername;
+                    $_SESSION["user_profile"] = $imgprofile;
+                    $_SESSION["email"] = $email;
+                    header('Location: index.php');
+                    $pdo = null;
+                    exit();
+                }
+            } else {
+                $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
+                $pdo = null;
+                header("Location:register.php");
+                exit();
             }
-        } catch (PDOException $e) {
-            echo "Erreur lors de l'exécution de la requête : " . $e->getMessage();// faire une page d'erreur
+        } else {
+            $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
+            $pdo = null;
+            header("Location:register:.php");
+            exit();
         }
     } else {
         $_SESSION['Errorformpassword'] = 'Password don\'t match.';
         header('Location: register.php');
-        $pdo=null;
+        $pdo = null;
         exit();
+
     }
 
     ?>
