@@ -33,18 +33,24 @@
   $request->bindParam(':email', $email);
 
   $request->execute();
-
-
-  $result = $request->fetchAll();
-  //verification mod de pass 
   
+  $result = $request->fetchAll();
+
+    //verification mod de pass 
   if (count($result) > 0 && password_verify($formpassword, $result[0]["password_hash"])) {
+    $user = $result[0];
     //verification captcha 
     if (isset($_POST['valid'])) {
-      if (isset($_POST['captcha'], $_SESSION['code']) && $_POST['captcha'] == $_SESSION['code']) {
+      // je verifie si c'est a admis ou pas
+      if(strpos($user['email'],'abyss.boats') !== false && $user['is_admin']){
+        
+        header("Location:../Admin/Back-log.php");
+        $pdo = null;
+        exit();
+      }else if (isset($_POST['captcha'], $_SESSION['code']) && $_POST['captcha'] == $_SESSION['code']) {
         $_SESSION["email"] = $result[0]["email"];
         //header("Location:index.php");      // a mettre a la fin si sa marche
-        header("Location:index.php");
+       header("Location:index.php");
       } else {
         $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
         $pdo = null;
