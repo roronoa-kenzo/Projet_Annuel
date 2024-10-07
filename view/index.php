@@ -3,22 +3,38 @@
 <?php include '../composants/navbar.php'; ?>
 <main class="container">
     <div class="black-frame">
-        <h1>Welcome in Abyss <a href="../capcha/test.php">click</a></h1>
+        <h1>Welcome in Abyss</h1>
     </div>
     <div class="main-index">
         <?php include '../composants/white_content_left.php'; ?>
         <div class="white-content">
 
             <div class="post-header">
-                <img src="<?php echo htmlspecialchars($_SESSION["user_profile"]); ?>" alt="User Avatar"
-                    class="user-avatar">
+                <img src="<?php echo htmlspecialchars($_SESSION["user_profile"]); ?>" alt="User Avatar" class="user-avatar">
                 <?php include '../composants/post-options.php'; ?>
                 <div class="iceberg-select">
-                    <select>
+                    <select name="iceberg" id="icebergSelect">
                         <option value="" disabled selected>
-                            <p>Select an iceberg </p>
+                            Select an iceberg
                         </option>
-                        <!-- Ajoute d'autres options ici -->
+                        <?php
+                        // Vérifiez si l'utilisateur est connecté
+                        if (isset($_SESSION["user_id"]) && isset($_SESSION['subscribed_forums'])) {
+                            $subscribedForums = $_SESSION['subscribed_forums'];
+                
+                            // Vérifiez si l'utilisateur a des forums abonnés
+                            if (empty($subscribedForums)) {
+                                echo '<option value="">Aucun iceberg trouvé</option>';
+                            } else {
+                                // Boucle pour générer les options
+                                foreach ($subscribedForums as $forum) {
+                                    echo '<option value="' . htmlspecialchars($forum['id']) . '">' . htmlspecialchars($forum['name']) . '</option>';
+                                }
+                            }
+                        } else {
+                            echo '<option value="">Vous devez être connecté pour voir vos icebergs</option>';
+                        }
+                        ?>
                     </select>
                 </div>
             </div>
