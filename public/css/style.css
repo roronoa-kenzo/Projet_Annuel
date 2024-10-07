@@ -424,3 +424,17 @@ transform: translateY(2px);
   align-items: center;
   flex-direction: column;
 }
+
+/*------------------------------------------------------Post---------------------------*/
+
+.posts-list{
+  background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    width: 50em;
+    max-width: 600px;
+    margin-top: 25px;
+    margin-left: 5vh;
+    margin-right: 5vh;
+    box-shadow: inset gray 1px 1px 8px 3px;
+}

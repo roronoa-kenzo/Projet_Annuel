@@ -7,6 +7,7 @@
     </div>
     <div class="main-index">
         <?php include '../composants/white_content_left.php'; ?>
+        <div class="center-content">
         <div class="white-content">
 
             <div class="post-header">
@@ -41,8 +42,14 @@
 
             <!-- Contenus à afficher selon le bouton cliqué -->
             <!-- Post Textuel -->
-            <div id="textContent">
-                <textarea class="post-textarea" placeholder="Text..."></textarea>
+            <!-- Formulaire de création de post -->
+            <div id='textContent' class="post-creation">
+                <form action="create_post.php" method="post">
+                    <input type="text" name="title" class="demiInput" placeholder="Post Title" required>
+                    <textarea class="post-textarea" name="content" rows="4" placeholder="Write your post..." required></textarea>
+                    <input type="hidden" name="forum_id" id="selectedForumId">
+                    <button type="submit">Post</button>
+                </form>
             </div>
             <!-- Post Textuel et images -->
             <div id="imageVideoContent" style="display: none;">
@@ -58,9 +65,71 @@
                 }
             </style>
 
+            <!-- Affichage des messages d'erreur ou de succès -->
+            <?php
+            if (isset($_SESSION['ErrorForum'])) {
+                echo '<p class="error-message">' . $_SESSION['ErrorForum'] . '</p>';
+                unset($_SESSION['ErrorForum']);
+            }
+
+            if (isset($_SESSION['ErrorContent'])) {
+                echo '<p class="error-message">' . $_SESSION['ErrorContent'] . '</p>';
+                unset($_SESSION['ErrorContent']);
+            }
+
+            if (isset($_SESSION['SuccessPost'])) {
+                echo '<p class="success-message">' . $_SESSION['SuccessPost'] . '</p>';
+                unset($_SESSION['SuccessPost']);
+            }
+
+            if (isset($_SESSION['ErrorPost'])) {
+                echo '<p class="error-message">' . $_SESSION['ErrorPost'] . '</p>';
+                unset($_SESSION['ErrorPost']);
+            }
+            ?>
+
+            
+
+        </div>
+        <!-- Affichage des posts récents -->
+        <div class="posts-list">
+                <?php
+                // Récupération et affichage des posts
+                $query = $pdo->prepare('
+                    SELECT posts.content, posts.created_at, forums.name AS forum_name 
+                    FROM posts 
+                    JOIN forums ON posts.forum_id = forums.id 
+                    WHERE posts.user_id = :user_id
+                    ORDER BY posts.created_at DESC
+                ');
+                $query->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+                $query->execute();
+                $posts = $query->fetchAll(PDO::FETCH_ASSOC);
+
+                if (empty($posts)) {
+                    echo '<p class="no-posts">No posts yet. Start posting!</p>';
+                } else {
+                    foreach ($posts as $post) {
+                        echo '<div class="post">';
+                        echo '<h2>' . htmlspecialchars($post['title']) . '</h2>';
+                        echo '<p><strong>Forum:</strong> ' . htmlspecialchars($post['forum_name']) . '</p>';
+                        echo '<p>' . htmlspecialchars($post['content']) . '</p>';
+                        echo '<small>Posted on ' . htmlspecialchars($post['created_at']) . '</small>';
+                        echo '</div>';
+                    }
+                }
+                ?>
+            </div>
         </div>
         <?php include '../composants/white_content_right.php'; ?>
     </div>
 </main>
 <?php include '../composants/script_link.php'; ?>
 <?php include '../composants/footer.php'; ?>
+
+<script>
+    document.getElementById('icebergSelect').addEventListener('change', function () {
+        var selectedForumId = this.value;
+        document.getElementById('selectedForumId').value = selectedForumId;
+    });
+</script>
