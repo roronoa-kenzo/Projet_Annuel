@@ -403,3 +403,29 @@ textarea {
   align-items: center;
   flex-direction: column;
 }
+
+/*------------------------------------------------------Post---------------------------*/
+
+.posts-list{
+  background-color: #2b2b2b;
+    padding: 20px;
+    border-radius: 20px;
+    width: 50em;
+    max-width: 600px;
+    margin-top: 25px;
+    margin-left: 5vh;
+    margin-right: 5vh;
+  box-shadow: inset #0f0e0e 1px 1px 8px 3
+}
+
+.inputTitle {
+  width: 74vh;
+  border-radius: 10px;
+  margin-top: 7px;
+  padding: 1vh;
+  background-color: #333;
+  font-size: 20px;
+  font-family: "Josefin Sans", sans-serif;
+  border-color: #645c5c;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}

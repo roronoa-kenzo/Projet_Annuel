@@ -438,3 +438,15 @@ transform: translateY(2px);
     margin-right: 5vh;
     box-shadow: inset gray 1px 1px 8px 3px;
 }
+
+.inputTitle {
+  width: 74vh;
+  border-radius: 10px;
+  margin-top: 7px;
+  padding: 1vh;
+  background-color: #e9ecef;
+  font-size: 20px;
+  font-family: "Josefin Sans", sans-serif;
+  border-color: #f1f1f1;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}

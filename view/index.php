@@ -45,7 +45,7 @@
             <!-- Formulaire de création de post -->
             <div id='textContent' class="post-creation">
                 <form action="create_post.php" method="post">
-                    <input type="text" name="title" class="demiInput" placeholder="Post Title" required>
+                    <input type="text" name="title" class="inputTitle" placeholder="Post Title" required>
                     <textarea class="post-textarea" name="content" rows="4" placeholder="Write your post..." required></textarea>
                     <input type="hidden" name="forum_id" id="selectedForumId">
                     <button type="submit">Post</button>
