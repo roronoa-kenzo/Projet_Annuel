@@ -76,10 +76,11 @@ option {
   border: 1px solid #444;
   border-radius: 20px;
   outline: none;
-  width: 50em;
+  width: 13em;
   background-color: #ffffff;
   color: #000000;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-left: 16px;
 }
 
 .suggestions {
@@ -129,7 +130,8 @@ option {
   margin-top: -10px;
   margin-left: 5vh;
   margin-right: 5vh;
-  box-shadow: inset gray 1px 1px 8px 3px;
+
+  box-shadow: inset #0f0e0e 1px 1px 8px 3
 }
 
 .white-content-admin {
@@ -155,7 +157,7 @@ option {
   width: 14em;
   max-width: 600px;
   margin-top: -10px;
-  box-shadow: inset gray 1px 1px 8px 3px;
+  box-shadow: inset #0f0e0e 1px 1px 8px 3;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -203,6 +205,8 @@ textarea {
   font-family: "Josefin Sans", sans-serif;
   transition: 1s;
   border-radius: 15px;
+
+  color: white;
 }
 
 .post-option:hover {
@@ -370,12 +374,12 @@ textarea {
 
 .nav_btn {
   font-family: "Josefin Sans", sans-serif;
-  height: 3vh;
-  width: 12vh;
-  box-shadow: inset #888 9px 20px 5px -12px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 1s;
+    height: 32px;
+    width: 105px;
+    box-shadow: inset #888 9px 20px 5px -12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 1s;
 }
 
 .nav_btn:hover {
@@ -391,3 +395,4 @@ textarea {
   align-items: center;
   flex-direction: column;
 }
+
