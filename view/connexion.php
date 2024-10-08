@@ -44,8 +44,10 @@
             </div></br>
 
             <div class="captchaDiv" id="captchaDiv" style="display: none;">
+
                 <img src="../capcha/test.php" alt="CAPTCHA" /><br />
                 <input type="text" name="captcha" class="demiInput" placeholder="Captcha" required />
+
 
                 <?php
                 if (isset($_SESSION['ErrorCaptcha'])) {
@@ -55,7 +57,9 @@
                 ?>
             </div>
             <div>
+
                 <a href="forgetaccount.php" class="divLink">Forget password or email ?</a>
+
             </div>
 
             <button class="buttonSubmit" name="valid" onclick="showCaptcha()" type="submit">Login</button>

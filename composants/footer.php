@@ -1,6 +1,4 @@
-<footer>
-    
-</footer>
+
 </body>
 
 </html>

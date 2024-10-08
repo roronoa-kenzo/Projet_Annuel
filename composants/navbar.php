@@ -5,9 +5,11 @@ session_start();
 ?>
 <header>
     <nav class="navbar">
+
     <a href="../view/index.php">
         <img src="../public/img/icon.png" alt="Abyss" class="logo">
     </a>
+
         <?php if (isset($_SESSION['email'])): ?>
             <div id="searchBar" class="search-container">
                 <input type="text" class="inpuText" placeholder="Rechercher...">
@@ -36,7 +38,9 @@ session_start();
                     }
                 </script>
                 <a href="../view/profile.php">
-                <img src="<?php echo htmlspecialchars($_SESSION["user_profile"]); ?>" alt="User Avatar" class="profile-button">
+
+               <img src="<?php echo htmlspecialchars($_SESSION["user_profile"]); ?>" alt="User Avatar" class="profile-button">
+
                 </a>
                 <!-- Si l'utilisateur est connecté, affiche le bouton de déconnexion -->
                 <form action="../serveur/logout.php" method="post" style="display: inline;">
