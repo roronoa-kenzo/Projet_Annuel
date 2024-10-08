@@ -256,7 +256,15 @@ textarea{
   height : 100px;
 }
 
-/*-------------------- form page ------------------------------*/
+.profile-button{
+    width: 40px;
+    height: 37px;
+    border-radius: 50%;
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+/*-------------------- form page ---------------------------------------*/
 .Form {
   background-color: white;
   border-radius: 0 15px 15px 15px;
@@ -393,13 +401,13 @@ background-color: grey;
 }
 
 .nav_btn{
-font-family: "Josefin Sans", sans-serif;
-height: 3vh;
-width: 12vh;
-box-shadow: inset gray 9px 20px 5px -12px;
-border-radius: 20px;
-cursor: pointer;
-transition: 1s;
+  font-family: "Josefin Sans", sans-serif;
+  height: 32px;
+  width: 105px;
+  box-shadow: inset #888 9px 20px 5px -12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 1s;
 }
 
 .nav_btn:hover{
@@ -415,4 +423,30 @@ transform: translateY(2px);
   display:flex;
   align-items: center;
   flex-direction: column;
+}
+
+/*------------------------------------------------------Post---------------------------*/
+
+.posts-list{
+  background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    width: 50em;
+    max-width: 600px;
+    margin-top: 25px;
+    margin-left: 5vh;
+    margin-right: 5vh;
+    box-shadow: inset gray 1px 1px 8px 3px;
+}
+
+.inputTitle {
+  width: 74vh;
+  border-radius: 10px;
+  margin-top: 7px;
+  padding: 1vh;
+  background-color: #e9ecef;
+  font-size: 20px;
+  font-family: "Josefin Sans", sans-serif;
+  border-color: #f1f1f1;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
