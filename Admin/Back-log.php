@@ -15,6 +15,7 @@
 
 <body>
     <?php include '../composants/navbar.php'; ?>
+
     <main class="container">
         <div class="black-frame">
             <h1>Admin</h1>
@@ -32,6 +33,7 @@
                 <div class="post-container-admin">
                     <div class="iceberg-select">
                         <p>Nombre de Message:</p>
+                        
                     </div>
                 </div>
 
