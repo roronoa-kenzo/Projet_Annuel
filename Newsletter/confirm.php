@@ -56,7 +56,7 @@ if (isset($_GET['token']) && !empty($_GET['token'])) {
     <body>
         <h1>Erreur : aucun token de confirmation n'a été fourni.</h1>
         <p>Le lien que vous avez utilisé est invalide ou incomplet. Veuillez vérifier l'email ou contacter notre équipe pour obtenir de l'aide.</p>
-        <a href="../view/index.php">Retour à l'accueil</a>
+        <a href="./../index.php">Retour à l'accueil</a>
     </body>
     </html>
     <?php
