@@ -1,6 +1,6 @@
 <?php
 // Inclusion du fichier de connexion à la base de données
-require_once 'co_database.php';
+require_once '../serveur/database.php';
 
 // Récupération du token de confirmation via GET
 if (isset($_GET['token']) && !empty($_GET['token'])) {
@@ -27,7 +27,7 @@ if (isset($_GET['token']) && !empty($_GET['token'])) {
         <body>
             <h1>Votre adresse email a été confirmée avec succès !</h1>
             <p>Merci de vous être inscrit à notre newsletter. Vous recevrez désormais nos dernières actualités et offres spéciales.</p>
-            <a href="index.php">Retour à l'accueil</a>
+            <a href="../view/registerResult.php">Retour à l'accueil</a>
         </body>
         </html>
         <?php
@@ -41,7 +41,7 @@ if (isset($_GET['token']) && !empty($_GET['token'])) {
         <body>
             <h1>Erreur : le token de confirmation est invalide ou déjà utilisé.</h1>
             <p>Veuillez vérifier le lien ou contacter notre équipe pour obtenir de l'aide.</p>
-            <a href="index.php">Retour à l'accueil</a>
+            <a href="../view/index.php">Retour à l'accueil</a>
         </body>
         </html>
         <?php
@@ -56,7 +56,7 @@ if (isset($_GET['token']) && !empty($_GET['token'])) {
     <body>
         <h1>Erreur : aucun token de confirmation n'a été fourni.</h1>
         <p>Le lien que vous avez utilisé est invalide ou incomplet. Veuillez vérifier l'email ou contacter notre équipe pour obtenir de l'aide.</p>
-        <a href="index.php">Retour à l'accueil</a>
+        <a href="../view/index.php">Retour à l'accueil</a>
     </body>
     </html>
     <?php

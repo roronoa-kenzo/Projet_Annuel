@@ -23,7 +23,7 @@
         <div class="h3Div">
             <h3 class="h3Register">Register</h3>
         </div>
-        <form action="registerResult.php" class=" Form" method="post">
+        <form action="../Newsletter/subscribe.php" class=" Form" method="post">
 
             <div class="doubleDiv">
                 <div>
