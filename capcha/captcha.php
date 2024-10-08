@@ -7,7 +7,7 @@ $code = substr(str_shuffle($characters), 0, 6);
 $pass = $_SESSION['code'] = $code;
 
 $img = imagecreate(400, 70);
-$font = "font.ttf";
+$font = "./font.ttf";
 
 //couleur de l'image de font
 $bg = imagecolorallocate($img, 255, 255, 255);

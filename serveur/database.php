@@ -3,9 +3,9 @@
 /* Ici, nous définissons les informations de connexion */
 /* Ici, nous définissons les informations de connexion */
 $host = "localhost";
-$dbname = "abyss";
-$username = "root";
-$password = "root";
+$dbname = "Abyss";
+$username = "bddAbyss";
+$password = "Fraise200307";
 
 /* Création d'une instance PDO */
 /* https://www.php.net/manual/fr/pdo.connections.php */

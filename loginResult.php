@@ -8,15 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>Login</title>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
-    rel="stylesheet">
-  <link rel="icon" type="image/png" href="../public/img/abyssicon.png">
+  <link rel="icon" type="image/png" href="./public/img/abyssicon.png">
 </head>
 
 <body>
-  <?php require_once('../serveur/sessionStart.php'); ?>
+  <?php require_once('./serveur/sessionStart.php'); ?>
 
-  <?php require_once('../serveur/database.php'); ?>
+  <?php require_once('./serveur/database.php'); ?>
 
 
   <?php
@@ -26,7 +24,7 @@
   if (empty($email) || empty($formpassword)) {
     $_SESSION['ErrorLoginPass'] = 'Email or Password wrong';
 
-    header('Location:connexion.php');
+    header('Location:./connexion.php');
     $pdo = null;
     exit();
   }
@@ -47,20 +45,20 @@
       // je verifie si c'est a admis ou pas
       if(strpos($user['email'],'abyss.boats') !== false && $user['is_admin']){
         
-        header("Location:../Admin/Back-log.php");
+        header("Location:./Admin/Back-log.php");
         $pdo = null;
         exit();
       }else if (isset($_POST['captcha'], $_SESSION['code']) && $_POST['captcha'] == $_SESSION['code']) {
         $_SESSION["email"] = $result[0]["email"];
         //header("Location:index.php");      // a mettre a la fin si sa marche
-       header("Location:index.php");
+       header("Location:./index.php");
       } else {
         $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
         $pdo = null;
-        header("Location:connexion.php");
-=======
-    header('Location: connexion.php');
+        header("Location:./connexion.php");
     exit();
+  }
+}
   }
 
   $request = $pdo->prepare("SELECT * FROM users WHERE email = :email");
@@ -91,18 +89,18 @@
         
         $_SESSION['subscribed_forums'] = $subscribedForums;
 
-        header("Location: index.php");
+        header("Location: ./index.php");
         exit();
       } else {
         $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
-        header("Location: connexion.php");
+        header("Location: ./connexion.php");
         exit();
       }
     }
   } else {
 
     $_SESSION['ErrorLoginPass'] = 'Email or Password wrong.';
-    header('Location: connexion.php');
+    header('Location: ./connexion.php');
     exit();
   }
   ?>

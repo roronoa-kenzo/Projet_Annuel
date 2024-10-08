@@ -14,8 +14,8 @@
 </head>
 
 <body>
-    <?php require_once("../serveur/database.php"); ?>
-    <?php require_once('../serveur/sessionStart.php'); ?>
+    <?php require_once("./serveur/database.php"); ?>
+    <?php require_once('./serveur/sessionStart.php'); ?>
 
     <?php
     $lastname = $_POST['lastname'];
@@ -28,17 +28,17 @@
     $formpassword = $_POST['password'];
     $passwordbis = $_POST['passwordbis'];
 
-    $imgprofile = !empty($_POST['user_profile']) ? $_POST['user_profile'] : '../public/img/abyssicon.png';
+    $imgprofile = !empty($_POST['user_profile']) ? $_POST['user_profile'] : './public/img/abyssicon.png';
 
     $xp = 10;
     $level = 1;
     $is_admin = 0;
     $is_banned = 0;
-    $imgprofile = !empty($_POST['user_profile']) ? $_POST['user_profile'] : '../public/img/abyssicon.png';
+    $imgprofile = !empty($_POST['user_profile']) ? $_POST['user_profile'] : './public/img/abyssicon.png';
 
     if (empty($lastname) || empty($firstname) || empty($gender) || empty($datebrith) || empty($phone) || empty($email) || empty($formusername) || empty($formpassword) || empty($passwordbis)) {
         $_SESSION['Error'] = 'All fields are required.';
-        header('Location: register.php');
+        header('Location: ./register.php');
         exit();
     }
 
@@ -57,7 +57,7 @@
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
         $_SESSION['Erroremail'] = 'This email is already registered.';
-        header('Location: register.php');
+        header('Location: ./register.php');
         exit();
     }
 
@@ -68,7 +68,7 @@
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
         $_SESSION['Errorformusername'] = 'This username is already registered.';
-        header('Location: register.php');
+        header('Location: ./register.php');
 
         exit();
     }
@@ -122,22 +122,21 @@
                     $subscribedForums = $query->fetchAll(PDO::FETCH_ASSOC);
                     $_SESSION['subscribed_forums'] = $subscribedForums;
 
-                    header('Location: index.php');
+                    header('Location: ./index.php');
 
                     exit();
                 }
             } else {
                 $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
 
-                header("Location:register.php");
+                header("Location:./register.php");
                 exit();
             }
         }
     } else {
         $_SESSION['Errorformpassword'] = 'Passwords do not match.';
-        header('Location: register.php');
+        header('Location: ./register.php');
         exit();
     }
     ?>
 </body>
-
