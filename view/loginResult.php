@@ -15,7 +15,9 @@
 
 <body>
   <?php require_once('../serveur/sessionStart.php'); ?>
-  <?php require_once('../serveur/database.php') ?>
+
+  <?php require_once('../serveur/database.php'); ?>
+
 
   <?php
   $email = $_POST['email'];
@@ -23,6 +25,7 @@
 
   if (empty($email) || empty($formpassword)) {
     $_SESSION['ErrorLoginPass'] = 'Email or Password wrong';
+
     header('Location:connexion.php');
     $pdo = null;
     exit();
@@ -55,17 +58,54 @@
         $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
         $pdo = null;
         header("Location:connexion.php");
+=======
+    header('Location: connexion.php');
+    exit();
+  }
+
+  $request = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+  $request->bindParam(':email', $email);
+  $request->execute();
+
+  $result = $request->fetch(PDO::FETCH_ASSOC);
+
+  if ($result && password_verify($formpassword, $result["password_hash"])) {
+    if (isset($_POST['valid'])) {
+      if (isset($_POST['captcha'], $_SESSION['code']) && $_POST['captcha'] == $_SESSION['code']) {
+        $_SESSION["email"] = $result["email"];
+        $_SESSION["username"] = $result["username"];
+        $_SESSION["user_profile"] = !empty($result["user_profile"]) ? $result["user_profile"] : '../public/img/abyssicon.png';
+        $_SESSION["user_id"] = $result["id"];
+
+        // Récupération des forums auxquels l'utilisateur est abonné
+        $userId = $_SESSION['user_id'];
+        $query = $pdo->prepare('
+            SELECT forums.id, forums.name 
+            FROM forum_subscribers
+            JOIN forums ON forum_subscribers.forum_id = forums.id
+            WHERE forum_subscribers.user_id = :user_id
+        ');
+        $query->bindParam(':user_id', $userId);
+        $query->execute();
+        $subscribedForums = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        $_SESSION['subscribed_forums'] = $subscribedForums;
+
+        header("Location: index.php");
+        exit();
+      } else {
+        $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
+        header("Location: connexion.php");
         exit();
       }
     }
   } else {
 
     $_SESSION['ErrorLoginPass'] = 'Email or Password wrong.';
-    header('Location:connexion.php');
-    $pdo = null;
+    header('Location: connexion.php');
     exit();
   }
   ?>
 </body>
-
 </html>
+

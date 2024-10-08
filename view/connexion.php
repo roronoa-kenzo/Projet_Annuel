@@ -15,7 +15,7 @@
 
 </head>
 
-<body class="body_secondary">
+<body class="<?php echo $darkMode ? 'dark-mode' : ''; ?> body_secondary">
     <?php include '../composants/no_user_navbar.php'; ?>
     <?php require_once('../serveur/sessionStart.php'); ?>
 
@@ -44,11 +44,10 @@
             </div></br>
 
             <div class="captchaDiv" id="captchaDiv" style="display: none;">
-                
-                <label for="captcha" class="labelRegister">Captcha</label>
 
-                <img src="../capcha/captcha.php" alt="CAPTCHA" /><br />
-                <input type="text" name="captcha" class="demiInput"  id="captcha" placeholder="Captcha" required />
+                <img src="../capcha/test.php" alt="CAPTCHA" /><br />
+                <input type="text" name="captcha" class="demiInput" placeholder="Captcha" required />
+
 
                 <?php
                 if (isset($_SESSION['ErrorCaptcha'])) {
@@ -58,7 +57,9 @@
                 ?>
             </div>
             <div>
-                <a href="forgetPassWord.php" class="divLink">Forget password or email ?</a>
+
+                <a href="forgetaccount.php" class="divLink">Forget password or email ?</a>
+
             </div>
 
             <button class="buttonSubmit" name="valid" onclick="showCaptcha()" type="submit">Login</button>

@@ -10,16 +10,14 @@
     <title>Register</title>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="../image/png" href="../public/img/abyssicon.png">
+    <link rel="icon" type="image/png" href="../public/img/abyssicon.png">
 </head>
 
 <body>
     <?php require_once("../serveur/database.php"); ?>
-
     <?php require_once('../serveur/sessionStart.php'); ?>
 
     <?php
-
     $lastname = $_POST['lastname'];
     $firstname = $_POST['firstname'];
     $gender = $_POST['gender'];
@@ -29,95 +27,49 @@
     $formusername = $_POST['username'];//doit etre unique
     $formpassword = $_POST['password'];
     $passwordbis = $_POST['passwordbis'];
-    $imgprofile = $_POST['user_profile'];
+
+    $imgprofile = !empty($_POST['user_profile']) ? $_POST['user_profile'] : '../public/img/abyssicon.png';
+
     $xp = 10;
     $level = 1;
     $is_admin = 0;
     $is_banned = 0;
     $imgprofile = !empty($_POST['user_profile']) ? $_POST['user_profile'] : '../public/img/abyssicon.png';
 
-    if (empty($lastname)) {
-        $_SESSION['Errorlastname'] = 'Incorrect lastname.';
+    if (empty($lastname) || empty($firstname) || empty($gender) || empty($datebrith) || empty($phone) || empty($email) || empty($formusername) || empty($formpassword) || empty($passwordbis)) {
+        $_SESSION['Error'] = 'All fields are required.';
         header('Location: register.php');
-        $pdo = null;
-        exit();
-    } else if (empty($firstname)) {
-        $_SESSION['Errorfirstname'] = 'Incorrect firstname.';
-        header('Location: register.php');
-        $pdo = null;
-        exit();
-    } else if (empty($gender)) {
-        $_SESSION['Errorgender'] = 'Incorrect gender.';
-        header('Location: register.php');
-        $pdo = null;
-        exit();
-    } else if (empty($datebrith)) {
-        $_SESSION['Errordatebrith'] = 'Incorrect birthday.';
-        header('Location: register.php');
-        $pdo = null;
-        exit();
-    } else if (!empty($datebrith))//verifier l'age de la personne
-    {
-        $calcAge = date('Y-m-d', strtotime('-18 years'));
-        if ($datebrith > $calcAge) {
-            $_SESSION['Errordatebrith'] = 'Too young.';
-            header('Location: register.php');
-            $pdo = null;
-            exit();
-        }
-    } else if (empty($phone)) {
-        $_SESSION['Errorphone'] = 'Incorrect phone number.';
-        header('Location: register.php');
-        $pdo = null;
-        exit();
-    } else if (empty($email))// verification dans bdd aussi
-    {
-        $_SESSION['Erroremail'] = 'Incorrect email.';
-        header('Location: register.php');
-        $pdo = null;
-        exit();
-    } else if (empty($formusername))// verification dans bdd aussi
-    {
-        $_SESSION['Errorformusername'] = 'Incorrect username.';
-        header('Location: register.php');
-        $pdo = null;
-        exit();
-    } else if (empty($formpassword)) {
-        $_SESSION['Errorformpassword'] = 'Incorrect password.';
-        header('Location: register.php');
-        $pdo = null;
-        exit();
-    } else if (empty($passwordbis)) {
-        $_SESSION['Errorpasswordbis'] = 'Incorrect password.';
-        header('Location: register.php');
-        $pdo = null;
         exit();
     }
 
-    //verification si le mail existe deja dans la bdd
+    // Vérification de l'âge
+    $calcAge = date('Y-m-d', strtotime('-18 years'));
+    if ($datebrith > $calcAge) {
+        $_SESSION['Errordatebrith'] = 'Too young.';
+        header('Location: register.php');
+        exit();
+    }
+
+    // Vérification si l'email existe déjà
     $query = "SELECT * FROM users WHERE email = :email";
     $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->bindParam(':email', $email);
     $stmt->execute();
-
-
     if ($stmt->rowCount() > 0) {
         $_SESSION['Erroremail'] = 'This email is already registered.';
         header('Location: register.php');
-        $pdo = null;
         exit();
     }
 
-    //verification si le username existe deja dans la bdd
+    // Vérification si le username existe déjà
     $query = "SELECT * FROM users WHERE username = :username";
     $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':username', $formusername, PDO::PARAM_STR);
+    $stmt->bindParam(':username', $formusername);
     $stmt->execute();
-
     if ($stmt->rowCount() > 0) {
         $_SESSION['Errorformusername'] = 'This username is already registered.';
         header('Location: register.php');
-        $pdo = null;
+
         exit();
     }
 
@@ -139,35 +91,53 @@
                 $request->bindParam(':is_admin', $is_admin);
                 $request->bindParam(':is_banned', $is_banned);
 
+
                 $request->execute();
 
-                if ($request->rowCount() === 1) {
+                // Récupérer l'ID de l'utilisateur nouvellement créé
+                $userId = $pdo->lastInsertId();
+
+                if ($userId) {
+                    // Inscrire l'utilisateur au forum "Abyss"
+                    $forumAbyssId = 1;
+                    $subscribeQuery = $pdo->prepare('INSERT INTO forum_subscribers (user_id, forum_id) VALUES (:user_id, :forum_id)');
+                    $subscribeQuery->bindParam(':user_id', $userId);
+                    $subscribeQuery->bindParam(':forum_id', $forumAbyssId);
+                    $subscribeQuery->execute();
+
                     $_SESSION["username"] = $formusername;
                     $_SESSION["user_profile"] = $imgprofile;
                     $_SESSION["email"] = $email;
+                    $_SESSION["user_id"] = $userId;
+
+                    // Récupérer les forums auxquels l'utilisateur est abonné
+                    $query = $pdo->prepare('
+                        SELECT forums.id, forums.name 
+                        FROM forum_subscribers
+                        JOIN forums ON forum_subscribers.forum_id = forums.id
+                        WHERE forum_subscribers.user_id = :user_id
+                    ');
+                    $query->bindParam(':user_id', $userId);
+                    $query->execute();
+                    $subscribedForums = $query->fetchAll(PDO::FETCH_ASSOC);
+                    $_SESSION['subscribed_forums'] = $subscribedForums;
+
                     header('Location: index.php');
-                    $pdo = null;
+
                     exit();
                 }
             } else {
                 $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
-                $pdo = null;
+
                 header("Location:register.php");
                 exit();
             }
-        } else {
-            $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
-            $pdo = null;
-            header("Location:register:.php");
-            exit();
         }
     } else {
-        $_SESSION['Errorformpassword'] = 'Password don\'t match.';
+        $_SESSION['Errorformpassword'] = 'Passwords do not match.';
         header('Location: register.php');
-        $pdo = null;
         exit();
-
     }
-
     ?>
 </body>
+
