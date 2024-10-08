@@ -38,7 +38,8 @@ $mailer = new Swift_Mailer($transport);
 
 // Création du message de confirmation
 $subject = 'Confirmation de votre adresse email';
-$message = 'Merci de confirmer votre adresse email en cliquant sur le lien suivant : https://www.abyss.boats/confirm.php?token=' . $token;
+// $message = 'Merci de confirmer votre adresse email en cliquant sur le lien suivant : https://www.abyss.boats/confirm.php?token=' . $token;
+$message = 'Merci de confirmer votre adresse email en cliquant sur le lien suivant : http://localhost/Newsletter/confirm.php?token=' . $token;
 $body = '<html><body>';
 $body .= '<p>' . $message . '</p>';
 $body .= '</body></html>';
