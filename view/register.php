@@ -140,10 +140,13 @@
                 </div>
             </div><br />
             <div class="captchaDiv" id="captchaDiv" style="display: none;">
+
                 
                 <label for="captcha" class="labelRegister">Captcha</label>
 
                 <img src="../capcha/captcha.php" alt="CAPTCHA" /><br />
+
+
                 <input type="text" name="captcha" class="demiInput" placeholder="Captcha" required />
 
                 <?php
