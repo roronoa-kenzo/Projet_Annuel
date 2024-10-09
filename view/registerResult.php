@@ -16,6 +16,7 @@
 <body>
     <?php require_once("../serveur/database.php"); ?>
     <?php require_once('../serveur/sessionStart.php'); ?>
+    <?php require_once('./../serveur/logconnection.php');?>
 
     <?php
     $lastname = $_POST['lastname'];
@@ -35,7 +36,7 @@
 
     if (empty($lastname) || empty($firstname) || empty($gender) || empty($datebrith) || empty($phone) || empty($email) || empty($formusername) || empty($formpassword) || empty($passwordbis)) {
         $_SESSION['Error'] = 'All fields are required.';
-        //header('Location: register.php');
+        header('Location: register.php');
         exit();
     }
 
@@ -43,7 +44,7 @@
     $calcAge = date('Y-m-d', strtotime('-18 years'));
     if ($datebrith > $calcAge) {
         $_SESSION['Errordatebrith'] = 'Too young.';
-        //header('Location: register.php');
+        header('Location: register.php');
         exit();
     }
 
@@ -54,7 +55,7 @@
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
         $_SESSION['Erroremail'] = 'This email is already registered.';
-        //header('Location: register.php');
+        header('Location: register.php');
         exit();
     }
 
@@ -65,7 +66,7 @@
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
         $_SESSION['Errorformusername'] = 'This username is already registered.';
-        //header('Location: register.php');
+        header('Location: register.php');
         exit();
     }
 
@@ -108,25 +109,23 @@
                 
                             if ($createForumQuery->execute()) {
                                 $forumAbyssId = $pdo->lastInsertId(); // Récupérer l'ID du forum nouvellement créé
-                                echo "Forum créé avec succès, ID: $forumAbyssId";
+
                             } else {
-                                echo "Erreur lors de la création du forum.";
+                                //page d'erreur
                                 exit();
                             }
                         }
                 
                         // Inscription de l'utilisateur au forum
-                        var_dump($userId); // Debug : est-ce que userId est correct ?
                         $subscribeQuery = $pdo->prepare('INSERT INTO forum_subscribers (user_id, forum_id) VALUES (:user_id, :forum_id)');
                         $subscribeQuery->bindParam(':user_id', $userId);
                         $subscribeQuery->bindParam(':forum_id', $forumAbyssId);
                 
                         // Exécution et vérification de la requête
                         if ($subscribeQuery->execute()) {
-                            echo "Utilisateur inscrit au forum avec succès.";
+
                         } else {
-                            echo "Erreur lors de l'inscription au forum : ";
-                            print_r($subscribeQuery->errorInfo()); // Affiche les erreurs SQL
+                            //page d'erreur
                         }
                 
                         // Stocker les informations de l'utilisateur dans la session
@@ -147,26 +146,26 @@
                 
                         $subscribedForums = $query->fetchAll(PDO::FETCH_ASSOC);
                         $_SESSION['subscribed_forums'] = $subscribedForums;
-                
+                        loginUser($_SESSION["user_id"]);
                         // Redirection vers l'index après le succès
                         header('Location: index.php');
                         exit();
                     } else {
-                        echo "Erreur: userId non défini.";
+                        //page d'erreur
                     }
                 } catch (PDOException $e) {
-                    echo "Erreur lors de l'inscription au forum : " . $e->getMessage();
+                    //page d'erreur
                 }
 
             } else {
                 $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
-                //header("Location:register.php");
+                header("Location:register.php");
                 exit();
             }
         }
     } else {
         $_SESSION['Errorformpassword'] = 'Passwords do not match.';
-        //header('Location: register.php');
+        header('Location: register.php');
         exit();
     }
     
