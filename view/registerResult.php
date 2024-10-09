@@ -16,6 +16,7 @@
 <body>
     <?php require_once("../serveur/database.php"); ?>
     <?php require_once('../serveur/sessionStart.php'); ?>
+    <?php require_once('./../logconnection.php')
 
     <?php
     $lastname = $_POST['lastname'];
@@ -76,6 +77,7 @@
     if ($formpassword == $passwordbis) {
         if (isset($_POST['valid'])) {
             if (isset($_POST['captcha'], $_SESSION['code']) && $_POST['captcha'] == $_SESSION['code']) {
+                
                 $formpassword = password_hash($formpassword, PASSWORD_DEFAULT);
 
                 $request = $pdo->prepare('INSERT INTO users (username, email, password_hash, first_name, last_name, user_profile, date_of_birth, xp, level, is_admin, is_banned) VALUES (:username, :email, :password_hash, :first_name, :last_name, :user_profile, :date_of_birth, :xp, :level, :is_admin, :is_banned)');
@@ -126,6 +128,7 @@
 
                     exit();
                 }
+                
             } else {
                 $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
 

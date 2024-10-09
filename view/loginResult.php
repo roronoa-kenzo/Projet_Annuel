@@ -15,9 +15,8 @@
 
 <body>
   <?php require_once('../serveur/sessionStart.php'); ?>
-
   <?php require_once('../serveur/database.php'); ?>
-
+  <?php require_once('./../logconnection.php'); ?>
 
   <?php
   $email = $_POST['email'];
@@ -90,6 +89,9 @@
         $subscribedForums = $query->fetchAll(PDO::FETCH_ASSOC);
         
         $_SESSION['subscribed_forums'] = $subscribedForums;
+        //log de sa connection 
+        var_dump($userId);
+        loginUser($pdo,$userId );
 
         header("Location: index.php");
         exit();

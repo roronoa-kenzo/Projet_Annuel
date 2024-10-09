@@ -1,6 +1,6 @@
 
 <div class="white-content-secondary">
-    <h3>Outils</h3>
+    <h2>Outils</h2>
     <ul style="padding: 5%;">
         <a class="href-admin" href="#">Users Connected</a>
     </ul>

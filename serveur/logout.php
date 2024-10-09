@@ -1,9 +1,10 @@
 <?php
 session_start();
-
+require_once('./../logconnection.php');
 // Vérifier si l'utilisateur est connecté
 if (isset($_SESSION['email'])) {
     // Détruire la session
+    
     session_unset();
     session_destroy();
 
