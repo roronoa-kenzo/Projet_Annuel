@@ -16,52 +16,17 @@
 <body>
   <?php require_once('../serveur/sessionStart.php'); ?>
   <?php require_once('../serveur/database.php'); ?>
-  <?php require_once('./../logconnection.php'); ?>
-
+  <?php require_once('./../serveur/logconnection.php');?>
   <?php
   $email = $_POST['email'];
   $formpassword = $_POST['password'];
 
   if (empty($email) || empty($formpassword)) {
     $_SESSION['ErrorLoginPass'] = 'Email or Password wrong';
-
-    header('Location:connexion.php');
-    $pdo = null;
-    exit();
-  }
-
-  $request = $pdo->prepare("SELECT * FROM users WHERE email =:email");
-
-  $request->bindParam(':email', $email);
-
-  $request->execute();
-  
-  $result = $request->fetchAll();
-
-    //verification mod de pass 
-  if (count($result) > 0 && password_verify($formpassword, $result[0]["password_hash"])) {
-    $user = $result[0];
-    //verification captcha 
-    if (isset($_POST['valid'])) {
-      // je verifie si c'est a admis ou pas
-      if(strpos($user['email'],'abyss.boats') !== false && $user['is_admin']){
-        
-        header("Location:../Admin/Back-log.php");
-        $pdo = null;
-        exit();
-      }else if (isset($_POST['captcha'], $_SESSION['code']) && $_POST['captcha'] == $_SESSION['code']) {
-        $_SESSION["email"] = $result[0]["email"];
-        //header("Location:index.php");      // a mettre a la fin si sa marche
-       header("Location:index.php");
-      } else {
-        $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
-        $pdo = null;
-        header("Location:connexion.php");
-      }
     header('Location: connexion.php');
     exit();
   }
-  }
+
   $request = $pdo->prepare("SELECT * FROM users WHERE email = :email");
   $request->bindParam(':email', $email);
   $request->execute();
@@ -89,10 +54,7 @@
         $subscribedForums = $query->fetchAll(PDO::FETCH_ASSOC);
         
         $_SESSION['subscribed_forums'] = $subscribedForums;
-        //log de sa connection 
-        var_dump($userId);
-        loginUser($pdo,$userId );
-
+        loginUser($_SESSION["user_id"]);
         header("Location: index.php");
         exit();
       } else {
@@ -102,12 +64,9 @@
       }
     }
   } else {
-
     $_SESSION['ErrorLoginPass'] = 'Email or Password wrong.';
     header('Location: connexion.php');
     exit();
   }
   ?>
 </body>
-</html>
-

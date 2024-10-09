@@ -1,6 +1,12 @@
 <?php
 // Fonction pour enregistrer la connexion de l'utilisateur
-function loginUser($pdo, $user_id) {
+session_start();
+
+// Connexion à la base de données (assurez-vous que les informations de connexion sont correctes)function loginUser($user_id) {
+function loginUser($user_id)
+{
+    global $pdo; // Récupérer la connexion à la base de données à partir de la portée globale
+
     try {
         // Vérifier si l'utilisateur a déjà une session
         $stmt = $pdo->prepare("SELECT * FROM user_sessions WHERE user_id = :user_id");
@@ -24,12 +30,14 @@ function loginUser($pdo, $user_id) {
         echo "Erreur lors de la connexion : " . $e->getMessage();
     }
 }
-
 // Fonction pour enregistrer la déconnexion de l'utilisateur
-function logoutUser($pdo, $user_id) {
+function logoutUser($user_id)
+{
+    global $pdo; // Récupérer la connexion à la base de données à partir de la portée globale
+
     try {
         // Mettre à jour la session pour marquer l'utilisateur comme déconnecté
-        $sql = "UPDATE user_sessions SET is_connected = FALSE WHERE user_id = :user_id";
+        $sql = "UPDATE user_sessions SET is_connected = 0 WHERE user_id = :user_id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute(['user_id' => $user_id]);
 
