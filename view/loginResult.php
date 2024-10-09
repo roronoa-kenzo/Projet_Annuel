@@ -58,11 +58,11 @@
         $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
         $pdo = null;
         header("Location:connexion.php");
-=======
+      }
     header('Location: connexion.php');
     exit();
   }
-
+  }
   $request = $pdo->prepare("SELECT * FROM users WHERE email = :email");
   $request->bindParam(':email', $email);
   $request->execute();
