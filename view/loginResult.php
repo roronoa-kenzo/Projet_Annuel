@@ -58,7 +58,7 @@
         $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
         $pdo = null;
         header("Location:connexion.php");
-=======
+
     header('Location: connexion.php');
     exit();
   }
@@ -90,6 +90,12 @@
         $subscribedForums = $query->fetchAll(PDO::FETCH_ASSOC);
         
         $_SESSION['subscribed_forums'] = $subscribedForums;
+        
+        // Insérer le log de connexion dans la base de données
+        $stmt = $conn->prepare("INSERT INTO login_logs (user_id) VALUES (?)");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+
 
         header("Location: index.php");
         exit();

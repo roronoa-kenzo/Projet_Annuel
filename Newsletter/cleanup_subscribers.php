@@ -1,6 +1,6 @@
 <?php
 // Inclusion du fichier de connexion à la base de données
-require_once 'co_database.php';
+require_once './../serveur/database.php';
 
 // Requête pour supprimer les abonnés non confirmés après une semaine
 $query = "DELETE FROM subscribers WHERE confirmed = 0 AND created_at < NOW() - INTERVAL 7 DAY";
