@@ -1,32 +1,40 @@
     <?php
 
     //compter les user 
-    $sql = "SELECT * FROM users";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-    $sql = "SELECT * FROM users";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
+// Récupération du nombre d'utilisateurs
+$sql = "SELECT * FROM users";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$userCount = $stmt->rowCount(); // Correctement assigné à $userCount
 
-    // Stocker le nombre d'utilisateurs dans une variable
-    $userCount = $stmt->rowCount();
-    $sql = "SELECT * from comments";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-    $commentsCount = $stmt->rowCount();
-    
-    // nombre de post
-    $userCount = $stmt->rowCount();
-    $sql = "SELECT * from posts";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-    $postCount = $stmt->rowCount();
+// Récupération du nombre de commentaires
+$sql = "SELECT * FROM comments";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$commentsCount = $stmt->rowCount(); // Correctement assigné à $commentsCount
 
-        // nombre de Iceberg
-    $userCount = $stmt->rowCount();
-    $sql = "SELECT * from forums";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-    $icebergCount = $stmt->rowCount();
+// Récupération du nombre de posts
+$sql = "SELECT * FROM posts";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$postCount = $stmt->rowCount(); // Correctement assigné à $postCount
 
-    ?>
+// Récupération du nombre de forums (Icebergs)
+$sql = "SELECT * FROM forums";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$icebergCount = $stmt->rowCount(); // Correctement assigné à $icebergCount
+
+// Affichage des résultats ou traitement
+
+//useconnectCount
+$sql = "SELECT COUNT(*) as connected_users FROM user_sessions WHERE is_connected = TRUE";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+
+// Récupérer le résultat et le stocker dans $useconnectCount
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+$useconnectCount = $result['connected_users'];
+
+
+?>

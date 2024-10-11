@@ -16,40 +16,54 @@
 <body>
     <?php include './../composants/navbar.php'; ?>
     <?php include './composant/database.php'; ?>
-    <?php include './composant/Countsite.php' ?>
+    <?php include './composant/Countsite.php'; ?>
 
     <main class="container">
         <div class="black-frame">
             <h1>Admin</h1>
         </div>
         <div class="main-index">
-            <?php include './../composants/white_content_left-admin.php'; ?>
+            <?php include './composant/white_content_left-admin.php'; ?>
             <div class="white-content-admin">
 
-                <div class="post-container-admin">
-                    <div class="iceberg-select">
-                        <p>Nombre de user: <?php echo $userCount ?></p>
-                    </div>
-                </div>
+                <a href="./UserInfo.php">
+                    <div class="post-container-admin">
 
-                <div class="post-container-admin">
-                    <div class="iceberg-select">
-                        <p>Nombre de Message: <?php echo $commentsCount ?></p>
-
+                        <div class="iceberg-select">
+                            <p>Nombre de user totale: <?php echo $userCount ?></p>
+                        </div>
                     </div>
-                </div>
-
+                </a>
                 <div class="post-container-admin">
-                    <div class="iceberg-select">
-                        <p>Nombre de Post : <?php echo $postCount ?></p>
-                    </div>
-                </div>
 
-                <div class="post-container-admin">
-                    <div class="iceberg-select">
-                        <p>Nombre de Iceberg : <?php echo $icebergCount ?></p>
-                    </div>
+                    <a href="#">
+                        <div class="iceberg-select">
+                            <p>Nombre de user connecter: <?php echo $useconnectCount ?></p>
+                        </div>
                 </div>
+                </a>
+                <a href="#">
+                    <div class="post-container-admin">
+                        <div class="iceberg-select">
+                            <p>Nombre de Message: <?php echo $commentsCount ?></p>
+
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="post-container-admin">
+                        <div class="iceberg-select">
+                            <p>Nombre de Post : <?php echo $postCount ?></p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="post-container-admin">
+                        <div class="iceberg-select">
+                            <p>Nombre de Iceberg : <?php echo $icebergCount ?></p>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </main>

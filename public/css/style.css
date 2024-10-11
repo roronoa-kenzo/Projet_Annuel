@@ -79,7 +79,16 @@ option{
   overflow: hidden;
 
 }
-
+.inpuTextAdmin{
+  padding: 3px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+  width: 80%;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
 .suggestions {
   position: absolute;
   top: calc(100% + 5px);
@@ -423,4 +432,19 @@ transform: translateY(2px);
   display:flex;
   align-items: center;
   flex-direction: column;
+}
+
+/*-------------------------------------------- admin ----------------------------------------------*/
+
+.userLien{
+  text-decoration: none;
+  color: black;
+}
+.username{
+}
+.status {
+  color: green;
+}
+.status.not-connected {
+  color: red;
 }
