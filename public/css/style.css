@@ -448,3 +448,7 @@ transform: translateY(2px);
 .status.not-connected {
   color: red;
 }
+.main-index-admin{
+  display: flex;
+  justify-content: center;
+}

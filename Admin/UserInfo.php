@@ -13,6 +13,8 @@
     <link rel="icon" type="../public/image/png" href="../public/img/abyssicon.png">
     <?php include './../composants/navbar.php'; ?>
     <?php include './composant/database.php'; ?>
+    <?php include './composant/sessionStart.php'; ?>
+
 </head>
 <?php
     // Inclure la connexion à la base de données
@@ -32,7 +34,7 @@
         <div class="black-frame">
             <h1>All user and infos</h1>
         </div>
-        <div class="main-index">
+        <div class="main-index-admin">
             <?php include './composant/white_content_left-admin.php'; ?>
             <div class="white-content-admin">
 

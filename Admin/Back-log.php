@@ -22,7 +22,7 @@
         <div class="black-frame">
             <h1>Admin</h1>
         </div>
-        <div class="main-index">
+        <div class="main-index-admin">
             <?php include './composant/white_content_left-admin.php'; ?>
             <div class="white-content-admin">
 

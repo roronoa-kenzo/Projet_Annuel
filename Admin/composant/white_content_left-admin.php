@@ -1,6 +1,6 @@
 
 <div class="white-content-secondary">
-    <h2>Outils</h2>
+    <h3>Outils</h3>
     <ul style="padding: 5%;">
         <a class="href-admin" href="./Back-log.php">Home Admin</a>
     </ul>
