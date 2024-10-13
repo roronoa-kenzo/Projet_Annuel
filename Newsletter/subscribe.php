@@ -1,6 +1,6 @@
 <?php
 // Inclusion du fichier de connexion à la base de données
-require_once 'co_database.php';
+require_once '../serveur/database.php';
 require_once 'vendor/autoload.php'; // SwiftMailer
 
 // Récupération de l'adresse e-mail (par exemple, à partir d'un formulaire)
@@ -38,7 +38,7 @@ $mailer = new Swift_Mailer($transport);
 
 // Création du message de confirmation
 $subject = 'Confirmation de votre adresse email';
-// $message = 'Merci de confirmer votre adresse email en cliquant sur le lien suivant : https://www.abyss.boats/confirm.php?token=' . $token;
+// $message = 'Merci de confirmer votre adresse email en cliquant sur le lien suivant : https://abyss.boats/confirm.php?token=' . $token;
 $message = 'Merci de confirmer votre adresse email en cliquant sur le lien suivant : http://localhost/Newsletter/confirm.php?token=' . $token;
 $body = '<html><body>';
 $body .= '<p>' . $message . '</p>';
