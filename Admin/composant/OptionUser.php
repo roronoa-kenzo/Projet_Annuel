@@ -92,6 +92,27 @@ try {
             echo "Erreur lors de la mise à jour du statut de bannissement.";
         }
     }
+    if (isset($_POST['forum_id'])) {
+        // Récupérer l'ID du forum à supprimer
+        $forumId = $_POST['forum_id'];
+    
+        // Préparer la requête de suppression
+        $deleteQuery = "DELETE FROM forums WHERE id = :forum_id";
+    
+        // Préparer et exécuter la requête
+        $stmtDelete = $pdo->prepare($deleteQuery);
+        $stmtDelete->bindParam(':forum_id', $forumId, PDO::PARAM_INT);
+    
+        // Exécuter la requête et vérifier si la suppression a réussi
+        if ($stmtDelete->execute()) {
+            header('Location: ./../User.php?user=' . $userId);
+        } else {
+            echo "Une erreur est survenue lors de la suppression du forum.";
+        }
+    }
+    if(isset(($_POST['message']))) {
+        header('Location: ./../UserMessage.php?user='.$userId);
+    }
 
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();

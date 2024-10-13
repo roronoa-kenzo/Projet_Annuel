@@ -16,5 +16,8 @@
     <ul>
         <button type="submit" name="banni" value="banni"><?= $user['is_banned'] ? 'Débanne' : 'Ban' ?></button>
     </ul>
+    <ul>
+        <button type="submit" name="message" value="message">Message User</button>
+    </ul>
     </form>
 </div>

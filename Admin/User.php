@@ -77,6 +77,9 @@ if (isset($_GET['user']) && is_numeric($_GET['user'])) {
                                         <p><strong>Description :</strong> <br><?= htmlspecialchars($forum['description']) ?></p>
                                         <p><strong>Date de création :</strong> <br><?= htmlspecialchars($forum['created_at']) ?></p>
                                         <p><strong>Dernière mise à jour :</strong> <br><?= htmlspecialchars($forum['updated_at']) ?></p>
+                                        <form action="./composant/OptionUser.php" method="POST">
+                                        <input type="hidden" name="forum_id" value="<?= htmlspecialchars($forum['id']) ?>">
+                                        <button type="submit">Supprimer ce forum</button>
                                     </div>
                                     <!-- -->
                                     <?php
