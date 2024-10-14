@@ -92,15 +92,16 @@
 
         </div>
         <!-- Affichage des posts récents -->
-        <div class="posts-list">
+        
                 <?php
                 // Récupération et affichage des posts
                 $query = $pdo->prepare('
-                    SELECT posts.content, posts.created_at, forums.name AS forum_name 
-                    FROM posts 
-                    JOIN forums ON posts.forum_id = forums.id 
-                    WHERE posts.user_id = :user_id
-                    ORDER BY posts.created_at DESC
+                    SELECT posts.content, posts.created_at, posts.title, forums.name AS forum_name
+                    FROM posts
+                    JOIN forums ON posts.forum_id = forums.id
+                    JOIN forum_subscribers ON forum_subscribers.forum_id = forums.id
+                    WHERE forum_subscribers.user_id = :user_id
+                    ORDER BY posts.created_at DESC;
                 ');
                 $query->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
                 $query->execute();
@@ -110,18 +111,21 @@
                     echo '<p class="no-posts">No posts yet. Start posting!</p>';
                 } else {
                     foreach ($posts as $post) {
+                        echo '<div class="posts-list">';
                         echo '<div class="post">';
                         echo '<h2>' . htmlspecialchars($post['title']) . '</h2>';
                         echo '<p><strong>Forum:</strong> ' . htmlspecialchars($post['forum_name']) . '</p>';
                         echo '<p>' . htmlspecialchars($post['content']) . '</p>';
                         echo '<small>Posted on ' . htmlspecialchars($post['created_at']) . '</small>';
                         echo '</div>';
+                        echo '</div>';
                     }
                 }
                 ?>
             </div>
+            <?php include '../composants/white_content_right.php'; ?>
         </div>
-        <?php include '../composants/white_content_right.php'; ?>
+        
     </div>
 </main>
 <?php include '../composants/script_link.php'; ?>
