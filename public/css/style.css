@@ -54,12 +54,22 @@ h1{
   font-size: 52px;
 }
 
+h2{
+  font-family: "Josefin Sans", sans-serif;
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+}
+
 h3{
   font-family: "Josefin Sans", sans-serif;
 }
 
 option{
   font-family: "Josefin Sans", sans-serif;
+}
+
+.button-forum{
+
 }
 
 
@@ -127,7 +137,7 @@ option{
   margin-top: -10px;
   margin-left: 5vh;
   margin-right: 5vh;
-  box-shadow: inset gray 1px 1px 8px 3px;
+  box-shadow: inset gray 0px 1px 6px 3px;
 }
 .white-content-admin {
   background-color: white;
@@ -151,10 +161,25 @@ option{
   width: 14em;
   max-width: 600px;
   margin-top: -10px;
-  box-shadow: inset gray 1px 1px 8px 3px;
+  box-shadow: inset gray 0px 1px 6px 3px;
   display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.btn-menu{
+  background-color: #ddd;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
+    width: 20vh;
+    margin-bottom: 3vh;
 }
 
 /* White Content Milieu */
@@ -425,6 +450,18 @@ transform: translateY(2px);
   flex-direction: column;
 }
 
+.btn-submit{
+  background-color: black;
+    height: 4vh;
+    width: 13vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    color: white;
+    margin-top: 2vh;
+}
+
 /*------------------------------------------------------Post---------------------------*/
 
 .posts-list{
@@ -440,13 +477,67 @@ transform: translateY(2px);
 }
 
 .inputTitle {
-  width: 56vh;
+  width: 96%;
+  height: 24px;
+  margin-top: 10px;
+  border: none;
   border-radius: 10px;
-  margin-top: 7px;
-  padding: 1vh;
-  background-color: #e9ecef;
-  font-size: 20px;
-  font-family: "Josefin Sans", sans-serif;
-  border-color: #f1f1f1;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  font-size: 16px;
+  background-color: #e8e8e8;
 }
+
+.post-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-head-first{
+  display: flex;
+}
+
+.post-forum{
+  background-color: black;
+    height: 4vh;
+    width: 13vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.p-forum{
+  color: white;
+  font-size: 14px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+/*-------------------------------------Notification----------------------------------*/
+
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+  width: 23px;
+}
+
+.notification {
+  position: fixed;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.notification.success {
+  background-color: #4caf50; /* Vert pour les succès */
+}
+
+.notification.error {
+  background-color: #f44336; /* Rouge pour les erreurs */
+}
+
+

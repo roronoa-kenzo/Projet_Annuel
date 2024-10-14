@@ -12,6 +12,6 @@
     <link rel="icon" type="../image/png" href="../public/img/abyssicon.png">
 </head>
 <body>
-    
+
 </body>
 </html>

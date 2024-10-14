@@ -2,6 +2,33 @@
 <?php include '../composants/header.php'; ?>
 <?php include '../composants/navbar.php'; ?>
 <main class="container">
+    <!-- Conteneur pour la notification -->
+    <div id="notificationContainer" class="notification-container"></div>
+    <?php
+        if (isset($_SESSION['SuccessPost'])) {
+            echo '<p id="successMessage" class="success-message">' . htmlspecialchars($_SESSION['SuccessPost']) . '</p>';
+            echo '<script>showNotification("success", "' . htmlspecialchars($_SESSION['SuccessPost']) . '");</script>';
+            unset($_SESSION['SuccessPost']);
+        }
+            
+        if (isset($_SESSION['ErrorForum'])) {
+            echo '<p id="errorMessage" class="error-message">' . htmlspecialchars($_SESSION['ErrorForum']) . '</p>';
+            echo '<script>showNotification("error", "' . htmlspecialchars($_SESSION['ErrorForum']) . '");</script>';
+            unset($_SESSION['ErrorForum']);
+        }
+            
+        if (isset($_SESSION['ErrorContent'])) {
+            echo '<p id="errorMessage" class="error-message">' . htmlspecialchars($_SESSION['ErrorContent']) . '</p>';
+            echo '<script>showNotification("error", "' . htmlspecialchars($_SESSION['ErrorContent']) . '");</script>';
+            unset($_SESSION['ErrorContent']);
+        }
+            
+        if (isset($_SESSION['ErrorPost'])) {
+            echo '<p id="errorMessage" class="error-message">' . htmlspecialchars($_SESSION['ErrorPost']) . '</p>';
+            echo '<script>showNotification("error", "' . htmlspecialchars($_SESSION['ErrorPost']) . '");</script>';
+            unset($_SESSION['ErrorPost']);
+        }
+    ?>
     <div class="black-frame">
         <h1>Welcome in Abyss</h1>
     </div>
@@ -48,7 +75,7 @@
                     <input type="text" name="title" class="inputTitle" placeholder="Post Title" required>
                     <textarea class="post-textarea" name="content" rows="4" placeholder="Write your post..." required></textarea>
                     <input type="hidden" name="forum_id" id="selectedForumId">
-                    <button type="submit">Post</button>
+                    <button class="btn-submit" type="submit">Post</button>
                 </form>
             </div>
             <!-- Post Textuel et images -->
@@ -65,28 +92,9 @@
                 }
             </style>
 
+            
             <!-- Affichage des messages d'erreur ou de succès -->
-            <?php
-            if (isset($_SESSION['ErrorForum'])) {
-                echo '<p class="error-message">' . $_SESSION['ErrorForum'] . '</p>';
-                unset($_SESSION['ErrorForum']);
-            }
-
-            if (isset($_SESSION['ErrorContent'])) {
-                echo '<p class="error-message">' . $_SESSION['ErrorContent'] . '</p>';
-                unset($_SESSION['ErrorContent']);
-            }
-
-            if (isset($_SESSION['SuccessPost'])) {
-                echo '<p class="success-message">' . $_SESSION['SuccessPost'] . '</p>';
-                unset($_SESSION['SuccessPost']);
-            }
-
-            if (isset($_SESSION['ErrorPost'])) {
-                echo '<p class="error-message">' . $_SESSION['ErrorPost'] . '</p>';
-                unset($_SESSION['ErrorPost']);
-            }
-            ?>
+            
 
             
 
@@ -96,10 +104,11 @@
                 <?php
                 // Récupération et affichage des posts
                 $query = $pdo->prepare('
-                    SELECT posts.content, posts.created_at, posts.title, forums.name AS forum_name
+                    SELECT posts.content, posts.created_at, posts.title, forums.name, users.username, users.user_profile
                     FROM posts
                     JOIN forums ON posts.forum_id = forums.id
                     JOIN forum_subscribers ON forum_subscribers.forum_id = forums.id
+                    JOIN users ON posts.user_id = users.id
                     WHERE forum_subscribers.user_id = :user_id
                     ORDER BY posts.created_at DESC;
                 ');
@@ -113,10 +122,20 @@
                     foreach ($posts as $post) {
                         echo '<div class="posts-list">';
                         echo '<div class="post">';
+                        echo '<div class="post-head">';
+                        echo '<div class="post-head-first">';
+                        echo '<img src="' . htmlspecialchars($post['user_profile']) . '" alt="User Avatar" class="user-avatar">';
+                        echo '<p><strong>' . htmlspecialchars($post['username']) . '</strong></p>';
+                        echo '</div>';
+                        echo '<div class="post-forum">';
+                        echo '<p class="p-forum"><strong>' . htmlspecialchars($forum['name']) . '</strong></p>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '<div class="post-content">';
                         echo '<h2>' . htmlspecialchars($post['title']) . '</h2>';
-                        echo '<p><strong>Forum:</strong> ' . htmlspecialchars($post['forum_name']) . '</p>';
                         echo '<p>' . htmlspecialchars($post['content']) . '</p>';
                         echo '<small>Posted on ' . htmlspecialchars($post['created_at']) . '</small>';
+                        echo '</div>';
                         echo '</div>';
                         echo '</div>';
                     }
