@@ -4,18 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../public/css/style.css">
+  <link rel="stylesheet" href="./../public/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>Login</title>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
     rel="stylesheet">
-  <link rel="icon" type="image/png" href="../public/img/abyssicon.png">
+  <link rel="icon" type="image/png" href="./../public/img/abyssicon.png">
 </head>
 
 <body>
-  <?php require_once('../serveur/sessionStart.php'); ?>
-  <?php require_once('../serveur/database.php'); ?>
+  <?php require_once('./../serveur/sessionStart.php'); ?>
+  <?php require_once('./../serveur/database.php'); ?>
 
   <?php
   $email = $_POST['email'];
@@ -38,7 +38,7 @@
       if (isset($_POST['captcha'], $_SESSION['code']) && $_POST['captcha'] == $_SESSION['code']) {
         $_SESSION["email"] = $result["email"];
         $_SESSION["username"] = $result["username"];
-        $_SESSION["user_profile"] = !empty($result["user_profile"]) ? $result["user_profile"] : '../public/img/abyssicon.png';
+        $_SESSION["user_profile"] = !empty($result["user_profile"]) ? $result["user_profile"] : './../public/img/abyssicon.png';
         $_SESSION["user_id"] = $result["id"];
 
         // Récupération des forums auxquels l'utilisateur est abonné

@@ -21,7 +21,7 @@
                             echo '<p>Vous devez être connecté pour voir vos icebergs</p>';
                         }
                         ?>
-        <a href="../Admin/Back-log.php">
+        <a href="./../Admin/Back-log.php">
             <button class="btn-menu"> Admin </button>
         </a>
 </div>

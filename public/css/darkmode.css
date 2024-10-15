@@ -124,6 +124,8 @@ option {
   width: 100%;
   display: flex;
   justify-content: center;
+  height: 27vh;
+  align-items: center;
 }
 
 .white-content {

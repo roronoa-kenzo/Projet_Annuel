@@ -1,6 +1,6 @@
 <!-- index.php -->
-<?php include '../composants/header.php'; ?>
-<?php include '../composants/navbar.php'; ?>
+<?php include './../composants/header.php'; ?>
+<?php include './../composants/navbar.php'; ?>
 <main class="container">
     <!-- Conteneur pour la notification -->
     <div id="notificationContainer" class="notification-container"></div>
@@ -33,13 +33,13 @@
         <h1>Welcome in Abyss</h1>
     </div>
     <div class="main-index">
-        <?php include '../composants/white_content_left.php'; ?>
+        <?php include './../composants/white_content_left.php'; ?>
         <div class="center-content">
         <div class="white-content">
 
             <div class="post-header">
                 <img src="<?php echo htmlspecialchars($_SESSION["user_profile"]); ?>" alt="User Avatar" class="user-avatar">
-                <?php include '../composants/post-options.php'; ?>
+                <?php include './../composants/post-options.php'; ?>
                 <div class="iceberg-select">
                     <select name="iceberg" id="icebergSelect">
                         <option value="" disabled selected>
@@ -142,13 +142,13 @@
                 }
                 ?>
             </div>
-            <?php include '../composants/white_content_right.php'; ?>
+            <?php include './../composants/white_content_right.php'; ?>
         </div>
         
     </div>
 </main>
-<?php include '../composants/script_link.php'; ?>
-<?php include '../composants/footer.php'; ?>
+<?php include './../composants/script_link.php'; ?>
+<?php include './../composants/footer.php'; ?>
 
 <script>
     document.getElementById('icebergSelect').addEventListener('change', function () {

@@ -4,20 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="./../public/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <title>Register</title>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="../image/png" href="../public/img/abyssicon.png">
-    <?php require_once("../composants/ResquestDarkMode.php"); ?>
+    <link rel="icon" type="./../image/png" href="./../public/img/abyssicon.png">
+    <?php require_once("./../composants/ResquestDarkMode.php"); ?>
 
 </head>
 
 <body class="<?php echo $darkMode ? 'dark-mode' : ''; ?> body_secondary">
-    <?php include '../composants/no_user_navbar.php'; ?>
-    <?php require_once('../serveur/sessionStart.php'); ?>
+    <?php include './../composants/no_user_navbar.php'; ?>
+    <?php require_once('./../serveur/sessionStart.php'); ?>
 
     <div class="DivAllForm">
         <div class="h3Div">
@@ -140,7 +140,7 @@
                 </div>
             </div><br />
             <div class="captchaDiv" id="captchaDiv" style="display: none;">
-                <img src="../capcha/test.php" alt="CAPTCHA" /><br />
+                <img src="./../capcha/test.php" alt="CAPTCHA" /><br />
                 <input type="text" name="captcha" class="demiInput" placeholder="Captcha" required />
 
                 <?php

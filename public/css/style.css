@@ -126,6 +126,8 @@ option{
   width: 100%;
   display: flex;
   justify-content: center;
+  height: 27vh;
+  align-items: center;
 }
 
 .white-content {
@@ -137,7 +139,7 @@ option{
   margin-top: -10px;
   margin-left: 5vh;
   margin-right: 5vh;
-  box-shadow: inset gray 0px 1px 6px 3px;
+  box-shadow: inset gray 0px 3px 13px 0px;
 }
 .white-content-admin {
   background-color: white;
@@ -161,7 +163,7 @@ option{
   width: 14em;
   max-width: 600px;
   margin-top: -10px;
-  box-shadow: inset gray 0px 1px 6px 3px;
+  box-shadow: inset gray 0px 3px 13px 0px;
   display: flex;
     flex-direction: column;
     align-items: center;
@@ -473,7 +475,7 @@ transform: translateY(2px);
     margin-top: 25px;
     margin-left: 5vh;
     margin-right: 5vh;
-    box-shadow: inset gray 1px 1px 8px 3px;
+    box-shadow: inset gray 0px 1px 13px 0px;
 }
 
 .inputTitle {
