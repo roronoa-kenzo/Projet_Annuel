@@ -13,4 +13,10 @@
     <ul style="padding: 5%;">
         <a class="href-admin" href="#">User Ban</a>
     </ul>
+    <ul style="padding: 5%;">
+        <a class="href-admin" href="#">Reporte</a>
+    </ul>
+    <ul style="padding: 5%;">
+        <a class="href-admin" href="#">Signalement</a>
+    </ul>
 </div>

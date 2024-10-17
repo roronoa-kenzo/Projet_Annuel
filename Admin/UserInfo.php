@@ -40,10 +40,14 @@
 
                 <div class="post-container-admin">
                     <div class="iceberg-select">
-
-                        <p>Recherche User</p>
-                        <input type="text" class="inpuTextAdmin" name="" id="">
+                    <p>Recherche User</p>
+                    <input type="text" class="inpuTextAdmin" id="searchInput" placeholder="Rechercher un utilisateur...">
+                    <button id="searchButton">Rechercher</button> <!-- Bouton de recherche -->
                     </div>
+                </div>
+
+                <div class="users-list" id="usersList">
+                    <!-- Les résultats de la recherche seront insérés ici via JavaScript -->
                 </div>
 
                 <div class="users-list">
@@ -68,6 +72,7 @@
             </div>
         </div>
     </main>
+    <script src="./searchbar.js"></script>
     <script src="./../public/js/searchbar.js"></script>
     <script src="./../public/js/darkmode.js"></script>
 

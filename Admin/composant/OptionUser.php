@@ -9,8 +9,13 @@ try {
         echo "Utilisateur non connecté.";
         exit();
     }
-
     $userId = intval($_SESSION['user_id']);  // Convertit en entier pour éviter les injections SQL
+    if(isset(($_POST['CommentUser']))) {
+        header('Location: ./../CommentUser.php?user='.$userId);
+    }
+    if(isset(($_POST['PostUser']))) {
+        header('Location: ./../PostUser.php?user='.$userId);
+    }
 
     // Vérifie si l'ID de l'utilisateur est envoyé via POST pour suppression
     if (isset($_POST['delete'])) {
@@ -110,10 +115,40 @@ try {
             echo "Une erreur est survenue lors de la suppression du forum.";
         }
     }
-    if(isset(($_POST['message']))) {
-        header('Location: ./../UserMessage.php?user='.$userId);
+
+    if(isset($_POST['home'])){
+        header('Location: ./../User.php?user=' . $userId);
+    }
+    if (isset($_POST['delete_post']) && isset($_POST['post_id'])) {
+        $postId = $_POST['post_id'];
+    
+        // Préparer la requête de suppression
+        $deleteQuery = "DELETE FROM posts WHERE id = :postId";
+        $stmt = $pdo->prepare($deleteQuery);
+        $stmt->bindParam(':postId', $postId, PDO::PARAM_INT);
+    
+        var_dump($postId) ;
+        if ($stmt->execute()) {
+            header('Location: ./../User.php?user=' . $userId);
+        } else {
+            echo "Erreur lors de la suppression du post.";
+        }
     }
 
+    if (isset($_POST['delete_comment']) && isset($_POST['comment_id'])) {
+        $commentId = $_POST['comment_id'];
+    
+        // Préparer la requête de suppression du commentaire
+        $deleteCommentQuery = "DELETE FROM comments WHERE id = :commentId";
+        $stmt = $pdo->prepare($deleteCommentQuery);
+        $stmt->bindParam(':commentId', $commentId, PDO::PARAM_INT);
+    
+        if ($stmt->execute()) {
+            echo "Le commentaire a été supprimé avec succès.";
+        } else {
+            echo "Erreur lors de la suppression du commentaire.";
+        }
+    }
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }
