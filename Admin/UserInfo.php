@@ -48,9 +48,7 @@
 
                 <div class="users-list" id="usersList">
                     <!-- Les résultats de la recherche seront insérés ici via JavaScript -->
-                </div>
 
-                <div class="users-list">
                     <?php foreach ($users as $user): ?>
                         <div class="post-container-admin">
                             <a class="userLien" href="User.php?user=<?= $user['id'] ?>">
@@ -58,9 +56,7 @@
                                 <span class="username status <?= $user['is_connected'] ? '' : 'not-connected' ?>">
                                     <?= $user['is_connected'] ? 'Connecté :' : 'Non connecté :' ?>
                                 </span>
-                                <span class="username"><?= htmlspecialchars($user['username']) ?></span><br>
-                                
-                                
+                                <span class="username"><?= htmlspecialchars($user['username']) ?></span><br>                                
                                 <span class="username" >Prénom : <?= htmlspecialchars($user['first_name']) ?></span><br>
                                 <span class="username">Nom : <?= htmlspecialchars($user['last_name']) ?></span><br>
                                 <span class="username">Email : <?= htmlspecialchars($user['email']) ?></span>
