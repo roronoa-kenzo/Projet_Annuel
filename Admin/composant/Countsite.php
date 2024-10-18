@@ -1,5 +1,4 @@
     <?php
-
     //compter les user 
 // Récupération du nombre d'utilisateurs
 $sql = "SELECT * FROM users";

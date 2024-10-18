@@ -40,7 +40,15 @@
         $_SESSION["username"] = $result["username"];
         $_SESSION["user_profile"] = !empty($result["user_profile"]) ? $result["user_profile"] : '../public/img/abyssicon.png';
         $_SESSION["user_id"] = $result["id"];
+        
+        $dureDuCookie = time() + (7 * 24 * 3600); 
 
+        // Créer les cookies
+        setcookie('formusername', $formusername, $dureDuCookie, "/");
+        setcookie('imgprofile', $imgprofile, $dureDuCookie, "/");
+        setcookie('email', $email, $dureDuCookie, "/");
+        setcookie('userId', $userId, $dureDuCookie, "/");
+                    
         // Récupération des forums auxquels l'utilisateur est abonné
         $userId = $_SESSION['user_id'];
         $query = $pdo->prepare('

@@ -111,7 +111,7 @@
                                 $forumAbyssId = $pdo->lastInsertId(); // Récupérer l'ID du forum nouvellement créé
 
                             } else {
-                                //page d'erreur
+                                // page d'erreur
                                 exit();
                             }
                         }
@@ -125,7 +125,7 @@
                         if ($subscribeQuery->execute()) {
 
                         } else {
-                            //page d'erreur
+                            // page d'erreur
                         }
                 
                         // Stocker les informations de l'utilisateur dans la session
@@ -134,6 +134,14 @@
                         $_SESSION["email"] = $email;
                         $_SESSION["user_id"] = $userId;
                         
+                        $dureDuCookie = time() + (7 * 24 * 3600); 
+
+                        // Créer les cookies
+                        setcookie('formusername', $formusername, $dureDuCookie, "/");
+                        setcookie('imgprofile', $imgprofile, $dureDuCookie, "/");
+                        setcookie('email', $email, $dureDuCookie, "/");
+                        setcookie('userId', $userId, $dureDuCookie, "/");
+                    
                         // Récupérer les forums auxquels l'utilisateur est abonné
                         $query = $pdo->prepare('
                             SELECT forums.id, forums.name 
@@ -151,10 +159,10 @@
                         header('Location: index.php');
                         exit();
                     } else {
-                        //page d'erreur
+                        // page d'erreur
                     }
                 } catch (PDOException $e) {
-                    //page d'erreur
+                    // page d'erreur
                 }
 
             } else {
