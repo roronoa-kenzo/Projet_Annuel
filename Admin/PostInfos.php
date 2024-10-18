@@ -66,19 +66,19 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php
                         foreach ($posts as $post): ?>
                             <div class="post-container-admin">
-                                <a class="userLien" href="User.php?user=<?= $posts['creator_id'] ?>">
+                                <a class="userLien" href="PostUser.php?user=<?= $post['creator_id'] ?>">
                                     <div class="iceberg-select">
                                         <span class="">
-                                            Post by:<?= htmlspecialchars($posts['username']) ?>
+                                            Post by:<?= htmlspecialchars($post['username']) ?>
                                         </span><br>
-                                        <span class="username">Tilte forum :
-                                            <?= htmlspecialchars($posts['forum_title']) ?></span><br>
                                         <span class="username">Tilte post :
-                                            <?= htmlspecialchars($posts['post_title']) ?></span><br>
+                                            <?= htmlspecialchars($post['post_title']) ?></span><br>
                                         <span class="username">Description :
-                                            <?= htmlspecialchars($posts['content']) ?></span><br>
+                                            <?= htmlspecialchars($post['content']) ?></span><br>
+                                            <span class="username">Tilte forum :
+                                                <?= htmlspecialchars($post['forum_title']) ?></span><br>
                                         <span class="username">Date creation :
-                                            <?= htmlspecialchars($posts['post_created_at']) ?></span>
+                                            <?= htmlspecialchars($post['post_created_at']) ?></span>
                                     </div>
                             </div>
                             </a>

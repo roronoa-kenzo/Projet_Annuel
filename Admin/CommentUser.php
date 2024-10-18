@@ -29,7 +29,7 @@ if (isset($_GET['user']) && is_numeric($_GET['user'])) {
         <link rel="stylesheet" href="../public/css/style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <title>Commentaires de <?= htmlspecialchars($user['username']) ?></title>
+        <title>Comments</title>
         <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
             rel="stylesheet">
         <link rel="icon" type="../public/image/png" href="../public/img/abyssicon.png">

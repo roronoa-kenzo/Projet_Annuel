@@ -132,7 +132,7 @@ try {
     
         var_dump($postId) ;
         if ($stmt->execute()) {
-            header('Location: ./../User.php?user=' . $userId);
+            header('Location: ./../PostUser.php?user=' . $userId);
         } else {
             echo "Erreur lors de la suppression du post.";
         }

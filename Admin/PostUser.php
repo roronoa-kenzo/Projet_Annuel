@@ -59,11 +59,10 @@ if (isset($_GET['user']) && is_numeric($_GET['user'])) {
                             <?php foreach ($posts as $post) { ?>
                                 <div class="post-container-admin">
                                     <div class="iceberg-select">
-                                        <h4>Forum : <?= htmlspecialchars($post['forum_name']) ?>
-                                            <?= htmlspecialchars($post['forum_description']) ?>
+                                        <h4>Tilte Post<?= htmlspecialchars($post['post_content']) ?>
                                         </h4>
                                         <p><?= htmlspecialchars($post['post_title']) ?></p>
-                                        <p><?= htmlspecialchars($post['post_content']) ?></p>
+                                        <p>Forum : <?= htmlspecialchars($post['forum_name']) ?></p>
                                         <form action="./composant/OptionUser.php" method="POST">
                                             <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
                                             <button type="submit" name="delete_post" class="delete-button">Supprimer</button>
