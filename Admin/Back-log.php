@@ -1,3 +1,6 @@
+<?php
+require_once './composant/admin_check.php'; // Inclure le fichier qui vérifie l'accès admin
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
     <link rel="icon" type="../public/image/png" href="../public/img/abyssicon.png">
+
 </head>
 
 <body>
@@ -23,6 +27,7 @@
             <h1>Admin</h1>
         </div>
         <div class="main-index-admin">
+
             <?php include './composant/white_content_left-admin.php'; ?>
             <div class="white-content-admin">
 

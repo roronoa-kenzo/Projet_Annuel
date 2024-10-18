@@ -1,3 +1,6 @@
+<?php
+require_once './composant/admin_check.php'; // Inclure le fichier qui vérifie l'accès admin
+?>
 <!DOCTYPE html>
 <html lang="en">
 

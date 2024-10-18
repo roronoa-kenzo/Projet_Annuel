@@ -1,4 +1,6 @@
 <?php
+require_once './composant/admin_check.php'; // Inclure le fichier qui vérifie l'accès admin
+
 include './composant/database.php';
 
 $query = isset($_GET['query']) ? $_GET['query'] : '';

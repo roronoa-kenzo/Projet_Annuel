@@ -1,5 +1,6 @@
 <?php
 // Inclure la connexion à la base de données
+require_once './composant/admin_check.php'; // Inclure le fichier qui vérifie l'accès admin
 include './composant/database.php';
 include './composant/sessionStart.php';
 
