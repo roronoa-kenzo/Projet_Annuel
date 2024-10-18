@@ -5,8 +5,8 @@ require_once './composant/database.php'; // Inclure le fichier de connexion à l
 // Vérifier si l'email est présent dans la session
 if (!isset($_COOKIE['email'])) {
     // Si l'email n'est pas défini dans la session, rediriger vers la page d'accueil
-    //session_unset();
-    //session_destroy();
+    session_unset();
+    session_destroy();
     header('Location: ./../view/index.php');
     exit();
 }
@@ -25,8 +25,8 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 // Vérifier si l'utilisateur existe, s'il est admin et si l'email se termine par "@abyss.boats"
 if (!$user || !$user['is_admin'] || !str_ends_with($user['email'], '@abyss.boats')) {
     // Si l'utilisateur n'existe pas, n'est pas admin ou n'a pas un email se terminant par "@abyss.boats"
-    //session_unset();
-    //session_destroy();
+    session_unset();
+    session_destroy();
     header('Location: ./../view/index.php');
     exit();
 }

@@ -54,6 +54,7 @@ if (isset($_GET['user']) && is_numeric($_GET['user'])) {
                                             <!-- Formulaire de suppression du commentaire -->
                                             <form action="./composant/OptionUser.php" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');">
                                                 <input type="hidden" name="comment_id" value="<?= $comment['comment_id'] ?>">
+                                                <input type="hidden" name="clickComment" value="clickComment">
                                                 <button type="submit" name="delete_comment" class="delete-button">Supprimer</button>
                                             </form>
                                         </div>

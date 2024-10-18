@@ -8,7 +8,9 @@ try {
         echo "Utilisateur non connecté.";
         exit();
     }
+    
     $userId = intval($_SESSION['user_id']);  // Convertit en entier pour éviter les injections SQL
+
     if(isset(($_POST['CommentUser']))) {
         header('Location: ./../CommentUser.php?user='.$userId);
     }
@@ -96,20 +98,21 @@ try {
             echo "Erreur lors de la mise à jour du statut de bannissement.";
         }
     }
-    if (isset($_POST['forum_id'])) {
+    if (isset($_POST['forum_id']) && isset($_POST['clickForum'])) {
         // Récupérer l'ID du forum à supprimer
         $forumId = $_POST['forum_id'];
-    
         // Préparer la requête de suppression
         $deleteQuery = "DELETE FROM forums WHERE id = :forum_id";
-    
         // Préparer et exécuter la requête
         $stmtDelete = $pdo->prepare($deleteQuery);
         $stmtDelete->bindParam(':forum_id', $forumId, PDO::PARAM_INT);
     
         // Exécuter la requête et vérifier si la suppression a réussi
         if ($stmtDelete->execute()) {
+            unset($_POST['forum_id']);
+            unset($_POST['clickForum']);
             header('Location: ./../User.php?user=' . $userId);
+            exit();
         } else {
             echo "Une erreur est survenue lors de la suppression du forum.";
         }
@@ -118,6 +121,7 @@ try {
     if(isset($_POST['home'])){
         header('Location: ./../User.php?user=' . $userId);
     }
+    
     if (isset($_POST['delete_post']) && isset($_POST['post_id'])) {
         $postId = $_POST['post_id'];
     
@@ -148,6 +152,10 @@ try {
             echo "Erreur lors de la suppression du commentaire.";
         }
     }
+    echo "<pre>" . print_r($_SESSION, true) . "</pre>";
+echo "<pre>" . print_r($_COOKIE, true) . "</pre>";
+echo "<pre>" . print_r($_POST, true) . "</pre>";
+echo "<pre>" . print_r($_GET, true) . "</pre>";
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }

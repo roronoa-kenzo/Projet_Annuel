@@ -40,32 +40,31 @@ require_once './composant/admin_check.php'; // Inclure le fichier qui vérifie l
                     </div>
                 </a>
                 <div class="post-container-admin">
-
                     <a href="#">
                         <div class="iceberg-select">
                             <p>Nombre de user connecter: <?php echo $useconnectCount ?></p>
                         </div>
                 </div>
                 </a>
-                <a href="#">
+                <a href="./ForumInfos.php">
                     <div class="post-container-admin">
                         <div class="iceberg-select">
-                            <p>Nombre de Message: <?php echo $commentsCount ?></p>
-
+                            <p>Nombre de Iceberg : <?php echo $icebergCount ?></p>
                         </div>
                     </div>
                 </a>
-                <a href="#">
+                <a href="./PostInfos.php">
                     <div class="post-container-admin">
                         <div class="iceberg-select">
                             <p>Nombre de Post : <?php echo $postCount ?></p>
                         </div>
                     </div>
                 </a>
-                <a href="#">
+                <a href="./CommentInfos.php">
                     <div class="post-container-admin">
                         <div class="iceberg-select">
-                            <p>Nombre de Iceberg : <?php echo $icebergCount ?></p>
+                            <p>Nombre de Message: <?php echo $commentsCount ?></p>
+
                         </div>
                     </div>
                 </a>

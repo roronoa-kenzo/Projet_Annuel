@@ -7,8 +7,14 @@
     <ul style="padding: 5%;">
         <a class="href-admin" href="./UserInfo.php">Users info</a>
     </ul>
-    <ul style="padding: 5%;">   
-        <a class="href-admin" href="#">Users connect</a>
+    <ul style="padding: 5%;">
+        <a class="href-admin" href="./ForumInfos.php">Forum sur Abyss</a>
+    </ul>
+    <ul style="padding: 5%;">
+        <a class="href-admin" href="./PostInfos.php">Post sur Abyss</a>
+    </ul>
+    <ul style="padding: 5%;">
+        <a class="href-admin" href="./CommentInfos.php">Commentaire</a>
     </ul>
     <ul style="padding: 5%;">
         <a class="href-admin" href="#">User Ban</a>
