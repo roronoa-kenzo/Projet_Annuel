@@ -251,11 +251,16 @@ textarea{
   background-color: #e8e8e8;
 }
 .href-admin{
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  padding:10px;
-  color: black;
-  font-family: "Josefin Sans", sans-serif;
+  background-color: #ddd;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
+    width: 20vh;
 }
 .href-admin:hover{
   background-color:#808080;
@@ -451,4 +456,40 @@ transform: translateY(2px);
 .main-index-admin{
   display: flex;
   justify-content: center;
+}
+span{
+  font-family: "Josefin Sans", sans-serif;
+}
+h4{
+  font-family: "Josefin Sans", sans-serif;
+}
+button{
+  font-family: "Josefin Sans", sans-serif;
+
+}
+a{
+  font-family: "Josefin Sans", sans-serif;
+
+}
+h2{
+  font-family: "Josefin Sans", sans-serif;
+
+}
+
+.btn-menu{
+  background-color: #ddd;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
+    width: 20vh;
+    margin-bottom: 3vh;
+}
+.btn-menu:hover{
+  background-color:#808080;
 }
