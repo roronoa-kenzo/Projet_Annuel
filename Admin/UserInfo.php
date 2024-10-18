@@ -35,7 +35,7 @@ require_once './composant/admin_check.php'; // Inclure le fichier qui vérifie l
 <body>
     <main class="container">
         <div class="black-frame">
-            <h1>All user and infos</h1>
+            <h1>All users</h1>
         </div>
         <div class="main-index-admin">
             <?php include './composant/white_content_left-admin.php'; ?>
