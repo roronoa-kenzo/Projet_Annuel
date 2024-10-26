@@ -153,9 +153,9 @@ try {
         }
     }
     echo "<pre>" . print_r($_SESSION, true) . "</pre>";
-echo "<pre>" . print_r($_COOKIE, true) . "</pre>";
-echo "<pre>" . print_r($_POST, true) . "</pre>";
-echo "<pre>" . print_r($_GET, true) . "</pre>";
+    echo "<pre>" . print_r($_COOKIE, true) . "</pre>";
+    echo "<pre>" . print_r($_POST, true) . "</pre>";
+    echo "<pre>" . print_r($_GET, true) . "</pre>";
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }

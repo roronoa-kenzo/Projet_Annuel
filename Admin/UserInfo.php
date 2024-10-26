@@ -52,7 +52,9 @@ require_once './composant/admin_check.php'; // Inclure le fichier qui vérifie l
                 <div class="users-list" id="usersList">
                     <!-- Les résultats de la recherche seront insérés ici via JavaScript -->
 
-                    <?php foreach ($users as $user): ?>
+                    <?php 
+                    foreach ($users as $user): 
+                    ?>
                         <div class="post-container-admin">
                             <a class="userLien" href="User.php?user=<?= $user['id'] ?>">
                             <div class="iceberg-select">
