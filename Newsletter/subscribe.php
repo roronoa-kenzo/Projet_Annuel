@@ -20,8 +20,6 @@ try {
     /* Si la connexion échoue j'affiche un message d'erreur */
     //echo "Échec de la connexion : " . $e->getMessage();
 
-
-
     // page d'eurreur
 }
 
@@ -30,7 +28,7 @@ require_once './../serveur/sessionStart.php';
 require_once './vendor/autoload.php'; // SwiftMailer
 
 // Récupération de l'adresse e-mail (par exemple, à partir d'un formulaire)
-$email = $_POST['email'];
+$email = $_SESSION['email'];
 
 // Validation de l'adresse e-mail
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {

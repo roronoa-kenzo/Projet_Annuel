@@ -4,21 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="./../public/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <title>Register</title>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="image/png" href="../public/img/abyssicon.png">
+    <link rel="icon" type="image/png" href="./../public/img/abyssicon.png">
 </head>
 
 <body>
-    <?php require_once("../serveur/database.php"); ?>
-    <?php require_once('../serveur/sessionStart.php'); ?>
+    <?php require_once("./../serveur/database.php"); ?>
+    <?php require_once('./../serveur/sessionStart.php'); ?>
     <?php require_once('./../serveur/logconnection.php');?>
 
     <?php
+    
     $lastname = $_POST['lastname'];
     $firstname = $_POST['firstname'];
     $gender = $_POST['gender'];
@@ -36,7 +37,7 @@
 
     if (empty($lastname) || empty($firstname) || empty($gender) || empty($datebrith) || empty($phone) || empty($email) || empty($formusername) || empty($formpassword) || empty($passwordbis)) {
         $_SESSION['Error'] = 'All fields are required.';
-        header('Location: register.php');
+        header('Location: ./register.php');
         exit();
     }
 
@@ -44,7 +45,7 @@
     $calcAge = date('Y-m-d', strtotime('-18 years'));
     if ($datebrith > $calcAge) {
         $_SESSION['Errordatebrith'] = 'Too young.';
-        header('Location: register.php');
+        header('Location: ./register.php');
         exit();
     }
 
@@ -55,7 +56,7 @@
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
         $_SESSION['Erroremail'] = 'This email is already registered.';
-        header('Location: register.php');
+        header('Location: ./register.php');
         exit();
     }
 
@@ -66,7 +67,7 @@
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
         $_SESSION['Errorformusername'] = 'This username is already registered.';
-        header('Location: register.php');
+        header('Location: ./register.php');
         exit();
     }
 
@@ -156,7 +157,7 @@
                         $_SESSION['subscribed_forums'] = $subscribedForums;
                         loginUser($_SESSION["user_id"]);
                         // Redirection vers l'index après le succès
-                        header('Location: index.php');
+                        header('Location: ./../Newsletter/subscribe.php');
                         exit();
                     } else {
                         // page d'erreur
@@ -167,13 +168,13 @@
 
             } else {
                 $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
-                header("Location:register.php");
+                header("Location:./register.php");
                 exit();
             }
         }
     } else {
         $_SESSION['Errorformpassword'] = 'Passwords do not match.';
-        header('Location: register.php');
+        header('Location: ./register.php');
         exit();
     }
     
