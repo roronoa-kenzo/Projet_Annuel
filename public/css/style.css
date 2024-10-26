@@ -4,12 +4,11 @@ body, html {
   width: 100%;
   height: 100%;
 }
-.indexBody{
+.indexBody  {
   background-color: white;
   color: black;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-
 
 .body_secondary{
   background-color: black;

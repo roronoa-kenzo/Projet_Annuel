@@ -1,12 +1,10 @@
 <!-- index.php -->
-<?php include '../composants/header.php'; ?>
-<?php include '../composants/navbar.php'; ?>
+<?php include './../composants/header.php'; ?>
+<?php include './../composants/navbar.php'; ?>
 
 <main class="container">
     <div class="black-frame">
-
         <h1>Welcome in Abyss</h1>
-
     </div>
     <div class="main-index">
         <?php include '../composants/white_content_left.php'; ?>
