@@ -5,6 +5,7 @@
 if (isset($_POST['darkMode'])) {
     $_SESSION['darkMode'] = $_POST['darkMode'];
 }
+$darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
 
 // Définir la variable pour savoir si le mode sombre est activé
 ?>
