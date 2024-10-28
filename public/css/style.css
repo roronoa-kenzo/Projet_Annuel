@@ -162,6 +162,7 @@ option{
 
 .white-content-secondary {
   background-color: white;
+  height: 50em;
   padding: 20px;
   border-radius: 20px;
   width: 14em;
