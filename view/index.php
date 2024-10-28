@@ -120,24 +120,50 @@
                     echo '<p class="no-posts">No posts yet. Start posting!</p>';
                 } else {
                     foreach ($posts as $post) {
-                        echo '<div class="posts-list">';
-                        echo '<div class="post">';
-                        echo '<div class="post-head">';
-                        echo '<div class="post-head-first">';
-                        echo '<img src="' . htmlspecialchars($post['user_profile']) . '" alt="User Avatar" class="user-avatar">';
-                        echo '<p><strong>' . htmlspecialchars($post['username']) . '</strong></p>';
-                        echo '</div>';
-                        echo '<div class="post-forum">';
-                        echo '<p class="p-forum"><strong>' . htmlspecialchars($forum['name']) . '</strong></p>';
-                        echo '</div>';
-                        echo '</div>';
-                        echo '<div class="post-content">';
-                        echo '<h2>' . htmlspecialchars($post['title']) . '</h2>';
-                        echo '<p>' . htmlspecialchars($post['content']) . '</p>';
-                        echo '<small>Posted on ' . htmlspecialchars($post['created_at']) . '</small>';
-                        echo '</div>';
-                        echo '</div>';
-                        echo '</div>';
+                        echo '<div class="posts-list">
+                        <div class="post">
+                            <div class="post-head">
+                                <div class="post-head-first">
+                                    <img src="' . htmlspecialchars($post['user_profile']) . '" alt="User Avatar" class="user-avatar">
+                                    <p><strong>' . htmlspecialchars($post['username']) . '</strong></p>
+                                </div>
+                                <div class="post-forum">
+                                    <p class="p-forum"><strong>' . htmlspecialchars($forum['name']) . '</strong></p>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <h2>' . htmlspecialchars($post['title']) . '</h2>
+                                <p>' . htmlspecialchars($post['content']) . '</p>
+                                <small>Posted on ' . htmlspecialchars($post['created_at']) . '</small>
+                                <br>';
+                                
+                            $query = $pdo->prepare('SELECT is_like FROM post_reactions WHERE post_id = :postId AND user_id = :userId');
+                            $query->execute(['postId' => $post['id'], 'userId' => $userId]);
+                            $reaction = $query->fetch();
+                            $isLiked = $reaction && $reaction['is_like'] == 1;
+
+                            echo '<form method="POST" action="like.php" style="display: inline;">
+                                <input type="hidden" name="post_id" value="' . htmlspecialchars($post['id']) . '">
+                                <button type="submit" class="like-button' . ($isLiked ? ' liked' : '') . '">
+                                    <div class="like-wrapper">
+                                        <div class="ripple"></div>
+                                        <svg class="heart" width="24" height="24" viewBox="0 0 24 24">
+                                            <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"></path>
+                                        </svg>
+                                        <div class="particles" style="--total-particles: 6">
+                                            <div class="particle" style="--i: 1; --color: #7642F0"></div>
+                                            <div class="particle" style="--i: 2; --color: #AFD27F"></div>
+                                            <div class="particle" style="--i: 3; --color: #DE8F4F"></div>
+                                            <div class="particle" style="--i: 4; --color: #D0516B"></div>
+                                            <div class="particle" style="--i: 5; --color: #5686F2"></div>
+                                            <div class="particle" style="--i: 6; --color: #D53EF3"></div>
+                                        </div>
+                                    </div>
+                                </button>
+                            </form>;
+                        </div>
+                    </div>
+                    </div>'
                     }
                 }
                 ?>
