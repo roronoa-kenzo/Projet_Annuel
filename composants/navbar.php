@@ -4,6 +4,7 @@
 // Vérifiez si le formulaire a été soumis pour activer/désactiver le mode sombre
 if (isset($_POST['darkMode'])) {
     $_SESSION['darkMode'] = $_POST['darkMode'];
+    header("Location: " . $_SERVER['PHP_SELF']);
 }
 $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
 
