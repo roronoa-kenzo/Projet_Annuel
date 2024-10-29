@@ -19,6 +19,7 @@
     <?php include './../composants/no_user_navbar.php'; ?>
     <?php require_once('./../serveur/sessionStart.php'); ?>
 
+
     <div class="DivAllForm">
         <div class="h3Div">
             <h3 class="h3Register">Login</h3>
@@ -44,8 +45,10 @@
             </div></br>
 
             <div class="captchaDiv" id="captchaDiv" style="display: none;">
+
                 <img src="./../capcha/test.php" alt="CAPTCHA" /><br />
                 <input type="text" name="captcha" class="demiInput" placeholder="Captcha" required />
+
 
                 <?php
                 if (isset($_SESSION['ErrorCaptcha'])) {
@@ -55,7 +58,9 @@
                 ?>
             </div>
             <div>
-                <a href="forgetaccount.php" class="divLink">Forget password or email ?</a>
+
+                <a href="forgetPassWord.php" class="divLink">Forget password or email ?</a>
+
             </div>
 
             <button class="buttonSubmit" name="valid" onclick="showCaptcha()" type="submit">Login</button>

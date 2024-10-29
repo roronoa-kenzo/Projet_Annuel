@@ -1,6 +1,7 @@
-<!-- index.php -->
+
 <?php include './../composants/header.php'; ?>
 <?php include './../composants/navbar.php'; ?>
+
 <main class="container">
     <!-- Conteneur pour la notification -->
     <div id="notificationContainer" class="notification-container"></div>
@@ -30,17 +31,22 @@
         }
     ?>
     <div class="black-frame">
+
         <h1>Welcome in Abyss</h1>
+
     </div>
     <div class="main-index">
         <?php include './../composants/white_content_left.php'; ?>
         <div class="center-content">
+
         <div class="white-content">
 
             <div class="post-header">
                 <img src="<?php echo htmlspecialchars($_SESSION["user_profile"]); ?>" alt="User Avatar" class="user-avatar">
                 <?php include './../composants/post-options.php'; ?>
                 <div class="iceberg-select">
+
+
                     <select name="iceberg" id="icebergSelect">
                         <option value="" disabled selected>
                             Select an iceberg
@@ -182,3 +188,4 @@
         document.getElementById('selectedForumId').value = selectedForumId;
     });
 </script>
+

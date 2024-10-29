@@ -15,15 +15,17 @@
 
 </head>
 
+
 <body class="<?php echo $darkMode ? 'dark-mode' : ''; ?> body_secondary">
     <?php include './../composants/no_user_navbar.php'; ?>
     <?php require_once('./../serveur/sessionStart.php'); ?>
+
 
     <div class="DivAllForm">
         <div class="h3Div">
             <h3 class="h3Register">Register</h3>
         </div>
-        <form action="registerResult.php" class=" Form" method="post">
+        <form action="./../Newsletter/subscribe.php" class=" Form" method="post">
 
             <div class="doubleDiv">
                 <div>
@@ -140,7 +142,9 @@
                 </div>
             </div><br />
             <div class="captchaDiv" id="captchaDiv" style="display: none;">
+
                 <img src="./../capcha/test.php" alt="CAPTCHA" /><br />
+
                 <input type="text" name="captcha" class="demiInput" placeholder="Captcha" required />
 
                 <?php
