@@ -1,5 +1,6 @@
 <?php
 // Inclusion du fichier de connexion à la base de données
+
 $host = "localhost"; // Remplace par le nom de ton serveur
 $dbname = "Abyss"; // Le nom de ta base de données
 $username = "bddAbyss";
@@ -26,6 +27,7 @@ try {
 require_once './../serveur/sessionStart.php';
 
 require_once './vendor/autoload.php'; // SwiftMailer
+
 
 // Récupération de l'adresse e-mail (par exemple, à partir d'un formulaire)
 $email = $_SESSION['email'];
@@ -79,7 +81,9 @@ $mailer = new Swift_Mailer($transport);
 
 // Création du message de confirmation
 $subject = 'Confirmation de votre adresse email';
+
 $message = 'Merci de confirmer votre adresse email en cliquant sur le lien suivant : <a href="https://abyss.boats/Newsletter/confirm.php?token=' . $token . '">cliquez pour confirmer</a>';
+
 
 $body = '<html><body>';
 $body .= '<p>' . $message . '</p>';

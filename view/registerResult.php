@@ -16,6 +16,7 @@
 <body>
     <?php require_once("./../serveur/database.php"); ?>
     <?php require_once('./../serveur/sessionStart.php'); ?>
+
     <?php require_once('./../serveur/logconnection.php');?>
 
     <?php
@@ -29,7 +30,10 @@
     $formusername = $_POST['username'];
     $formpassword = $_POST['password'];
     $passwordbis = $_POST['passwordbis'];
-    $imgprofile = !empty($_POST['user_profile']) ? $_POST['user_profile'] : '../public/img/abyssicon.png';
+
+
+    $imgprofile = !empty($_POST['user_profile']) ? $_POST['user_profile'] : './../public/img/abyssicon.png';
+
     $xp = 10;
     $level = 1;
     $is_admin = 0;

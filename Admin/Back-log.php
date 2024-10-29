@@ -1,3 +1,4 @@
+
 <?php
 require_once './composant/admin_check.php'; // Inclure le fichier qui vérifie l'accès admin
 ?>
@@ -9,13 +10,16 @@ require_once './composant/admin_check.php'; // Inclure le fichier qui vérifie l
     <?php include './composant/database.php'; ?>
     <?php include './composant/Countsite.php'; ?>
 
+
     <main class="container">
         <div class="black-frame">
             <h1>Admin</h1>
         </div>
+
         <div class="main-index-admin">
 
             <?php include './composant/white_content_left-admin.php'; ?>
+
             <div class="white-content-admin">
 
                 <a href="./UserInfo.php">

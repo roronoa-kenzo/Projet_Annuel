@@ -1,6 +1,6 @@
 <?php
 // Inclusion du fichier de connexion à la base de données
-require_once 'co_database.php';
+require_once './../serveur/database.php';
 require_once 'vendor/autoload.php'; // SwiftMailer
 
 // Récupération des posts populaires
