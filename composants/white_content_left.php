@@ -1,8 +1,8 @@
 
 <div class="white-content-secondary">
     <h3>Menu</h3>
-    <button>dsfdsffd</button>
-    <button>dsfdsffd</button>
-    <button>dsfdsffd</button>
-    <button>dsfdsffd</button>
+    <button class="btn-menu">dsfdsffd</button>
+    <button class="btn-menu">dsfdsffd</button>
+    <button class="btn-menu">dsfdsffd</button>
+    <button class="btn-menu">dsfdsffd</button>
 </div>
