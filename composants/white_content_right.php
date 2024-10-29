@@ -1,6 +1,7 @@
 
 <div class="white-content-secondary">
     <h3>Mes Forum</h3>
+
     <?php
                         // Vérifiez si l'utilisateur est connecté
                         if (isset($_SESSION["user_id"]) && isset($_SESSION['subscribed_forums'])) {

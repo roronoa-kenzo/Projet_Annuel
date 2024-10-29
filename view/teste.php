@@ -33,7 +33,7 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
 
     <form id="darkModeForm" method="POST">
         <input type="hidden" name="darkMode" id="darkModeInput" value="<?php echo $darkMode ? 'on' : 'off'; ?>">
-        <button type="button" onclick="toggleDarkMode()">Nuit</button>
+        <button type="button" onclick="cacaDarkMode()">Nuit</button>
     </form>
         <?php
         var_dump($darkMode);

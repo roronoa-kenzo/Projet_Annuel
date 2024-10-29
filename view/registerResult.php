@@ -17,16 +17,20 @@
     <?php require_once("./../serveur/database.php"); ?>
     <?php require_once('./../serveur/sessionStart.php'); ?>
 
+    <?php require_once('./../serveur/logconnection.php');?>
+
     <?php
+    
     $lastname = $_POST['lastname'];
     $firstname = $_POST['firstname'];
     $gender = $_POST['gender'];
     $datebrith = $_POST['date'];
     $phone = $_POST['phone'];
-    $email = $_POST['email'];//doit etre unique
-    $formusername = $_POST['username'];//doit etre unique
+    $email = $_POST['email'];
+    $formusername = $_POST['username'];
     $formpassword = $_POST['password'];
     $passwordbis = $_POST['passwordbis'];
+
 
     $imgprofile = !empty($_POST['user_profile']) ? $_POST['user_profile'] : './../public/img/abyssicon.png';
 
@@ -34,11 +38,10 @@
     $level = 1;
     $is_admin = 0;
     $is_banned = 0;
-    $imgprofile = !empty($_POST['user_profile']) ? $_POST['user_profile'] : '../public/img/abyssicon.png';
 
     if (empty($lastname) || empty($firstname) || empty($gender) || empty($datebrith) || empty($phone) || empty($email) || empty($formusername) || empty($formpassword) || empty($passwordbis)) {
         $_SESSION['Error'] = 'All fields are required.';
-        header('Location: register.php');
+        header('Location: ./register.php');
         exit();
     }
 
@@ -46,7 +49,7 @@
     $calcAge = date('Y-m-d', strtotime('-18 years'));
     if ($datebrith > $calcAge) {
         $_SESSION['Errordatebrith'] = 'Too young.';
-        header('Location: register.php');
+        header('Location: ./register.php');
         exit();
     }
 
@@ -57,7 +60,7 @@
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
         $_SESSION['Erroremail'] = 'This email is already registered.';
-        header('Location: register.php');
+        header('Location: ./register.php');
         exit();
     }
 
@@ -68,8 +71,7 @@
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
         $_SESSION['Errorformusername'] = 'This username is already registered.';
-        header('Location: register.php');
-
+        header('Location: ./register.php');
         exit();
     }
 
@@ -91,53 +93,94 @@
                 $request->bindParam(':is_admin', $is_admin);
                 $request->bindParam(':is_banned', $is_banned);
 
-
                 $request->execute();
 
                 // Récupérer l'ID de l'utilisateur nouvellement créé
-                $userId = $pdo->lastInsertId();
+                $userId = $pdo->lastInsertId();try {
+                    if ($userId) {
+                        // Inscrire l'utilisateur au forum "Abyss"
+                        $forumAbyssId = 1;
+                
+                        // Vérifier si le forum avec forum_id = 1 existe
+                        $checkForumQuery = $pdo->prepare('SELECT id FROM forums WHERE id = :forum_id');
+                        $checkForumQuery->bindParam(':forum_id', $forumAbyssId);
+                        $checkForumQuery->execute();
+                
+                        if ($checkForumQuery->rowCount() === 0) {
+                            // Si le forum n'existe pas, le créer
+                            $createForumQuery = $pdo->prepare('INSERT INTO forums (name) VALUES (:forum_name)');
+                            $forumName = 'Abyss'; // Nom du forum à créer
+                            $createForumQuery->bindParam(':forum_name', $forumName);
+                
+                            if ($createForumQuery->execute()) {
+                                $forumAbyssId = $pdo->lastInsertId(); // Récupérer l'ID du forum nouvellement créé
 
-                if ($userId) {
-                    // Inscrire l'utilisateur au forum "Abyss"
-                    $forumAbyssId = 1;
-                    $subscribeQuery = $pdo->prepare('INSERT INTO forum_subscribers (user_id, forum_id) VALUES (:user_id, :forum_id)');
-                    $subscribeQuery->bindParam(':user_id', $userId);
-                    $subscribeQuery->bindParam(':forum_id', $forumAbyssId);
-                    $subscribeQuery->execute();
+                            } else {
+                                // page d'erreur
+                                exit();
+                            }
+                        }
+                
+                        // Inscription de l'utilisateur au forum
+                        $subscribeQuery = $pdo->prepare('INSERT INTO forum_subscribers (user_id, forum_id) VALUES (:user_id, :forum_id)');
+                        $subscribeQuery->bindParam(':user_id', $userId);
+                        $subscribeQuery->bindParam(':forum_id', $forumAbyssId);
+                
+                        // Exécution et vérification de la requête
+                        if ($subscribeQuery->execute()) {
 
-                    $_SESSION["username"] = $formusername;
-                    $_SESSION["user_profile"] = $imgprofile;
-                    $_SESSION["email"] = $email;
-                    $_SESSION["user_id"] = $userId;
+                        } else {
+                            // page d'erreur
+                        }
+                
+                        // Stocker les informations de l'utilisateur dans la session
+                        $_SESSION["username"] = $formusername;
+                        $_SESSION["user_profile"] = $imgprofile;
+                        $_SESSION["email"] = $email;
+                        $_SESSION["user_id"] = $userId;
+                        
+                        $dureDuCookie = time() + (7 * 24 * 3600); 
 
-                    // Récupérer les forums auxquels l'utilisateur est abonné
-                    $query = $pdo->prepare('
-                        SELECT forums.id, forums.name 
-                        FROM forum_subscribers
-                        JOIN forums ON forum_subscribers.forum_id = forums.id
-                        WHERE forum_subscribers.user_id = :user_id
-                    ');
-                    $query->bindParam(':user_id', $userId);
-                    $query->execute();
-                    $subscribedForums = $query->fetchAll(PDO::FETCH_ASSOC);
-                    $_SESSION['subscribed_forums'] = $subscribedForums;
-
-                    header('Location: index.php');
-
-                    exit();
+                        // Créer les cookies
+                        setcookie('formusername', $formusername, $dureDuCookie, "/");
+                        setcookie('imgprofile', $imgprofile, $dureDuCookie, "/");
+                        setcookie('email', $email, $dureDuCookie, "/");
+                        setcookie('userId', $userId, $dureDuCookie, "/");
+                    
+                        // Récupérer les forums auxquels l'utilisateur est abonné
+                        $query = $pdo->prepare('
+                            SELECT forums.id, forums.name 
+                            FROM forum_subscribers
+                            JOIN forums ON forum_subscribers.forum_id = forums.id
+                            WHERE forum_subscribers.user_id = :user_id
+                        ');
+                        $query->bindParam(':user_id', $userId);
+                        $query->execute();
+                
+                        $subscribedForums = $query->fetchAll(PDO::FETCH_ASSOC);
+                        $_SESSION['subscribed_forums'] = $subscribedForums;
+                        loginUser($_SESSION["user_id"]);
+                        // Redirection vers l'index après le succès
+                        header('Location: ./../Newsletter/subscribe.php');
+                        exit();
+                    } else {
+                        // page d'erreur
+                    }
+                } catch (PDOException $e) {
+                    // page d'erreur
                 }
+
             } else {
                 $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
-
-                header("Location:register.php");
+                header("Location:./register.php");
                 exit();
             }
         }
     } else {
         $_SESSION['Errorformpassword'] = 'Passwords do not match.';
-        header('Location: register.php');
+        header('Location: ./register.php');
         exit();
     }
+    
     ?>
 </body>
-

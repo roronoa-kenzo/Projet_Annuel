@@ -31,9 +31,7 @@
         }
     ?>
     <div class="black-frame">
-
         <h1>Welcome in Abyss</h1>
-
     </div>
     <div class="main-index">
         <?php include './../composants/white_content_left.php'; ?>
