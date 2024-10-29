@@ -6,7 +6,7 @@ function toggleDarkMode() {
     const isDarkMode = link.getAttribute('href').includes('darkmode.css');
     
     // Alterne entre style.css et darkmode.css
-    link.setAttribute('href', isDarkMode ? '../public/css/style.css' : '../public/css/darkmode.css');
+    link.setAttribute('href', isDarkMode ? './../public/css/style.css' : './../public/css/darkmode.css');
 
     // Optionnel : Si vous avez un champ caché pour enregistrer l'état
     document.getElementById('darkModeInput').value = isDarkMode ? 'off' : 'on';

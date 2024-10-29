@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../serveur/database.php'; // Adapter le chemin vers votre fichier de configuration
+require_once './../serveur/database.php'; // Adapter le chemin vers votre fichier de configuration
 
 // Vérifiez que l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
@@ -59,3 +59,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Location: index.php');
     exit();
 }
+

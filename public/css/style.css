@@ -44,6 +44,10 @@ header {
     height: 40px;
 }
 
+small{
+  font-family: "Josefin Sans", sans-serif;
+}
+
 p{
   font-family: "Josefin Sans", sans-serif;
 } 
@@ -54,12 +58,22 @@ h1{
   font-size: 52px;
 }
 
+h2{
+  font-family: "Josefin Sans", sans-serif;
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+}
+
 h3{
   font-family: "Josefin Sans", sans-serif;
 }
 
 option{
   font-family: "Josefin Sans", sans-serif;
+}
+
+.button-forum{
+
 }
 
 
@@ -116,6 +130,8 @@ option{
   width: 100%;
   display: flex;
   justify-content: center;
+  height: 27vh;
+  align-items: center;
 }
 
 .white-content {
@@ -127,7 +143,7 @@ option{
   margin-top: -10px;
   margin-left: 5vh;
   margin-right: 5vh;
-  box-shadow: inset gray 1px 1px 8px 3px;
+  box-shadow: inset gray 0px 3px 13px 0px;
 }
 .white-content-admin {
   background-color: white;
@@ -146,15 +162,31 @@ option{
 
 .white-content-secondary {
   background-color: white;
+  height: 50em;
   padding: 20px;
   border-radius: 20px;
   width: 14em;
   max-width: 600px;
   margin-top: -10px;
-  box-shadow: inset gray 1px 1px 8px 3px;
+  box-shadow: inset gray 0px 3px 13px 0px;
   display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.btn-menu{
+  background-color: #ddd;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
+    width: 20vh;
+    margin-bottom: 3vh;
 }
 
 /* White Content Milieu */
@@ -423,4 +455,169 @@ transform: translateY(2px);
   display:flex;
   align-items: center;
   flex-direction: column;
+}
+
+.btn-submit{
+  background-color: black;
+    height: 4vh;
+    width: 13vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    color: white;
+    margin-top: 2vh;
+}
+
+/*------------------------------------------------------Post---------------------------*/
+
+.posts-list{
+  background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    width: 50em;
+    max-width: 600px;
+    margin-top: 25px;
+    margin-left: 5vh;
+    margin-right: 5vh;
+    box-shadow: inset gray 0px 1px 13px 0px;
+}
+
+.inputTitle {
+  width: 96%;
+  height: 24px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #e8e8e8;
+}
+
+.post-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-head-first{
+  display: flex;
+}
+
+.post-forum{
+  background-color: black;
+    height: 4vh;
+    width: 13vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.p-forum{
+  color: white;
+  font-size: 14px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+/*-------------------------------------Notification----------------------------------*/
+
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+  width: 23px;
+}
+
+.notification {
+  position: fixed;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.notification.success {
+  background-color: #4caf50; /* Vert pour les succès */
+}
+
+.notification.error {
+  background-color: #f44336; /* Rouge pour les erreurs */
+}
+
+/*--------------------------------------------------------------------LIKE----------------------------------------------*/
+
+.like-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.like-button .heart {
+  fill: #ff0000; /* Couleur du cœur par défaut */
+  transition: fill 0.3s ease-in-out;
+}
+
+.like-button.liked {
+  background-color: black; /* Fond noir lorsqu'on like */
+}
+
+.like-button.unliked {
+  background-color: white; /* Fond blanc lorsqu'on unlike */
+}
+
+.like-button:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Légèrement plus sombre au survol pour montrer l'interactivité */
+}
+
+.like-button.liked .heart {
+  fill: #ffffff; /* Cœur blanc lorsqu'on like */
+}
+
+.like-button.unliked .heart {
+  fill: #ff0000; /* Cœur rouge lorsqu'on unlike */
+}
+
+/* Styles pour les particules (si un effet est souhaité) */
+.particles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.like-button.liked .particles {
+  opacity: 1; /* Afficher les particules lorsqu'on like */
+}
+
+.particle {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color);
+  animation: particleAnimation 0.6s ease-out forwards;
+}
+
+@keyframes particleAnimation {
+  0% {
+      transform: scale(1) translate(0, 0);
+  }
+  100% {
+      transform: scale(1.5) translate(var(--i, 0) * 10px, var(--i, 0) * -10px);
+      opacity: 0;
+  }
+}
+
 }
