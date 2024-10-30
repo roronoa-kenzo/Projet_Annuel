@@ -1,23 +1,11 @@
 <?php
+require_once './composant/admin_check.php'; // Inclure le fichier qui vérifie l'accès admin
+
+ include './../composants/header.php';
+ include './../composants/navbar.php';
+ include './composant/database.php';
+ include './composant/sessionStart.php'; 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <title>Back Log</title>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
-        rel="stylesheet">
-    <link rel="icon" type="../public/image/png" href="../public/img/abyssicon.png">
-    <?php include './../composants/navbar.php'; ?>
-    <?php include './composant/database.php'; ?>
-    <?php include './composant/sessionStart.php'; ?>
-
-</head>
 <?php
 // Inclure la connexion à la base de données
 // Préparer la requête pour récupérer tous les utilisateurs avec leur statut de connexion
@@ -75,8 +63,8 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <?= htmlspecialchars($post['post_title']) ?></span><br>
                                         <span class="username">Description :
                                             <?= htmlspecialchars($post['content']) ?></span><br>
-                                            <span class="username">Tilte forum :
-                                                <?= htmlspecialchars($post['forum_title']) ?></span><br>
+                                        <span class="username">Tilte forum :
+                                            <?= htmlspecialchars($post['forum_title']) ?></span><br>
                                         <span class="username">Date creation :
                                             <?= htmlspecialchars($post['post_created_at']) ?></span>
                                     </div>

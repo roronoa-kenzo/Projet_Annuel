@@ -137,15 +137,11 @@ option {
   margin-top: -10px;
   margin-left: 5vh;
   margin-right: 5vh;
-
-  box-shadow: inset #0f0e0e 0px 1px 6px 3px;
-
-  box-shadow: inset #0f0e0e 1px 1px 8px 3
-
+  box-shadow: inset #0f0e0e 1px 1px 8px 3;
 }
 
 .white-content-admin {
-  background-color: #2b2b2b;
+  background-color: #232323;
   padding: 20px;
   border-radius: 20px;
   width: 90vh;
@@ -171,21 +167,6 @@ option {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.btn-menu{
-  background-color: #ddd;
-    border: none;
-    color: black;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
-    width: 20vh;
-    margin-bottom: 3vh;
 }
 
 .post-container-admin, .post-container {
@@ -475,11 +456,26 @@ h2{
     width: 20vh;
     margin-bottom: 3vh;
 }
+.btn-menu-admin{
+  background-color: #000000;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
+    width: 20vh;
+    margin-bottom: 3vh;
+}
 .btn-menu:hover{
   background-color:#808080;
 }
-=======
-
+.btn-menu-admin:hover{
+  background-color:#808080;
+}
 .btn-submit{
   background-color: rgb(255, 255, 255);
     height: 4vh;

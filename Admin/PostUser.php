@@ -30,23 +30,12 @@ if (isset($_GET['user']) && is_numeric($_GET['user'])) {
         $postsStmt->execute();
         $posts = $postsStmt->fetchAll(PDO::FETCH_ASSOC);
         ?>
-        <!DOCTYPE html>
-        <html lang="en">
-
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="../public/css/style.css">
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <title>Profil de <?= htmlspecialchars($user['username']) ?></title>
-            <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
-                rel="stylesheet">
-            <link rel="icon" type="../public/image/png" href="../public/img/abyssicon.png">
-            <?php include './../composants/navbar.php'; ?>
-        </head>
-
+        <?php
+        include './../composants/header.php';
+        ?>
+        
         <body>
+            <?php include './../composants/navbar.php'; ?>
             <main class="container">
                 <div class="black-frame">
                     <h1>Posts de <?= htmlspecialchars($user['username']) ?></h1>

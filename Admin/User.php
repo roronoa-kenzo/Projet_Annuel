@@ -17,23 +17,11 @@ if (isset($_GET['user']) && is_numeric($_GET['user'])) {
     // Si l'utilisateur existe, afficher ses informations
     if ($user) {
         ?>
-        <!DOCTYPE html>
-        <html lang="en">
 
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="./../public/css/style.css">
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <title>Profil de <?= htmlspecialchars($user['username']) ?></title>
-            <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
-                rel="stylesheet">
-            <link rel="icon" type="image/png" href="./../public/img/abyssicon.png">
-            <?php include './../composants/navbar.php'; ?>
-        </head>
+        <?php include './../composants/header.php'; ?>
 
         <body>
+            <?php include './../composants/navbar.php'; ?>
             <main class="container">
                 <div class="black-frame">
                     <h1>Profil de <?= htmlspecialchars($user['username']) ?></h1>
@@ -57,43 +45,47 @@ if (isset($_GET['user']) && is_numeric($_GET['user'])) {
                             </div>
                         </div>
 
-                        <div class="post-container-admin">
-                            <h2>Forums créés par <?= htmlspecialchars($user['username']) ?></h2>
 
+
+                        <?php
+                        // Préparer et exécuter la requête pour récupérer les forums créés par l'utilisateur
+                        $queryForums = "SELECT * FROM forums WHERE creator_id = :creator_id";
+                        $stmtForums = $pdo->prepare($queryForums);
+                        $stmtForums->bindParam(':creator_id', $userId, PDO::PARAM_INT);
+                        $stmtForums->execute();
+                        $forums = $stmtForums->fetchAll(PDO::FETCH_ASSOC);
+
+                        if ($forums) { ?>
+                            <div class="post-container-admin">
+                                <h2>Forums créés par <?= htmlspecialchars($user['username']) ?></h2>
+                            </div>
                             <?php
-                            // Préparer et exécuter la requête pour récupérer les forums créés par l'utilisateur
-                            $queryForums = "SELECT * FROM forums WHERE creator_id = :creator_id";
-                            $stmtForums = $pdo->prepare($queryForums);
-                            $stmtForums->bindParam(':creator_id', $userId, PDO::PARAM_INT);
-                            $stmtForums->execute();
-                            $forums = $stmtForums->fetchAll(PDO::FETCH_ASSOC);
-
-                            if ($forums) {
-                                // Si des forums existent, les afficher
-                                foreach ($forums as $forum) {
-                                    ?>
-                                    <div class="forum">
-                                        <hr>
-                                        <p><strong>Nom du forum :</strong><br> <?= htmlspecialchars($forum['name']) ?></p> 
+                            // Si des forums existent, les afficher
+                            foreach ($forums as $forum) {
+                                ?>
+                                <div class="post-container-admin">
+                                    <div class="iceberg-select">
+                                        <p><strong>Nom du forum :</strong><br> <?= htmlspecialchars($forum['name']) ?></p>
                                         <p><strong>Description :</strong> <br><?= htmlspecialchars($forum['description']) ?></p>
                                         <p><strong>Date de création :</strong> <br><?= htmlspecialchars($forum['created_at']) ?></p>
                                         <p><strong>Dernière mise à jour :</strong> <br><?= htmlspecialchars($forum['updated_at']) ?></p>
                                         <form action="./composant/OptionUser.php" method="POST">
-                                        <input type="hidden" name="clickForum" value="clickForum">
-                                        <input type="hidden" name="forum_id" value="<?= htmlspecialchars($forum['id']) ?>">
-                                        <button type="submit">Supprimer ce forum</button>
+                                            <input type="hidden" name="clickForum" value="clickForum">
+                                            <input type="hidden" name="forum_id" value="<?= htmlspecialchars($forum['id']) ?>">
+                                            <button type="submit">Supprimer ce forum</button>
                                         </form>
                                     </div>
-                                    <!-- -->
-                                    <?php
-                                }
-                            } else {
-                                echo "<p>Aucun forum créé par cet utilisateur.</p>";
+                                </div>
+                                <!-- -->
+                                <?php
                             }
-                            ?>
-                        </div>
+                        } else {
+                            echo "<p>Aucun forum créé par cet utilisateur.</p>";
+                        }
+                        ?>
+                    </div>
+                    <?php include './composant/white_content_right-admin.php'; ?>
                 </div>
-                <?php include './composant/white_content_right-admin.php'; ?>
         </body>
 
         </html>

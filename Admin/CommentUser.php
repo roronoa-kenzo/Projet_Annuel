@@ -20,23 +20,12 @@ if (isset($_GET['user']) && is_numeric($_GET['user'])) {
     $commentsStmt->execute();
     $comments = $commentsStmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./../public/css/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <title>Comments</title>
-        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
-            rel="stylesheet">
-        <link rel="icon" type="image/png" href="./../public/img/abyssicon.png">
-        <?php include './../composants/navbar.php'; ?>
-    </head>
+    <?php
+    include './../composants/header.php';
+    ?>
 
     <body>
+        <?php include './../composants/navbar.php'; ?>
         <main class="container">
             <div class="black-frame">
                 <h1>Commentaires de <?= htmlspecialchars($user['username']) ?></h1>
@@ -48,21 +37,22 @@ if (isset($_GET['user']) && is_numeric($_GET['user'])) {
                         <?php foreach ($comments as $comment) { ?>
                             <div class="post-container-admin">
                                 <div class="iceberg-select">
-                                        <h4>Post : <?= htmlspecialchars($comment['post_title']) ?></h4>
-                                        <p><?= htmlspecialchars($comment['comment_content']) ?></p>
-                                            
-                                            <!-- Formulaire de suppression du commentaire -->
-                                            <form action="./composant/OptionUser.php" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');">
-                                                <input type="hidden" name="comment_id" value="<?= $comment['comment_id'] ?>">
-                                                <input type="hidden" name="clickComment" value="clickComment">
-                                                <button type="submit" name="delete_comment" class="delete-button">Supprimer</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <?php } ?>
-                            <?php } else { ?>
-                                <p>Aucun commentaire trouvé pour cet utilisateur.</p>
-                            <?php } ?>
+                                    <h4>Post : <?= htmlspecialchars($comment['post_title']) ?></h4>
+                                    <p><?= htmlspecialchars($comment['comment_content']) ?></p>
+
+                                    <!-- Formulaire de suppression du commentaire -->
+                                    <form action="./composant/OptionUser.php" method="POST"
+                                        onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');">
+                                        <input type="hidden" name="comment_id" value="<?= $comment['comment_id'] ?>">
+                                        <input type="hidden" name="clickComment" value="clickComment">
+                                        <button type="submit" name="delete_comment" class="delete-button">Supprimer</button>
+                                    </form>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <p>Aucun commentaire trouvé pour cet utilisateur.</p>
+                    <?php } ?>
                 </div>
                 <?php include './composant/white_content_right-admin.php'; ?>
             </div>

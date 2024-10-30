@@ -522,10 +522,26 @@ h2{
     width: 20vh;
     margin-bottom: 3vh;
 }
+.btn-menu-admin{
+  background-color: #ddd;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
+    width: 20vh;
+    margin-bottom: 3vh;
+}
 .btn-menu:hover{
   background-color:#808080;
 }
-=======
+btn-menu-admin:hover{
+  background-color:#808080;
+}
 .btn-submit{
   background-color: black;
     height: 4vh;
@@ -689,5 +705,5 @@ h2{
   }
 }
 
-}
+
 

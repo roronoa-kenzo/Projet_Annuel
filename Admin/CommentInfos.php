@@ -1,24 +1,11 @@
 <?php
 require_once './composant/admin_check.php'; // Inclure le fichier qui vérifie l'accès admin
 ?>
-<!DOCTYPE html>
-<html lang="en">
+    <?php include './../composants/header.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./../public/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <title>Back Log</title>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
-        rel="stylesheet">
-    <link rel="icon" type="image/png" href="./../public/img/abyssicon.png">
-    <?php include './../composants/navbar.php'; ?>
     <?php include './composant/database.php'; ?>
     <?php include './composant/sessionStart.php'; ?>
 
-</head>
 <?php
 // Inclure la connexion à la base de données
 // Préparer la requête pour récupérer tous les utilisateurs avec leur statut de connexion
@@ -36,6 +23,7 @@ $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <body>
+<?php include './../composants/navbar.php'; ?>
     <main class="container">
         <div class="black-frame">
             <h1>All comments by users</h1>
