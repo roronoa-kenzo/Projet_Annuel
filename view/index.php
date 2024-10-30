@@ -84,7 +84,7 @@
             </div>
             <!-- Post Textuel et images -->
             <div id="imageVideoContent" style="display: none;">
-                <form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data">
+                <form id="uploadForm" action="./upload.php" method="post" enctype="multipart/form-data">
                     <textarea class="post-textarea" name="description" placeholder="Description..."></textarea>
                     <input type="file" id="fileToUpload" name="fileToUpload" accept=".png, .mp4">
                     <button type="submit" name="submit">Upload</button>

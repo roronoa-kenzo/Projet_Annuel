@@ -11,12 +11,8 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
 ?>
 <header>
     <nav class="navbar">
-    <a href="./../view/index.php">
-        <img src="./../public/img/icon.png" alt="Abyss" class="logo">
-
-
-        <a href="../view/index.php">
-            <img src="../public/img/icon.png" alt="Abyss" class="logo">
+        <a href="./../view/index.php">
+            <img src="./../public/img/icon.png" alt="Abyss" class="logo">
         </a>
 
 
@@ -53,7 +49,7 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                 </script>
 
 
-                <a href="../view/profile.php">
+                <a href="./../view/profile.php">
                     <img src="<?php echo htmlspecialchars($_SESSION["user_profile"]); ?>" alt="User Avatar"
                         class="profile-button">
                 </a>

@@ -16,6 +16,6 @@ if (isset($_SESSION['email'])) {
     exit;
 } else {
     // Redirection vers la page de connexion
-    header('Location: connexion.php');
+    header('Location: ./connexion.php');
     exit;
 }

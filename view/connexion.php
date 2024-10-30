@@ -24,7 +24,7 @@
         <div class="h3Div">
             <h3 class="h3Register">Login</h3>
         </div>
-        <form action="loginResult.php" class="Form" method="post">
+        <form action="./loginResult.php" class="Form" method="post">
 
             <div class="doubleDiv">
                 <div>
@@ -46,7 +46,7 @@
 
             <div class="captchaDiv" id="captchaDiv" style="display: none;">
 
-                <img src="./../capcha/test.php" alt="CAPTCHA" /><br />
+                <img src="./../capcha/captcha.php" alt="CAPTCHA" /><br />
                 <input type="text" name="captcha" class="demiInput" placeholder="Captcha" required />
 
 

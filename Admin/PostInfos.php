@@ -66,7 +66,7 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php
                         foreach ($posts as $post): ?>
                             <div class="post-container-admin">
-                                <a class="userLien" href="PostUser.php?user=<?= $post['creator_id'] ?>">
+                                <a class="userLien" href="./PostUser.php?user=<?= $post['creator_id'] ?>">
                                     <div class="iceberg-select">
                                         <span class="">
                                             Post by:<?= htmlspecialchars($post['username']) ?>

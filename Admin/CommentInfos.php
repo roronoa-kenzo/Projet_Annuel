@@ -7,13 +7,13 @@ require_once './composant/admin_check.php'; // Inclure le fichier qui vérifie l
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="./../public/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <title>Back Log</title>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="../public/image/png" href="../public/img/abyssicon.png">
+    <link rel="icon" type="image/png" href="./../public/img/abyssicon.png">
     <?php include './../composants/navbar.php'; ?>
     <?php include './composant/database.php'; ?>
     <?php include './composant/sessionStart.php'; ?>
@@ -49,7 +49,7 @@ $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <p>Recherche comments</p>
                         <input type="text" class="inpuTextAdmin" id="searchInput"
                             placeholder="Rechercher un utilisateur...">
-                        <button id="searchButton">Rechercher</button> <!-- Bouton de recherche -->
+                        <button id="searchButton">Rechercher</button> 
                     </div>
                 </div>
 
@@ -65,7 +65,7 @@ $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <?php } else { ?>
                         <?php foreach ($comments as $comment): ?>
                             <div class="post-container-admin">
-                                <a class="userLien" href="CommentUser.php?user=<?= $comment['user_id'] ?>">
+                                <a class="userLien" href="./CommentUser.php?user=<?= $comment['user_id'] ?>">
                                     <div class="iceberg-select">
                                         <span class="">
                                             Comment by:<?= htmlspecialchars($comment['username']) ?>

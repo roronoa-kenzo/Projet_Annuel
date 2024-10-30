@@ -9,7 +9,7 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link id="theme-stylesheet" rel="stylesheet" href="../public/css/<?php echo $darkMode ? 'darkmode' : 'style'; ?>.css">
+    <link id="theme-stylesheet" rel="stylesheet" href="./../public/css/<?php echo $darkMode ? 'darkmode' : 'style'; ?>.css">
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
