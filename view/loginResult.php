@@ -39,7 +39,7 @@
 
   //verification mod de pass 
   if (count($result) > 0 && password_verify($formpassword, $result[0]["password_hash"])) {
-    $user = $result[0];
+
     //verification captcha 
     if (isset($_POST['valid'])) {
       // je verifie si c'est a admis ou pas
@@ -143,6 +143,10 @@
           }
         }
       }
+    } else {
+      $_SESSION['ErrorLoginPass'] = 'Email or Password wrong.';
+      header('Location: connexion.php');
+      exit();
     }
   } else {
     $_SESSION['ErrorLoginPass'] = 'Email or Password wrong.';
