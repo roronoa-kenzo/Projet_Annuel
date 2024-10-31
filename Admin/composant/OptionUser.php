@@ -147,7 +147,10 @@ try {
         $stmt->bindParam(':commentId', $commentId, PDO::PARAM_INT);
     
         if ($stmt->execute()) {
-            echo "Le commentaire a été supprimé avec succès.";
+            unset($_POST['delete_comment']);
+            unset($_POST['comment_id']);
+            header('Location: ./../CommentUser.php?user=' . $userId);
+            exit();
         } else {
             echo "Erreur lors de la suppression du commentaire.";
         }
