@@ -4,7 +4,7 @@ require_once './../serveur/database.php'; // Adapter le chemin vers votre fichie
 
 // Vérifiez que l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+    header('Location: ./login.php');
     exit();
 }
 
@@ -17,21 +17,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
      // Validation : vérifier que le titre n'est pas vide
      if (empty($title)) {
         $_SESSION['ErrorTitle'] = 'Le titre du post ne peut pas être vide.';
-        header('Location: index.php');
+        header('Location: ./index.php');
         exit();
     }
 
     // Validation : vérifier que le contenu n'est pas vide
     if (empty($content)) {
         $_SESSION['ErrorContent'] = 'Le contenu du post ne peut pas être vide.';
-        header('Location: index.php');
+        header('Location: ./index.php');
         exit();
     }
 
     // Validation : vérifier qu'un forum a bien été sélectionné
     if (empty($forum_id)) {
         $_SESSION['ErrorForum'] = 'Veuillez sélectionner un forum pour votre post.';
-        header('Location: index.php');
+        header('Location: ./index.php');
         exit();
     }
 
@@ -52,10 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['ErrorPost'] = 'Erreur de connexion à la base de données : ' . $e->getMessage();
     }
 
-    header('Location: index.php');
+    header('Location: ./index.php');
     exit();
 } else {
     // Rediriger si la méthode n'est pas POST
-    header('Location: index.php');
+    header('Location: ./index.php');
     exit();
 }
+

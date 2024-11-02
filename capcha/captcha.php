@@ -37,4 +37,4 @@ header("Content-Type: image/jpeg");
 imagejpeg($img);
 
 imagedestroy($img);
-?>
+

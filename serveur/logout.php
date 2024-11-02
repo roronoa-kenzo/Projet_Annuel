@@ -1,9 +1,13 @@
 <?php
 session_start();
+require_once('database.php');
+
+require_once('logconnection.php');
 
 // Vérifier si l'utilisateur est connecté
 if (isset($_SESSION['email'])) {
     // Détruire la session
+    logoutUser($_SESSION["user_id"]);
     session_unset();
     session_destroy();
 
@@ -12,6 +16,6 @@ if (isset($_SESSION['email'])) {
     exit;
 } else {
     // Redirection vers la page de connexion
-    header('Location: connexion.php');
+    header('Location: ./connexion.php');
     exit;
 }

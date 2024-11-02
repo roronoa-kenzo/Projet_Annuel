@@ -1,13 +1,22 @@
 <!-- composants/navbar.php -->
 <?php
-session_start();
 
+// Vérifiez si le formulaire a été soumis pour activer/désactiver le mode sombre
+if (isset($_POST['darkMode'])) {
+    $_SESSION['darkMode'] = $_POST['darkMode'];
+    header("Location: " . $_SERVER['PHP_SELF']);
+}
+$darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
+
+// Définir la variable pour savoir si le mode sombre est activé
 ?>
 <header>
     <nav class="navbar">
-    <a href="./../view/index.php">
-        <img src="./../public/img/icon.png" alt="Abyss" class="logo">
-    </a>
+        <a href="./../view/index.php">
+            <img src="./../public/img/icon.png" alt="Abyss" class="logo">
+        </a>
+
+
         <?php if (isset($_SESSION['email'])): ?>
             <div id="searchBar" class="search-container">
                 <input type="text" class="inpuText" placeholder="Rechercher...">
@@ -27,16 +36,23 @@ session_start();
                         // Alterne la classe dark-mode sur le body
                         document.body.classList.toggle('dark-mode');
 
-                        // Détermine si le mode sombre est activé
-                        const isDarkMode = document.body.classList.contains('dark-mode');
-
                         // Met à jour la valeur du champ caché et soumet le formulaire
+                        const isDarkMode = document.body.classList.contains('dark-mode');
                         document.getElementById('darkModeInput').value = isDarkMode ? 'on' : 'off';
                         document.getElementById('darkModeForm').submit();
                     }
+
+
+                    // Applique la classe 'dark-mode' si le mode sombre est activé
+                    if (<?php echo json_encode($darkMode); ?>) {
+                        document.body.classList.add('dark-mode');
+                    }
                 </script>
+
+
                 <a href="./../view/profile.php">
-                <img src="<?php echo htmlspecialchars($_SESSION["user_profile"]); ?>" alt="User Avatar" class="profile-button">
+                    <img src="<?php echo htmlspecialchars($_SESSION["user_profile"]); ?>" alt="User Avatar"
+                        class="profile-button">
                 </a>
                 <!-- Si l'utilisateur est connecté, affiche le bouton de déconnexion -->
                 <form action="./../serveur/logout.php" method="post" style="display: inline;">

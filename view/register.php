@@ -15,24 +15,26 @@
 
 </head>
 
+
 <body class="<?php echo $darkMode ? 'dark-mode' : ''; ?> body_secondary">
     <?php include './../composants/no_user_navbar.php'; ?>
     <?php require_once('./../serveur/sessionStart.php'); ?>
+
 
     <div class="DivAllForm">
         <div class="h3Div">
             <h3 class="h3Register">Register</h3>
         </div>
-        <form action="registerResult.php" class=" Form" method="post">
+        <form action="./registerResult.php" class=" Form" method="post">
 
             <div class="doubleDiv">
                 <div>
                     <label for="lastname" class="labelRegister">Last Name</label>
                     <input type="text" class="demiInput" name="lastname" placeholder="Last Name" id="lastname" required>
                     <?php
-                    if (isset($_SESSION['Errorlastname'])) {
-                        echo '<p style="color: red;">' . $_SESSION['Errorlastname'] . '</p>';
-                        unset($_SESSION['Errorlastname']);
+                    if (isset($_POST['Errorlastname'])) {
+                        echo '<p style="color: red;">' . $_POST['Errorlastname'] . '</p>';
+                        unset($_POST['Errorlastname']);
                     }
                     ?>
                 </div>
@@ -41,9 +43,9 @@
                     <input type="text" class="demiInput" name="firstname" placeholder="First Name" id="firstname"
                         required>
                     <?php
-                    if (isset($_SESSION['Errorfirstname'])) {
-                        echo '<p style="color: red;">' . $_SESSION['Errorfirstname'] . '</p>';
-                        unset($_SESSION['Errorfirstname']);
+                    if (isset($_POST['Errorfirstname'])) {
+                        echo '<p style="color: red;">' . $_POST['Errorfirstname'] . '</p>';
+                        unset($_POST['Errorfirstname']);
                     }
                     ?>
                 </div>
@@ -60,9 +62,9 @@
                         <option value="other">other</option>
                     </select>
                     <?php
-                    if (isset($_SESSION['Errorgender'])) {
-                        echo '<p style="color: red;">' . $_SESSION['Errorgender'] . '</p>';
-                        unset($_SESSION['Errorgender']);
+                    if (isset($_POST['Errorgender'])) {
+                        echo '<p style="color: red;">' . $_POST['Errorgender'] . '</p>';
+                        unset($_POST['Errorgender']);
                     }
                     ?>
                 </div>
@@ -73,9 +75,9 @@
                     <input type="Date" class="triDiv" style="width:11vh" name="date" placeholder="Birth" id="date"
                         required>
                     <?php
-                    if (isset($_SESSION['Errordatebrith'])) {
-                        echo '<p style="color: red;">' . $_SESSION['Errordatebrith'] . '</p>';
-                        unset($_SESSION['Errordatebrith']);
+                    if (isset($_POST['Errordatebrith'])) {
+                        echo '<p style="color: red;">' . $_POST['Errordatebrith'] . '</p>';
+                        unset($_POST['Errordatebrith']);
                     }
                     ?>
                 </div>
@@ -83,9 +85,9 @@
                     <label for="phone" class="labelRegister">Phone Number</label>
                     <input type="text" name="phone" class="triDiv" placeholder="Phone Number" id="phone" required>
                     <?php
-                    if (isset($_SESSION['Errorphone'])) {
-                        echo '<p style="color: red;">' . $_SESSION['Errorphone'] . '</p>';
-                        unset($_SESSION['Errorphone']);
+                    if (isset($_POST['Errorphone'])) {
+                        echo '<p style="color: red;">' . $_POST['Errorphone'] . '</p>';
+                        unset($_POST['Errorphone']);
                     }
                     ?>
                 </div>
@@ -96,9 +98,9 @@
                     <label for="email" class="labelRegister">Email</label>
                     <input type="email" class="demiInput" name="email" placeholder="Email" id="email" required>
                     <?php
-                    if (isset($_SESSION['Erroremail'])) {
-                        echo '<p style="color: red;">' . $_SESSION['Erroremail'] . '</p>';
-                        unset($_SESSION['Erroremail']);
+                    if (isset($_POST['Erroremail'])) {
+                        echo '<p style="color: red;">' . $_POST['Erroremail'] . '</p>';
+                        unset($_POST['Erroremail']);
                     }
                     ?>
                 </div>
@@ -107,9 +109,9 @@
                     <label for="username" class="labelRegister">Username</label>
                     <input type="text" class="demiInput" name="username" placeholder="Username" id="username" required>
                     <?php
-                    if (isset($_SESSION['Errorformusername'])) {
-                        echo '<p style="color: red;">' . $_SESSION['Errorformusername'] . '</p>';
-                        unset($_SESSION['Errorformusername']);
+                    if (isset($_POST['Errorformusername'])) {
+                        echo '<p style="color: red;">' . $_POST['Errorformusername'] . '</p>';
+                        unset($_POST['Errorformusername']);
                     }
                     ?>
                 </div>
@@ -121,9 +123,9 @@
                     <input type="password" class="demiInput" name="password" placeholder="Password" id="password"
                         required>
                     <?php
-                    if (isset($_SESSION['Errorformpassword'])) {
-                        echo '<p style="color: red;">' . $_SESSION['Errorformpassword'] . '</p>';
-                        unset($_SESSION['Errorformpassword']);
+                    if (isset($_POST['Errorformpassword'])) {
+                        echo '<p style="color: red;">' . $_POST['Errorformpassword'] . '</p>';
+                        unset($_POST['Errorformpassword']);
                     }
                     ?>
                 </div>
@@ -132,29 +134,31 @@
                     <input type="password" class="demiInput" name="passwordbis" placeholder="Passeword confirm"
                         id="passwordbis" required>
                     <?php
-                    if (isset($_SESSION['Errorpasswordbis'])) {
-                        echo '<p style="color: red;">' . $_SESSION['Errorpasswordbis'] . '</p>';
-                        unset($_SESSION['Errorpasswordbis']);
+                    if (isset($_POST['Errorpasswordbis'])) {
+                        echo '<p style="color: red;">' . $_POST['Errorpasswordbis'] . '</p>';
+                        unset($_POST['Errorpasswordbis']);
                     }
                     ?>
                 </div>
             </div><br />
             <div class="captchaDiv" id="captchaDiv" style="display: none;">
-                <img src="./../capcha/test.php" alt="CAPTCHA" /><br />
+
+                <img src="./../capcha/captcha.php" alt="CAPTCHA" /><br />
+
                 <input type="text" name="captcha" class="demiInput" placeholder="Captcha" required />
 
                 <?php
-                if (isset($_SESSION['ErrorCaptcha'])) {
-                    echo '<p style="color: red;">' . $_SESSION['ErrorCaptcha'] . '</p>';
-                    unset($_SESSION['ErrorCaptcha']);
+                if (isset($_POST['ErrorCaptcha'])) {
+                    echo '<p style="color: red;">' . $_POST['ErrorCaptcha'] . '</p>';
+                    unset($_POST['ErrorCaptcha']);
                 }
                 ?>
             </div>
             <div class="LastDiv">
-                <input type="checkbox" name="condition" id="condition" required>
+                <input type="checkbox" onclick="showCaptcha()" name="condition" id="condition" required>
                 <label for="condition">Accept conditions</label>
             </div>
-            <button class="buttonSubmit" name="valid" onclick="showCaptcha()" type="submit">Sign up</button>
+            <button class="buttonSubmit" name="valid" type="submit">Sign up</button>
         </form>
     </div>
     <script>

@@ -14,8 +14,10 @@
 </head>
 
 <body>
+
   <?php require_once('./../serveur/sessionStart.php'); ?>
   <?php require_once('./../serveur/database.php'); ?>
+  <?php require_once('./../serveur/logconnection.php'); ?>
 
   <?php
   $email = $_POST['email'];
@@ -23,51 +25,129 @@
 
   if (empty($email) || empty($formpassword)) {
     $_SESSION['ErrorLoginPass'] = 'Email or Password wrong';
-    header('Location: connexion.php');
+    header('Location:./connexion.php');
+    $pdo = null;
     exit();
   }
+  $request = $pdo->prepare("SELECT * FROM users WHERE email =:email");
 
-  $request = $pdo->prepare("SELECT * FROM users WHERE email = :email");
   $request->bindParam(':email', $email);
+
   $request->execute();
 
-  $result = $request->fetch(PDO::FETCH_ASSOC);
+  $result = $request->fetchAll();
 
-  if ($result && password_verify($formpassword, $result["password_hash"])) {
+  //verification mod de pass 
+  if (count($result) > 0 && password_verify($formpassword, $result[0]["password_hash"])) {
+    $user = $result[0];
+    //verification captcha 
     if (isset($_POST['valid'])) {
-      if (isset($_POST['captcha'], $_SESSION['code']) && $_POST['captcha'] == $_SESSION['code']) {
-        $_SESSION["email"] = $result["email"];
-        $_SESSION["username"] = $result["username"];
-        $_SESSION["user_profile"] = !empty($result["user_profile"]) ? $result["user_profile"] : './../public/img/abyssicon.png';
-        $_SESSION["user_id"] = $result["id"];
+      // je verifie si c'est a admis ou pas
+      if (strpos($user['email'], 'abyss.boats') !== false && $user['is_admin']) {
+        $request = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+        $request->bindParam(':email', $email);
+        $request->execute();
 
-        // Récupération des forums auxquels l'utilisateur est abonné
-        $userId = $_SESSION['user_id'];
-        $query = $pdo->prepare('
+        $result = $request->fetch(PDO::FETCH_ASSOC);
+
+        if ($result && password_verify($formpassword, $result["password_hash"])) {
+          if (isset($_POST['valid'])) {
+
+            if (isset($_POST['captcha'], $_SESSION['code']) && $_POST['captcha'] == $_SESSION['code']) {
+              $_SESSION["email"] = $result["email"];
+              $_SESSION["username"] = $result["username"];
+              $_SESSION["user_profile"] = !empty($result["user_profile"]) ? $result["user_profile"] : './../public/img/abyssicon.png';
+              $_SESSION["user_id"] = $result["id"];
+
+              $dureDuCookie = time() + (7 * 24 * 3600);
+
+              // Créer les cookies
+              setcookie('formusername', $_SESSION["username"], $dureDuCookie, "/");
+              setcookie('imgprofile',  $_SESSION["user_profile"], $dureDuCookie, "/");
+              setcookie('email', $_SESSION["email"], $dureDuCookie, "/");
+              setcookie('userId', $_SESSION["user_id"], $dureDuCookie, "/");
+
+              // Récupération des forums auxquels l'utilisateur est abonné
+              $userId = $_SESSION['user_id'];
+              $query = $pdo->prepare('
             SELECT forums.id, forums.name 
             FROM forum_subscribers
             JOIN forums ON forum_subscribers.forum_id = forums.id
             WHERE forum_subscribers.user_id = :user_id
         ');
-        $query->bindParam(':user_id', $userId);
-        $query->execute();
-        $subscribedForums = $query->fetchAll(PDO::FETCH_ASSOC);
-        
-        $_SESSION['subscribed_forums'] = $subscribedForums;
+              $query->bindParam(':user_id', $userId);
+              $query->execute();
+              $subscribedForums = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        header("Location: index.php");
-        exit();
+              $_SESSION['subscribed_forums'] = $subscribedForums;
+
+              loginUser($_SESSION["user_id"]);
+              header("Location:./../Admin/Back-log.php");
+              $pdo = null;
+              exit();
+            } else {
+              $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
+              header("Location: ./connexion.php");
+              exit();
+            }
+          }
+        }
+
       } else {
-        $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
-        header("Location: connexion.php");
-        exit();
+
+        $request = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+        $request->bindParam(':email', $email);
+        $request->execute();
+
+        $result = $request->fetch(PDO::FETCH_ASSOC);
+
+        if ($result && password_verify($formpassword, $result["password_hash"])) {
+          if (isset($_POST['valid'])) {
+
+            if (isset($_POST['captcha'], $_SESSION['code']) && $_POST['captcha'] == $_SESSION['code']) {
+              $_SESSION["email"] = $result["email"];
+              $_SESSION["username"] = $result["username"];
+              $_SESSION["user_profile"] = !empty($result["user_profile"]) ? $result["user_profile"] : './../public/img/abyssicon.png';
+              $_SESSION["user_id"] = $result["id"];
+
+              $dureDuCookie = time() + (7 * 24 * 3600);
+
+              // Créer les cookies
+              setcookie('formusername', $formusername, $dureDuCookie, "/");
+              setcookie('imgprofile', $imgprofile, $dureDuCookie, "/");
+              setcookie('email', $email, $dureDuCookie, "/");
+              setcookie('userId', $userId, $dureDuCookie, "/");
+
+              // Récupération des forums auxquels l'utilisateur est abonné
+              $userId = $_SESSION['user_id'];
+              $query = $pdo->prepare('
+            SELECT forums.id, forums.name 
+            FROM forum_subscribers
+            JOIN forums ON forum_subscribers.forum_id = forums.id
+            WHERE forum_subscribers.user_id = :user_id
+        ');
+              $query->bindParam(':user_id', $userId);
+              $query->execute();
+              $subscribedForums = $query->fetchAll(PDO::FETCH_ASSOC);
+
+              $_SESSION['subscribed_forums'] = $subscribedForums;
+
+              loginUser($_SESSION["user_id"]);
+              header("Location: ./index.php");
+              exit();
+            } else {
+              $_SESSION['ErrorCaptcha'] = 'Captcha wrong';
+              header("Location: ./connexion.php");
+              exit();
+            }
+          }
+        }
       }
     }
   } else {
     $_SESSION['ErrorLoginPass'] = 'Email or Password wrong.';
-    header('Location: connexion.php');
+    header('Location: ./connexion.php');
     exit();
   }
   ?>
 </body>
-
