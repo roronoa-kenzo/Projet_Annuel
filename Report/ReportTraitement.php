@@ -6,6 +6,7 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Récupérer les champs du formulaire
+    $user_id = $_POST['user_id'];  // Récupérer l'ID utilisateur envoyé dans le formulaire
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $content_id = htmlspecialchars($_POST['content_id']);
     $reason = htmlspecialchars($_POST['reason']);
@@ -43,11 +44,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    // Si tout est valide, traiter le signalement (ici, tu peux ajouter la logique d'enregistrement en base de données, envoi de mails, etc.)
-    
+    // Si tout est valide, traiter le signalement (par exemple, en l'enregistrant en base de données)
+    // Ici tu peux utiliser $user_id pour savoir qui a soumis le signalement
+    // Exemple de requête d'insertion dans la base de données :
+
+    // $sql = "INSERT INTO signalements (user_id, email, content_id, reason, details) VALUES (?, ?, ?, ?, ?)";
+    // $stmt = $db->prepare($sql);
+    // $stmt->execute([$user_id, $email, $content_id, $reason, $details]);
+
     // Exemple de message de confirmation
     $_SESSION['SuccessMessage'] = "Votre signalement a bien été soumis. Merci pour votre vigilance.";
-    header("Location: reportContent.php");  // Rediriger vers une page de confirmation ou recharger la même page
+    header("Location: confirmationPage.php");  // Rediriger vers une page de confirmation
     exit();
 } else {
     // Si quelqu'un essaie d'accéder directement à cette page sans soumettre de formulaire
