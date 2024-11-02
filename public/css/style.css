@@ -632,6 +632,105 @@ btn-menu-admin:hover{
   background-color: #f44336; /* Rouge pour les erreurs */
 }
 
+
+----------------------------------------------------/* Style global du footer */
+
+.footer {
+  margin-top: 5em;
+  background-color: #000; /* Couleur noire pour le fond */
+  color: #fff; /* Texte blanc */
+  padding: 9em; /* Ajout de padding en haut et en bas */
+  width: 100%; /* Prendre toute la largeur de la page */
+  text-align: center; /* Centrer le contenu */
+  position: relative;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around; /* Espacement entre les éléments */
+  align-items: center;
+  margin: 0 auto; /* Centrer le contenu */
+  padding: 9em;
+  background-color: #000; /* Couleur noire pour le fond */
+  margin-top: 25px;
+
+}
+
+.footer-logo h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.footer-logo a:hover img {
+  transform: scale(1.1); /* Agrandir légèrement au survol */
+}
+
+.footer-links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin: 5px 0;
+}
+
+.footer-links ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+  color: #1abc9c; /* Couleur lors du survol */
+}
+
+/* Style pour les icônes des réseaux sociaux */
+.footer-social a img {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+  transition: transform 0.3s ease;
+}
+
+.footer-social a:hover img {
+  transform: scale(1.5); /* Agrandir légèrement au survol */
+}
+
+/* Newsletter */
+.footer-newsletter form {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.footer-newsletter input[type="email"] {
+  padding: 8px;
+  border: none;
+  border-radius: 3px;
+  margin-right: 10px;
+  width: 250px;
+  max-width: 100%;
+}
+
+.footer-newsletter button {
+  padding: 8px 15px;
+  background-color: #1abc9c;
+  border: none;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.footer-newsletter button:hover {
+  background-color: #16a085;
+}
+
 /*--------------------------------------------------------------------LIKE----------------------------------------------*/
 
 .like-button {
@@ -707,3 +806,7 @@ btn-menu-admin:hover{
 
 
 
+
+.footer-p {
+  color: #fff;
+}
