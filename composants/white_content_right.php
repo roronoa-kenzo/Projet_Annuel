@@ -1,6 +1,10 @@
 
 <div class="white-content-secondary">
-    <h3>Mes Forum</h3>
+    <h3>Creation</h3>
+    <a href="./../composants/modal_create_forum.php">
+        <button class="btn-menu">Iceberg</button>
+    </a>
+    <h3>My Icebergs</h3>
 
     <?php
                         // Vérifiez si l'utilisateur est connecté
@@ -22,6 +26,7 @@
                             echo '<p>Vous devez être connecté pour voir vos icebergs</p>';
                         }
                         ?>
+        <h3>Autre</h3>
         <a href="./../Admin/Back-log.php">
             <button class="btn-menu"> Admin </button>
         </a>
