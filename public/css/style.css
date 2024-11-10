@@ -632,110 +632,6 @@ btn-menu-admin:hover{
   background-color: #f44336; /* Rouge pour les erreurs */
 }
 
-<<<<<<< HEAD
-=======
-
-----------------------------------------------------/* Style global du footer */
-
-.footer {
-  margin-top: 5em;
-  background-color: #000; /* Couleur noire pour le fond */
-  color: #fff; /* Texte blanc */
-  padding: 9em; /* Ajout de padding en haut et en bas */
-  width: 100%; /* Prendre toute la largeur de la page */
-  text-align: center; /* Centrer le contenu */
-  position: relative;
-  font-family: 'Arial', sans-serif;
-}
-
-.footer-container {
-  display: flex;
-  justify-content: space-around; /* Espacement entre les éléments */
-  align-items: center;
-  margin: 0 auto; /* Centrer le contenu */
-  padding: 9em;
-  background-color: #000; /* Couleur noire pour le fond */
-  margin-top: 25px;
-
-}
-
-.footer-logo h2 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #fff;
-}
-
-.footer-logo a:hover img {
-  transform: scale(1.1); /* Agrandir légèrement au survol */
-}
-
-.footer-links ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.footer-links ul li {
-  margin: 5px 0;
-}
-
-.footer-links ul li a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-links ul li a:hover {
-  color: #1abc9c; /* Couleur lors du survol */
-}
-
-/* Style pour les icônes des réseaux sociaux */
-.footer-social a img {
-  width: 30px;
-  height: 30px;
-  margin: 0 10px;
-  transition: transform 0.3s ease;
-}
-
-.footer-social a:hover img {
-  transform: scale(1.5); /* Agrandir légèrement au survol */
-}
-
-/* Newsletter */
-.footer-newsletter form {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-}
-
-.footer-newsletter input[type="email"] {
-  padding: 8px;
-  border: none;
-  border-radius: 3px;
-  margin-right: 10px;
-  width: 250px;
-  max-width: 100%;
-}
-
-.footer-newsletter button {
-  padding: 8px 15px;
-  background-color: #1abc9c;
-  border: none;
-  color: white;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.footer-newsletter button:hover {
-  background-color: #16a085;
-}
-
-/*--------------------------------------------------------------------LIKE----------------------------------------------*/
-
->>>>>>> 1991ef43d547226d290457cd3a6281bcaa404460
 .like-button {
   background: transparent;
   border: 2px solid black; /* Bord noir par défaut */
@@ -775,66 +671,89 @@ btn-menu-admin:hover{
 
 /*----------------------------------------------------------------------------------Modal----------------------------------------------------------------*/
 
+/* Style général du modal */
 .modal {
   display: none; /* Masquer le modal par défaut */
-  position: fixed; /* Rester en place */
-  z-index: 1; /* S'assurer qu'il est au-dessus des autres éléments */
+  position: fixed;
+  z-index: 1000;
   left: 0;
   top: 0;
-  width: 100%; /* Plein écran */
-  height: 100%; /* Plein écran */
-  overflow: auto; /* Activer le défilement si nécessaire */
-  background-color: rgb(0,0,0); /* Couleur de fond */
-  background-color: rgba(0,0,0,0.4); /* Avec opacité */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  backdrop-filter: blur(4px); /* Flou pour l'arrière-plan */
 }
 
+/* Contenu du modal */
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% du haut et centré */
+  background-color: #fff;
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Largeur de 80% */
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%; /* Adaptation pour les écrans mobiles */
+  margin: 5% auto;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Bouton de fermeture */
 .close-button {
   color: #aaa;
   float: right;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
-}
-
-.close-button:hover,
-.close-button:focus {
-  color: black;
-  text-decoration: none;
   cursor: pointer;
 }
 
+.close-button:hover {
+  color: #000;
+}
+
+/* Styles pour la sélection des couleurs */
 .color-selection {
   display: flex;
   flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .color-option {
-  margin: 5px;
   padding: 10px;
-  border: 1px solid #ccc;
   border-radius: 5px;
   cursor: pointer;
   display: flex;
   align-items: center;
 }
 
-.color-label {
+.color-option input {
+  display: none;
+}
+
+.color-option .color-label {
   margin-left: 8px;
 }
 
-
-
-
-<<<<<<< HEAD
-=======
-.footer-p {
-  color: #fff;
+/* Effet de sélection des couleurs */
+.color-option:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
->>>>>>> 1991ef43d547226d290457cd3a6281bcaa404460
+
+.btn-submit {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #4CAF50;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background-color: #45a049;
+}
+
+
+
+
