@@ -1,0 +1,7 @@
+{
+    "editor.fontSize": 13,
+    "diffEditor.hideUnchangedRegions.contextLineCount": 3,
+    "editor.suggestLineHeight": 0,
+    "editor.lineHeight": 2,
+    "openInGitHub.requireSelectionForLines": false
+}
