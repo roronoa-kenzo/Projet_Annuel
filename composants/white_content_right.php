@@ -1,9 +1,7 @@
 
 <div class="white-content-secondary">
     <h3>Creation</h3>
-    <a href="./../composants/modal_create_forum.php">
-        <button class="btn-menu">Iceberg</button>
-    </a>
+    <button id="openModalButton" class="btn-menu">Créer un Forum</button>
     <h3>My Icebergs</h3>
 
     <?php
