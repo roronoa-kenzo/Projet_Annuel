@@ -4,16 +4,20 @@
 session_start();
 require_once './../serveur/database.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['forum_name']) && isset($_POST['forum_background'])) {
-    $forumName = $_POST['forum_name'];
-    $forumBackground = $_POST['forum_background']; // Ex: "css/themes/red.css"
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $forum_name = $_POST['forum_name'];
+    $forum_description = $_POST['forum_description'];
+    $selected_theme = $_POST['selected_theme'];
 
-    // Insertion du forum dans la base de données avec le chemin du fichier CSS dans 'background'
-    $query = $pdo->prepare("INSERT INTO forums (name, background) VALUES (:name, :background)");
-    $query->execute(['name' => $forumName, 'background' => $forumBackground]);
+    $query = $pdo->prepare("INSERT INTO forums (name, description, background) VALUES (:name, :description, :background)");
+    $query->execute([
+        'name' => $forum_name,
+        'description' => $forum_description,
+        'background' => "themes/" . $selected_theme . "_theme.css" // Stocke le chemin vers le thème
+    ]);
 
-    $_SESSION['forum_background'] = $forumBackground; // Enregistrer en session pour l'utiliser immédiatement
-    header('Location: index.php');
+    $_SESSION['SuccessForum'] = "Le forum a été créé avec succès!";
+    header("Location: ./../view/index.php"); // Redirigez vers l'index ou un autre endroit
     exit;
 }
 
