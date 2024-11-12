@@ -137,7 +137,7 @@ option {
   margin-top: -10px;
   margin-left: 5vh;
   margin-right: 5vh;
-  box-shadow: inset #0f0e0e 1px 1px 8px 3;
+  box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
 }
 
 .white-content-admin {
@@ -145,7 +145,7 @@ option {
   padding: 20px;
   border-radius: 20px;
   width: 90vh;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
   margin-top: -10px;
   margin-left: 5vh;
   margin-right: 5vh;
@@ -163,7 +163,7 @@ option {
   width: 14em;
   max-width: 600px;
   margin-top: -10px;
-  box-shadow: inset #0f0e0e 0px 1px 6px 3px;
+  box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -265,7 +265,7 @@ textarea {
   border-radius: 0 15px 15px 15px;
   font-family: "Josefin Sans", sans-serif;
   padding: 3rem;
-  box-shadow: inset gray 20px 0px 5px -12px;
+  box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
 }
 
 .labelRegister {
@@ -383,7 +383,7 @@ textarea {
   font-family: "Josefin Sans", sans-serif;
     height: 32px;
     width: 105px;
-    box-shadow: inset #888 9px 20px 5px -12px;
+    box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
     cursor: pointer;
     transition: 1s;
