@@ -1,10 +1,19 @@
+<?php
+include './../serveur/database.php';
+
+session_start();
+
+$darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <title id="page-title"></title>
-    <link id="theme-stylesheet" rel="stylesheet" href="./../public/css/style.css">
+    <link id="theme-stylesheet" rel="stylesheet"
+    href="./../public/css/<?php echo $darkMode ? 'darkmode' : 'style'; ?>.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
@@ -28,11 +37,15 @@
                     </div>
                     <p id="forum-description"></p>
                 </div>
+                <div class="white-content">
+
+                <?php include './../composants/Post-form.php'; ?>
+                </div>
                 <div id="posts-container">
                     <p id="no-posts-message">Chargement des posts...</p>
                 </div>
             </div>
-            <?php include './../composants/white_content_left.php'; ?>
+            <?php include './../composants/white_content_right.php'; ?>
         </div>
     </main>
 

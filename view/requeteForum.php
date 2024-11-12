@@ -54,11 +54,11 @@ if (isset($_GET['forum_id'])) {
             ORDER BY 
                 created_at DESC
         ";
-    
+
         $postsStmt = $pdo->prepare($postsQuery);
         $postsStmt->execute(['forum_id' => $forumId]);
         $posts = $postsStmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
         // Construction de la réponse JSON
         $response = [
             'success' => true,
@@ -73,7 +73,7 @@ if (isset($_GET['forum_id'])) {
             ],
             'posts' => []
         ];
-    
+
         // Ajout des informations des posts dans la réponse JSON
         foreach ($posts as $post) {
             $response['posts'][] = [
@@ -89,7 +89,7 @@ if (isset($_GET['forum_id'])) {
                 ]
             ];
         }
-    
+
         echo json_encode($response);
     } else {
         echo json_encode(['success' => false, 'error' => 'Forum non trouvé.']);

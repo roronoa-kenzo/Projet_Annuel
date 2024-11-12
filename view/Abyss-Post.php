@@ -28,7 +28,10 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
     <?php require_once("./../composants/navbarNav.php"); ?>
     <main class="container">
         <div class="black-frame">
-            <h1 id="post-title"></h1>
+            <h1 id="forum-name"><!--         
+                <h2>Forum: ${forum.name}</h2>
+            <p>${forum.description}</p> 
+        --></h1>
         </div>
         <div class="main-index">
             <?php include './../composants/white_content_left.php'; ?>
@@ -37,7 +40,7 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                     <div id="post-content"></div>
                 </div>
                 <div id="comments-container"></div>
-                
+
             </div>
             <?php include './../composants/white_content_right.php'; ?>
         </div>
@@ -55,6 +58,7 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
 
                 if (data.success) {
                     displayPost(data.post, data.forum);
+                    titleForum(data.forum);
                     displayComments(data.comments);
                 } else {
                     console.error(data.error);
@@ -69,13 +73,14 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
         function displayPost(post, forum) {
             const postContent = document.getElementById('post-content');
             postContent.innerHTML = `
-        <div class="post-author">
-            <img src="${post.author.profile_picture}" alt="Photo de profil" class="author-avatar">
-            <span class="author-username">${post.author.username}</span>
-        </div>
-        <span>${post.title}</h1>
-        <p>${post.content.replace(/\n/g, '<br>')}</p>
+        <div class="iceberg-select-profile">
+            <img src="${post.author.profile_picture}" alt="Photo de profil" class="user-avatar">
+            <h3 class="creator-username">${post.author.username}</h3>
+        </div></br>
+        <span>${post.title}</span></br>
         ${post.image ? `<img src="${post.image}" alt="Image du post" class="post-image">` : ''}
+        <p>${post.content.replace(/\n/g, '<br>')}</p>
+
     `;
         }
 
@@ -90,22 +95,26 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
             }
 
             comments.forEach(comment => {
+                
                 const commentElement = document.createElement('div');
                 commentElement.classList.add('white-content');
                 commentElement.innerHTML = `
-            <div class="iceberg-select">
-                <img src="${comment.author_profile_picture}" alt="Photo de profil" class="comment-avatar">
-                <span class="comment-author">${comment.author_username}</span>
+            <div class="iceberg-select-profile">
+                <img src="${comment.author_profile_picture}" alt="Photo de profil" class="user-avatar">
+                <h3 class="creator-username">${comment.author_username}</h3></br>
+                </div>
                 <p>${comment.content.replace(/\n/g, '<br>')}</p>
-            </div>
         `;
                 commentsContainer.appendChild(commentElement);
             });
         }
+        function titleForum(forum) {
+            document.getElementById('forum-name').textContent = forum.name;
+        }
 
         // Charger les données du post au démarrage
         fetchPostData();
-
+        setInterval(fetchPostData, 10000);
     </script>
 </body>
 
