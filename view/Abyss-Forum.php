@@ -123,7 +123,8 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
         // Actualiser les données toutes les 10 secondes
         setInterval(fetchForumData, 10000);
     </script>
-
+<?php include './../composants/script_link.php'; ?>
+<?php include './../composants/footer.php'; ?>
 </body>
 
 </html>
