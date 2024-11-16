@@ -52,7 +52,7 @@ if ($texte == "texte") {
         $queryPost->bindParam(':forum_id', $forum_id);
 
         if ($queryPost->execute()) {
-            //header('Location:./../view/Abyss-Forum.php?forum_id='.$forum_id);
+            header('Location:./../view/Abyss-Forum.php?forum_id='.$forum_id);
             //$pdo = null;
             //exit();
         } else {

@@ -39,6 +39,9 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                 <div class="white-content">
                     <div id="post-content"></div>
                 </div>
+                <!--Composant pour mettre des commentaire au post-->
+                <?php include './../composants/Comment-form.php'; ?>
+
                 <div id="comments-container"></div>
 
             </div>
@@ -95,7 +98,7 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
             }
 
             comments.forEach(comment => {
-                
+
                 const commentElement = document.createElement('div');
                 commentElement.classList.add('white-content');
                 commentElement.innerHTML = `

@@ -37,10 +37,8 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                     </div>
                     <p id="forum-description"></p>
                 </div>
-                <div class="white-content">
 
                 <?php include './../composants/Post-form.php'; ?>
-                </div>
                 <div id="posts-container">
                     <p id="no-posts-message">Chargement des posts...</p>
                 </div>
