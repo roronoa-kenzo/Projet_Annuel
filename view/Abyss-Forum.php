@@ -13,7 +13,7 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
     <meta charset="UTF-8">
     <title id="page-title"></title>
     <link id="theme-stylesheet" rel="stylesheet"
-    href="./../public/css/<?php echo $darkMode ? 'darkmode' : 'style'; ?>.css">
+        href="./../public/css/<?php echo $darkMode ? 'darkmode' : 'style'; ?>.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
@@ -81,6 +81,28 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
             document.getElementById('creator-username').textContent = forum.creator.username;
             document.getElementById('creator-profile-picture').src = forum.creator.profile_picture || './default-profile.png';
         }
+        function clickLike(button, postId) {
+            fetch('./like_post.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ post_id: postId })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Ajoutez la classe 'liked' au bouton
+                        button.classList.toggle('liked');
+                    } else {
+                        alert('Erreur lors de l\'ajout du like.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                });
+        }
+
 
         // Mettre à jour la liste des posts
         function updatePosts(posts) {
@@ -93,26 +115,37 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
             }
 
             posts.forEach(post => {
-                const postElement = document.createElement('a');
-                postElement.className = 'userLien';
-                postElement.href = `./Abyss-Post.php?Post=${post.id}`;
+                const postElement = document.createElement('div');
+                postElement.className = 'white-content';
+
                 postElement.innerHTML = `
-            <div class="white-content">
-                <div class="iceberg-select">
-                    <div class="iceberg-select-profile">
-                        <img src="${post.author.profile_picture}" alt="Photo de profil" class="user-avatar">
-                        <h3 class="creator-username">${post.author.username}</h3>
-                    </div></br>
-                    <span>Title: ${post.title || 'Titre indisponible'}</span><br><br>
+            <div class="iceberg-select">
+                <div class="iceberg-select-profile">
+                    <img src="${post.author.profile_picture}" alt="Photo de profil" class="user-avatar">
+                    <h3 class="creator-username">${post.author.username}</h3>
+                </div></br>
+                <span>Title: ${post.title || 'Titre indisponible'}</span><br><br>
+                <a href="./Abyss-Post.php?Post=${post.id}" class="post-link userLien">
                     ${post.image ? `<img src="${post.image}" alt="Image du post" class="post-image"> <br><br>` : ''}
                     <span class="username">Description:<br>${post.content}</span><br>
                     <span class="post-nomber">${post.comment_count} comment(s)</span>
+                </a><br/>
+                <?php
+                if(!empty($_SESSION["email"]) && !empty($_SESSION["user_profile"]) && !empty($_SESSION["user_id"])){
+                ?>
+                <div style="display: flex; justify-content: end; margin-top: -2rem;">
+                <button onclick="clickLike(this, ${post.id})" class="likebutton">${post.like_count}<img src="./../public/img/likebutton.png" alt="Like" class="likeicon <?php echo $_SESSION['buttonred'];?>"></button>
                 </div>
+                <?php
+                }
+                ?>
             </div>
         `;
+
                 postsContainer.appendChild(postElement);
             });
         }
+
 
 
         // Charger les données initiales et les composants
@@ -121,8 +154,34 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
         // Actualiser les données toutes les 10 secondes
         setInterval(fetchForumData, 10000);
     </script>
-<?php include './../composants/script_link.php'; ?>
-<?php include './../composants/footer.php'; ?>
+    <style>
+        .likebutton {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 22px;
+            display: flex;
+        }
+        .likeicon{
+            padding-left: 5px;
+            padding-top: 1px;
+        }
+        .likebutton .likeicon {
+            width:22px;
+            /* Ajustez la taille de l'image si nécessaire */
+            height: 22px;
+            transition: filter 0.3s ease;
+            /* Animation de transition */
+        }
+        .liked{
+            filter: invert(17%) sepia(95%) saturate(7486%) hue-rotate(0deg) brightness(100%) contrast(115%);
+        }
+        .likebutton.liked .likeicon {
+            filter: invert(17%) sepia(95%) saturate(7486%) hue-rotate(0deg) brightness(100%) contrast(115%);
+        }
+    </style>
+    <?php include './../composants/script_link.php'; ?>
+    <?php include './../composants/footer.php'; ?>
 </body>
 
 </html>

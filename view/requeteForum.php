@@ -36,24 +36,26 @@ if (isset($_GET['forum_id'])) {
     if ($forum) {
         // Requête pour récupérer les posts avec le nombre de commentaires, nom d'utilisateur et photo de profil de l'auteur
         $postsQuery = "
-            SELECT 
-                posts.id,
-                posts.title,
-                posts.content,
-                posts.image,
-                posts.created_at,
-                (SELECT COUNT(*) FROM comments WHERE comments.post_id = posts.id) AS comment_count,
-                users.username AS author_username,
-                users.user_profile AS author_profile_picture
-            FROM 
-                posts
-            LEFT JOIN 
-                users ON posts.user_id = users.id
-            WHERE 
-                forum_id = :forum_id
-            ORDER BY 
-                created_at DESC
-        ";
+        SELECT 
+            posts.id,
+            posts.title,
+            posts.content,
+            posts.image,
+            posts.created_at,
+            (SELECT COUNT(*) FROM comments WHERE comments.post_id = posts.id) AS comment_count,
+            (SELECT COUNT(*) FROM post_reactions WHERE post_reactions.post_id = posts.id AND is_like = 1) AS like_count,
+            users.username AS author_username,
+            users.user_profile AS author_profile_picture
+        FROM 
+            posts
+        LEFT JOIN 
+            users ON posts.user_id = users.id
+        WHERE 
+            forum_id = :forum_id
+        ORDER BY 
+            like_count DESC, created_at DESC
+    ";
+    
 
         $postsStmt = $pdo->prepare($postsQuery);
         $postsStmt->execute(['forum_id' => $forumId]);
@@ -83,6 +85,7 @@ if (isset($_GET['forum_id'])) {
                 'image' => htmlspecialchars($post['image'] ?? ''),
                 'created_at' => $post['created_at'],
                 'comment_count' => $post['comment_count'],
+                'like_count' => $post['like_count'],
                 'author' => [
                     'username' => htmlspecialchars($post['author_username'] ?? 'Utilisateur supprimé'),
                     'profile_picture' => htmlspecialchars($post['author_profile_picture'] ?? './default-profile.png')
@@ -91,6 +94,7 @@ if (isset($_GET['forum_id'])) {
         }
 
         echo json_encode($response);
+
     } else {
         echo json_encode(['success' => false, 'error' => 'Forum non trouvé.']);
     }
