@@ -1,33 +1,31 @@
 <?php
 session_start();
-require_once './../serveur/database.php'; // Adapter le chemin vers votre fichier de configuration
+include './../serveur/database.php';
 
-// Récupérer l'ID de l'utilisateur depuis la session
-$userId = $_SESSION['user_id'];
-
-// Si le formulaire de like est soumis
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['post_id'])) {
-    $postId = $_POST['post_id'];
-
-    // Vérifier si l'utilisateur a déjà liké le post
-    $query = $pdo->prepare('SELECT is_like FROM post_reactions WHERE post_id = :postId AND user_id = :userId');
-    $query->execute(['postId' => $postId, 'userId' => $userId]);
-    $reaction = $query->fetch();
-
-    if ($reaction) {
-        // Si l'utilisateur a déjà liké, inverser le statut (1 devient 0 et 0 devient 1)
-        $newStatus = $reaction['is_like'] == 1 ? 0 : 1;
-        $update = $pdo->prepare('UPDATE post_reactions SET is_like = :status WHERE post_id = :postId AND user_id = :userId');
-        $update->execute(['status' => $newStatus, 'postId' => $postId, 'userId' => $userId]);
-    } else {
-        // Si c'est le premier like, insérer un nouveau like avec le statut 1
-        $newStatus = 1;
-        $insert = $pdo->prepare('INSERT INTO post_reactions (post_id, user_id, is_like) VALUES (:postId, :userId, :status)');
-        $insert->execute(['postId' => $postId, 'userId' => $userId, 'status' => $newStatus]);
-    }
-
-    // Rediriger pour éviter la resoumission du formulaire
-    header('Location: ' . $_SERVER['PHP_SELF']);
+if (!isset($_SESSION['user_id']) || !isset($_POST['post_id'])) {
+    $_SESSION['like_message'] = "Requête non valide.";
+    header('Location: index.php');
     exit;
 }
-?>
+
+$userId = $_SESSION['user_id'];
+$postId = intval($_POST['post_id']);
+
+// Vérifie si l'utilisateur a déjà liké
+$query = $pdo->prepare('SELECT is_like FROM post_reactions WHERE post_id = :postId AND user_id = :userId');
+$query->execute(['postId' => $postId, 'userId' => $userId]);
+$reaction = $query->fetch();
+
+if ($reaction && $reaction['is_like'] == 1) {
+    // Si déjà liké, on supprime le "like"
+    $query = $pdo->prepare('DELETE FROM post_reactions WHERE post_id = :postId AND user_id = :userId');
+    $query->execute(['postId' => $postId, 'userId' => $userId]);
+} else {
+    // Ajout d'un "like"
+    $query = $pdo->prepare('REPLACE INTO post_reactions (post_id, user_id, is_like) VALUES (:postId, :userId, 1)');
+    $query->execute(['postId' => $postId, 'userId' => $userId]);
+}
+
+header('Location: index.php');
+exit;
+
