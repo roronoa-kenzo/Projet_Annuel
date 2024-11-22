@@ -43,53 +43,109 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
     <?php include './../composants/footer.php'; ?>
 
     <script>
-        function fetchForums() {
-            fetch('./requetePopular.php')
-                .then(response => response.json())
-                .then(forums => {
-                    const usersList = document.getElementById('usersList');
-                    usersList.innerHTML = '';
+        fetch('./requetePopular.php')
+            .then(response => response.json())
+            .then(forums => {
+                const usersList = document.getElementById('usersList');
+                usersList.textContent = '';  // Vide le contenu précédent
 
-                    if (forums.length === 0) {
-                        usersList.innerHTML = '<div class="post-container-admin"><div class="iceberg-select"><p>No Forum.</p></div></div>';
-                    } else {
-                        forums.forEach(forum => {
-                            const forumElement = document.createElement('div');
-                            forumElement.classList.add('white-content');
+                if (forums.length === 0) {
+                    const noForumElement = document.createElement('div');
+                    noForumElement.classList.add('post-container-admin');
 
-                            const forumId = encodeURIComponent(forum.forum_id);
-                            const forumUrl = `Abyss-Forum.php?forum_id=${forumId}`;
+                    const icebergSelectDiv = document.createElement('div');
+                    icebergSelectDiv.classList.add('iceberg-select');
 
-                            forumElement.innerHTML = `
-                            <?php
-                            if (!empty($_SESSION["email"]) && !empty($_SESSION["user_profile"]) && !empty($_SESSION["user_id"])) {
-                                ?>
-                            <div class="buttonSubscrib" style="margin: 0px 0px -35px 0px;">
-                                        <button class="post-forum" id="subscribe-button-${forumId}" onclick="subrequette(${forumId},<?php echo $_SESSION['user_id']; ?>)">
-                                            <strong class="p-forum">Subscrib</strong>
-                                        </button>
-                                        </div>
-                                <?php } else {
-                            } ?>
-                            <div class="iceberg-select-profile " >
-                            <img src="${forum.creator.profile_picture}" alt="Profile Picture" class="user-avatar">
-                            <a class="userLien " href="./${forumUrl}">
-                                            <h3 class="creator-username">${forum.creator.username}</h3>
-                                        </div></br>
-                                        <span class="">Title: ${forum.forum_name}</span><br><br>
-                                        <span class="username">Description:<br>${forum.forum_description}</span><br>
-                                        <span class="post-nomber">${forum.post_count} post(s)</span>
-                                    </div>
-                                </a>
-                                `;
-                            usersList.appendChild(forumElement);
+                    const noForumText = document.createElement('p');
+                    noForumText.textContent = 'No Forum.';
 
+                    icebergSelectDiv.appendChild(noForumText);
+                    noForumElement.appendChild(icebergSelectDiv);
+                    usersList.appendChild(noForumElement);
+                } else {
+                    forums.forEach(forum => {
+                        const forumElement = document.createElement('div');
+                        forumElement.classList.add('white-content');
 
-                        });
-                    }
-                })
-                .catch(error => console.error('Erreur lors de la récupération des forums:', error));
-        }
+                        // Créer le bouton d'abonnement (si l'utilisateur est connecté)
+                        <?php if (!empty($_SESSION["email"]) && !empty($_SESSION["user_profile"]) && !empty($_SESSION["user_id"])): ?>
+                            const buttonDiv = document.createElement('div');
+                            buttonDiv.classList.add('buttonSubscrib');
+                            buttonDiv.setAttribute('style', `margin: 0px 0px -35px 0px;`);
+
+                            const subscribeButton = document.createElement('button');
+                            subscribeButton.classList.add('post-forum');
+                            subscribeButton.id = `subscribe-button-${encodeURIComponent(forum.forum_id)}`;
+                            subscribeButton.setAttribute('onclick', `subrequette(${encodeURIComponent(forum.forum_id)}, <?php echo $_SESSION['user_id']; ?>)`);
+                            const buttonText = document.createElement('strong');
+                            buttonText.classList.add('p-forum');
+                            buttonText.textContent = 'Subscribe';
+
+                            subscribeButton.appendChild(buttonText);
+                            buttonDiv.appendChild(subscribeButton);
+                            forumElement.appendChild(buttonDiv);
+                        <?php endif; ?>
+
+                        // Créer l'élément de profil de l'auteur
+                        const icebergProfileDiv = document.createElement('div');
+                        icebergProfileDiv.classList.add('iceberg-select-profile');
+                        icebergProfileDiv.setAttribute('style',`margin: 0px 0px 0px -12px;`);
+
+                        const profileImage = document.createElement('img');
+                        profileImage.classList.add('user-avatar');
+                        profileImage.src = forum.creator.profile_picture;
+                        profileImage.alt = 'Profile Picture';
+
+                        const creatorUsername = document.createElement('h3');
+                        creatorUsername.classList.add('creator-username');
+                        creatorUsername.textContent = forum.creator.username;
+
+                        icebergProfileDiv.appendChild(profileImage);
+                        icebergProfileDiv.appendChild(creatorUsername);
+                        forumElement.appendChild(icebergProfileDiv);
+
+                        // Créer une div cliquable pour le titre et la description
+                        const forumId = encodeURIComponent(forum.forum_id);
+                        const forumUrl = `Abyss-Forum.php?forum_id=${forumId}`;
+
+                        const clickableDiv = document.createElement('div');
+                        clickableDiv.classList.add('clickable-div');
+                        clickableDiv.onclick = () => {
+                            window.location.href = forumUrl;
+                        };
+                        clickableDiv.setAttribute('style',`cursor: pointer;`);
+
+                        // Créer le titre du forum et l'ajouter à la div cliquable
+                        const titleSpan = document.createElement('span');
+                        titleSpan.textContent = `Title: ${forum.forum_name}`;
+                        clickableDiv.appendChild(titleSpan);
+
+                        // Saut de ligne
+                        clickableDiv.appendChild(document.createElement('br'));
+                        clickableDiv.appendChild(document.createElement('br'));
+
+                        // Créer la description du forum et l'ajouter à la div cliquable
+                        const descriptionSpan = document.createElement('span');
+                        descriptionSpan.classList.add('username');
+                        descriptionSpan.innerHTML = `Description:<br>${forum.forum_description}`;
+                        clickableDiv.appendChild(descriptionSpan);
+
+                        // Ajouter la div cliquable au forumElement
+                        forumElement.appendChild(clickableDiv);
+
+                        // Créer le nombre de posts
+                        const postCountSpan = document.createElement('span');
+                        postCountSpan.classList.add('post-nomber');
+                        postCountSpan.textContent = `${forum.post_count} post(s)`;
+                        forumElement.appendChild(postCountSpan);
+
+                        // Ajouter l'élément principal à la liste des forums
+                        usersList.appendChild(forumElement);
+                    });
+                }
+            })
+            .catch(error => console.error('Erreur lors de la récupération des forums:', error));
+
         function subrequette(forum_id, user_id) {
             // Préparer les données à envoyer
             const data = {
