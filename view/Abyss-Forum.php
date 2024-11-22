@@ -128,12 +128,14 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                 <a href="./Abyss-Post.php?Post=${post.id}" class="post-link userLien">
                     ${post.image ? `<img src="${post.image}" alt="Image du post" class="post-image"> <br><br>` : ''}
                     <span class="username">Description:<br>${post.content}</span><br>
+                     <hr>
                     <span class="post-nomber">${post.comment_count} comment(s)</span>
                 </a><br/>
+               
                 <?php
                 if(!empty($_SESSION["email"]) && !empty($_SESSION["user_profile"]) && !empty($_SESSION["user_id"])){
                 ?>
-                <div style="display: flex; justify-content: end; margin-top: -2rem;">
+                <div style="display: flex; justify-content: end; margin-top: -1rem;">
                 <button onclick="clickLike(this, ${post.id})" class="likebutton">${post.like_count}<img src="./../public/img/likebutton.png" alt="Like" class="likeicon <?php echo $_SESSION['buttonred'];?>"></button>
                 </div>
                 <?php
@@ -145,9 +147,6 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                 postsContainer.appendChild(postElement);
             });
         }
-
-
-
         // Charger les données initiales et les composants
         fetchForumData();
 

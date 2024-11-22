@@ -33,9 +33,9 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
         </div>
         <div class="main-index">
             <?php include './../composants/white_content_left.php'; ?>
-                <div class="users-list" id="usersList">
-                    <!-- Actualisation des forum ici -->
-                </div>
+            <div class="users-list" id="usersList">
+                <!-- Actualisation des forum ici -->
+            </div>
             <?php include './../composants/white_content_right.php'; ?>
         </div>
     </main>
@@ -61,9 +61,19 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                             const forumUrl = `Abyss-Forum.php?forum_id=${forumId}`;
 
                             forumElement.innerHTML = `
-                                <a class="userLien " href="./${forumUrl}">
-                                    <div class="iceberg-select-profile ">
-                                            <img src="${forum.creator.profile_picture}" alt="Profile Picture" class="user-avatar">
+                            <?php
+                            if (!empty($_SESSION["email"]) && !empty($_SESSION["user_profile"]) && !empty($_SESSION["user_id"])) {
+                                ?>
+                            <div class="buttonSubscrib" style="margin: 0px 0px -35px 0px;">
+                                        <button class="post-forum" id="subscribe-button-${forumId}" onclick="subrequette(${forumId},<?php echo $_SESSION['user_id']; ?>)">
+                                            <strong class="p-forum">Subscrib</strong>
+                                        </button>
+                                        </div>
+                                <?php } else {
+                            } ?>
+                            <div class="iceberg-select-profile " >
+                            <img src="${forum.creator.profile_picture}" alt="Profile Picture" class="user-avatar">
+                            <a class="userLien " href="./${forumUrl}">
                                             <h3 class="creator-username">${forum.creator.username}</h3>
                                         </div></br>
                                         <span class="">Title: ${forum.forum_name}</span><br><br>
@@ -80,11 +90,59 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                 })
                 .catch(error => console.error('Erreur lors de la récupération des forums:', error));
         }
+        function subrequette(forum_id, user_id) {
+            // Préparer les données à envoyer
+            const data = {
+                forum_id: forum_id,
+                user_id: user_id
+            };
+            const button = document.getElementById(`subscribe-button-${forum_id}`);
+
+            // Vérifier si l'utilisateur est déjà abonné (en utilisant la classe ou le texte du bouton)
+            const isSubscribed = button.classList.contains('subscribed');
+
+            // Définir l'action à effectuer : abonnement ou désabonnement
+            const action = isSubscribed ? 'unsubscribe' : 'subscribe';
+            fetch('./../composants/requeteMenuSubsrip.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ ...data, action: action }) // Ajouter l'action au body
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        if (action === 'subscribe') {
+                            button.classList.add('subscribed');
+                            button.innerHTML = '<strong class="p-forum">add sub</strong>';
+                            console.log('Abonnement réussi');
+                        } else if (action === 'unsubscribe') {
+                            button.classList.remove('subscribed');
+                            button.innerHTML = '<strong class="p-forum">Subscribe</strong>';
+                            console.log('Désabonnement réussi');
+                        }
+                    } else {
+                        console.error('Erreur:', data.message);
+                        alert('Erreur : ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur lors de l\'envoi des données:', error);
+                    alert('Erreur lors de l\'envoi des données');
+                });
+        }
         // Actualiser la liste toutes les 10 secondes
         setInterval(fetchForums, 10000);
         // Charger immédiatement au démarrage
         fetchForums();
     </script>
 </body>
+<style>
+    .buttonSubscrib {
+        display: flex;
+        justify-content: end;
+    }
+</style>
 
 </html>
