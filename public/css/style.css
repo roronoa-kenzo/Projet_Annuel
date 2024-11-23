@@ -640,15 +640,13 @@ btn-menu-admin:hover{
   background-color: #000; /* Couleur noire pour le fond */
   color: #fff; /* Texte blanc */
   padding: 9em; /* Ajout de padding en haut et en bas */
-  width: 100%; /* Prendre toute la largeur de la page */
   text-align: center; /* Centrer le contenu */
-  position: relative;
   font-family: 'Arial', sans-serif;
 }
 
 .footer-container {
   display: flex;
-  justify-content: space-around; /* Espacement entre les éléments */
+  justify-content:center; /* Espacement entre les éléments */
   align-items: center;
   margin: 0 auto; /* Centrer le contenu */
   padding: 9em;
@@ -860,6 +858,15 @@ btn-menu-admin:hover{
 .theme-option[data-theme="galaxy_blue"]:hover span { background-color: #1B2A49; }
 
 
+/* Menu burger (mobile) */
+#menuToggle {
+  display: none; /* Par défaut, masqué */
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  z-index: 2;
+  user-select: none;
+}
 
 
 
@@ -868,4 +875,151 @@ btn-menu-admin:hover{
 
 
 
+
+
+/* Afficher le menu burger et gérer l'affichage sur les petits écrans */
+@media (max-width: 1228px) {
+
+  #menuToggle {
+    display: block; /* Affiche le menu burger uniquement sur les petits écrans */
+}
+
+.nav_buttons, .nav_third {
+    display: none; /* Masque les autres éléments de la navbar sur mobile */
+}
+
+.navbar{
+  height: 4em;
+  position: fixed;
+}
+
+#menuToggle input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 2;
+}
+
+/* Hamburger icon styling */
+#menuToggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  background: #ffffff;
+  border-radius: 3px;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+              background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+#menuToggle input:checked ~ span {
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #ffffff;
+}
+
+#menuToggle input:checked ~ span:nth-last-child(2) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#menuToggle input:checked ~ span:nth-last-child(3) {
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/* Menu list */
+#menu {
+  position: absolute;
+  right: -21px;
+  top: 46px;
+  width: 200px;
+  height: 57em;
+  background: #ededed;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+#menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+#menuToggle input:checked ~ #menu {
+  transform: translateX(0);
+}
+
+
+  .inpuText{
+    width: 19em;
+    margin-right: 18em;
+  }
+
+  .navbar #navbar-menu {
+      display: none; /* Cacher le menu sur mobile */
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: #fff;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+  }
+
+  .navbar #navbar-menu.show {
+      display: block; /* Afficher le menu quand l'icône burger est cliquée */
+  }
+
+  .navbar #navbar-menu li {
+      margin: 15px 0;
+  }
+
+  .menu-icon {
+      display: block; /* Afficher l'icône burger sur mobile */
+  }
+
+  /* Style spécifique pour le contenu des sections dans le menu burger */
+  .menu-content {
+      padding: 10px;
+  }
+
+  .main-index {
+    display: flex;
+    justify-content: center;
+}
+
+
+  .white-content-secondary {
+      display: none;
+  }
+
+  .white-content-admin {
+    display: none;
+}
+}
+
+/* Style pour le mode sombre */
+.dark-mode {
+  background-color: #121212;
+  color: #fff;
+}
+
+.dark-mode .navbar {
+  background-color: #333;
+}
+
+.dark-mode #navbar-menu li a {
+  color: #fff;
+}
+
+.dark-mode .nav_third button {
+  background-color: #444;
+  color: #fff;
+}
 
