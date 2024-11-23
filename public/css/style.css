@@ -1028,3 +1028,32 @@ btn-menu-admin:hover{
   color: #fff;
 }
 
+
+
+.notification.level-up {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #4caf50;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  z-index: 1000;
+}
+
+.notification.level-up button {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  float: right;
+  margin-left: 10px;
+}
+
+.notification.level-up button:hover {
+  color: #ccc;
+}
+
