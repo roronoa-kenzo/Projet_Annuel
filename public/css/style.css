@@ -147,6 +147,7 @@ option{
   padding: 20px;
   border-radius: 20px;
   width: 50em;
+  margin: 5%;
   max-width: 600px;
   margin-top: -10px;
   margin-left: 5vh;
@@ -269,7 +270,13 @@ textarea{
   background-color: #e8e8e8;
 }
 
-
+.iceberg-select-profile  {
+  display: flex;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 14px;
+}
 
 .post-textarea {
   width: 96%;
@@ -639,7 +646,6 @@ btn-menu-admin:hover{
   margin-top: 5em;
   background-color: #000; /* Couleur noire pour le fond */
   color: #fff; /* Texte blanc */
-  padding: 9em; /* Ajout de padding en haut et en bas */
   text-align: center; /* Centrer le contenu */
   font-family: 'Arial', sans-serif;
 }
@@ -944,7 +950,6 @@ btn-menu-admin:hover{
   padding: 10px;
   transform: translateX(100%);
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-}
 
 #menu li {
   padding: 10px 0;

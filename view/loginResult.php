@@ -39,7 +39,7 @@
 
   //verification mod de pass 
   if (count($result) > 0 && password_verify($formpassword, $result[0]["password_hash"])) {
-    $user = $result[0];
+
     //verification captcha 
     if (isset($_POST['valid'])) {
       // je verifie si c'est a admis ou pas
@@ -58,12 +58,12 @@
               $_SESSION["username"] = $result["username"];
               $_SESSION["user_profile"] = !empty($result["user_profile"]) ? $result["user_profile"] : './../public/img/abyssicon.png';
               $_SESSION["user_id"] = $result["id"];
-
+              
               $dureDuCookie = time() + (7 * 24 * 3600);
 
               // Créer les cookies
               setcookie('formusername', $_SESSION["username"], $dureDuCookie, "/");
-              setcookie('imgprofile',  $_SESSION["user_profile"], $dureDuCookie, "/");
+              setcookie('imgprofile', $_SESSION["user_profile"], $dureDuCookie, "/");
               setcookie('email', $_SESSION["email"], $dureDuCookie, "/");
               setcookie('userId', $_SESSION["user_id"], $dureDuCookie, "/");
 
@@ -114,9 +114,9 @@
 
               // Créer les cookies
               setcookie('formusername', $formusername, $dureDuCookie, "/");
-              setcookie('imgprofile', $imgprofile, $dureDuCookie, "/");
-              setcookie('email', $email, $dureDuCookie, "/");
-              setcookie('userId', $userId, $dureDuCookie, "/");
+              setcookie('imgprofile', $_SESSION["user_profile"], $dureDuCookie, "/");
+              setcookie('email', $_SESSION["email"], $dureDuCookie, "/");
+              setcookie('userId', $_SESSION["user_id"], $dureDuCookie, "/");
 
               // Récupération des forums auxquels l'utilisateur est abonné
               $userId = $_SESSION['user_id'];
@@ -143,6 +143,10 @@
           }
         }
       }
+    } else {
+      $_SESSION['ErrorLoginPass'] = 'Email or Password wrong.';
+      header('Location: connexion.php');
+      exit();
     }
   } else {
     $_SESSION['ErrorLoginPass'] = 'Email or Password wrong.';
