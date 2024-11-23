@@ -645,7 +645,6 @@ btn-menu-admin:hover{
   margin-top: 5em;
   background-color: #000; /* Couleur noire pour le fond */
   color: #fff; /* Texte blanc */
-  padding: 9em; /* Ajout de padding en haut et en bas */
   width: 100%; /* Prendre toute la largeur de la page */
   text-align: center; /* Centrer le contenu */
   position: relative;

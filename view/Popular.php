@@ -43,6 +43,7 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
     <?php include './../composants/footer.php'; ?>
 
     <script>
+        function fetchForums(){
         fetch('./requetePopular.php')
             .then(response => response.json())
             .then(forums => {
@@ -89,7 +90,6 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                         // Créer l'élément de profil de l'auteur
                         const icebergProfileDiv = document.createElement('div');
                         icebergProfileDiv.classList.add('iceberg-select-profile');
-                        icebergProfileDiv.setAttribute('style',`margin: 0px 0px 0px -12px;`);
 
                         const profileImage = document.createElement('img');
                         profileImage.classList.add('user-avatar');
@@ -145,7 +145,7 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                 }
             })
             .catch(error => console.error('Erreur lors de la récupération des forums:', error));
-
+        }
         function subrequette(forum_id, user_id) {
             // Préparer les données à envoyer
             const data = {
