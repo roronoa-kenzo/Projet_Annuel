@@ -147,18 +147,19 @@ option{
   padding: 20px;
   border-radius: 20px;
   width: 50em;
+  margin: 5%;
   max-width: 600px;
   margin-top: -10px;
   margin-left: 5vh;
   margin-right: 5vh;
-  box-shadow: inset gray 0px 3px 13px 0px;
+  box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
 }
 .white-content-admin {
   background-color: white;
   padding: 20px;
   border-radius: 20px;
   width: 90vh;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
   margin-top: -10px;
   margin-left: 5vh;
   margin-right: 5vh;
@@ -176,7 +177,7 @@ option{
   width: 14em;
   max-width: 600px;
   margin-top: -10px;
-  box-shadow: inset gray 0px 3px 13px 0px;
+  box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
   display: flex;
     flex-direction: column;
     align-items: center;
@@ -269,7 +270,13 @@ textarea{
   background-color: #e8e8e8;
 }
 
-
+.iceberg-select-profile  {
+  display: flex;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 14px;
+}
 
 .post-textarea {
   width: 96%;
@@ -449,7 +456,7 @@ background-color: grey;
   font-family: "Josefin Sans", sans-serif;
   height: 32px;
   width: 105px;
-  box-shadow: inset #888 9px 20px 5px -12px;
+  box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
   cursor: pointer;
   transition: 1s;
@@ -565,10 +572,11 @@ btn-menu-admin:hover{
     margin-top: 25px;
     margin-left: 5vh;
     margin-right: 5vh;
-    box-shadow: inset gray 0px 1px 13px 0px;
+    box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
 }
 
 .inputTitle {
+  margin-bottom: 1%;
   width: 96%;
   height: 24px;
   margin-top: 10px;
@@ -632,23 +640,19 @@ btn-menu-admin:hover{
   background-color: #f44336; /* Rouge pour les erreurs */
 }
 
-
-----------------------------------------------------/* Style global du footer */
+/* Style global du footer */
 
 .footer {
   margin-top: 5em;
   background-color: #000; /* Couleur noire pour le fond */
   color: #fff; /* Texte blanc */
-  padding: 9em; /* Ajout de padding en haut et en bas */
-  width: 100%; /* Prendre toute la largeur de la page */
   text-align: center; /* Centrer le contenu */
-  position: relative;
   font-family: 'Arial', sans-serif;
 }
 
 .footer-container {
   display: flex;
-  justify-content: space-around; /* Espacement entre les éléments */
+  justify-content:center; /* Espacement entre les éléments */
   align-items: center;
   margin: 0 auto; /* Centrer le contenu */
   padding: 9em;
@@ -731,22 +735,22 @@ btn-menu-admin:hover{
   background-color: #16a085;
 }
 
-/*--------------------------------------------------------------------LIKE----------------------------------------------*/
-
 .like-button {
   background: transparent;
-  border: none;
+  border: 2px solid black; /* Bord noir par défaut */
   cursor: pointer;
   padding: 0;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out; /* Ajout de transition pour la bordure */
 }
 
 .like-button .heart {
-  fill: #ff0000; /* Couleur du cœur par défaut */
+  fill: transparent; /* Couleur du cœur par défaut */
+  stroke: black; /* Contour noir par défaut */
+  stroke-width: 2;
   transition: fill 0.3s ease-in-out;
 }
 
@@ -754,62 +758,276 @@ btn-menu-admin:hover{
   background-color: black; /* Fond noir lorsqu'on like */
 }
 
-.like-button.unliked {
-  background-color: white; /* Fond blanc lorsqu'on unlike */
-}
-
 .like-button:hover {
   background-color: rgba(0, 0, 0, 0.1); /* Légèrement plus sombre au survol pour montrer l'interactivité */
 }
 
 .like-button.liked .heart {
-  fill: #ffffff; /* Cœur blanc lorsqu'on like */
+  fill: #ff0000; /* Cœur rouge lorsqu'on like */
+  stroke: transparent; /* Pas de contour lorsqu'on like */
 }
 
 .like-button.unliked .heart {
-  fill: #ff0000; /* Cœur rouge lorsqu'on unlike */
+  fill: transparent; /* Cœur transparent lorsqu'on unlike */
+  stroke: black; /* Contour noir lorsqu'on unlike */
 }
 
-/* Styles pour les particules (si un effet est souhaité) */
-.particles {
+/*----------------------------------------------------------------------------------Modal----------------------------------------------------------------*/
+
+
+.modal {
+  display: none; /* Masqué par défaut */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 60%;
+  max-width: 800px;
+  position: relative;
+}
+
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.labelForum{
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.theme-option {
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 5px;
+  transition: border-color 0.3s;
+}
+
+.theme-option.selected {
+  border-color: var(--theme-color, #000); /* Couleur de bordure dynamique selon le thème */
+  height: 106px;
+}
+
+
+.theme-selection {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.theme-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    width: 120px;
+    text-align: center;
+}
+
+.theme-option img {
+  width: 130px;
+  height: auto;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  transition: 0.3s;
+}
+
+.theme-option span {
+    background-color: #e0e0e0;
+    width: 100%;
+    padding: 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Effets de survol avec des couleurs spécifiques pour chaque thème */
+.theme-option[data-theme="grey"]:hover span { background-color: #888; }
+.theme-option[data-theme="blue"]:hover span { background-color: #007BFF; }
+.theme-option[data-theme="green"]:hover span { background-color: #28A745; }
+.theme-option[data-theme="red"]:hover span { background-color: #DC3545; }
+.theme-option[data-theme="orange"]:hover span { background-color: #FD7E14; }
+.theme-option[data-theme="galaxy_red"]:hover span { background-color: #66101F; }
+.theme-option[data-theme="galaxy_blue"]:hover span { background-color: #1B2A49; }
+
+
+/* Menu burger (mobile) */
+#menuToggle {
+  display: none; /* Par défaut, masqué */
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  z-index: 2;
+  user-select: none;
+}
+
+
+
+
+
+
+
+
+
+
+/* Afficher le menu burger et gérer l'affichage sur les petits écrans */
+@media (max-width: 1228px) {
+
+  #menuToggle {
+    display: block; /* Affiche le menu burger uniquement sur les petits écrans */
+}
+
+.nav_buttons, .nav_third {
+    display: none; /* Masque les autres éléments de la navbar sur mobile */
+}
+
+.navbar{
+  height: 4em;
+  position: fixed;
+}
+
+#menuToggle input {
+  display: block;
+  width: 40px;
+  height: 32px;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  gap: 5px;
+  top: -7px;
+  left: -5px;
+  cursor: pointer;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  z-index: 2;
 }
 
-.like-button.liked .particles {
-  opacity: 1; /* Afficher les particules lorsqu'on like */
-}
-
-.particle {
-  width: 4px;
+/* Hamburger icon styling */
+#menuToggle span {
+  display: block;
+  width: 33px;
   height: 4px;
-  border-radius: 50%;
-  background-color: var(--color);
-  animation: particleAnimation 0.6s ease-out forwards;
+  margin-bottom: 5px;
+  background: #ffffff;
+  border-radius: 3px;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+              background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
-@keyframes particleAnimation {
-  0% {
-      transform: scale(1) translate(0, 0);
-  }
-  100% {
-      transform: scale(1.5) translate(var(--i, 0) * 10px, var(--i, 0) * -10px);
-      opacity: 0;
-  }
+#menuToggle input:checked ~ span {
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #ffffff;
+}
+
+#menuToggle input:checked ~ span:nth-last-child(2) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#menuToggle input:checked ~ span:nth-last-child(3) {
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/* Menu list */
+#menu {
+  position: absolute;
+  right: -21px;
+  top: 46px;
+  width: 200px;
+  height: 57em;
+  background: #ededed;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+
+#menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+#menuToggle input:checked ~ #menu {
+  transform: translateX(0);
 }
 
 
+  .inpuText{
+    width: 19em;
+    margin-right: 18em;
+  }
+
+  .navbar #navbar-menu {
+      display: none; /* Cacher le menu sur mobile */
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: #fff;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+  }
+
+  .navbar #navbar-menu.show {
+      display: block; /* Afficher le menu quand l'icône burger est cliquée */
+  }
+
+  .navbar #navbar-menu li {
+      margin: 15px 0;
+  }
+
+  .menu-icon {
+      display: block; /* Afficher l'icône burger sur mobile */
+  }
+
+  /* Style spécifique pour le contenu des sections dans le menu burger */
+  .menu-content {
+      padding: 10px;
+  }
+
+  .main-index {
+    display: flex;
+    justify-content: center;
+}
 
 
-.footer-p {
+  .white-content-secondary {
+      display: none;
+  }
+
+  .white-content-admin {
+    display: none;
+}
+}
+
+/* Style pour le mode sombre */
+.dark-mode {
+  background-color: #121212;
   color: #fff;
 }
+
+.dark-mode .navbar {
+  background-color: #333;
+}
+
+.dark-mode #navbar-menu li a {
+  color: #fff;
+}
+
+.dark-mode .nav_third button {
+  background-color: #444;
+  color: #fff;
+}
+
 
 
 .notification.level-up {
@@ -838,3 +1056,4 @@ btn-menu-admin:hover{
 .notification.level-up button:hover {
   color: #ccc;
 }
+
