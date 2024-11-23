@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query->execute([
         'name' => $forum_name,
         'description' => $forum_description,
-        'background' => "themes/" . $selected_theme . "_theme.css" // Stocke le chemin vers le thème
+        'background' => "./../public/css/" . $selected_theme . "_theme.css" // Stocke le chemin vers le thème
     ]);
 
     $_SESSION['SuccessForum'] = "Le forum a été créé avec succès!";
