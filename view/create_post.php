@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once './../serveur/database.php'; // Adapter le chemin vers votre fichier de configuration
+require_once './../composants/expSysteme/xpSystem.php'; // Inclure le fichier contenant la fonction updateXP
 
 // Vérifiez que l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
@@ -14,8 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $content = trim($_POST['content']);
     $forum_id = $_POST['forum_id'];
 
-     // Validation : vérifier que le titre n'est pas vide
-     if (empty($title)) {
+    // Validation : vérifier que le titre n'est pas vide
+    if (empty($title)) {
         $_SESSION['ErrorTitle'] = 'Le titre du post ne peut pas être vide.';
         header('Location: ./index.php');
         exit();
@@ -44,7 +45,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $query->bindParam(':forum_id', $forum_id, PDO::PARAM_INT);
         
         if ($query->execute()) {
+            // Ajouter de l'XP à l'utilisateur
+            $xpReward = 10; // XP attribuée pour la création d'un post
+            $updateResult = updateXP($_SESSION['user_id'], $xpReward, $pdo);
+
+            // Message de succès
             $_SESSION['SuccessPost'] = 'Votre post a été créé avec succès.';
+            
+            // Notifier la montée de niveau (si applicable)
+            if ($updateResult['level'] > $_SESSION['current_level']) {
+                $_SESSION['SuccessLevelUp'] = "Félicitations ! Vous êtes passé au niveau " . $updateResult['level'] . " !";
+                $_SESSION['current_level'] = $updateResult['level'];
+            }
         } else {
             $_SESSION['ErrorPost'] = 'Une erreur est survenue lors de la création de votre post.';
         }
@@ -59,4 +71,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Location: ./index.php');
     exit();
 }
-

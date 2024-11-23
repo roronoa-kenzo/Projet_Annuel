@@ -1,6 +1,5 @@
 <!-- composants/navbar.php -->
 <?php
-
 // Vérifiez si le formulaire a été soumis pour activer/désactiver le mode sombre
 if (isset($_POST['darkMode'])) {
     $_SESSION['darkMode'] = $_POST['darkMode'];
@@ -16,6 +15,13 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
             <img src="./../public/img/icon.png" alt="Abyss" class="logo">
         </a>
 
+        <?php if (isset($_SESSION['LevelUp'])): ?>
+            <div class="notification level-up">
+                <?php echo $_SESSION['LevelUp']; ?>
+                <button onclick="this.parentElement.style.display='none';">X</button>
+            </div>
+            <?php unset($_SESSION['LevelUp']); // Supprimez la notification après affichage ?>
+        <?php endif; ?>
 
         <?php if (isset($_SESSION['email'])): ?>
             <div id="searchBar" class="search-container">
@@ -42,13 +48,11 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                         document.getElementById('darkModeForm').submit();
                     }
 
-
                     // Applique la classe 'dark-mode' si le mode sombre est activé
                     if (<?php echo json_encode($darkMode); ?>) {
                         document.body.classList.add('dark-mode');
                     }
                 </script>
-
 
                 <a href="./../view/profile.php">
                     <img src="<?php echo htmlspecialchars($_SESSION["user_profile"]); ?>" alt="User Avatar"
