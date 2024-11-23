@@ -76,9 +76,6 @@
 
             
             <!-- Affichage des messages d'erreur ou de succès -->
-            
-
-            
 
         </div>
           <!-- Affichage des posts récents -->

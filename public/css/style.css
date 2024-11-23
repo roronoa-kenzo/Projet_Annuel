@@ -147,6 +147,7 @@ option{
   padding: 20px;
   border-radius: 20px;
   width: 50em;
+  margin: 5%;
   max-width: 600px;
   margin-top: -10px;
   margin-left: 5vh;
@@ -269,7 +270,13 @@ textarea{
   background-color: #e8e8e8;
 }
 
-
+.iceberg-select-profile  {
+  display: flex;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 14px;
+}
 
 .post-textarea {
   width: 96%;
@@ -638,7 +645,6 @@ btn-menu-admin:hover{
   margin-top: 5em;
   background-color: #000; /* Couleur noire pour le fond */
   color: #fff; /* Texte blanc */
-  padding: 9em; /* Ajout de padding en haut et en bas */
   width: 100%; /* Prendre toute la largeur de la page */
   text-align: center; /* Centrer le contenu */
   position: relative;
@@ -838,7 +844,10 @@ btn-menu-admin:hover{
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-
+.post-nomber{
+  font-size: 12px;
+  color: gray;
+}
 
 
 
