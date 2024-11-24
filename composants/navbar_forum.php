@@ -24,27 +24,6 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                 </div>
             </div>
             <div class="nav_third">
-                <form id="darkModeForm" method="POST">
-                    <input type="hidden" name="darkMode" id="darkModeInput" value="<?php echo $darkMode ? 'on' : 'off'; ?>">
-                    <button type="button" onclick="toggleDarkMode()">Nuit</button>
-                </form>
-                <script>
-                    function toggleDarkMode() {
-                        // Alterne la classe dark-mode sur le body
-                        document.body.classList.toggle('dark-mode');
-
-                        // Met à jour la valeur du champ caché et soumet le formulaire
-                        const isDarkMode = document.body.classList.contains('dark-mode');
-                        document.getElementById('darkModeInput').value = isDarkMode ? 'on' : 'off';
-                        document.getElementById('darkModeForm').submit();
-                    }
-
-                    // Applique la classe 'dark-mode' si le mode sombre est activé
-                    if (<?php echo json_encode($darkMode); ?>) {
-                        document.body.classList.add('dark-mode');
-                    }
-                </script>
-
                 <a href="./../view/profile.php">
                     <img src="<?php echo htmlspecialchars($_SESSION["user_profile"]); ?>" alt="User Avatar" class="profile-button">
                 </a>
@@ -80,12 +59,6 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                       <a class="btn-menu" href="./Abyss-Recent.php">Recent</a>
                       <a class="btn-menu" href="./kinglike.php">king of Like</a>
                    </div>
-                </li>
-                <li>
-                    <form id="darkModeForm" method="POST">
-                       <input type="hidden" name="darkMode" id="darkModeInput" value="<?php echo $darkMode ? 'on' : 'off'; ?>">
-                       <button type="button" onclick="toggleDarkMode()">Nuit</button>
-                    </form>
                 </li>
                 <li>
                 <form action="./../serveur/logout.php" method="post" style="display: inline;">

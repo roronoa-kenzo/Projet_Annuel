@@ -24,7 +24,9 @@ if(!empty($_SESSION["email"]) && !empty($_SESSION["user_profile"]) && !empty($_S
 
 ?>
     <div class="white-content-secondary">
-        <h3>Your iceberg</h3>
+    <h3>Add Iceberg</h3>
+    <button id="openModalButton" class="btn-menu">Créer un Forum</button>
+        <h3>Your Iceberg</h3>
         <?php if (!empty($subscribedForums)) : ?>
             <?php foreach ($subscribedForums as $forum) : ?>
                 <a class="btn-menu" href="./Abyss-Forum.php?forum_id=<?= $forum['forum_id']; ?>">

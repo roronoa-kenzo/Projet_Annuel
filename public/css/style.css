@@ -167,6 +167,7 @@ option{
 .main-index {
   display: flex;
   justify-content: space-around;
+  padding-bottom: 4em;
 }
 
 .white-content-secondary {
@@ -182,6 +183,8 @@ option{
     flex-direction: column;
     align-items: center;
 }
+
+
 
 .btn-menu{
   background-color: #ddd;
@@ -308,12 +311,18 @@ textarea{
   height : 100px;
 }
 
-.profile-button{
-    width: 40px;
-    height: 37px;
-    border-radius: 50%;
-    margin-right: 25px;
-    margin-left: 25px;
+.profile-button {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  margin-right: 25px;
+  margin-left: 55px;
+
+}
+
+.profile_name{
+  display: flex;
+  justify-content: center;
 }
 
 /*-------------------- form page ---------------------------------------*/
@@ -657,8 +666,8 @@ btn-menu-admin:hover{
   margin: 0 auto; /* Centrer le contenu */
   padding: 9em;
   background-color: #000; /* Couleur noire pour le fond */
-  margin-top: 25px;
-
+  margin-top: -80px;
+  
 }
 
 .footer-logo h2 {
@@ -874,9 +883,11 @@ btn-menu-admin:hover{
   user-select: none;
 }
 
-
-
-
+.burger-navigation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 
 
@@ -885,15 +896,12 @@ btn-menu-admin:hover{
 
 /* Afficher le menu burger et gérer l'affichage sur les petits écrans */
 @media (max-width: 1228px) {
-
   #menuToggle {
     display: block; /* Affiche le menu burger uniquement sur les petits écrans */
 }
-
 .nav_buttons, .nav_third {
     display: none; /* Masque les autres éléments de la navbar sur mobile */
 }
-
 .navbar{
   height: 4em;
   position: fixed;
@@ -919,8 +927,8 @@ btn-menu-admin:hover{
   margin-bottom: 5px;
   background: #ffffff;
   border-radius: 3px;
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-              background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+              background: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
 #menuToggle input:checked ~ span {
@@ -939,17 +947,23 @@ btn-menu-admin:hover{
 
 /* Menu list */
 #menu {
-  position: absolute;
-  right: -21px;
-  top: 46px;
-  width: 200px;
-  height: 57em;
-  background: #ededed;
-  list-style-type: none;
-  margin: 0;
-  padding: 10px;
-  transform: translateX(100%);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+  display: flex;
+        position: absolute;
+        right: -21px;
+        top: 46px;
+        width: 26em;
+        height: 62em;
+        background: #ededed;
+        list-style-type: none;
+        margin: 0;
+        padding: 10px;
+        transform: translateX(100%);
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+
+}
 
 #menu li {
   padding: 10px 0;
@@ -960,12 +974,16 @@ btn-menu-admin:hover{
   transform: translateX(0);
 }
 
-
+.logo {
+  width: 91px;
+  height: 40px;
+  margin-right: 4em;
+  margin-left: 2em;
+}
   .inpuText{
     width: 19em;
     margin-right: 18em;
   }
-
   .navbar #navbar-menu {
       display: none; /* Cacher le menu sur mobile */
       position: absolute;
@@ -976,37 +994,36 @@ btn-menu-admin:hover{
       text-align: center;
       padding: 10px 0;
   }
-
   .navbar #navbar-menu.show {
       display: block; /* Afficher le menu quand l'icône burger est cliquée */
   }
-
   .navbar #navbar-menu li {
       margin: 15px 0;
+  }
+
+  .profile-button{
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    margin-left: 1.5em;
   }
 
   .menu-icon {
       display: block; /* Afficher l'icône burger sur mobile */
   }
-
   /* Style spécifique pour le contenu des sections dans le menu burger */
   .menu-content {
       padding: 10px;
   }
-
   .main-index {
     display: flex;
     justify-content: center;
 }
-
-
   .white-content-secondary {
       display: none;
   }
-
   .white-content-admin {
     display: none;
-}
 }
 
 /* Style pour le mode sombre */
@@ -1014,17 +1031,19 @@ btn-menu-admin:hover{
   background-color: #121212;
   color: #fff;
 }
-
 .dark-mode .navbar {
   background-color: #333;
 }
-
 .dark-mode #navbar-menu li a {
   color: #fff;
 }
-
 .dark-mode .nav_third button {
   background-color: #444;
   color: #fff;
 }
 
+.black-frame{
+  height: 50vh;
+}
+
+}
