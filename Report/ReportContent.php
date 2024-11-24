@@ -2,14 +2,14 @@
 // Démarrage de la session
 session_start();
 
-// Vérification si l'utilisateur est connecté
-//if (!isset($_SESSION['userID'])) {
+ //Vérification si l'utilisateur est connecté
+if (!isset($_COOKIE['email'])) {
     // Redirige vers la page de connexion si l'utilisateur n'est pas connecté
-   // header("Location: ./../view/connexion.php");
-   // exit();
-//}//
+   header("Location: ./../view/connexion.php");
+   exit();
+}
 
-$userID = $_SESSION['email']; // Récupération de l'ID utilisateur
+$userID = $_COOKIE['email']; // Récupération de l'ID utilisateur
 var_dump($userID);
 ?>
 
