@@ -812,29 +812,19 @@ btn-menu-admin:hover{
 }
 
 
-.notification.level-up {
+.notifications {
   position: fixed;
   top: 10px;
   right: 10px;
   background-color: #4caf50;
   color: white;
-  padding: 15px;
+  padding: 10px;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  font-size: 16px;
   z-index: 1000;
+  font-size: 14px;
+  margin-top: 5px;
 }
-
-.notification.level-up button {
-  background: none;
-  border: none;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  float: right;
-  margin-left: 10px;
-}
-
-.notification.level-up button:hover {
-  color: #ccc;
+.notification.level-up {
+  background-color: #ff9800; /* Orange pour les montées de niveau */
 }

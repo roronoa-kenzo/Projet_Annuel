@@ -1,6 +1,11 @@
 <?php
 
 function updateXP($userId, $xpToAdd, $pdo) {
+    // Démarrer la session si elle n'est pas déjà démarrée
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
     // Récupérer l'XP et le niveau actuels de l'utilisateur
     $stmt = $pdo->prepare("SELECT xp, level FROM users WHERE id = ?");
     $stmt->execute([$userId]);
@@ -42,6 +47,7 @@ function updateXP($userId, $xpToAdd, $pdo) {
 }
 
 function calculateLevel($xp) {
+    $maxLevel = 100; // Niveau maximum
     // Exemple : niveau = racine carrée de l'XP divisé par 10
     return floor(sqrt($xp) / 10) + 1;
 }
