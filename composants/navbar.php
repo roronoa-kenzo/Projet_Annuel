@@ -14,6 +14,14 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
             <img src="./../public/img/icon.png" alt="Abyss" class="logo">
         </a>
 
+        <?php if (isset($_SESSION['LevelUp'])): ?>
+            <div class="notification level-up">
+                <?php echo $_SESSION['LevelUp']; ?>
+                <button onclick="this.parentElement.style.display='none';">X</button>
+            </div>
+            <?php unset($_SESSION['LevelUp']); // Supprimez la notification après affichage ?>
+        <?php endif; ?>
+
         <?php if (isset($_SESSION['email'])): ?>
             <div id="searchBar" class="search-container">
                 <input type="text" class="inpuText" placeholder="Rechercher...">

@@ -248,34 +248,7 @@ if ($forumId) {
         setInterval(fetchForumData, 10000);
     </script>
     <style>
-        .likebutton {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 22px;
-            display: flex;
-        }
 
-        .likeicon {
-            padding-left: 5px;
-            padding-top: 1px;
-        }
-
-        .likebutton .likeicon {
-            width: 22px;
-            /* Ajustez la taille de l'image si nécessaire */
-            height: 22px;
-            transition: filter 0.3s ease;
-            /* Animation de transition */
-        }
-
-        .liked {
-            filter: invert(17%) sepia(95%) saturate(7486%) hue-rotate(0deg) brightness(100%) contrast(115%);
-        }
-
-        .likebutton.liked .likeicon {
-            filter: invert(17%) sepia(95%) saturate(7486%) hue-rotate(0deg) brightness(100%) contrast(115%);
-        }
     </style>
     <?php include './../composants/script_link.php'; ?>
     <?php include './../composants/footer.php'; ?>
