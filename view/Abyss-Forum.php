@@ -16,10 +16,13 @@ if ($forumId) {
     $query->bindParam(':forum_id', $forumId, PDO::PARAM_INT);
     $query->execute();
     
+    
+
     $forumData = $query->fetch(PDO::FETCH_ASSOC);
     
     if ($forumData && !empty($forumData['background'])) {
         $backgroundPath = $forumData['background'];
+        $_SESSION['background'] = $backgroundPath;
     }
 }
 
