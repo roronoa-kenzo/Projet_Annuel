@@ -3,6 +3,7 @@
 
     ?>
 <div class="post-options">
+   <img src="<?php echo htmlspecialchars($_SESSION["user_profile"]); ?>" alt="User Avatar" class="user-avatar">
    <p><strong><?php echo htmlspecialchars($_SESSION["username"]); ?></strong></p>
     <button id="textButton" class="post-option">Text</button>
     <button id="imageVideoButton" class="post-option">Image & Video</button>
