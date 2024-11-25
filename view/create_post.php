@@ -52,11 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Message de succès
             $_SESSION['SuccessPost'] = 'Votre post a été créé avec succès.';
             
-            // Notifier la montée de niveau (si applicable)
-            if ($updateResult['level'] > $_SESSION['current_level']) {
-                $_SESSION['SuccessLevelUp'] = "Félicitations ! Vous êtes passé au niveau " . $updateResult['level'] . " !";
-                $_SESSION['current_level'] = $updateResult['level'];
-            }
         } else {
             $_SESSION['ErrorPost'] = 'Une erreur est survenue lors de la création de votre post.';
         }
