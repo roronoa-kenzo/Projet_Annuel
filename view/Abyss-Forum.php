@@ -81,6 +81,44 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
             document.getElementById('creator-username').textContent = forum.creator.username;
             document.getElementById('creator-profile-picture').src = forum.creator.profile_picture || './default-profile.png';
         }
+        function reportPost(buttonDiv, forumUrlReport) {
+            // Créer un bouton de rapport
+            let buttonReport = document.createElement('button'); // Utilisez 'button', pas 'bouton'
+            buttonReport.classList.add('buttonReport');
+            buttonReport.setAttribute('style', 'cursor: pointer;');
+            // Ajouter une image au bouton
+            let imgReport = document.createElement('img');
+            imgReport.setAttribute('src', './../public/img/reportButton.png');
+            imgReport.setAttribute('class', 'btnReport');
+            buttonReport.appendChild(imgReport);
+
+            // Ajouter un événement click au bouton
+            buttonReport.addEventListener('click', function () {
+                // Créer un formulaire caché dynamiquement
+                let hiddenForm = document.createElement('form');
+                hiddenForm.setAttribute('method', 'POST');
+                hiddenForm.setAttribute('action', './../Report/ReportContent.php');
+                hiddenForm.style.display = 'none';
+
+                // Créer un champ input caché contenant l'URL du forum
+                let hiddenInput = document.createElement('input');
+                hiddenInput.setAttribute('type', 'hidden');
+                hiddenInput.setAttribute('name', 'forumUrl');
+                hiddenInput.setAttribute('value', forumUrlReport);
+
+                // Ajouter l'input caché au formulaire
+                hiddenForm.appendChild(hiddenInput);
+
+                // Ajouter le formulaire au document
+                document.body.appendChild(hiddenForm);
+
+                // Soumettre le formulaire
+                hiddenForm.submit();
+            });
+
+            // Ajouter le bouton au conteneur spécifié
+            buttonDiv.appendChild(buttonReport);
+        }
         function clickLike(button, postId) {
             fetch('./like_post.php', {
                 method: 'POST',
@@ -118,8 +156,14 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                 // Créer la div principale du post
                 const postElement = document.createElement('div');
                 postElement.className = 'white-content';
+                <?php if (!empty($_SESSION["email"]) && !empty($_SESSION["user_profile"]) && !empty($_SESSION["user_id"])): ?>
 
-
+                    const ReportDiv = document.createElement('div');
+                    ReportDiv.setAttribute('style', `margin: 0px 0px -35px 0px;`);
+                    ReportDiv.classList.add('PalceReport');
+                    ReportDiv.setAttribute('style', `margin: 0px 0px -35px 0px;`);
+                    postElement.appendChild(ReportDiv);
+                <?php endif; ?>
                 // Créer la div iceberg-select
                 const icebergSelectDiv = document.createElement('div');
                 icebergSelectDiv.className = 'iceberg-select';
@@ -213,6 +257,8 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
 
                     likeButtonContainer.appendChild(likeButton);
                     postElement.appendChild(likeButtonContainer);
+
+                    reportPost(ReportDiv, postLink.href);
                 <?php endif; ?>
 
                 // Ajouter l'élément de post au conteneur des posts
@@ -228,7 +274,21 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
         setInterval(fetchForumData, 10000);
     </script>
     <style>
+        .buttonReport {
+            padding-top: 3px;
+            border: none;
+            background: none;
+        }
 
+        .PalceReport {
+            display: flex;
+            justify-content: end;
+        }
+
+        .btnReport {
+            height: 3.5vh;
+            padding-left: 1rem;
+        }
     </style>
     <?php include './../composants/script_link.php'; ?>
     <?php include './../composants/footer.php'; ?>
