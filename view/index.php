@@ -2,9 +2,7 @@
 <?php include './../composants/navbar.php'; ?>
 
 <main class="container">
-    <!-- Conteneur pour la notification -->
     <?php include './../composants/notification.php'; ?>
-
     <?php include './../composants/modal_create_forum.php'; ?>
 
     <div class="black-frame">
@@ -13,67 +11,60 @@
     <div class="main-index">
         <?php include './../composants/white_content_left.php'; ?>
         <div class="center-content">
-
             <div class="white-content">
-
                 <div class="post-header">
-                    <img src="<?php echo htmlspecialchars($_SESSION["user_profile"]); ?>" alt="User Avatar"
-                        class="user-avatar">
                     <?php include './../composants/post-options.php'; ?>
                     <div class="iceberg-select">
-
-
-                        <select name="iceberg" id="icebergSelect">
-                            <option value="" disabled selected>
-                                Select an iceberg
-                            </option>
-                            <?php
-                            // Vérifiez si l'utilisateur est connecté
-                            if (isset($_SESSION["user_id"]) && isset($_SESSION['subscribed_forums'])) {
-                                $subscribedForums = $_SESSION['subscribed_forums'];
-
-                                // Vérifiez si l'utilisateur a des forums abonnés
-                                if (empty($subscribedForums)) {
-                                    echo '<option value="">Aucun iceberg trouvé</option>';
-                                } else {
-                                    // Boucle pour générer les options
-                                    foreach ($subscribedForums as $forum) {
-                                        echo '<option value="' . htmlspecialchars($forum['id']) . '">' . htmlspecialchars($forum['name']) . '</option>';
+                        <!-- Formulaire de création de post textuel -->
+                        <div id="textContent" class="post-creation">
+                            <form action="create_post.php" method="post">
+                                <select name="forum_id" required>
+                                    <option value="" disabled selected>Select an iceberg</option>
+                                    <?php
+                                    if (isset($_SESSION["user_id"]) && isset($_SESSION['subscribed_forums'])) {
+                                        foreach ($_SESSION['subscribed_forums'] as $forum) {
+                                            echo '<option value="' . htmlspecialchars($forum['id']) . '">' . htmlspecialchars($forum['name']) . '</option>';
+                                        }
+                                    } else {
+                                        echo '<option value="">Vous devez être connecté pour voir vos icebergs</option>';
                                     }
-                                }
-                            } else {
-                                echo '<option value="">Vous devez être connecté pour voir vos icebergs</option>';
-                            }
-                            ?>
-                        </select>
+                                    ?>
+                                </select>
+                                <input type="text" name="title" class="inputTitle" placeholder="Post Title" required>
+                                <textarea class="post-textarea" name="content" rows="4" placeholder="Write your description..." required></textarea>
+                                <button class="btn-submit" type="submit">Post</button>
+                            </form>
+                        </div>
+
+                        <!-- Formulaire de création de post avec fichier -->
+                        <div id="imageVideoContent" style="display: none;">
+                            <form id="uploadForm" action="./../controleur/upload_post.php" method="post" enctype="multipart/form-data">
+                                <select name="forum_id" required>
+                                    <option value="" disabled selected>Select an iceberg</option>
+                                    <?php
+                                    if (isset($_SESSION["user_id"]) && isset($_SESSION['subscribed_forums'])) {
+                                        foreach ($_SESSION['subscribed_forums'] as $forum) {
+                                            echo '<option value="' . htmlspecialchars($forum['id']) . '">' . htmlspecialchars($forum['name']) . '</option>';
+                                        }
+                                    } else {
+                                        echo '<option value="">Vous devez être connecté pour voir vos icebergs</option>';
+                                    }
+                                    ?>
+                                </select>
+                                <input type="text" name="title" class="inputTitle" placeholder="Post Title" required>
+                                <input type="file" id="fileToUpload" name="fileToUpload" accept=".png, .mp4" required>
+                                <button type="submit" class="btn-submit">Post</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Contenus à afficher selon le bouton cliqué -->
-                <!-- Post Textuel -->
-                <!-- Formulaire de création de post -->
-                <div id='textContent' class="post-creation">
-                    <form action="create_post.php" method="post">
-                        <input type="text" name="title" class="inputTitle" placeholder="Post Title" required>
-                        <textarea class="post-textarea" name="content" rows="4" placeholder="Write your post..."
-                            required></textarea>
-                        <input type="hidden" name="forum_id" id="selectedForumId">
-                        <button class="btn-submit" type="submit">Post</button>
-                    </form>
-                </div>
-                <!-- Post Textuel et images -->
-                <div id="imageVideoContent" style="display: none;">
-                    <form id="uploadForm" action="./upload.php" method="post" enctype="multipart/form-data">
-                        <textarea class="post-textarea" name="description" placeholder="Description..."></textarea>
-                        <input type="file" id="fileToUpload" name="fileToUpload" accept=".png, .mp4">
-                        <button type="submit" name="submit">Upload</button>
-                    </form>
-                </div>
                 <style>
                     textarea {
                         resize: none;
                     }
                 </style>
+
 
 
             </div>
@@ -241,8 +232,8 @@
                     } catch (error) {
                         console.error("Erreur lors de la récupération des posts :", error);
                         document.getElementById('posts-container').innerHTML = `<p>Erreur : ${error.message}</p>`;
-                    }
-                }
+
+
 
                 // Charger les posts au chargement de la page
 
@@ -251,8 +242,9 @@
         </div>
         <?php include './../composants/white_content_right.php'; ?>
     </div>
-    </div>
+  </div>
 </main>
+
 <?php include './../composants/script_link.php'; ?>
 <?php include './../composants/footer.php'; ?>
 <style>

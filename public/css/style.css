@@ -211,14 +211,20 @@ option {
   margin: 0 auto;
 }
 
-textarea {
+.post-image{
+  max-width: 37em;
+  border-radius: 9px;
+}
+
+textarea{
   background-color: #e8e8e8;
 }
 
 .post-header {
   display: flex;
-  align-items: center;
-  padding: 6px;
+      align-items: flex-start;
+      padding: 6px;
+      flex-direction: column;
 }
 
 .user-avatar {
@@ -230,8 +236,10 @@ textarea {
 
 .post-options {
   display: flex;
-  gap: 15px;
-  flex-grow: 1;
+    gap: 15px;
+    flex-grow: 1;
+    margin-bottom: 1em;
+    align-items: center;
 }
 
 .post-option {
@@ -854,6 +862,63 @@ btn-menu-admin:hover {
   border-radius: 0 0 5px 5px;
 }
 
+
+.likebutton .likeicon {
+  width: 22px;
+  /* Ajustez la taille de l'image si nécessaire */
+  height: 22px;
+  transition: filter 0.3s ease;
+  /* Animation de transition */
+}
+
+.liked {
+  filter: invert(17%) sepia(95%) saturate(7486%) hue-rotate(0deg) brightness(100%) contrast(115%);
+}
+
+.notification.success {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #4caf50;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  z-index: 1000;
+}
+
+.notification.level-up {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #4caf50;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  z-index: 1000;
+}
+
+.notification.level-up button {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  float: right;
+  margin-left: 10px;
+}
+
+.notification.level-up button:hover {
+  color: #ccc;
+}
+
+.likebutton.liked .likeicon {
+  filter: invert(17%) sepia(95%) saturate(7486%) hue-rotate(0deg) brightness(100%) contrast(115%);
+}
+
 /* Effets de survol avec des couleurs spécifiques pour chaque thème */
 .theme-option[data-theme="grey"]:hover span {
   background-color: #888;
@@ -1116,51 +1181,5 @@ btn-menu-admin:hover {
 
 .black-frame{
   height: 50vh;
-}
-
-}
-.likebutton .likeicon {
-  width: 22px;
-  /* Ajustez la taille de l'image si nécessaire */
-  height: 22px;
-  transition: filter 0.3s ease;
-  /* Animation de transition */
-}
-
-.liked {
-  filter: invert(17%) sepia(95%) saturate(7486%) hue-rotate(0deg)
-    brightness(100%) contrast(115%);
-}
-
-.notification.level-up {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background-color: #4caf50;
-  color: white;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  font-size: 16px;
-  z-index: 1000;
-}
-
-.notification.level-up button {
-  background: none;
-  border: none;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  float: right;
-  margin-left: 10px;
-}
-
-.notification.level-up button:hover {
-  color: #ccc;
-}
-
-.likebutton.liked .likeicon {
-  filter: invert(17%) sepia(95%) saturate(7486%) hue-rotate(0deg)
-    brightness(100%) contrast(115%);
 }
 
