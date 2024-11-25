@@ -5,6 +5,27 @@ session_start();
 
 $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
 
+// Récupérer le `forum_id` de la requête GET
+$forumId = isset($_GET['forum_id']) ? $_GET['forum_id'] : null;
+$backgroundPath = null;
+
+// Vérifiez si le forum_id est présent
+if ($forumId) {
+    // Préparer la requête pour récupérer les informations de fond pour ce forum
+    $query = $pdo->prepare("SELECT background FROM forums WHERE id = :forum_id");
+    $query->bindParam(':forum_id', $forumId, PDO::PARAM_INT);
+    $query->execute();
+    
+    
+
+    $forumData = $query->fetch(PDO::FETCH_ASSOC);
+    
+    if ($forumData && !empty($forumData['background'])) {
+        $backgroundPath = $forumData['background'];
+        $_SESSION['background'] = $backgroundPath;
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -12,8 +33,7 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
 <head>
     <meta charset="UTF-8">
     <title id="page-title"></title>
-    <link id="theme-stylesheet" rel="stylesheet"
-        href="./../public/css/<?php echo $darkMode ? 'darkmode' : 'style'; ?>.css">
+    <link id="theme-stylesheet" rel="stylesheet" href="<?php echo isset($backgroundPath) && $backgroundPath ? $backgroundPath : ($darkMode ? './../public/css/darkmode.css' : './../public/css/style.css'); ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
@@ -22,7 +42,7 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
 </head>
 
 <body class="indexBody">
-    <?php require_once("./../composants/navbarNav.php"); ?>
+    <?php require_once("./../composants/navbar_forum.php"); ?>
     <main class="container">
         <div class="black-frame">
             <h1 id="forum-name"></h1>
@@ -30,7 +50,7 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
         <div class="main-index">
             <?php include './../composants/white_content_left.php'; ?>
             <div class="">
-                <div class="white-content">
+                <div class="white-content-description">
                     <div class="iceberg-select-profile">
                         <img id="creator-profile-picture" src="./default-profile.png" class="user-avatar">
                         <h3 id="creator-username"></h3>
@@ -81,6 +101,44 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
             document.getElementById('creator-username').textContent = forum.creator.username;
             document.getElementById('creator-profile-picture').src = forum.creator.profile_picture || './default-profile.png';
         }
+        function reportPost(buttonDiv, forumUrlReport) {
+            // Créer un bouton de rapport
+            let buttonReport = document.createElement('button'); // Utilisez 'button', pas 'bouton'
+            buttonReport.classList.add('buttonReport');
+            buttonReport.setAttribute('style', 'cursor: pointer;');
+            // Ajouter une image au bouton
+            let imgReport = document.createElement('img');
+            imgReport.setAttribute('src', './../public/img/reportButton.png');
+            imgReport.setAttribute('class', 'btnReport');
+            buttonReport.appendChild(imgReport);
+
+            // Ajouter un événement click au bouton
+            buttonReport.addEventListener('click', function () {
+                // Créer un formulaire caché dynamiquement
+                let hiddenForm = document.createElement('form');
+                hiddenForm.setAttribute('method', 'POST');
+                hiddenForm.setAttribute('action', './../Report/ReportContent.php');
+                hiddenForm.style.display = 'none';
+
+                // Créer un champ input caché contenant l'URL du forum
+                let hiddenInput = document.createElement('input');
+                hiddenInput.setAttribute('type', 'hidden');
+                hiddenInput.setAttribute('name', 'forumUrl');
+                hiddenInput.setAttribute('value', forumUrlReport);
+
+                // Ajouter l'input caché au formulaire
+                hiddenForm.appendChild(hiddenInput);
+
+                // Ajouter le formulaire au document
+                document.body.appendChild(hiddenForm);
+
+                // Soumettre le formulaire
+                hiddenForm.submit();
+            });
+
+            // Ajouter le bouton au conteneur spécifié
+            buttonDiv.appendChild(buttonReport);
+        }
         function clickLike(button, postId) {
             fetch('./like_post.php', {
                 method: 'POST',
@@ -118,8 +176,14 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                 // Créer la div principale du post
                 const postElement = document.createElement('div');
                 postElement.className = 'white-content';
+                <?php if (!empty($_SESSION["email"]) && !empty($_SESSION["user_profile"]) && !empty($_SESSION["user_id"])): ?>
 
-
+                    const ReportDiv = document.createElement('div');
+                    ReportDiv.setAttribute('style', `margin: 0px 0px -35px 0px;`);
+                    ReportDiv.classList.add('PalceReport');
+                    ReportDiv.setAttribute('style', `margin: 0px 0px -35px 0px;`);
+                    postElement.appendChild(ReportDiv);
+                <?php endif; ?>
                 // Créer la div iceberg-select
                 const icebergSelectDiv = document.createElement('div');
                 icebergSelectDiv.className = 'iceberg-select';
@@ -153,9 +217,9 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                 postLink.className = 'post-link userLien';
 
                 // Créer le titre du post et l'ajouter au lien cliquable
-                const titleSpan = document.createElement('span');
-                titleSpan.textContent = `Title: ${post.title || 'Titre indisponible'}`;
-                postLink.appendChild(titleSpan);
+                const titleH2 = document.createElement('h2');
+                titleH2.textContent = `${post.title || 'Titre indisponible'}`;
+                postLink.appendChild(titleH2);
 
                 // Ajouter des sauts de ligne après le titre
                 postLink.appendChild(document.createElement('br'));
@@ -170,15 +234,15 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                     postLink.appendChild(postImage);
 
                     // Ajouter des sauts de ligne après l'image
-                    postLink.appendChild(document.createElement('br'));
-                    postLink.appendChild(document.createElement('br'));
+                    
+                   
                 }
 
                 // Créer la description du post et l'ajouter au lien cliquable
-                const descriptionSpan = document.createElement('span');
-                descriptionSpan.className = 'username';
-                descriptionSpan.innerHTML = `Description:<br>${post.content}`;
-                postLink.appendChild(descriptionSpan);
+                const description = document.createElement('p');
+                description.className = 'username';
+                description.innerHTML = `${post.content}`;
+                postLink.appendChild(description);
 
                 // Ajouter une ligne horizontale
                 const hrElement = document.createElement('hr');
@@ -213,6 +277,8 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
 
                     likeButtonContainer.appendChild(likeButton);
                     postElement.appendChild(likeButtonContainer);
+
+                    reportPost(ReportDiv, postLink.href);
                 <?php endif; ?>
 
                 // Ajouter l'élément de post au conteneur des posts
@@ -228,33 +294,20 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
         setInterval(fetchForumData, 10000);
     </script>
     <style>
-        .likebutton {
-            background: none;
+        .buttonReport {
+            padding-top: 3px;
             border: none;
-            cursor: pointer;
-            font-size: 22px;
+            background: none;
+        }
+
+        .PalceReport {
             display: flex;
+            justify-content: end;
         }
 
-        .likeicon {
-            padding-left: 5px;
-            padding-top: 1px;
-        }
-
-        .likebutton .likeicon {
-            width: 22px;
-            /* Ajustez la taille de l'image si nécessaire */
-            height: 22px;
-            transition: filter 0.3s ease;
-            /* Animation de transition */
-        }
-
-        .liked {
-            filter: invert(17%) sepia(95%) saturate(7486%) hue-rotate(0deg) brightness(100%) contrast(115%);
-        }
-
-        .likebutton.liked .likeicon {
-            filter: invert(17%) sepia(95%) saturate(7486%) hue-rotate(0deg) brightness(100%) contrast(115%);
+        .btnReport {
+            height: 3.5vh;
+            padding-left: 1rem;
         }
     </style>
     <?php include './../composants/script_link.php'; ?>

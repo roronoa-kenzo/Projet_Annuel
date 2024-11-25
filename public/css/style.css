@@ -1,16 +1,17 @@
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
 }
-.indexBody  {
+.indexBody {
   background-color: white;
   color: black;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-.body_secondary{
+.body_secondary {
   background-color: black;
   width: 100%;
   height: 100%;
@@ -24,58 +25,51 @@ header {
 }
 
 .navbar {
-    display: flex;
-    background-color: rgb(0, 0, 0);
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
-    padding-top: 2em;
-    
-  }
+  display: flex;
+  background-color: rgb(0, 0, 0);
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 2em;
+}
 
-.nav_third{
+.nav_third {
   display: flex;
   align-items: center;
 }
-  
+
 .logo {
-    width: 91px;
-    height: 40px;
+  width: 91px;
+  height: 40px;
 }
 
-small{
+small {
   font-family: "Josefin Sans", sans-serif;
 }
 
-p{
+p {
   font-family: "Josefin Sans", sans-serif;
-} 
+}
 
-h1{
+h1 {
   font-family: "Josefin Sans", sans-serif;
   color: white;
   font-size: 52px;
 }
 
-h2{
+h2 {
   font-family: "Josefin Sans", sans-serif;
   color: rgb(0, 0, 0);
   font-size: 24px;
 }
 
-h3{
+h3 {
   font-family: "Josefin Sans", sans-serif;
 }
 
-option{
+option {
   font-family: "Josefin Sans", sans-serif;
 }
-
-.button-forum{
-
-}
-
-
 .search-container {
   position: relative;
   display: inline-block;
@@ -88,18 +82,17 @@ option{
   border-radius: 20px;
   outline: none;
   width: 50em;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-
 }
-.inpuTextAdmin{
+.inpuTextAdmin {
   padding: 3px 12px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 20px;
   outline: none;
   width: 80%;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 .suggestions {
@@ -115,7 +108,7 @@ option{
   width: 100%;
   max-height: 200px;
   overflow-y: auto;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
@@ -167,6 +160,7 @@ option{
 .main-index {
   display: flex;
   justify-content: space-around;
+  padding-bottom: 4em;
 }
 
 .white-content-secondary {
@@ -179,27 +173,28 @@ option{
   margin-top: -10px;
   box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
   display: flex;
-    flex-direction: column;
-    align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.btn-menu{
+.btn-menu {
+
   background-color: #ddd;
-    border: none;
-    color: black;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
-    width: 20vh;
-    margin-bottom: 3vh;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
+  width: 20vh;
+  margin-bottom: 3vh;
 }
 
 /* White Content Milieu */
-.post-container-admin{
+.post-container-admin {
   background-color: white;
   border-radius: 10px;
   padding: 10px;
@@ -216,14 +211,20 @@ option{
   margin: 0 auto;
 }
 
+.post-image{
+  max-width: 37em;
+  border-radius: 9px;
+}
+
 textarea{
   background-color: #e8e8e8;
 }
 
 .post-header {
   display: flex;
-  align-items: center;
-  padding: 6px;
+      align-items: flex-start;
+      padding: 6px;
+      flex-direction: column;
 }
 
 .user-avatar {
@@ -235,8 +236,10 @@ textarea{
 
 .post-options {
   display: flex;
-  gap: 15px;
-  flex-grow: 1;
+    gap: 15px;
+    flex-grow: 1;
+    margin-bottom: 1em;
+    align-items: center;
 }
 
 .post-option {
@@ -245,15 +248,15 @@ textarea{
   font-size: 16px;
   cursor: pointer;
   padding: 5px 10px;
-   font-family: "Josefin Sans", sans-serif;
-    background: none;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 5px 10px;
-    transition: 1s;
-    border-radius: 15px;
-    -webkit-transition: width .2s;
+  font-family: "Josefin Sans", sans-serif;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: 1s;
+  border-radius: 15px;
+  -webkit-transition: width 0.2s;
 }
 
 .post-option:hover {
@@ -270,7 +273,7 @@ textarea{
   background-color: #e8e8e8;
 }
 
-.iceberg-select-profile  {
+.iceberg-select-profile {
   display: flex;
   border: none;
   border-radius: 8px;
@@ -288,32 +291,38 @@ textarea{
   font-size: 16px;
   background-color: #e8e8e8;
 }
-.href-admin{
+.href-admin {
   background-color: #ddd;
-    border: none;
-    color: black;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
-    width: 20vh;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
+  width: 20vh;
 }
-.href-admin:hover{
-  background-color:#808080;
+.href-admin:hover {
+  background-color: #808080;
 }
-.logo-connexion{
-  width : 100px;
-  height : 100px;
+.logo-connexion {
+  width: 100px;
+  height: 100px;
 }
 
-.profile-button{
-    width: 40px;
-    height: 37px;
-    border-radius: 50%;
-    margin-right: 25px;
-    margin-left: 25px;
+.profile-button {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  margin-right: 25px;
+  margin-left: 55px;
+
+}
+
+.profile_name{
+  display: flex;
+  justify-content: center;
 }
 
 /*-------------------- form page ---------------------------------------*/
@@ -336,16 +345,16 @@ textarea{
 }
 
 .h3Div {
-background-color: white;
-width: 15rem;
-padding: 4px;
-border-radius: 15px 15px 0 0;
-height: 2rem;
-display: flex;
-justify-content: center;
-box-shadow: inset gray 20px 0px 5px -12px;
+  background-color: white;
+  width: 15rem;
+  padding: 4px;
+  border-radius: 15px 15px 0 0;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  box-shadow: inset gray 20px 0px 5px -12px;
 }
-.h3Register{
+.h3Register {
   margin-top: 10%;
   font-size: 30px;
   z-index: 1;
@@ -414,45 +423,45 @@ box-shadow: inset gray 20px 0px 5px -12px;
   margin-top: 3vh;
 }
 
-.divLink{
-display: flex;
-justify-content: space-between;
-gap:10vh;
-font-size: 16px;
-color: black;
-margin-top:2vh;
+.divLink {
+  display: flex;
+  justify-content: space-between;
+  gap: 10vh;
+  font-size: 16px;
+  color: black;
+  margin-top: 2vh;
 }
-.buttonSubmit{
-margin: 5% 0% 0% 17%;
-padding: 1vh;
-width: 60%;
-font-family: "Josefin Sans", sans-serif;
-font-size: 20px;
-background-color: black;
-color: white;
-border-radius: 10px;
-font-weight: bolder;
-border: none;
-transition: 1s;
+.buttonSubmit {
+  margin: 5% 0% 0% 17%;
+  padding: 1vh;
+  width: 60%;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 20px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  font-weight: bolder;
+  border: none;
+  transition: 1s;
 }
-.inputText:hover{
-color:black;
+.inputText:hover {
+  color: black;
 }
-.buttonSubmit:hover{
-transition: 1s;
-background-color: grey;
+.buttonSubmit:hover {
+  transition: 1s;
+  background-color: grey;
 }
 
 /*----------------------------------------------------------------------------------------------No_User_navbar---------------*/
 
-.no_user_navbar{
+.no_user_navbar {
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin: 5vh;
 }
 
-.nav_btn{
+.nav_btn {
   font-family: "Josefin Sans", sans-serif;
   height: 32px;
   width: 105px;
@@ -462,117 +471,111 @@ background-color: grey;
   transition: 1s;
 }
 
-.nav_btn:hover{
-transform: translateY(-5px);
+.nav_btn:hover {
+  transform: translateY(-5px);
 }
 
 .nav_btn:active {
-transform: translateY(2px);
-
+  transform: translateY(2px);
 }
 
-.profile_first{
-  display:flex;
+.profile_first {
+  display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-
 /*-------------------------------------------- admin ----------------------------------------------*/
 
-.userLien{
+.userLien {
   text-decoration: none;
   color: black;
 }
-.username{
-}
+
 .status {
   color: green;
 }
 .status.not-connected {
   color: red;
 }
-.main-index-admin{
+.main-index-admin {
   display: flex;
   justify-content: center;
 }
-span{
+span {
   font-family: "Josefin Sans", sans-serif;
 }
-h4{
+h4 {
   font-family: "Josefin Sans", sans-serif;
 }
-button{
+button {
   font-family: "Josefin Sans", sans-serif;
-
 }
-a{
+a {
   font-family: "Josefin Sans", sans-serif;
-
 }
-h2{
+h2 {
   font-family: "Josefin Sans", sans-serif;
-
 }
 
-.btn-menu{
+.btn-menu {
   background-color: #ddd;
-    border: none;
-    color: black;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
-    width: 20vh;
-    margin-bottom: 3vh;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
+  width: 20vh;
+  margin-bottom: 3vh;
 }
-.btn-menu-admin{
+.btn-menu-admin {
   background-color: #ddd;
-    border: none;
-    color: black;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
-    width: 20vh;
-    margin-bottom: 3vh;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
+  width: 20vh;
+  margin-bottom: 3vh;
 }
-.btn-menu:hover{
-  background-color:#808080;
+.btn-menu:hover {
+  background-color: #808080;
 }
-btn-menu-admin:hover{
-  background-color:#808080;
+btn-menu-admin:hover {
+  background-color: #808080;
 }
-.btn-submit{
+.btn-submit {
   background-color: black;
-    height: 4vh;
-    width: 13vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-    color: white;
-    margin-top: 2vh;
+  height: 4vh;
+  width: 13vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  color: white;
+  margin-top: 2vh;
 }
 
 /*------------------------------------------------------Post---------------------------*/
 
-.posts-list{
+.posts-list {
   background-color: white;
-    padding: 20px;
-    border-radius: 20px;
-    width: 50em;
-    max-width: 600px;
-    margin-top: 25px;
-    margin-left: 5vh;
-    margin-right: 5vh;
-    box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 20px;
+  width: 50em;
+  max-width: 600px;
+  margin-top: 25px;
+  margin-left: 5vh;
+  margin-right: 5vh;
+  box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
 }
 
 .inputTitle {
@@ -587,27 +590,27 @@ btn-menu-admin:hover{
   background-color: #e8e8e8;
 }
 
-.post-head{
+.post-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.post-head-first{
+.post-head-first {
   display: flex;
 }
 
-.post-forum{
+.post-forum {
   background-color: black;
-    height: 4vh;
-    width: 13vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
+  height: 4vh;
+  width: 13vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
 }
 
-.p-forum{
+.p-forum {
   color: white;
   font-size: 14px;
   font-family: "Josefin Sans", sans-serif;
@@ -647,12 +650,12 @@ btn-menu-admin:hover{
   background-color: #000; /* Couleur noire pour le fond */
   color: #fff; /* Texte blanc */
   text-align: center; /* Centrer le contenu */
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 .footer-container {
   display: flex;
-  justify-content:center; /* Espacement entre les éléments */
+  justify-content: center; /* Espacement entre les éléments */
   align-items: center;
   margin: 0 auto; /* Centrer le contenu */
   padding: 9em;
@@ -759,7 +762,12 @@ btn-menu-admin:hover{
 }
 
 .like-button:hover {
-  background-color: rgba(0, 0, 0, 0.1); /* Légèrement plus sombre au survol pour montrer l'interactivité */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.1
+  ); /* Légèrement plus sombre au survol pour montrer l'interactivité */
 }
 
 .like-button.liked .heart {
@@ -773,7 +781,6 @@ btn-menu-admin:hover{
 }
 
 /*----------------------------------------------------------------------------------Modal----------------------------------------------------------------*/
-
 
 .modal {
   display: none; /* Masqué par défaut */
@@ -797,16 +804,15 @@ btn-menu-admin:hover{
   position: relative;
 }
 
-
 .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
 }
 
-.labelForum{
+.labelForum {
   font-family: "Josefin Sans", sans-serif;
 }
 
@@ -819,24 +825,26 @@ btn-menu-admin:hover{
 }
 
 .theme-option.selected {
-  border-color: var(--theme-color, #000); /* Couleur de bordure dynamique selon le thème */
+  border-color: var(
+    --theme-color,
+    #000
+  ); /* Couleur de bordure dynamique selon le thème */
   height: 106px;
 }
 
-
 .theme-selection {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .theme-option {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    width: 120px;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  width: 120px;
+  text-align: center;
 }
 
 .theme-option img {
@@ -848,21 +856,91 @@ btn-menu-admin:hover{
 }
 
 .theme-option span {
-    background-color: #e0e0e0;
-    width: 100%;
-    padding: 5px;
-    border-radius: 0 0 5px 5px;
+  background-color: #e0e0e0;
+  width: 100%;
+  padding: 5px;
+  border-radius: 0 0 5px 5px;
+}
+
+
+.likebutton .likeicon {
+  width: 22px;
+  /* Ajustez la taille de l'image si nécessaire */
+  height: 22px;
+  transition: filter 0.3s ease;
+  /* Animation de transition */
+}
+
+.liked {
+  filter: invert(17%) sepia(95%) saturate(7486%) hue-rotate(0deg) brightness(100%) contrast(115%);
+}
+
+.notification.success {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #4caf50;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  z-index: 1000;
+}
+
+.notification.level-up {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #4caf50;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  z-index: 1000;
+}
+
+.notification.level-up button {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  float: right;
+  margin-left: 10px;
+}
+
+.notification.level-up button:hover {
+  color: #ccc;
+}
+
+.likebutton.liked .likeicon {
+  filter: invert(17%) sepia(95%) saturate(7486%) hue-rotate(0deg) brightness(100%) contrast(115%);
 }
 
 /* Effets de survol avec des couleurs spécifiques pour chaque thème */
-.theme-option[data-theme="grey"]:hover span { background-color: #888; }
-.theme-option[data-theme="blue"]:hover span { background-color: #007BFF; }
-.theme-option[data-theme="green"]:hover span { background-color: #28A745; }
-.theme-option[data-theme="red"]:hover span { background-color: #DC3545; }
-.theme-option[data-theme="orange"]:hover span { background-color: #FD7E14; }
-.theme-option[data-theme="galaxy_red"]:hover span { background-color: #66101F; }
-.theme-option[data-theme="galaxy_blue"]:hover span { background-color: #1B2A49; }
-
+.theme-option[data-theme="grey"]:hover span {
+  background-color: #888;
+}
+.theme-option[data-theme="blue"]:hover span {
+  background-color: #007bff;
+}
+.theme-option[data-theme="green"]:hover span {
+  background-color: #28a745;
+}
+.theme-option[data-theme="red"]:hover span {
+  background-color: #dc3545;
+}
+.theme-option[data-theme="orange"]:hover span {
+  background-color: #fd7e14;
+}
+.theme-option[data-theme="galaxy_red"]:hover span {
+  background-color: #66101f;
+}
+.theme-option[data-theme="galaxy_blue"]:hover span {
+  background-color: #1b2a49;
+}
 
 /* Menu burger (mobile) */
 #menuToggle {
@@ -875,8 +953,11 @@ btn-menu-admin:hover{
 }
 
 
-
-
+.burger-navigation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 
 
@@ -885,15 +966,25 @@ btn-menu-admin:hover{
 
 /* Afficher le menu burger et gérer l'affichage sur les petits écrans */
 @media (max-width: 1228px) {
-
   #menuToggle {
     display: block; /* Affiche le menu burger uniquement sur les petits écrans */
-}
 
+  }
+
+  .nav_buttons,
+  .nav_third {
+    display: none; /* Masque les autres éléments de la navbar sur mobile */
+  }
+
+  .navbar {
+    height: 4em;
+    position: fixed;
+  }
+=======
+}
 .nav_buttons, .nav_third {
     display: none; /* Masque les autres éléments de la navbar sur mobile */
 }
-
 .navbar{
   height: 4em;
   position: fixed;
@@ -919,94 +1010,144 @@ btn-menu-admin:hover{
   margin-bottom: 5px;
   background: #ffffff;
   border-radius: 3px;
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-              background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+              background: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
-#menuToggle input:checked ~ span {
-  transform: rotate(45deg) translate(-2px, -1px);
-  background: #ffffff;
-}
+  #menuToggle input {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+  }
 
-#menuToggle input:checked ~ span:nth-last-child(2) {
-  opacity: 0;
-  transform: rotate(0deg) scale(0.2, 0.2);
-}
+  /* Hamburger icon styling */
+  #menuToggle span {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    background: #ffffff;
+    border-radius: 3px;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
 
-#menuToggle input:checked ~ span:nth-last-child(3) {
-  transform: rotate(-45deg) translate(0, -1px);
-}
+  #menuToggle input:checked ~ span {
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: #ffffff;
+  }
 
+  #menuToggle input:checked ~ span:nth-last-child(2) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
 /* Menu list */
 #menu {
-  position: absolute;
-  right: -21px;
-  top: 46px;
-  width: 200px;
-  height: 57em;
-  background: #ededed;
-  list-style-type: none;
-  margin: 0;
-  padding: 10px;
-  transform: translateX(100%);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+  display: flex;
+        position: absolute;
+        right: -21px;
+        top: 46px;
+        width: 26em;
+        height: 62em;
+        background: #ededed;
+        list-style-type: none;
+        margin: 0;
+        padding: 10px;
+        transform: translateX(100%);
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
 
-#menu li {
-  padding: 10px 0;
-  font-size: 22px;
 }
 
-#menuToggle input:checked ~ #menu {
-  transform: translateX(0);
+  #menuToggle input:checked ~ span:nth-last-child(3) {
+    transform: rotate(-45deg) translate(0, -1px);
+  }
+
+  /* Menu list */
+  #menu {
+    position: absolute;
+    right: -21px;
+    top: 46px;
+    width: 200px;
+    height: 57em;
+    background: #ededed;
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+  #menu li {
+    padding: 10px 0;
+    font-size: 22px;
+  }
+
+  #menuToggle input:checked ~ #menu {
+    transform: translateX(0);
+  }
+
+  .inpuText {
+.logo {
+  width: 91px;
+  height: 40px;
+  margin-right: 4em;
+  margin-left: 2em;
 }
-
-
   .inpuText{
     width: 19em;
     margin-right: 18em;
   }
-
   .navbar #navbar-menu {
-      display: none; /* Cacher le menu sur mobile */
-      position: absolute;
-      top: 60px;
-      right: 0;
-      background-color: #fff;
-      width: 100%;
-      text-align: center;
-      padding: 10px 0;
+    display: none; /* Cacher le menu sur mobile */
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
   }
-
   .navbar #navbar-menu.show {
-      display: block; /* Afficher le menu quand l'icône burger est cliquée */
+    display: block; /* Afficher le menu quand l'icône burger est cliquée */
+  }
+  .navbar #navbar-menu li {
+    margin: 15px 0;
   }
 
-  .navbar #navbar-menu li {
-      margin: 15px 0;
+  .profile-button{
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    margin-left: 1.5em;
   }
 
   .menu-icon {
-      display: block; /* Afficher l'icône burger sur mobile */
+    display: block; /* Afficher l'icône burger sur mobile */
   }
-
   /* Style spécifique pour le contenu des sections dans le menu burger */
   .menu-content {
-      padding: 10px;
+    padding: 10px;
   }
-
   .main-index {
     display: flex;
     justify-content: center;
-}
+  }
 
 
   .white-content-secondary {
-      display: none;
+    display: none;
   }
-
   .white-content-admin {
     display: none;
-}
+  }
 }
 
 /* Style pour le mode sombre */
@@ -1014,13 +1155,19 @@ btn-menu-admin:hover{
   background-color: #121212;
   color: #fff;
 }
-
 .dark-mode .navbar {
   background-color: #333;
 }
-
 .dark-mode #navbar-menu li a {
   color: #fff;
+}
+/* boutton submit */
+.likebutton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  display: flex;
 }
 
 .dark-mode .nav_third button {
@@ -1028,22 +1175,5 @@ btn-menu-admin:hover{
   color: #fff;
 }
 
-
-
-.notifications {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background-color: #4caf50;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  font-size: 14px;
-  margin-top: 5px;
-}
-.notification.level-up {
-  background-color: #ff9800; /* Orange pour les montées de niveau */
 }
 
