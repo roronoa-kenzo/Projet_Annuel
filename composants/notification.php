@@ -25,3 +25,17 @@
             unset($_SESSION['ErrorPost']);
         }
     ?>
+
+<?php if (isset($_SESSION['XPNotification'])): ?>
+    <div class="notifications xp-gain">
+        <?php echo $_SESSION['XPNotification']; ?>
+        <?php unset($_SESSION['XPNotification']); ?>
+    </div>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['levelUpNotification'])): ?>
+    <div class="notification level-up">
+        <?php echo $_SESSION['levelUpNotification']['message']; ?>
+        <?php unset($_SESSION['levelUpNotification']); ?>
+    </div>
+<?php endif; ?>

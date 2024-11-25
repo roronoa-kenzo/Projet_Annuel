@@ -31,6 +31,7 @@ header {
   justify-content: space-around;
   align-items: center;
   padding-top: 2em;
+  height: 5em;
 }
 
 .nav_third {
@@ -980,7 +981,7 @@ btn-menu-admin:hover {
     height: 4em;
     position: fixed;
   }
-=======
+
 }
 .nav_buttons, .nav_third {
     display: none; /* Masque les autres éléments de la navbar sur mobile */
@@ -1175,5 +1176,5 @@ btn-menu-admin:hover {
   color: #fff;
 }
 
-}
+
 

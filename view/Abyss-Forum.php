@@ -44,6 +44,7 @@ if ($forumId) {
 <body class="indexBody">
     <?php require_once("./../composants/navbar_forum.php"); ?>
     <main class="container">
+        <?php include './../composants/notification.php'; ?>
         <div class="black-frame">
             <h1 id="forum-name"></h1>
         </div>

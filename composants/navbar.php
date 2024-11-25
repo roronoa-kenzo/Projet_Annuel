@@ -14,21 +14,6 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
             <img src="./../public/img/icon.png" alt="Abyss" class="logo">
         </a>
 
-        <?php if (isset($_SESSION['XPNotification'])): ?>
-    <div class="notifications xp-gain">
-        <?php echo $_SESSION['XPNotification']; ?>
-        <?php unset($_SESSION['XPNotification']); ?>
-    </div>
-<?php endif; ?>
-
-<?php if (isset($_SESSION['levelUpNotification'])): ?>
-    <div class="notification level-up">
-        <?php echo $_SESSION['levelUpNotification']['message']; ?>
-        <?php unset($_SESSION['levelUpNotification']); ?>
-    </div>
-<?php endif; ?>
-
-
         <?php if (isset($_SESSION['email'])): ?>
             <div id="searchBar" class="search-container">
                 <input type="text" class="inpuText" placeholder="Rechercher...">
