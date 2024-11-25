@@ -154,6 +154,7 @@ option {
 .main-index {
   display: flex;
   justify-content: space-around;
+  padding-bottom: 4em;
 }
 
 .white-content-secondary {
@@ -587,7 +588,7 @@ h2{
   margin: 0 auto; /* Centrer le contenu */
   padding: 9em;
   background-color: #000; /* Couleur noire pour le fond */
-  margin-top: 25px;
+  margin-top: -80px;
 
 }
 
@@ -812,23 +813,18 @@ h2{
 
 
 
-
-
 /* Afficher le menu burger et gérer l'affichage sur les petits écrans */
 @media (max-width: 1228px) {
-
   #menuToggle {
     display: block; /* Affiche le menu burger uniquement sur les petits écrans */
 }
-
 .nav_buttons, .nav_third {
     display: none; /* Masque les autres éléments de la navbar sur mobile */
 }
-
 .navbar{
   height: 4em;
   position: fixed;
-}  
+}
 
 #menuToggle input {
   display: block;
@@ -850,8 +846,8 @@ h2{
   margin-bottom: 5px;
   background: #ffffff;
   border-radius: 3px;
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-              background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+              background: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
 #menuToggle input:checked ~ span {
@@ -891,13 +887,10 @@ h2{
 #menuToggle input:checked ~ #menu {
   transform: translateX(0);
 }
-
-
   .inpuText{
     width: 19em;
     margin-right: 18em;
   }
-
   .navbar #navbar-menu {
       display: none; /* Cacher le menu sur mobile */
       position: absolute;
@@ -908,36 +901,28 @@ h2{
       text-align: center;
       padding: 10px 0;
   }
-
   .navbar #navbar-menu.show {
       display: block; /* Afficher le menu quand l'icône burger est cliquée */
   }
-
   .navbar #navbar-menu li {
       margin: 15px 0;
   }
-
   .menu-icon {
       display: block; /* Afficher l'icône burger sur mobile */
   }
-
   /* Style spécifique pour le contenu des sections dans le menu burger */
   .menu-content {
       padding: 10px;
   }
-
-  .white-content {
-      display: none;
-  }
-
-
+  .main-index {
+    display: flex;
+    justify-content: center;
+}
   .white-content-secondary {
       display: none;
   }
-
   .white-content-admin {
     display: none;
-}
 }
 
 /* Style pour le mode sombre */
@@ -945,16 +930,15 @@ h2{
   background-color: #121212;
   color: #fff;
 }
-
 .dark-mode .navbar {
   background-color: #333;
 }
-
 .dark-mode #navbar-menu li a {
   color: #fff;
 }
-
 .dark-mode .nav_third button {
   background-color: #444;
   color: #fff;
+}
+
 }
