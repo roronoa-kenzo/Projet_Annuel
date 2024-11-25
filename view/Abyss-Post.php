@@ -3,7 +3,7 @@ include './../serveur/database.php';
 
 session_start();
 
-$darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
+$backgroundPath = $_SESSION['background'];
 
 ?>
 
@@ -12,20 +12,17 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
 
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $postTitle; ?></title>
-    <link id="theme-stylesheet" rel="stylesheet"
-        href="./../public/css/<?php echo $darkMode ? 'darkmode' : 'style'; ?>.css">
-    <!-- Autres balises head -->
+    <title id="page-title"></title>
+    <link id="theme-stylesheet" rel="stylesheet" href="<?php echo isset($backgroundPath) && $backgroundPath ? $backgroundPath : ($darkMode ? './../public/css/darkmode.css' : './../public/css/style.css'); ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
     <link rel="icon" type="image/png" href="./../public/img/abyssicon.png">
-    <?php require_once("./../composants/ResquestDarkMode.php"); ?>
 </head>
 
 <body class="indexBody">
-    <?php require_once("./../composants/navbarNav.php"); ?>
+    <?php require_once("./../composants/navbar_forum.php"); ?>
     <main class="container">
         <div class="black-frame">
             <h1 id="forum-name"><!--         
