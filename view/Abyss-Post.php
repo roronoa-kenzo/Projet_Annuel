@@ -73,7 +73,7 @@ $backgroundPath = $_SESSION['background'];
         function displayPost(post, forum) {
             const postContent = document.getElementById('post-content');
             postContent.innerHTML = ''; // Vider le contenu précédent
-            
+
             // Créer la div de profil de l'auteur
             const profileDiv = document.createElement('div');
             profileDiv.className = 'iceberg-select-profile';
@@ -116,7 +116,44 @@ $backgroundPath = $_SESSION['background'];
             postDescription.innerHTML = `Description:<br>${post.content}`;
             postContent.appendChild(postDescription);
         }
+        function reportPost(buttonDiv, forumUrlReport) {
+            // Créer un bouton de rapport
+            let buttonReport = document.createElement('button'); // Utilisez 'button', pas 'bouton'
+            buttonReport.classList.add('buttonReport');
+            buttonReport.setAttribute('style', 'cursor: pointer;');
+            // Ajouter une image au bouton
+            let imgReport = document.createElement('img');
+            imgReport.setAttribute('src', './../public/img/reportButton.png');
+            imgReport.setAttribute('class', 'btnReport');
+            buttonReport.appendChild(imgReport);
 
+            // Ajouter un événement click au bouton
+            buttonReport.addEventListener('click', function () {
+                // Créer un formulaire caché dynamiquement
+                let hiddenForm = document.createElement('form');
+                hiddenForm.setAttribute('method', 'POST');
+                hiddenForm.setAttribute('action', './../Report/ReportContent.php');
+                hiddenForm.style.display = 'none';
+
+                // Créer un champ input caché contenant l'URL du forum
+                let hiddenInput = document.createElement('input');
+                hiddenInput.setAttribute('type', 'hidden');
+                hiddenInput.setAttribute('name', 'forumUrl');
+                hiddenInput.setAttribute('value', forumUrlReport);
+
+                // Ajouter l'input caché au formulaire
+                hiddenForm.appendChild(hiddenInput);
+
+                // Ajouter le formulaire au document
+                document.body.appendChild(hiddenForm);
+
+                // Soumettre le formulaire
+                hiddenForm.submit();
+            });
+
+            // Ajouter le bouton au conteneur spécifié
+            buttonDiv.appendChild(buttonReport);
+        }
 
         // Fonction pour afficher les commentaires
         function displayComments(comments) {
@@ -134,7 +171,16 @@ $backgroundPath = $_SESSION['background'];
                 // Créer la div principale pour chaque commentaire
                 const commentElement = document.createElement('div');
                 commentElement.classList.add('white-content');
+                <?php if (!empty($_SESSION["email"]) && !empty($_SESSION["user_profile"]) && !empty($_SESSION["user_id"])): ?>
+                    const ReportDiv = document.createElement('div');
+                    ReportDiv.setAttribute('style', `margin: 0px 0px -35px 0px;`);
+                    ReportDiv.classList.add('PalceReport');
+                    ReportDiv.setAttribute('style', `margin: 0px 0px -35px 0px;`);
+                    commentElement.appendChild(ReportDiv);
+                    let reportmessage = comment.author_username + " have comment : " + comment.content;
 
+                    reportPost(ReportDiv, reportmessage);
+                <?php endif; ?>
                 // Créer la div pour le profil de l'auteur
                 const profileDiv = document.createElement('div');
                 profileDiv.classList.add('iceberg-select-profile');
@@ -175,6 +221,23 @@ $backgroundPath = $_SESSION['background'];
         fetchPostData();
         setInterval(fetchPostData, 10000);
     </script>
+    <style>
+        .buttonReport {
+            padding-top: 3px;
+            border: none;
+            background: none;
+        }
+
+        .PalceReport {
+            display: flex;
+            justify-content: end;
+        }
+
+        .btnReport {
+            height: 3.5vh;
+            padding-left: 1rem;
+        }
+    </style>
 </body>
 
 </html>
