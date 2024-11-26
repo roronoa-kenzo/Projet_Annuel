@@ -248,11 +248,11 @@ body, html {
   }
 
   .post-video {
-    max-width: 100%;
+    max-width: 37em;
     height: auto;
     margin-top: 10px;
     border-radius: 10px;
-}
+  }
   
   textarea{
     background-color: #e8e8e8;

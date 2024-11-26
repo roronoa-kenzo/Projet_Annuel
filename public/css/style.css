@@ -68,6 +68,10 @@ h3 {
   font-family: "Josefin Sans", sans-serif;
 }
 
+label{
+  font-family: "Josefin Sans", sans-serif;
+}
+
 option {
   font-family: "Josefin Sans", sans-serif;
 }
@@ -227,7 +231,7 @@ option {
 
 .post-image{
   max-width: 37em;
-  border-radius: 9px;
+  border-radius: 10px;
 }
 
 textarea{
@@ -257,7 +261,7 @@ textarea{
 }
 
 .post-video {
-  max-width: 100%;
+  max-width: 37em;
   height: auto;
   margin-top: 10px;
   border-radius: 10px;
@@ -990,6 +994,44 @@ btn-menu-admin:hover {
 }
 
 
+#darkModeToggleButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#darkModeToggleButton svg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+/* Soleil */
+.sun {
+  transition: opacity 0.3s ease;
+  fill: #FFC107; /* Jaune */
+}
+
+/* Lune */
+.moon {
+  transition: opacity 0.3s ease;
+  fill: #FFFFFF; /* Blanc */
+}
+
+/* Active en mode nuit */
+body.dark-mode #darkModeIcon .sun {
+  opacity: 0; /* Cache le soleil en mode nuit */
+}
+
+body.dark-mode #darkModeIcon .moon {
+  opacity: 1; /* Affiche la lune en mode nuit */
+}
 
 
 
