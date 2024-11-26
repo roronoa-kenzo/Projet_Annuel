@@ -44,6 +44,7 @@ if ($forumId) {
 <body class="indexBody">
     <?php require_once("./../composants/navbar_forum.php"); ?>
     <main class="container">
+        <?php include './../composants/notification.php'; ?>
         <div class="black-frame">
             <h1 id="forum-name"></h1>
         </div>
@@ -221,28 +222,32 @@ if ($forumId) {
                 titleH2.textContent = `${post.title || 'Titre indisponible'}`;
                 postLink.appendChild(titleH2);
 
-                // Ajouter des sauts de ligne après le titre
-                postLink.appendChild(document.createElement('br'));
-                postLink.appendChild(document.createElement('br'));
-
-                // Ajouter l'image du post s'il y en a une
-                if (post.image) {
-                    const postImage = document.createElement('img');
-                    postImage.src = post.image;
-                    postImage.alt = 'Image du post';
-                    postImage.className = 'post-image';
-                    postLink.appendChild(postImage);
-
-                    // Ajouter des sauts de ligne après l'image
-                    
-                   
-                }
-
                 // Créer la description du post et l'ajouter au lien cliquable
                 const description = document.createElement('p');
                 description.className = 'username';
                 description.innerHTML = `${post.content}`;
                 postLink.appendChild(description);
+
+                 // Vérifier le fichier et afficher l'image ou la vidéo
+                 if (post.image) {
+                                const fileExtension = post.image.split('.').pop().toLowerCase();
+
+                                if (fileExtension === 'mp4') {
+                                    // Afficher une vidéo
+                                    const video = document.createElement('video');
+                                    video.src = post.image;
+                                    video.controls = true; // Ajouter les contrôles
+                                    video.className = 'post-video';
+                                    postLink.appendChild(video);
+                                } else if (fileExtension === 'png') {
+                                    // Afficher une image
+                                    const image = document.createElement('img');
+                                    image.src = post.image;
+                                    image.alt = 'Image du post';
+                                    image.className = 'post-image';
+                                    postLink.appendChild(image);
+                                }
+                            }
 
                 // Ajouter une ligne horizontale
                 const hrElement = document.createElement('hr');
@@ -306,8 +311,9 @@ if ($forumId) {
         }
 
         .btnReport {
-            height: 3.5vh;
+            height: 2vh;
             padding-left: 1rem;
+            filter: invert(100%);
         }
     </style>
     <?php include './../composants/script_link.php'; ?>

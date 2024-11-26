@@ -238,6 +238,8 @@
                 // Charger les posts au chargement de la page
 
                 fetchPosts();
+                    }
+                }
             </script>
         </div>
         <?php include './../composants/white_content_right.php'; ?>

@@ -27,7 +27,7 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
 
 <body class="indexBody">
     
-    <?php require_once("./../composants/navbarNav.php"); ?>
+    <?php require_once("./../composants/navbar.php"); ?>
     <main class="container">
         <div class="black-frame">
             <h1>Most forums popular</h1>
