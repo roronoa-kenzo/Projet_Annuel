@@ -194,22 +194,6 @@ option {
   box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
 }
 
-.btn-menu {
-
-  background-color: #171717;
-  border: none;
-  color: black;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 8px;
-  box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
-  width: 20vh;
-  margin-bottom: 3vh;
-}
-
 /* White Content Milieu */
 .post-container-admin {
   background-color: #212020;
@@ -252,10 +236,10 @@ textarea{
 }
 
 .user-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
+  width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 .post-options {
@@ -368,6 +352,16 @@ textarea{
 
 .containerSign {
   width: 40vh;
+}
+
+.iceberg-select select {
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-family: "Josefin Sans", sans-serif;
+  background-color: #000000;
+  color: white;
 }
 
 .h3Div {
@@ -544,19 +538,24 @@ h2 {
   font-family: "Josefin Sans", sans-serif;
 }
 
+label{
+  color: white;
+  font-family: "Josefin Sans", sans-serif;
+}
+
 .btn-menu {
-  background-color: #ddd;
-  border: none;
-  color: black;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 8px;
-  box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
-  width: 20vh;
-  margin-bottom: 3vh;
+  background-color: #171717;
+    border: none;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
+    width: 20vh;
+    margin-bottom: 3vh;
 }
 .btn-menu-admin {
   background-color: #ddd;

@@ -32,10 +32,15 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                 </div>
             </div>
             <div class="nav_third">
-                <form id="darkModeForm" method="POST">
-                    <input type="hidden" name="darkMode" id="darkModeInput" value="<?php echo $darkMode ? 'on' : 'off'; ?>">
-                    <button type="button" onclick="toggleDarkMode()">Nuit</button>
-                </form>
+            <form id="darkModeForm" method="POST">
+    <input type="hidden" name="darkMode" id="darkModeInput" value="<?php echo $darkMode ? 'on' : 'off'; ?>">
+    <button type="button" onclick="toggleDarkMode()" id="darkModeToggleButton">
+        <svg id="darkModeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle class="sun" cx="12" cy="12" r="5" fill="currentColor"></circle>
+            <circle class="moon" cx="12" cy="12" r="5" fill="currentColor" opacity="0"></circle>
+        </svg>
+    </button>
+</form>
                 <script>
                     function toggleDarkMode() {
                         // Alterne la classe dark-mode sur le body
@@ -96,10 +101,16 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                  
                 </li>
                 <li>
-                    <form id="darkModeForm" method="POST">
-                       <input type="hidden" name="darkMode" id="darkModeInput" value="<?php echo $darkMode ? 'on' : 'off'; ?>">
-                       <button type="button" onclick="toggleDarkMode()">Nuit</button>
-                    </form>
+                <form id="darkModeForm" method="POST">
+    <input type="hidden" name="darkMode" id="darkModeInput" value="<?php echo $darkMode ? 'on' : 'off'; ?>">
+    <button type="button" onclick="toggleDarkMode()" id="darkModeToggleButton">
+        <svg id="darkModeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle class="sun" cx="12" cy="12" r="5" fill="currentColor"></circle>
+            <circle class="moon" cx="12" cy="12" r="5" fill="currentColor" opacity="0"></circle>
+        </svg>
+    </button>
+</form>
+
                 </li>
                 <li>
                 <form action="./../serveur/logout.php" method="post" style="display: inline;">
