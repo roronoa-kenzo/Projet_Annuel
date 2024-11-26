@@ -9,20 +9,22 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+// Vérifiez que l'ID du forum est présent dans la session
+if (!isset($_SESSION['forum_id'])) {
+    $_SESSION['ErrorForum'] = 'Aucun forum sélectionné pour créer un post.';
+    header('Location:./../view/Abyss-Forum.php?forum_id='.$forum_id);
+    exit();
+}
+
+// Récupération de l'ID du forum depuis la session
+$forum_id = $_SESSION['forum_id'];
+
 // Vérifiez si le formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $forum_id = $_POST['forum_id'];
     $title = trim($_POST['title']); // Récupère le titre du formulaire
-    $content = trim($_POST['content']); // Récupère le contenu (description) du formulaire
+    $description = trim($_POST['content']);
     $user_id = $_SESSION['user_id'];
     $imagePath = null;
-
-    // Validation : vérifier qu'un forum a bien été sélectionné
-    if (empty($forum_id)) {
-        $_SESSION['ErrorForum'] = 'Veuillez sélectionner un forum pour votre post.';
-        header('Location: ./../view/index.php');
-        exit();
-    }
 
     // Vérifiez si un fichier a été envoyé
     if (isset($_FILES['fileToUpload']) && $_FILES['fileToUpload']['error'] === UPLOAD_ERR_OK) {
@@ -38,13 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Validation : vérifier le type et la taille du fichier
         if (!in_array($fileExtension, $allowedExtensions)) {
             $_SESSION['ErrorFile'] = 'Seuls les fichiers PNG ou MP4 sont autorisés.';
-            header('Location: ./../view/index.php');
+            header('Location:./../view/Abyss-Forum.php?forum_id='.$forum_id);
             exit();
         }
 
         if ($fileSize > $maxFileSize) {
             $_SESSION['ErrorFile'] = 'Le fichier est trop volumineux. La taille maximale autorisée est de 5 Mo.';
-            header('Location: ./../view/index.php');
+            header('Location:./../view/Abyss-Forum.php?forum_id='.$forum_id);
             exit();
         }
 
@@ -57,12 +59,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $imagePath = $destination; // Chemin du fichier sauvegardé
         } else {
             $_SESSION['ErrorFile'] = "Erreur lors de l'enregistrement du fichier.";
-            header('Location: ./../view/index.php');
+            header('Location:./../view/Abyss-Forum.php?forum_id='.$forum_id);
             exit();
         }
     } else {
         $_SESSION['ErrorFile'] = "Aucun fichier n'a été téléchargé.";
-        header('Location: ./../view/index.php');
+        header('Location:./../view/Abyss-Forum.php?forum_id='.$forum_id);
         exit();
     }
 
@@ -74,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ');
 
         $query->bindParam(':title', $title, PDO::PARAM_STR);
-        $query->bindParam(':content', $content, PDO::PARAM_STR);
+        $query->bindParam(':content', $description, PDO::PARAM_STR);
         $query->bindParam(':image', $imagePath, PDO::PARAM_STR);
         $query->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $query->bindParam(':forum_id', $forum_id, PDO::PARAM_INT);
@@ -98,9 +100,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['ErrorPost'] = 'Erreur lors de la connexion à la base de données : ' . $e->getMessage();
     }
 
-    header('Location: ./../view/index.php');
+    header('Location:./../view/Abyss-Forum.php?forum_id='.$forum_id);
     exit();
 } else {
-    header('Location: ./../view/index.php');
+    header('Location:./../view/Abyss-Forum.php?forum_id='.$forum_id);
     exit();
 }

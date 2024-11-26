@@ -47,6 +47,10 @@ body, html {
   small{
     font-family: "Josefin Sans", sans-serif;
   }
+
+  span{
+    color: white;
+  }
   
   p{
     font-family: "Josefin Sans", sans-serif;
@@ -68,6 +72,10 @@ body, html {
   h3{
     font-family: "Josefin Sans", sans-serif;
     color: rgb(255, 255, 255);
+  }
+
+  hr{
+    color: white;
   }
   
   option{
@@ -179,7 +187,7 @@ body, html {
     height: 50em;
     padding: 20px;
     border-radius: 20px;
-    width: 14em;
+    width:  18em;
     max-width: 600px;
     margin-top: -10px;
     box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
@@ -233,6 +241,11 @@ body, html {
     max-width: 600px;
     margin: 0 auto;
   }
+
+  .post-image{
+    max-width: 37em;
+    border-radius: 9px;
+  }
   
   textarea{
     background-color: #e8e8e8;
@@ -240,8 +253,9 @@ body, html {
   
   .post-header {
     display: flex;
-    align-items: center;
-    padding: 6px;
+        align-items: flex-start;
+        padding: 6px;
+        flex-direction: column;
   }
   
   .user-avatar {
@@ -253,9 +267,11 @@ body, html {
   
   .post-options {
     display: flex;
-    gap: 15px;
-    flex-grow: 1;
-    color: white;
+      gap: 15px;
+      flex-grow: 1;
+      margin-bottom: 1em;
+      align-items: center;
+      color: white;
   }
   
   .post-option {
@@ -859,6 +875,29 @@ body, html {
       width: 100%;
       padding: 5px;
       border-radius: 0 0 5px 5px;
+  }
+
+  .likebutton{
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    filter: invert(100%)
+  }
+
+  .likebutton .likeicon {
+    width: 22px;
+    /* Ajustez la taille de l'image si nécessaire */
+    height: 22px;
+    transition: filter 0.3s ease;
+    /* Animation de transition */
+    padding: 0;
+    border: none;
+    background: none;
+  }
+
+  .likebutton.liked .likeicon {
+    filter: invert(17%) sepia(95%) saturate(7486%) hue-rotate(0deg) brightness(100%) contrast(115%);
   }
   
   /* Effets de survol avec des couleurs spécifiques pour chaque thème */

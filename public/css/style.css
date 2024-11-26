@@ -169,7 +169,7 @@ option {
   height: 50em;
   padding: 20px;
   border-radius: 20px;
-  width: 14em;
+  width:  18em;
   max-width: 600px;
   margin-top: -10px;
   box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
@@ -863,6 +863,12 @@ btn-menu-admin:hover {
   border-radius: 0 0 5px 5px;
 }
 
+.likebutton{
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
 
 .likebutton .likeicon {
   width: 22px;
@@ -870,6 +876,9 @@ btn-menu-admin:hover {
   height: 22px;
   transition: filter 0.3s ease;
   /* Animation de transition */
+  padding: 0;
+  border: none;
+  background: none;
 }
 
 .liked {
@@ -969,19 +978,6 @@ btn-menu-admin:hover {
 @media (max-width: 1228px) {
   #menuToggle {
     display: block; /* Affiche le menu burger uniquement sur les petits écrans */
-
-  }
-
-  .nav_buttons,
-  .nav_third {
-    display: none; /* Masque les autres éléments de la navbar sur mobile */
-  }
-
-  .navbar {
-    height: 4em;
-    position: fixed;
-  }
-
 }
 .nav_buttons, .nav_third {
     display: none; /* Masque les autres éléments de la navbar sur mobile */
@@ -1015,39 +1011,20 @@ btn-menu-admin:hover {
               background: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
-  #menuToggle input {
-    display: block;
-    width: 40px;
-    height: 32px;
-    position: absolute;
-    top: -7px;
-    left: -5px;
-    cursor: pointer;
-    opacity: 0;
-    z-index: 2;
-  }
+#menuToggle input:checked ~ span {
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #ffffff;
+}
 
-  /* Hamburger icon styling */
-  #menuToggle span {
-    display: block;
-    width: 33px;
-    height: 4px;
-    margin-bottom: 5px;
-    background: #ffffff;
-    border-radius: 3px;
-    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
-      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  }
+#menuToggle input:checked ~ span:nth-last-child(2) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
 
-  #menuToggle input:checked ~ span {
-    transform: rotate(45deg) translate(-2px, -1px);
-    background: #ffffff;
-  }
+#menuToggle input:checked ~ span:nth-last-child(3) {
+  transform: rotate(-45deg) translate(0, -1px);
+}
 
-  #menuToggle input:checked ~ span:nth-last-child(2) {
-    opacity: 0;
-    transform: rotate(0deg) scale(0.2, 0.2);
-  }
 /* Menu list */
 #menu {
   display: flex;
@@ -1068,34 +1045,15 @@ btn-menu-admin:hover {
 
 }
 
-  #menuToggle input:checked ~ span:nth-last-child(3) {
-    transform: rotate(-45deg) translate(0, -1px);
-  }
+#menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
 
-  /* Menu list */
-  #menu {
-    position: absolute;
-    right: -21px;
-    top: 46px;
-    width: 200px;
-    height: 57em;
-    background: #ededed;
-    list-style-type: none;
-    margin: 0;
-    padding: 10px;
-    transform: translateX(100%);
-    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  }
-  #menu li {
-    padding: 10px 0;
-    font-size: 22px;
-  }
+#menuToggle input:checked ~ #menu {
+  transform: translateX(0);
+}
 
-  #menuToggle input:checked ~ #menu {
-    transform: translateX(0);
-  }
-
-  .inpuText {
 .logo {
   width: 91px;
   height: 40px;
@@ -1107,20 +1065,20 @@ btn-menu-admin:hover {
     margin-right: 18em;
   }
   .navbar #navbar-menu {
-    display: none; /* Cacher le menu sur mobile */
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background-color: #fff;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
+      display: none; /* Cacher le menu sur mobile */
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: #fff;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
   }
   .navbar #navbar-menu.show {
-    display: block; /* Afficher le menu quand l'icône burger est cliquée */
+      display: block; /* Afficher le menu quand l'icône burger est cliquée */
   }
   .navbar #navbar-menu li {
-    margin: 15px 0;
+      margin: 15px 0;
   }
 
   .profile-button{
@@ -1131,24 +1089,21 @@ btn-menu-admin:hover {
   }
 
   .menu-icon {
-    display: block; /* Afficher l'icône burger sur mobile */
+      display: block; /* Afficher l'icône burger sur mobile */
   }
   /* Style spécifique pour le contenu des sections dans le menu burger */
   .menu-content {
-    padding: 10px;
+      padding: 10px;
   }
   .main-index {
     display: flex;
     justify-content: center;
-  }
-
-
+}
   .white-content-secondary {
-    display: none;
+      display: none;
   }
   .white-content-admin {
     display: none;
-  }
 }
 
 /* Style pour le mode sombre */
@@ -1175,6 +1130,13 @@ btn-menu-admin:hover {
   background-color: #444;
   color: #fff;
 }
+.likeicon {
+  padding-left: 5px;
+  padding-top: 1px;
 
+}
 
-
+.black-frame{
+  height: 50vh;
+}
+}

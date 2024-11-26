@@ -222,9 +222,11 @@ if ($forumId) {
                 titleH2.textContent = `${post.title || 'Titre indisponible'}`;
                 postLink.appendChild(titleH2);
 
-                // Ajouter des sauts de ligne après le titre
-                postLink.appendChild(document.createElement('br'));
-                postLink.appendChild(document.createElement('br'));
+                // Créer la description du post et l'ajouter au lien cliquable
+                const description = document.createElement('p');
+                description.className = 'username';
+                description.innerHTML = `${post.content}`;
+                postLink.appendChild(description);
 
                 // Ajouter l'image du post s'il y en a une
                 if (post.image) {
@@ -238,12 +240,6 @@ if ($forumId) {
                     
                    
                 }
-
-                // Créer la description du post et l'ajouter au lien cliquable
-                const description = document.createElement('p');
-                description.className = 'username';
-                description.innerHTML = `${post.content}`;
-                postLink.appendChild(description);
 
                 // Ajouter une ligne horizontale
                 const hrElement = document.createElement('hr');
@@ -307,8 +303,9 @@ if ($forumId) {
         }
 
         .btnReport {
-            height: 3.5vh;
+            height: 2vh;
             padding-left: 1rem;
+            filter: invert(100%);
         }
     </style>
     <?php include './../composants/script_link.php'; ?>

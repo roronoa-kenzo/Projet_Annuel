@@ -14,6 +14,14 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
             <img src="./../public/img/icon.png" alt="Abyss" class="logo">
         </a>
 
+        <?php if (isset($_SESSION['LevelUp'])): ?>
+            <div class="notification level-up">
+                <?php echo $_SESSION['LevelUp']; ?>
+                <button onclick="this.parentElement.style.display='none';">X</button>
+            </div>
+            <?php unset($_SESSION['LevelUp']); // Supprimez la notification après affichage ?>
+        <?php endif; ?>
+
         <?php if (isset($_SESSION['email'])): ?>
             <div id="searchBar" class="search-container">
                 <input type="text" class="inpuText" placeholder="Rechercher...">
@@ -74,12 +82,18 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
                     <p class="profile_name"><strong><?php echo htmlspecialchars($_SESSION["username"]); ?></strong></p>
                 </li>
                 <li>
+                  
+                </li>
+                <li>
                    <div class="burger-navigation">
                       <h3>Menu</h3>
                       <a class="btn-menu" href="./Popular.php">Popular Forum</a>
                       <a class="btn-menu" href="./Abyss-Recent.php">Recent</a>
                       <a class="btn-menu" href="./kinglike.php">king of Like</a>
                    </div>
+                </li>
+                <li>
+                 
                 </li>
                 <li>
                     <form id="darkModeForm" method="POST">

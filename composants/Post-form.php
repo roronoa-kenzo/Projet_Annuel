@@ -3,50 +3,52 @@
 session_start();
 include './serveur/database.php';
 
-// Vérifier si l'utilisateur est connecté
-if (!empty($_SESSION["email"]) && !empty($_SESSION["user_profile"]) && !empty($_SESSION["user_id"])) {
-    $forum_id = isset($_GET['forum_id']) ? intval($_GET['forum_id']) : null;
+// Récupérer l'ID du forum à partir du paramètre GET s'il est présent
+$forum_id = isset($_GET['forum_id']) ? intval($_GET['forum_id']) : null;
 
+// Vérifiez si l'ID du forum est présent et mettez-le dans la session
+if ($forum_id) {
+    $_SESSION['forum_id'] = $forum_id;
+}
+
+// Vérifier si l'utilisateur est connecté et si l'ID du forum est bien en session
+if (!empty($_SESSION["email"]) && !empty($_SESSION["user_profile"]) && !empty($_SESSION["user_id"]) && isset($_SESSION['forum_id'])) {
     ?>
-    <!-- mettre le form de remplissage-->
+    <!-- Formulaire de création de post -->
     <div class="white-content">
-
         <div class="post-header">
-            <img src="<?php echo htmlspecialchars($_SESSION["user_profile"]); ?>" alt="User Avatar" class="user-avatar">
             <?php include './../composants/post-options.php'; ?>
+            <div class="iceberg-select">
+                <!-- Formulaire de création de post textuel -->
+                <div id="textContent" class="post-creation">
+                    <form action="./../controleur/TraitementPost.php" method="post">
+                        <input type="text" name="title" class="inputTitle" placeholder="Post Title" required>
+                        <textarea class="post-textarea" name="content" rows="4" placeholder="Write your description..." required></textarea>
+                        <button class="btn-submit" type="submit">Post</button>
+                    </form>
+                </div>
 
+                <!-- Formulaire de création de post avec fichier -->
+                <div id="imageVideoContent" style="display: none;">
+                    <form id="uploadForm" action="./../controleur/TraitementPostMedia.php" method="post" enctype="multipart/form-data">
+                        <input type="text" name="title" class="inputTitle" placeholder="Post Title" required>
+                        <textarea name="content" class="post-textarea" rows="4" placeholder="Write your description..." required></textarea>
+                        <input type="file" id="fileToUpload" name="fileToUpload" accept=".png, .mp4" required>
+                        <button type="submit" class="btn-submit">Post</button>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <div id='textContent' class="post-creation">
-            <form action="./../composants/TraitementPost.php" method="post">
-                <input type="hidden" name="forum_id" value="<?php echo $forum_id; ?>">
-                <input type="hidden" name="texte" value="texte">
-                <input type="text" name="title" class="inputTitle" placeholder="Post Title" required>
-                <textarea class="post-textarea" name="content" rows="4" placeholder="Write your post..."
-                    required></textarea>
-                <button class="btn-submit" type="submit">Post</button>
-            </form>
-        </div>
-        <!-- Post Textuel et images -->
-        <div id="imageVideoContent" style="display: none;">
-            <form id="uploadForm" action="./../composants/TraitementPost.php" method="post" enctype="multipart/form-data">
-                <input type="text" name="title" class="inputTitle" placeholder="Post Title" required>
-                <textarea class="post-textarea" name="description" placeholder="Description..."></textarea>
-                <input type="file" id="fileToUpload" name="fileToUpload" required accept=".png, .mp4, .jpg">
-                <input type="hidden" name="file" value="file">
-                <button type="submit" name="submit">Upload</button>
-            </form>
-        </div>
-        <style>
-            textarea {
-                resize: none;
-            }
-        </style>
-
-
     </div>
+
+    <style>
+        textarea {
+            resize: none;
+        }
+    </style>
     <?php
 } else {
-
+    // Redirection ou message pour indiquer que l'utilisateur doit être connecté ou que le forum est non défini
+    echo "<p>Vous devez être connecté et avoir sélectionné un forum pour poster.</p>";
 }
 ?>

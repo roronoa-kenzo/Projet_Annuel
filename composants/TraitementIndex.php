@@ -8,25 +8,26 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["user_profile"]) && !empty($_
     // Préparation de la requête SQL
     $stmt = $pdo->prepare("
             SELECT 
-                posts.id, 
-                posts.content, 
-                posts.created_at, 
-                posts.title, 
-                forums.id AS forum_id, 
-                forums.name AS forum_name, 
-                users.username, 
-                users.user_profile, 
-                COUNT(DISTINCT comments.id) AS comment_count, 
-                SUM(CASE WHEN post_reactions.is_like = TRUE THEN 1 ELSE 0 END) AS like_count
-            FROM posts
-            JOIN forums ON posts.forum_id = forums.id
-            JOIN forum_subscribers ON forum_subscribers.forum_id = forums.id
-            JOIN users ON posts.user_id = users.id
-            LEFT JOIN comments ON comments.post_id = posts.id
-            LEFT JOIN post_reactions ON post_reactions.post_id = posts.id
-            WHERE forum_subscribers.user_id = :user_id
-            GROUP BY posts.id, forums.id, users.id
-            ORDER BY posts.created_at DESC
+    posts.id, 
+    posts.content, 
+    posts.created_at, 
+    posts.title, 
+    posts.image,  -- Récupération du chemin de l'image
+    forums.id AS forum_id, 
+    forums.name AS forum_name, 
+    users.username, 
+    users.user_profile, 
+    COUNT(DISTINCT comments.id) AS comment_count, 
+    SUM(CASE WHEN post_reactions.is_like = TRUE THEN 1 ELSE 0 END) AS like_count
+FROM posts
+JOIN forums ON posts.forum_id = forums.id
+JOIN forum_subscribers ON forum_subscribers.forum_id = forums.id
+JOIN users ON posts.user_id = users.id
+LEFT JOIN comments ON comments.post_id = posts.id
+LEFT JOIN post_reactions ON post_reactions.post_id = posts.id
+WHERE forum_subscribers.user_id = :user_id
+GROUP BY posts.id, forums.id, users.id
+ORDER BY posts.created_at DESC;
         ");
     $stmt->bindParam(':user_id', $user_id);
 

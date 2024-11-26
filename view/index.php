@@ -52,6 +52,10 @@
                                     ?>
                                 </select>
                                 <input type="text" name="title" class="inputTitle" placeholder="Post Title" required>
+        
+                                <!-- Nouveau champ de description -->
+                                <textarea name="content" class="post-textarea" rows="4" placeholder="Write your description..." required></textarea>
+        
                                 <input type="file" id="fileToUpload" name="fileToUpload" accept=".png, .mp4" required>
                                 <button type="submit" class="btn-submit">Post</button>
                             </form>
@@ -165,32 +169,24 @@
                             postLink.className = 'post-link userLien';
 
                             // Créer le titre du post et l'ajouter au lien cliquable
-                            const titleSpan = document.createElement('span');
-                            titleSpan.textContent = `Title: ${post.title || 'Titre indisponible'}`;
+                            const titleSpan = document.createElement('h2');
+                            titleSpan.textContent = `${post.title || 'Titre indisponible'}`;
                             postLink.appendChild(titleSpan);
+      
+                            // Créer la description du post et l'ajouter au lien cliquable
+                            const descriptionSpan = document.createElement('p');
+                            descriptionSpan.className = 'username';
+                            descriptionSpan.innerHTML = `${post.content}`;
+                            postLink.appendChild(descriptionSpan);
 
-                            // Ajouter des sauts de ligne après le titre
-                            postLink.appendChild(document.createElement('br'));
-                            postLink.appendChild(document.createElement('br'));
-
-                            // Ajouter l'image du post s'il y en a une
                             if (post.image) {
                                 const postImage = document.createElement('img');
                                 postImage.src = post.image;
                                 postImage.alt = 'Image du post';
                                 postImage.className = 'post-image';
                                 postLink.appendChild(postImage);
-
-                                // Ajouter des sauts de ligne après l'image
-                                postLink.appendChild(document.createElement('br'));
                                 postLink.appendChild(document.createElement('br'));
                             }
-
-                            // Créer la description du post et l'ajouter au lien cliquable
-                            const descriptionSpan = document.createElement('span');
-                            descriptionSpan.className = 'username';
-                            descriptionSpan.innerHTML = `Description:<br>${post.content}`;
-                            postLink.appendChild(descriptionSpan);
 
                             // Ajouter une ligne horizontale
                             const hrElement = document.createElement('hr');
@@ -232,12 +228,13 @@
                     } catch (error) {
                         console.error("Erreur lors de la récupération des posts :", error);
                         document.getElementById('posts-container').innerHTML = `<p>Erreur : ${error.message}</p>`;
-
-
+                    }
+                }
 
                 // Charger les posts au chargement de la page
 
                 fetchPosts();
+                setInterval(fetchPostData, 10000);
             </script>
         </div>
         <?php include './../composants/white_content_right.php'; ?>
@@ -257,7 +254,7 @@
     .forum_left {
         background-color: black;
         height: 4vh;
-        width: 20vh;
+        width: 14vh;
         display: flex;
         align-items: center;
         justify-content: center;

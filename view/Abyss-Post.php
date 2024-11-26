@@ -95,13 +95,15 @@ $backgroundPath = $_SESSION['background'];
             postContent.appendChild(profileDiv);
 
             // Créer le titre du post
-            const titleSpan = document.createElement('span');
-            titleSpan.textContent = `Tilte :${post.title}`;
+            const titleSpan = document.createElement('h2');
+            titleSpan.textContent = `${post.title}`;
             postContent.appendChild(titleSpan);
 
-            // Ajouter un saut de ligne après le titre
-            postContent.appendChild(document.createElement('br'));
-
+            // Créer la description du post
+            const postDescription = document.createEzlement('p');
+            postDescription.innerHTML = `Description:<br>${post.content}`;
+            postContent.appendChild(postDescription);
+            
             // Ajouter l'image du post s'il y en a une
             if (post.image) {
                 const postImage = document.createElement('img');
@@ -111,10 +113,6 @@ $backgroundPath = $_SESSION['background'];
                 postContent.appendChild(postImage);
             }
 
-            // Créer la description du post
-            const postDescription = document.createElement('p');
-            postDescription.innerHTML = `Description:<br>${post.content}`;
-            postContent.appendChild(postDescription);
         }
         function reportPost(buttonDiv, forumUrlReport) {
             // Créer un bouton de rapport
@@ -219,7 +217,7 @@ $backgroundPath = $_SESSION['background'];
 
         // Charger les données du post au démarrage
         fetchPostData();
-        setInterval(fetchPostData, 10000);
+
     </script>
     <style>
         .buttonReport {
