@@ -12,7 +12,6 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["user_profile"]) && !empty($_
     <div class="white-content">
 
         <div class="post-header">
-            <img src="<?php echo htmlspecialchars($_SESSION["user_profile"]); ?>" alt="User Avatar" class="user-avatar">
             <?php include './../composants/post-options.php'; ?>
 
         </div>

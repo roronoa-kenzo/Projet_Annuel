@@ -24,8 +24,22 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $icebergCount = $stmt->rowCount(); // Correctement assigné à $icebergCount
 
-// Affichage des résultats ou traitement
+$sql = "SELECT COUNT(*) AS total_pending_reports FROM reports WHERE status = 'Pending'";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
 
+// Récupération du résultat
+$result = $stmt->fetch();
+$totalPendingReports = $result['total_pending_reports'];
+
+// recuperation rtiket
+$query = "SELECT COUNT(*) AS total_in_progress FROM tickets WHERE status = 'In Progress'";
+$stmt = $pdo->prepare($query);
+$stmt->execute();
+
+// Récupération du résultat
+$tiketCount = $stmt->fetch(PDO::FETCH_ASSOC);
+$tiketCount = $tiketCount['total_in_progress'];
 //useconnectCount
 $sql = "SELECT COUNT(*) as connected_users FROM user_sessions WHERE is_connected = TRUE";
 $stmt = $pdo->prepare($sql);

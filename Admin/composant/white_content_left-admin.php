@@ -25,3 +25,10 @@
         <a style="text-decoration: none;" class="btn-menu-admin" href="#">Signalement</a>
     </ul>
 </div>
+<style>
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+</style>

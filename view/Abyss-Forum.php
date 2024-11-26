@@ -27,7 +27,6 @@ if ($forumId) {
     }
 
 }
-echo $_SESSION['background'];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
