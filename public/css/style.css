@@ -178,6 +178,19 @@ option {
   align-items: center;
 }
 
+.white-content-description {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 20px;
+  width: 50em;
+  margin: 5%;
+  max-width: 600px;
+  margin-top: -10px;
+  margin-left: 5vh;
+  margin-right: 5vh;
+  box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
+}
+
 .btn-menu {
 
   background-color: #ddd;
@@ -241,6 +254,13 @@ textarea{
     flex-grow: 1;
     margin-bottom: 1em;
     align-items: center;
+}
+
+.post-video {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 10px;
 }
 
 .post-option {

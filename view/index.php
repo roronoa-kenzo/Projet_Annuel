@@ -31,14 +31,16 @@
                                     ?>
                                 </select>
                                 <input type="text" name="title" class="inputTitle" placeholder="Post Title" required>
-                                <textarea class="post-textarea" name="content" rows="4" placeholder="Write your description..." required></textarea>
+                                <textarea class="post-textarea" name="content" rows="4"
+                                    placeholder="Write your description..." required></textarea>
                                 <button class="btn-submit" type="submit">Post</button>
                             </form>
                         </div>
 
                         <!-- Formulaire de création de post avec fichier -->
                         <div id="imageVideoContent" style="display: none;">
-                            <form id="uploadForm" action="./../controleur/upload_post.php" method="post" enctype="multipart/form-data">
+                            <form id="uploadForm" action="./../controleur/upload_post.php" method="post"
+                                enctype="multipart/form-data">
                                 <select name="forum_id" required>
                                     <option value="" disabled selected>Select an iceberg</option>
                                     <?php
@@ -52,10 +54,11 @@
                                     ?>
                                 </select>
                                 <input type="text" name="title" class="inputTitle" placeholder="Post Title" required>
-        
+
                                 <!-- Nouveau champ de description -->
-                                <textarea name="content" class="post-textarea" rows="4" placeholder="Write your description..." required></textarea>
-        
+                                <textarea name="content" class="post-textarea" rows="4"
+                                    placeholder="Write your description..." required></textarea>
+
                                 <input type="file" id="fileToUpload" name="fileToUpload" accept=".png, .mp4" required>
                                 <button type="submit" class="btn-submit">Post</button>
                             </form>
@@ -172,21 +175,34 @@
                             const titleSpan = document.createElement('h2');
                             titleSpan.textContent = `${post.title || 'Titre indisponible'}`;
                             postLink.appendChild(titleSpan);
-      
+
                             // Créer la description du post et l'ajouter au lien cliquable
                             const descriptionSpan = document.createElement('p');
                             descriptionSpan.className = 'username';
                             descriptionSpan.innerHTML = `${post.content}`;
                             postLink.appendChild(descriptionSpan);
 
+                            // Vérifier le fichier et afficher l'image ou la vidéo
                             if (post.image) {
-                                const postImage = document.createElement('img');
-                                postImage.src = post.image;
-                                postImage.alt = 'Image du post';
-                                postImage.className = 'post-image';
-                                postLink.appendChild(postImage);
-                                postLink.appendChild(document.createElement('br'));
+                                const fileExtension = post.image.split('.').pop().toLowerCase();
+
+                                if (fileExtension === 'mp4') {
+                                    // Afficher une vidéo
+                                    const video = document.createElement('video');
+                                    video.src = post.image;
+                                    video.controls = true; // Ajouter les contrôles
+                                    video.className = 'post-video';
+                                    postLink.appendChild(video);
+                                } else if (fileExtension === 'png') {
+                                    // Afficher une image
+                                    const image = document.createElement('img');
+                                    image.src = post.image;
+                                    image.alt = 'Image du post';
+                                    image.className = 'post-image';
+                                    postLink.appendChild(image);
+                                }
                             }
+
 
                             // Ajouter une ligne horizontale
                             const hrElement = document.createElement('hr');
@@ -231,6 +247,7 @@
                     }
                 }
 
+
                 // Charger les posts au chargement de la page
 
                 fetchPosts();
@@ -239,7 +256,7 @@
         </div>
         <?php include './../composants/white_content_right.php'; ?>
     </div>
-  </div>
+    </div>
 </main>
 
 <?php include './../composants/script_link.php'; ?>

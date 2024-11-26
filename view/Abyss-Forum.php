@@ -228,18 +228,26 @@ if ($forumId) {
                 description.innerHTML = `${post.content}`;
                 postLink.appendChild(description);
 
-                // Ajouter l'image du post s'il y en a une
-                if (post.image) {
-                    const postImage = document.createElement('img');
-                    postImage.src = post.image;
-                    postImage.alt = 'Image du post';
-                    postImage.className = 'post-image';
-                    postLink.appendChild(postImage);
+                 // Vérifier le fichier et afficher l'image ou la vidéo
+                 if (post.image) {
+                                const fileExtension = post.image.split('.').pop().toLowerCase();
 
-                    // Ajouter des sauts de ligne après l'image
-                    
-                   
-                }
+                                if (fileExtension === 'mp4') {
+                                    // Afficher une vidéo
+                                    const video = document.createElement('video');
+                                    video.src = post.image;
+                                    video.controls = true; // Ajouter les contrôles
+                                    video.className = 'post-video';
+                                    postLink.appendChild(video);
+                                } else if (fileExtension === 'png') {
+                                    // Afficher une image
+                                    const image = document.createElement('img');
+                                    image.src = post.image;
+                                    image.alt = 'Image du post';
+                                    image.className = 'post-image';
+                                    postLink.appendChild(image);
+                                }
+                            }
 
                 // Ajouter une ligne horizontale
                 const hrElement = document.createElement('hr');

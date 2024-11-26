@@ -13,7 +13,8 @@ $backgroundPath = $_SESSION['background'];
 <head>
     <meta charset="UTF-8">
     <title id="page-title"></title>
-    <link id="theme-stylesheet" rel="stylesheet" href="<?php echo isset($backgroundPath) && $backgroundPath ? $backgroundPath : ($darkMode ? './../public/css/darkmode.css' : './../public/css/style.css'); ?>">
+    <link id="theme-stylesheet" rel="stylesheet"
+        href="<?php echo isset($backgroundPath) && $backgroundPath ? $backgroundPath : ($darkMode ? './../public/css/darkmode.css' : './../public/css/style.css'); ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
@@ -55,7 +56,6 @@ $backgroundPath = $_SESSION['background'];
             try {
                 const response = await fetch(`./requetePost.php?Post=${postId}`);
                 const data = await response.json();
-
                 if (data.success) {
                     displayPost(data.post, data.forum);
                     titleForum(data.forum);
@@ -65,7 +65,9 @@ $backgroundPath = $_SESSION['background'];
                     document.getElementById('post-content').textContent = 'Erreur lors du chargement du post.';
                 }
             } catch (error) {
-                console.error('Erreur lors de la récupération des données :', error);
+                console.error('Erreur lors de la récupération des données :', error);                    
+                console.log(comments);
+
             }
         }
 
@@ -103,14 +105,28 @@ $backgroundPath = $_SESSION['background'];
             const postDescription = document.createEzlement('p');
             postDescription.innerHTML = `Description:<br>${post.content}`;
             postContent.appendChild(postDescription);
-            
+
             // Ajouter l'image du post s'il y en a une
+            // Vérifier le fichier et afficher l'image ou la vidéo
+            console.log(post.image);
             if (post.image) {
-                const postImage = document.createElement('img');
-                postImage.src = post.image;
-                postImage.alt = 'Image du post';
-                postImage.className = 'post-image';
-                postContent.appendChild(postImage);
+                const fileExtension = post.image.split('.').pop().toLowerCase();
+
+                if (fileExtension === 'mp4') {
+                    // Afficher une vidéo
+                    const video = document.createElement('video');
+                    video.src = post.image;
+                    video.controls = true; // Ajouter les contrôles
+                    video.className = 'post-video';
+                    postContent.appendChild(video);
+                } else if (fileExtension === 'png') {
+                    // Afficher une image
+                    const image = document.createElement('img');
+                    image.src = post.image;
+                    image.alt = 'Image du post';
+                    image.className = 'post-image';
+                    postContent.appendChild(image);
+                }
             }
 
         }

@@ -246,6 +246,13 @@ body, html {
     max-width: 37em;
     border-radius: 9px;
   }
+
+  .post-video {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+}
   
   textarea{
     background-color: #e8e8e8;

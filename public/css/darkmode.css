@@ -1,13 +1,13 @@
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
 }
-
 .indexBody {
-  background-color: #1e1e1e;
-  color: #e0e0e0;
+  background-color: #171717;
+  color: black;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
@@ -31,7 +31,7 @@ header {
   justify-content: space-around;
   align-items: center;
   padding-top: 2em;
-  
+  height: 5em;
 }
 
 .nav_third {
@@ -44,33 +44,36 @@ header {
   height: 40px;
 }
 
+small {
+  font-family: "Josefin Sans", sans-serif;
+  color: white;
+}
+
 p {
   font-family: "Josefin Sans", sans-serif;
-  color: #e0e0e0;
+  color: white;
 }
 
 h1 {
   font-family: "Josefin Sans", sans-serif;
-  color: #e0e0e0;
+  color: white;
   font-size: 52px;
 }
 
-h2{
+h2 {
   font-family: "Josefin Sans", sans-serif;
-  color: rgb(255, 255, 255);
+  color: white;
   font-size: 24px;
 }
 
 h3 {
   font-family: "Josefin Sans", sans-serif;
-  color: #e0e0e0;
+  color: white;
 }
 
 option {
   font-family: "Josefin Sans", sans-serif;
-  color: #e0e0e0;
 }
-
 .search-container {
   position: relative;
   display: inline-block;
@@ -83,11 +86,19 @@ option {
   border-radius: 20px;
   outline: none;
   width: 50em;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-
 }
-
+.inpuTextAdmin {
+  padding: 3px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+  width: 80%;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
 .suggestions {
   position: absolute;
   top: calc(100% + 5px);
@@ -101,7 +112,7 @@ option {
   width: 100%;
   max-height: 200px;
   overflow-y: auto;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
@@ -129,19 +140,19 @@ option {
 }
 
 .white-content {
-  background-color: #2b2b2b;
+  background-color: #212020;
   padding: 20px;
   border-radius: 20px;
   width: 50em;
+  margin: 5%;
   max-width: 600px;
   margin-top: -10px;
   margin-left: 5vh;
   margin-right: 5vh;
   box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
 }
-
 .white-content-admin {
-  background-color: #232323;
+  background-color: #212020;
   padding: 20px;
   border-radius: 20px;
   width: 90vh;
@@ -150,7 +161,6 @@ option {
   margin-left: 5vh;
   margin-right: 5vh;
 }
-
 .main-index {
   display: flex;
   justify-content: space-around;
@@ -158,10 +168,11 @@ option {
 }
 
 .white-content-secondary {
-  background-color: #2b2b2b;
+  background-color: #212020;
+  height: 50em;
   padding: 20px;
   border-radius: 20px;
-  width: 14em;
+  width:  18em;
   max-width: 600px;
   margin-top: -10px;
   box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
@@ -170,25 +181,74 @@ option {
   align-items: center;
 }
 
-.post-container-admin, .post-container {
-  background-color: #2b2b2b;
+.white-content-description {
+  background-color: #212020;
+  padding: 20px;
+  border-radius: 20px;
+  width: 50em;
+  margin: 5%;
+  max-width: 600px;
+  margin-top: -10px;
+  margin-left: 5vh;
+  margin-right: 5vh;
+  box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-menu {
+
+  background-color: #171717;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
+  width: 20vh;
+  margin-bottom: 3vh;
+}
+
+/* White Content Milieu */
+.post-container-admin {
+  background-color: #212020;
   border-radius: 10px;
   padding: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   margin: 2%;
 }
+.post-container {
+  background-color: #212020;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
 
-textarea {
-  background-color: #333;
-  color: #e0e0e0;
-  font-family: "Josefin Sans", sans-serif;
+.post-video {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.post-image{
+  max-width: 37em;
+  border-radius: 9px;
+}
+
+textarea{
+  background-color: #e8e8e8;
 }
 
 .post-header {
   display: flex;
-  align-items: center;
-  padding: 6px;
+      align-items: flex-start;
+      padding: 6px;
+      flex-direction: column;
 }
 
 .user-avatar {
@@ -200,8 +260,11 @@ textarea {
 
 .post-options {
   display: flex;
-  gap: 15px;
-  flex-grow: 1;
+    gap: 15px;
+    flex-grow: 1;
+    margin-bottom: 1em;
+    align-items: center;
+    color: white;
 }
 
 .post-option {
@@ -211,14 +274,20 @@ textarea {
   cursor: pointer;
   padding: 5px 10px;
   font-family: "Josefin Sans", sans-serif;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 10px;
   transition: 1s;
   border-radius: 15px;
-
+  -webkit-transition: width 0.2s;
   color: white;
 }
 
 .post-option:hover {
-  transform: scale(1.05);
+  transition: 1s;
+  transform: scale(1.05); /* Légère augmentation de taille au hover */
   border-radius: 15px;
 }
 
@@ -227,8 +296,15 @@ textarea {
   border-radius: 8px;
   padding: 5px 10px;
   font-size: 14px;
-  background-color: #444;
-  color: #e0e0e0;
+  background-color: #e8e8e8;
+}
+
+.iceberg-select-profile {
+  display: flex;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 14px;
 }
 
 .post-textarea {
@@ -239,34 +315,49 @@ textarea {
   border-radius: 10px;
   padding: 10px;
   font-size: 16px;
-  background-color: #333;
-  color: #e0e0e0;
+  background-color: #e8e8e8;
 }
-
 .href-admin {
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  color: #e0e0e0;
-  font-family: "Josefin Sans", sans-serif;
-  background-color: #1e1e1e;
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
+  width: 20vh;
 }
-
 .href-admin:hover {
-  background-color: #444;
+  background-color: #808080;
 }
-
 .logo-connexion {
   width: 100px;
   height: 100px;
 }
 
+.profile-button {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  margin-right: 25px;
+  margin-left: 55px;
+
+}
+
+.profile_name{
+  display: flex;
+  justify-content: center;
+}
+
+/*-------------------- form page ---------------------------------------*/
 .Form {
-  background-color: #2b2b2b;
+  background-color: white;
   border-radius: 0 15px 15px 15px;
   font-family: "Josefin Sans", sans-serif;
   padding: 3rem;
-  box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: inset gray 20px 0px 5px -12px;
 }
 
 .labelRegister {
@@ -280,7 +371,7 @@ textarea {
 }
 
 .h3Div {
-  background-color: #2b2b2b;
+  background-color: white;
   width: 15rem;
   padding: 4px;
   border-radius: 15px 15px 0 0;
@@ -289,14 +380,11 @@ textarea {
   justify-content: center;
   box-shadow: inset gray 20px 0px 5px -12px;
 }
-
 .h3Register {
   margin-top: 10%;
   font-size: 30px;
   z-index: 1;
-  color: #e0e0e0;
 }
-
 .divcenter {
   display: grid;
   align-items: center;
@@ -311,16 +399,41 @@ textarea {
   justify-content: space-between;
 }
 
-.inputSign, .demiInput, .triDiv {
+.inputSign {
   border-radius: 10px;
   margin-top: 5px;
+  width: 68vh;
   padding: 1vh;
-  background-color: #333;
+  background-color: #e9ecef;
   font-size: 20px;
   font-family: "Josefin Sans", sans-serif;
   border: none;
-  color: #e0e0e0;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.demiInput {
+  border-radius: 10px;
+  margin-top: 7px;
+  width: 38vh;
+  padding: 1vh;
+  background-color: #e9ecef;
+  font-size: 20px;
+  font-family: "Josefin Sans", sans-serif;
+  border-color: #f1f1f1;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.triDiv {
+  border-radius: 10px;
+  margin-top: 7px;
+  width: 30vh;
+  padding: 1vh;
+  background-color: #e9ecef;
+  font-size: 20px;
+  font-family: "Josefin Sans", sans-serif;
+  border-color: #f1f1f1;
+
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .DivAllForm {
@@ -341,37 +454,31 @@ textarea {
   justify-content: space-between;
   gap: 10vh;
   font-size: 16px;
-  color: #e0e0e0;
+  color: black;
   margin-top: 2vh;
 }
-
 .buttonSubmit {
   margin: 5% 0% 0% 17%;
   padding: 1vh;
   width: 60%;
-  border: none;
-  background-color: #444;
-  color: white;
-  font-size: 24px;
   font-family: "Josefin Sans", sans-serif;
-  border-radius: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-}
-
-::placeholder {
-  color: #888;
-}
-
-.inputText:hover {
+  font-size: 20px;
+  background-color: black;
   color: white;
+  border-radius: 10px;
+  font-weight: bolder;
+  border: none;
+  transition: 1s;
 }
-
+.inputText:hover {
+  color: black;
+}
 .buttonSubmit:hover {
   transition: 1s;
-  background-color: #505050;
+  background-color: grey;
 }
 
-/*------------------------------------------No_User_navbar--------------------------------*/
+/*----------------------------------------------------------------------------------------------No_User_navbar---------------*/
 
 .no_user_navbar {
   display: flex;
@@ -382,12 +489,12 @@ textarea {
 
 .nav_btn {
   font-family: "Josefin Sans", sans-serif;
-    height: 32px;
-    width: 105px;
-    box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 1s;
+  height: 32px;
+  width: 105px;
+  box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 1s;
 }
 
 .nav_btn:hover {
@@ -404,16 +511,13 @@ textarea {
   flex-direction: column;
 }
 
+/*-------------------------------------------- admin ----------------------------------------------*/
 
-/*---------------------------------------------- admin -----------------------------------------------*/
-
-
-.userLien{
+.userLien {
   text-decoration: none;
-  color: white;
+  color: black;
 }
-.username{
-}
+
 .status {
   color: green;
 }
@@ -424,87 +528,84 @@ textarea {
   display: flex;
   justify-content: center;
 }
-span{
+span {
   font-family: "Josefin Sans", sans-serif;
 }
-h4{
+h4 {
   font-family: "Josefin Sans", sans-serif;
 }
-button{
+button {
   font-family: "Josefin Sans", sans-serif;
-
 }
-a{
+a {
   font-family: "Josefin Sans", sans-serif;
-
 }
-h2{
+h2 {
   font-family: "Josefin Sans", sans-serif;
-
 }
 
-.btn-menu{
-  background-color: #000000;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
-    width: 20vh;
-    margin-bottom: 3vh;
+.btn-menu {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
+  width: 20vh;
+  margin-bottom: 3vh;
 }
-.btn-menu-admin{
-  background-color: #000000;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
-    width: 20vh;
-    margin-bottom: 3vh;
+.btn-menu-admin {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 2px rgba(8, 9, 3, 1);
+  width: 20vh;
+  margin-bottom: 3vh;
 }
-.btn-menu:hover{
-  background-color:#808080;
+.btn-menu:hover {
+  background-color: #808080;
 }
-.btn-menu-admin:hover{
-  background-color:#808080;
+btn-menu-admin:hover {
+  background-color: #808080;
 }
-.btn-submit{
-  background-color: rgb(255, 255, 255);
-    height: 4vh;
-    width: 13vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-    color: rgb(0, 0, 0);
-    margin-top: 2vh;
+.btn-submit {
+  background-color: black;
+  height: 4vh;
+  width: 13vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  color: white;
+  margin-top: 2vh;
 }
 
 /*------------------------------------------------------Post---------------------------*/
 
-.posts-list{
-  background-color: #2b2b2b;
-    padding: 20px;
-    border-radius: 20px;
-    width: 50em;
-    max-width: 600px;
-    margin-top: 25px;
-    margin-left: 5vh;
-    margin-right: 5vh;
-  box-shadow: inset #0f0e0e 0px 1px 6px 3px
+.posts-list {
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  width: 50em;
+  max-width: 600px;
+  margin-top: 25px;
+  margin-left: 5vh;
+  margin-right: 5vh;
+  box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
 }
 
 .inputTitle {
-  font-family: "Josefin Sans", sans-serif;
+  margin-bottom: 1%;
   width: 96%;
   height: 24px;
   margin-top: 10px;
@@ -512,31 +613,31 @@ h2{
   border-radius: 10px;
   padding: 10px;
   font-size: 16px;
-  background-color: #333;
+  background-color: #e8e8e8;
 }
 
-.post-head{
+.post-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.post-head-first{
+.post-head-first {
   display: flex;
 }
 
-.post-forum{
-  background-color: rgb(255, 255, 255);
-    height: 4vh;
-    width: 13vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
+.post-forum {
+  background-color: black;
+  height: 4vh;
+  width: 13vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
 }
 
-.p-forum{
-  color: rgb(0, 0, 0);
+.p-forum {
+  color: white;
   font-size: 14px;
   font-family: "Josefin Sans", sans-serif;
 }
@@ -568,27 +669,24 @@ h2{
   background-color: #f44336; /* Rouge pour les erreurs */
 }
 
-
 /* Style global du footer */
 
 .footer {
   margin-top: 5em;
   background-color: #000; /* Couleur noire pour le fond */
   color: #fff; /* Texte blanc */
-  padding: 9em; /* Ajout de padding en haut et en bas */
   text-align: center; /* Centrer le contenu */
-  position: relative;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 .footer-container {
   display: flex;
-  justify-content: space-around; /* Espacement entre les éléments */
+  justify-content: center; /* Espacement entre les éléments */
   align-items: center;
   margin: 0 auto; /* Centrer le contenu */
   padding: 9em;
   background-color: #000; /* Couleur noire pour le fond */
-  margin-top: -80px;
+  margin-top: 25px;
 
 }
 
@@ -690,7 +788,12 @@ h2{
 }
 
 .like-button:hover {
-  background-color: rgba(0, 0, 0, 0.1); /* Légèrement plus sombre au survol pour montrer l'interactivité */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.1
+  ); /* Légèrement plus sombre au survol pour montrer l'interactivité */
 }
 
 .like-button.liked .heart {
@@ -704,7 +807,6 @@ h2{
 }
 
 /*----------------------------------------------------------------------------------Modal----------------------------------------------------------------*/
-
 
 .modal {
   display: none; /* Masqué par défaut */
@@ -728,16 +830,15 @@ h2{
   position: relative;
 }
 
-
 .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
 }
 
-.labelForum{
+.labelForum {
   font-family: "Josefin Sans", sans-serif;
 }
 
@@ -750,24 +851,26 @@ h2{
 }
 
 .theme-option.selected {
-  border-color: var(--theme-color, #000); /* Couleur de bordure dynamique selon le thème */
+  border-color: var(
+    --theme-color,
+    #000
+  ); /* Couleur de bordure dynamique selon le thème */
   height: 106px;
 }
 
-
 .theme-selection {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .theme-option {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    width: 120px;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  width: 120px;
+  text-align: center;
 }
 
 .theme-option img {
@@ -779,22 +882,100 @@ h2{
 }
 
 .theme-option span {
-    background-color: #e0e0e0;
-    width: 100%;
-    padding: 5px;
-    border-radius: 0 0 5px 5px;
+  background-color: #e0e0e0;
+  width: 100%;
+  padding: 5px;
+  border-radius: 0 0 5px 5px;
+}
+
+.likebutton{
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.likebutton .likeicon {
+  width: 22px;
+  /* Ajustez la taille de l'image si nécessaire */
+  height: 22px;
+  transition: filter 0.3s ease;
+  /* Animation de transition */
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.liked {
+  filter: invert(17%) sepia(95%) saturate(7486%) hue-rotate(0deg) brightness(100%) contrast(115%);
+}
+
+.notification.success {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #4caf50;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  z-index: 1000;
+}
+
+.notification.level-up {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #4caf50;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  z-index: 1000;
+}
+
+.notification.level-up button {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  float: right;
+  margin-left: 10px;
+}
+
+.notification.level-up button:hover {
+  color: #ccc;
+}
+
+.likebutton.liked .likeicon {
+  filter: invert(17%) sepia(95%) saturate(7486%) hue-rotate(0deg) brightness(100%) contrast(115%);
 }
 
 /* Effets de survol avec des couleurs spécifiques pour chaque thème */
-.theme-option[data-theme="grey"]:hover span { background-color: #888; }
-.theme-option[data-theme="blue"]:hover span { background-color: #007BFF; }
-.theme-option[data-theme="green"]:hover span { background-color: #28A745; }
-.theme-option[data-theme="red"]:hover span { background-color: #DC3545; }
-.theme-option[data-theme="orange"]:hover span { background-color: #FD7E14; }
-.theme-option[data-theme="galaxy_red"]:hover span { background-color: #66101F; }
-.theme-option[data-theme="galaxy_blue"]:hover span { background-color: #1B2A49; }
-
-
+.theme-option[data-theme="grey"]:hover span {
+  background-color: #888;
+}
+.theme-option[data-theme="blue"]:hover span {
+  background-color: #007bff;
+}
+.theme-option[data-theme="green"]:hover span {
+  background-color: #28a745;
+}
+.theme-option[data-theme="red"]:hover span {
+  background-color: #dc3545;
+}
+.theme-option[data-theme="orange"]:hover span {
+  background-color: #fd7e14;
+}
+.theme-option[data-theme="galaxy_red"]:hover span {
+  background-color: #66101f;
+}
+.theme-option[data-theme="galaxy_blue"]:hover span {
+  background-color: #1b2a49;
+}
 
 /* Menu burger (mobile) */
 #menuToggle {
@@ -807,6 +988,11 @@ h2{
 }
 
 
+.burger-navigation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 
 
@@ -866,17 +1052,22 @@ h2{
 
 /* Menu list */
 #menu {
-  position: absolute;
-  right: -21px;
-  top: 46px;
-  width: 200px;
-  height: 57em;
-  background: #ededed;
-  list-style-type: none;
-  margin: 0;
-  padding: 10px;
-  transform: translateX(100%);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+  display: flex;
+        position: absolute;
+        right: -21px;
+        top: 46px;
+        width: 26em;
+        height: 62em;
+        background: #ededed;
+        list-style-type: none;
+        margin: 0;
+        padding: 10px;
+        transform: translateX(100%);
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+
 }
 
 #menu li {
@@ -886,6 +1077,13 @@ h2{
 
 #menuToggle input:checked ~ #menu {
   transform: translateX(0);
+}
+
+.logo {
+  width: 91px;
+  height: 40px;
+  margin-right: 4em;
+  margin-left: 2em;
 }
   .inpuText{
     width: 19em;
@@ -907,6 +1105,14 @@ h2{
   .navbar #navbar-menu li {
       margin: 15px 0;
   }
+
+  .profile-button{
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    margin-left: 1.5em;
+  }
+
   .menu-icon {
       display: block; /* Afficher l'icône burger sur mobile */
   }
@@ -936,9 +1142,26 @@ h2{
 .dark-mode #navbar-menu li a {
   color: #fff;
 }
+/* boutton submit */
+.likebutton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  display: flex;
+}
+
 .dark-mode .nav_third button {
   background-color: #444;
   color: #fff;
 }
+.likeicon {
+  padding-left: 5px;
+  padding-top: 1px;
 
+}
+
+.black-frame{
+  height: 50vh;
+}
 }
