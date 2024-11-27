@@ -16,7 +16,7 @@
         <a style="text-decoration: none; " class="btn-menu-admin" href="./CommentInfos.php">Commentaire</a>
     </ul>
     <ul>
-        <a style="text-decoration: none;" class="btn-menu-admin" href="./ReportPage.php">Reporte</a>
+        <a style="text-decoration: none;" class="btn-menu-admin" href="./ReportPage.php">Report</a>
     </ul>
     <ul>
         <a style="text-decoration: none;" class="btn-menu-admin" href="#">Signalement</a>
