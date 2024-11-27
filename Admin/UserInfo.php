@@ -1,9 +1,4 @@
-<?php
-require_once './composant/admin_check.php'; // Inclure le fichier qui vérifie l'accès admin
-?>
-
-
-
+<?php require_once './composant/admin_check.php';?>
 <?php include './../composants/header.php'; ?>
 <?php include './composant/database.php'; ?>
 <?php include './composant/sessionStart.php'; ?>

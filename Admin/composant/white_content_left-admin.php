@@ -16,10 +16,7 @@
         <a style="text-decoration: none; " class="btn-menu-admin" href="./CommentInfos.php">Commentaire</a>
     </ul>
     <ul>
-        <a style="text-decoration: none;" class="btn-menu-admin" href="#">User Ban</a>
-    </ul>
-    <ul>
-        <a style="text-decoration: none;" class="btn-menu-admin" href="#">Reporte</a>
+        <a style="text-decoration: none;" class="btn-menu-admin" href="./ReportPage.php">Reporte</a>
     </ul>
     <ul>
         <a style="text-decoration: none;" class="btn-menu-admin" href="#">Signalement</a>
