@@ -3,13 +3,14 @@ session_start();
 require_once('./../serveur/database.php');
 
 //recuperation du post de l'user
-$forum_id = $_POST['forum_id'];
+$forum_id = $_SESSION['forum_id'];
 $title = $_POST['title'];
 $content = $_POST['content'];
 $user_id = $_COOKIE['userId'];
 $texte = $_POST['texte'];
 $file = $_POST['file'];
 
+var_dump($texte);
 //debug 
 if ($texte == "texte") {
     //verification

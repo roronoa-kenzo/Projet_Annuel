@@ -95,24 +95,34 @@ $backgroundPath = $_SESSION['background'];
             postContent.appendChild(profileDiv);
 
             // Créer le titre du post
-            const titleSpan = document.createElement('h2');
+            const titleSpan = document.createElement('h3');
             titleSpan.textContent = `${post.title}`;
             postContent.appendChild(titleSpan);
 
-            // Créer la description du post
-            const postDescription = document.createEzlement('p');
-            postDescription.innerHTML = `Description:<br>${post.content}`;
-            postContent.appendChild(postDescription);
-            
-            // Ajouter l'image du post s'il y en a une
             if (post.image) {
-                const postImage = document.createElement('img');
-                postImage.src = post.image;
-                postImage.alt = 'Image du post';
-                postImage.className = 'post-image';
-                postContent.appendChild(postImage);
+                const fileExtension = post.image.split('.').pop().toLowerCase();
+
+                if (fileExtension === 'mp4') {
+                    // Afficher une vidéo
+                    const video = document.createElement('video');
+                    video.src = post.image;
+                    video.controls = true; // Ajouter les contrôles
+                    video.className = 'post-video';
+                    postContent.appendChild(video);
+                } else if (fileExtension === 'png') {
+                    // Afficher une image
+                    const image = document.createElement('img');
+                    image.src = post.image;
+                    image.alt = 'Image du post';
+                    image.className = 'post-image';
+                    postContent.appendChild(image);
+                }
             }
 
+            // Créer la description du post
+            const postDescription = document.createElement('p');
+            postDescription.innerHTML = `Description:<br>${post.content}`;
+            postContent.appendChild(postDescription);
         }
         function reportPost(buttonDiv, forumUrlReport) {
             // Créer un bouton de rapport
@@ -217,7 +227,7 @@ $backgroundPath = $_SESSION['background'];
 
         // Charger les données du post au démarrage
         fetchPostData();
-
+        setInterval(fetchPostData, 10000);
     </script>
     <style>
         .buttonReport {

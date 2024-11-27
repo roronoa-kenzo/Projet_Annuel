@@ -68,6 +68,10 @@ h3 {
   font-family: "Josefin Sans", sans-serif;
 }
 
+label{
+  font-family: "Josefin Sans", sans-serif;
+}
+
 option {
   font-family: "Josefin Sans", sans-serif;
 }
@@ -152,7 +156,8 @@ option {
   background-color: white;
   padding: 20px;
   border-radius: 20px;
-  width: 90vh;
+  max-width: 600px;
+  width: 55vh;
   box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
   margin-top: -10px;
   margin-left: 5vh;
@@ -176,6 +181,19 @@ option {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.white-content-description {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 20px;
+  width: 50em;
+  margin: 5%;
+  max-width: 600px;
+  margin-top: -10px;
+  margin-left: 5vh;
+  margin-right: 5vh;
+  box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
 }
 
 .btn-menu {
@@ -214,7 +232,7 @@ option {
 
 .post-image{
   max-width: 37em;
-  border-radius: 9px;
+  border-radius: 10px;
 }
 
 textarea{
@@ -241,6 +259,13 @@ textarea{
     flex-grow: 1;
     margin-bottom: 1em;
     align-items: center;
+}
+
+.post-video {
+  max-width: 37em;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 10px;
 }
 
 .post-option {
@@ -970,6 +995,44 @@ btn-menu-admin:hover {
 }
 
 
+#darkModeToggleButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#darkModeToggleButton svg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+/* Soleil */
+.sun {
+  transition: opacity 0.3s ease;
+  fill: #FFC107; /* Jaune */
+}
+
+/* Lune */
+.moon {
+  transition: opacity 0.3s ease;
+  fill: #FFFFFF; /* Blanc */
+}
+
+/* Active en mode nuit */
+body.dark-mode #darkModeIcon .sun {
+  opacity: 0; /* Cache le soleil en mode nuit */
+}
+
+body.dark-mode #darkModeIcon .moon {
+  opacity: 1; /* Affiche la lune en mode nuit */
+}
 
 
 
