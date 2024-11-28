@@ -34,6 +34,7 @@ $stmt->execute(['report_id' => $report_id]);
 $report = $stmt->fetch();
 
 $link = $report['reported_content_link'];
+$UserReport2 = $report['UserReport'];
 
 if (filter_var($link, FILTER_VALIDATE_URL) && isset($Accuser)) {
     //decoupe le liens jusqu'au ?
@@ -112,10 +113,6 @@ if (isset($statut)) {
 }
 
 
-if (isset($Accuser)) {
-
-}
-
 if (isset($RemoveContent)) {
     //decoupe le liens jusqu'au ?
     $post_ice = explode('?', $link);
@@ -181,7 +178,8 @@ if (isset($RemoveContent)) {
 }
 
 if($UserReport){
-    
+    header('Location: ./../ReportContent.php?Report_id=' . $UserReport2);
+
 }
 
 
