@@ -1,3 +1,5 @@
+<?php include './composant/database.php'; ?> 
+    
     <?php
     //compter les user 
 // Récupération du nombre d'utilisateurs

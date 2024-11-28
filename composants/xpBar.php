@@ -1,4 +1,37 @@
+<?php
+// Inclure la connexion à la base de données
+require './../serveur/database.php'; // Assure-toi que cette ligne contient la bonne configuration pour te connecter à la base de données
 
+// Supposons que tu passes l'ID de l'utilisateur via un formulaire ou une autre méthode
+$userId = 1; // Remplace par l'ID réel de l'utilisateur
+
+// Récupérer les données d'XP et de niveau depuis la base de données
+$stmt = $pdo->prepare("SELECT xp, level FROM users WHERE id = ?");
+$stmt->execute([$userId]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if ($user) {
+    $xp = (int)$user['xp']; // L'XP actuel de l'utilisateur
+    $level = (int)$user['level']; // Le niveau actuel de l'utilisateur
+} else {
+    $xp = 0;
+    $level = 1;
+}
+
+// Fonction pour calculer l'XP nécessaire pour le prochain niveau
+function getNextLevelXP($level) {
+    return pow(($level - 1) * 10, 2);
+}
+
+$currentLevelXP = getNextLevelXP($level); // XP au début du niveau actuel
+$nextLevelXP = getNextLevelXP($level + 1); // XP nécessaire pour atteindre le niveau suivant
+
+// Progression actuelle dans ce niveau
+$xpForCurrentLevel = $nextLevelXP - $currentLevelXP;
+$xpProgressInLevel = $xp - $currentLevelXP;
+$xpPercentage = min(($xpProgressInLevel / $xpForCurrentLevel) * 100, 100); // Clamp à 100%
+
+?>
 <style>
         .xp-bar-container {
             width: 75%;
@@ -13,29 +46,18 @@
         .xp-bar-fill {
             height: 100%;
             background-color: #000000; /* Barre noire */
-            width: 0%;
+            width: <?php echo $xpPercentage; ?>%; /* Mise à jour dynamique */
             transition: width 0.3s ease;
         }
 
-
-</style>
+        #xp-bar-text {
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
 <div class="xp-bar-container">
-    <div id="xp-bar-fill" class="xp-bar-fill"></div>
-</div>
+        <div class="xp-bar-fill"></div>
+    </div>
 
-<script>
-    // Valeurs d'XP et de niveau actuelles
-    const userXP = 120;          // XP actuelle de l'utilisateur
-    const nextLevelXP = 200;     // XP nécessaire pour atteindre le prochain niveau
 
-    // Calculer le pourcentage de la barre
-    const xpPercentage = (userXP / nextLevelXP) * 100;
-
-    // Mettre à jour la barre d'XP et le texte
-    const xpBarFill = document.getElementById('xp-bar-fill');
-    const xpBarText = document.getElementById('xp-bar-text');
-
-    xpBarFill.style.width = `${xpPercentage}%`;
-    xpBarText.textContent = `XP: ${userXP} / ${nextLevelXP}`;
-
-</script>
