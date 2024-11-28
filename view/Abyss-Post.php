@@ -13,8 +13,7 @@ $backgroundPath = $_SESSION['background'];
 <head>
     <meta charset="UTF-8">
     <title id="page-title"></title>
-    <link id="theme-stylesheet" rel="stylesheet"
-        href="<?php echo isset($backgroundPath) && $backgroundPath ? $backgroundPath : ($darkMode ? './../public/css/darkmode.css' : './../public/css/style.css'); ?>">
+    <link id="theme-stylesheet" rel="stylesheet" href="<?php echo isset($backgroundPath) && $backgroundPath ? $backgroundPath : ($darkMode ? './../public/css/darkmode.css' : './../public/css/style.css'); ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
@@ -56,6 +55,7 @@ $backgroundPath = $_SESSION['background'];
             try {
                 const response = await fetch(`./requetePost.php?Post=${postId}`);
                 const data = await response.json();
+
                 if (data.success) {
                     displayPost(data.post, data.forum);
                     titleForum(data.forum);
@@ -65,9 +65,7 @@ $backgroundPath = $_SESSION['background'];
                     document.getElementById('post-content').textContent = 'Erreur lors du chargement du post.';
                 }
             } catch (error) {
-                console.error('Erreur lors de la récupération des données :', error);                    
-                console.log(comments);
-
+                console.error('Erreur lors de la récupération des données :', error);
             }
         }
 
@@ -97,18 +95,10 @@ $backgroundPath = $_SESSION['background'];
             postContent.appendChild(profileDiv);
 
             // Créer le titre du post
-            const titleSpan = document.createElement('h2');
+            const titleSpan = document.createElement('h3');
             titleSpan.textContent = `${post.title}`;
             postContent.appendChild(titleSpan);
 
-            // Créer la description du post
-            const postDescription = document.createEzlement('p');
-            postDescription.innerHTML = `Description:<br>${post.content}`;
-            postContent.appendChild(postDescription);
-
-            // Ajouter l'image du post s'il y en a une
-            // Vérifier le fichier et afficher l'image ou la vidéo
-            console.log(post.image);
             if (post.image) {
                 const fileExtension = post.image.split('.').pop().toLowerCase();
 
@@ -129,6 +119,10 @@ $backgroundPath = $_SESSION['background'];
                 }
             }
 
+            // Créer la description du post
+            const postDescription = document.createElement('p');
+            postDescription.innerHTML = `Description:<br>${post.content}`;
+            postContent.appendChild(postDescription);
         }
         function reportPost(buttonDiv, forumUrlReport) {
             // Créer un bouton de rapport
@@ -233,7 +227,7 @@ $backgroundPath = $_SESSION['background'];
 
         // Charger les données du post au démarrage
         fetchPostData();
-
+        setInterval(fetchPostData, 10000);
     </script>
     <style>
         .buttonReport {

@@ -59,6 +59,23 @@ require_once './composant/admin_check.php'; // Inclure le fichier qui vérifie l
                         </div>
                     </div>
                 </a>
+                <a href="./ReportPage.php">
+                    <div class="post-container-admin">
+                        <div class="iceberg-select">
+                            <p>Nombre de Report a resoudre: <?php echo $totalPendingReports ?></p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="./TiketPage.php">
+                    <div class="post-container-admin">
+                        <div class="iceberg-select">
+                            <p>Nombre de Tiket a resoudre: <?php echo $tiketCount ?></p>
+
+                        </div>
+                    </div>
+                </a>
+                
             </div>
         </div>
     </main>

@@ -15,17 +15,18 @@ if ($forumId) {
     $query = $pdo->prepare("SELECT background FROM forums WHERE id = :forum_id");
     $query->bindParam(':forum_id', $forumId, PDO::PARAM_INT);
     $query->execute();
-    
-    
+
+
 
     $forumData = $query->fetch(PDO::FETCH_ASSOC);
-    
+
     if ($forumData && !empty($forumData['background'])) {
         $backgroundPath = $forumData['background'];
         $_SESSION['background'] = $backgroundPath;
-    }
-}
 
+    }
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -33,7 +34,8 @@ if ($forumId) {
 <head>
     <meta charset="UTF-8">
     <title id="page-title"></title>
-    <link id="theme-stylesheet" rel="stylesheet" href="<?php echo isset($backgroundPath) && $backgroundPath ? $backgroundPath : ($darkMode ? './../public/css/darkmode.css' : './../public/css/style.css'); ?>">
+    <link id="theme-stylesheet" rel="stylesheet"
+        href="<?php echo isset($backgroundPath) && $backgroundPath ? $backgroundPath : ($darkMode ? './../public/css/darkmode.css' : './../public/css/style.css'); ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
@@ -228,26 +230,26 @@ if ($forumId) {
                 description.innerHTML = `${post.content}`;
                 postLink.appendChild(description);
 
-                 // Vérifier le fichier et afficher l'image ou la vidéo
-                 if (post.image) {
-                                const fileExtension = post.image.split('.').pop().toLowerCase();
+                // Vérifier le fichier et afficher l'image ou la vidéo
+                if (post.image) {
+                    const fileExtension = post.image.split('.').pop().toLowerCase();
 
-                                if (fileExtension === 'mp4') {
-                                    // Afficher une vidéo
-                                    const video = document.createElement('video');
-                                    video.src = post.image;
-                                    video.controls = true; // Ajouter les contrôles
-                                    video.className = 'post-video';
-                                    postLink.appendChild(video);
-                                } else if (fileExtension === 'png') {
-                                    // Afficher une image
-                                    const image = document.createElement('img');
-                                    image.src = post.image;
-                                    image.alt = 'Image du post';
-                                    image.className = 'post-image';
-                                    postLink.appendChild(image);
-                                }
-                            }
+                    if (fileExtension === 'mp4') {
+                        // Afficher une vidéo
+                        const video = document.createElement('video');
+                        video.src = post.image;
+                        video.controls = true; // Ajouter les contrôles
+                        video.className = 'post-video';
+                        postLink.appendChild(video);
+                    } else if (fileExtension === 'png') {
+                        // Afficher une image
+                        const image = document.createElement('img');
+                        image.src = post.image;
+                        image.alt = 'Image du post';
+                        image.className = 'post-image';
+                        postLink.appendChild(image);
+                    }
+                }
 
                 // Ajouter une ligne horizontale
                 const hrElement = document.createElement('hr');

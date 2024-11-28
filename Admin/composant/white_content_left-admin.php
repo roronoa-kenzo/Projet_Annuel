@@ -16,12 +16,19 @@
         <a style="text-decoration: none; " class="btn-menu-admin" href="./CommentInfos.php">Commentaire</a>
     </ul>
     <ul>
-        <a style="text-decoration: none;" class="btn-menu-admin" href="#">User Ban</a>
-    </ul>
-    <ul>
-        <a style="text-decoration: none;" class="btn-menu-admin" href="#">Reporte</a>
+        <a style="text-decoration: none;" class="btn-menu-admin" href="./ReportPage.php">Report</a>
     </ul>
     <ul>
         <a style="text-decoration: none;" class="btn-menu-admin" href="#">Signalement</a>
     </ul>
+    <ul>
+        <a style="text-decoration: none;" class="btn-menu-admin" href="./composant/exportPDF.php">Export PDF</a>
+    </ul>
 </div>
+<style>
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+</style>
