@@ -81,7 +81,7 @@
             <!-- Affichage des messages d'erreur ou de succès -->
             <script>
                 // URL de l'API PHP
-                const apiUrl = `./../composants/TraitementIndex.php`;
+                let apiUrl = `./../composants/TraitementIndex.php`;
 
                 function clickLike(button, postId) {
                     fetch('./like_post.php', {
@@ -108,16 +108,16 @@
                 // Fonction pour récupérer et afficher les posts
                 async function fetchPosts() {
                     try {
-                        const response = await fetch(apiUrl);
+                        let response = await fetch(apiUrl);
 
                         if (!response.ok) {
                             throw new Error(`Erreur HTTP : ${response.status}`);
                         }
 
-                        const posts = await response.json();
+                        let posts = await response.json();
 
                         // Sélection du conteneur des posts
-                        const container = document.getElementById('posts-container');
+                        let container = document.getElementById('posts-container');
 
                         // Vérification des données reçues
                         if (posts.length === 0) {
@@ -129,7 +129,7 @@
                         posts.forEach(post => {
 
                             let postsContainer = document.getElementById('posts-container');
-                            const postElement = document.createElement('div');
+                            let postElement = document.createElement('div');
                             postElement.className = 'white-content';
 
                             let iceberg = document.createElement('div');
@@ -141,19 +141,19 @@
                             postElement.appendChild(iceberg);
 
 
-                            const icebergSelectDiv = document.createElement('div');
+                            let icebergSelectDiv = document.createElement('div');
                             icebergSelectDiv.className = 'iceberg-select';
                             iceP.className = 'forum_left';
                             // Créer le profil de l'auteur
-                            const profileDiv = document.createElement('div');
+                            let profileDiv = document.createElement('div');
                             profileDiv.className = 'iceberg-select-profile';
 
-                            const profileImage = document.createElement('img');
+                            let profileImage = document.createElement('img');
                             profileImage.src = post.user_profile;
                             profileImage.alt = 'Photo de profil';
                             profileImage.className = 'user-avatar';
 
-                            const authorName = document.createElement('h3');
+                            let authorName = document.createElement('h3');
                             authorName.className = 'creator-username';
                             authorName.textContent = post.username;
 
@@ -167,35 +167,35 @@
                             // Ajouter un saut de ligne
                             icebergSelectDiv.appendChild(document.createElement('br'));
 
-                            const postLink = document.createElement('a');
+                            let postLink = document.createElement('a');
                             postLink.href = `./Abyss-Post.php?Post=${post.id}`;
                             postLink.className = 'post-link userLien';
 
                             // Créer le titre du post et l'ajouter au lien cliquable
-                            const titleSpan = document.createElement('h2');
+                            let titleSpan = document.createElement('h2');
                             titleSpan.textContent = `${post.title || 'Titre indisponible'}`;
                             postLink.appendChild(titleSpan);
 
                             // Créer la description du post et l'ajouter au lien cliquable
-                            const descriptionSpan = document.createElement('p');
+                            let descriptionSpan = document.createElement('p');
                             descriptionSpan.className = 'username';
                             descriptionSpan.innerHTML = `${post.content}`;
                             postLink.appendChild(descriptionSpan);
 
                             // Vérifier le fichier et afficher l'image ou la vidéo
                             if (post.image) {
-                                const fileExtension = post.image.split('.').pop().toLowerCase();
+                                let fileExtension = post.image.split('.').pop().toLowerCase();
 
                                 if (fileExtension === 'mp4') {
                                     // Afficher une vidéo
-                                    const video = document.createElement('video');
+                                    let video = document.createElement('video');
                                     video.src = post.image;
                                     video.controls = true; // Ajouter les contrôles
                                     video.className = 'post-video';
                                     postLink.appendChild(video);
                                 } else if (fileExtension === 'png') {
                                     // Afficher une image
-                                    const image = document.createElement('img');
+                                    let image = document.createElement('img');
                                     image.src = post.image;
                                     image.alt = 'Image du post';
                                     image.className = 'post-image';
@@ -205,11 +205,11 @@
 
 
                             // Ajouter une ligne horizontale
-                            const hrElement = document.createElement('hr');
+                            let hrElement = document.createElement('hr');
                             postLink.appendChild(hrElement);
 
                             // Ajouter le nombre de commentaires
-                            const commentCountSpan = document.createElement('span');
+                            let commentCountSpan = document.createElement('span');
                             commentCountSpan.className = 'post-nomber';
                             commentCountSpan.textContent = `${post.comment_count} comment(s)`;
                             postLink.appendChild(commentCountSpan);
@@ -224,12 +224,12 @@
                             postElement.appendChild(icebergSelectDiv);
 
                             <?php if (!empty($_SESSION["email"]) && !empty($_SESSION["user_profile"]) && !empty($_SESSION["user_id"])): ?>
-                                const likeButtonContainer = document.createElement('div');
+                                let likeButtonContainer = document.createElement('div');
                                 likeButtonContainer.style.display = 'flex';
                                 likeButtonContainer.style.justifyContent = 'end';
                                 likeButtonContainer.style.marginTop = '-1rem';
 
-                                const likeButton = document.createElement('button');
+                                let likeButton = document.createElement('button');
                                 likeButton.className = 'likebutton';
                                 likeButton.setAttribute('onclick', `clickLike(this, ${post.id})`);
                                 likeButton.innerHTML = `${post.like_count} <img src="./../public/img/likebutton.png" alt="Like" class="likeicon <?php echo $_SESSION['buttonred']; ?>">`;

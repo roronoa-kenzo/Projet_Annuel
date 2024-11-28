@@ -130,7 +130,6 @@ try {
         $stmt = $pdo->prepare($deleteQuery);
         $stmt->bindParam(':postId', $postId, PDO::PARAM_INT);
     
-        var_dump($postId) ;
         if ($stmt->execute()) {
             header('Location: ./../PostUser.php?user=' . $userId);
         } else {

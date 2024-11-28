@@ -108,7 +108,7 @@
                         $checkForumQuery->bindParam(':forum_id', $forumAbyssId);
                         $checkForumQuery->execute();
                         if ($checkForumQuery->rowCount() === 0) {
-                            var_dump($checkForumQuery);
+
                             // Si le forum n'existe pas, le créer
                             $createForumQuery = $pdo->prepare('INSERT INTO forums (id, name) VALUES (:forum_id, :forum_name)');
                             

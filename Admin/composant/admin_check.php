@@ -1,6 +1,6 @@
 <?php
 // Connexion à la base de données
-require_once './composant/database.php'; // Inclure le fichier de connexion à la base de données
+require_once './composant/database.php'; /
 
 // Vérifier si l'email est présent dans la session
 if (!isset($_COOKIE['email'])) {
@@ -31,5 +31,5 @@ if (!$user || !$user['is_admin'] || !str_ends_with($user['email'], '@abyss.boats
     exit();
 }
 
-// Le reste de votre code, si l'utilisateur est bien un admin avec une adresse email valide
+
 ?>

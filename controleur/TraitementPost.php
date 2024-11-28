@@ -10,8 +10,7 @@ $user_id = $_COOKIE['userId'];
 $texte = $_POST['texte'];
 $file = $_POST['file'];
 
-var_dump($texte);
-//debug 
+
 if ($texte == "texte") {
     //verification
     if (empty($title) || empty($content) || $user_id) {

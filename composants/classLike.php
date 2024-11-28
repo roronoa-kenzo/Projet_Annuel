@@ -2,7 +2,7 @@
 // Inclure la connexion à la base de données
 session_start();
 include './../serveur/database.php';
-var_dump( $postId);
+
 if (isset($postId)) {
     $userId = $_SESSION['user_id'];
     try {

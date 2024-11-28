@@ -31,7 +31,7 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
             </style>
             <script>
                 function fetchRecherche(query) {
-                    const suggestionsDiv = document.getElementById('suggestions');
+                    let suggestionsDiv = document.getElementById('suggestions');
 
                     if (query.length === 0) {
                         // Cacher les suggestions si la barre est vide
@@ -54,7 +54,7 @@ $darkMode = isset($_SESSION['darkMode']) && $_SESSION['darkMode'] === 'on';
 
                             // Générer une liste de suggestions
                             data.forEach(item => {
-                                const p = document.createElement('p'); // Utilisation de <p>
+                                let p = document.createElement('p'); // Utilisation de <p>
                                 p.className = 'suggestion-item';
                                 p.textContent = item.title; // Affiche le titre ou le contenu
                                 p.onclick = () => {
