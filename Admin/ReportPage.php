@@ -44,23 +44,28 @@ $reports = $stmt->fetchAll();
                     <div class="post-container-admin">
                         <a class="userLien" href="./ReportContent.php?Report_id=<?= $report['report_id'] ?>">
                             <div class="iceberg-select">
-                                <span class="username">Report by :
-                                    <br><?= htmlspecialchars($report['username']) ?></span><br><br>
-                                    <span>Status :</span>
+                                <div style="display: flex;justify-content: space-between;">
+                                    <span class="username">Report by :
+                                        <br><?= htmlspecialchars($report['username']) ?></span>
 
-                                <span class="username status <?= strtolower($report['status']) ?>">
-                                     <br><?= htmlspecialchars($report['status']) ?>
-                                </span><br><br>
+                                    <span class="username status <?= strtolower($report['status']) ?>">Status :
+                                        <br><?= htmlspecialchars($report['status']) ?>
+                                    </span>
+                                </div>
+                                <br><br>
                                 <span class="username">Content :
                                     <br><?= htmlspecialchars($report['reported_content_link']) ?></span><br><br>
                                 <span class="username">Reason :
                                     <br><?= htmlspecialchars($report['report_reason']) ?></span><br><br>
                                 <span class="username">Details :
                                     <br><?= htmlspecialchars($report['additional_details']) ?></span><br><br>
-                                <span class="username">Created at :
-                                    <br><?= htmlspecialchars($report['report_created_at']) ?></span><br><br>
-                                <span class="username">Updated at :
-                                    <br><?= htmlspecialchars($report['report_updated_at']) ?></span>
+                                <div style="display: flex;justify-content: space-between;">
+
+                                    <span class="username">Created at :
+                                        <br><?= htmlspecialchars($report['report_created_at']) ?></span>
+                                    <span class="username">Updated at :
+                                        <br><?= htmlspecialchars($report['report_updated_at']) ?></span>
+                                </div>
                             </div>
                         </a>
                     </div>
