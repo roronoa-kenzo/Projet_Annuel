@@ -165,11 +165,12 @@ $backgroundPath = $_SESSION['background'];
 
         // Fonction pour afficher les commentaires
         function displayComments(comments) {
-            const commentsContainer = document.getElementById('comments-container');
+            let commentsContainer = document.getElementById('comments-container');
             commentsContainer.innerHTML = ''; // Vider le contenu précédent
 
             if (comments.length === 0) {
-                const noCommentsMessage = document.createElement('p');
+                let noCommentsMessage = document.createElement('p');
+
                 noCommentsMessage.textContent = 'Aucun commentaire pour ce post.';
                 commentsContainer.appendChild(noCommentsMessage);
                 return;
