@@ -32,6 +32,7 @@ header {
   align-items: center;
   padding-top: 2em;
   height: 5em;
+  position: relative;
 }
 
 .nav_third {
@@ -90,6 +91,25 @@ option {
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
+
+.inpuText2 {
+  margin-bottom: 2em;
+  padding: 3px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+  width: 20em;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section{
+  margin-top: 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .inpuTextAdmin {
   padding: 3px 12px;
   font-size: 16px;
@@ -128,6 +148,12 @@ option {
   background-color: #f0f0f0;
 }
 
+.li-info_user{
+  display: flex;
+      flex-direction: row;
+      align-items: center;
+  }
+
 .black-frame {
   background-color: black;
   color: white;
@@ -141,6 +167,7 @@ option {
 }
 
 .white-content {
+  
   background-color: white;
   padding: 20px;
   border-radius: 20px;
@@ -153,6 +180,7 @@ option {
   box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
 }
 .white-content-admin {
+  position: relative;
   background-color: white;
   padding: 20px;
   border-radius: 20px;
@@ -167,9 +195,12 @@ option {
   display: flex;
   justify-content: space-around;
   padding-bottom: 4em;
+  border-top-left-radius: 18px 25px;
+  border-top-right-radius: 18px 25px;
 }
 
 .white-content-secondary {
+  position: relative;
   background-color: white;
   height: 50em;
   padding: 20px;
@@ -184,6 +215,7 @@ option {
 }
 
 .white-content-description {
+  position: relative;
   background-color: #ffffff;
   padding: 20px;
   border-radius: 20px;
@@ -247,10 +279,10 @@ textarea{
 }
 
 .user-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 .post-options {
@@ -301,10 +333,11 @@ textarea{
 
 .iceberg-select-profile {
   display: flex;
-  border: none;
-  border-radius: 8px;
-  padding: 5px 10px;
-  font-size: 14px;
+      border: none;
+      border-radius: 8px;
+      padding: 5px 10px;
+      font-size: 15px;
+      align-items: center;
 }
 
 .post-textarea {
@@ -527,6 +560,9 @@ textarea{
 .main-index-admin {
   display: flex;
   justify-content: center;
+  border-top-left-radius: 18px 25px;
+  border-top-right-radius: 18px 25px;
+  position: relative;
 }
 span {
   font-family: "Josefin Sans", sans-serif;
@@ -1039,6 +1075,11 @@ body.dark-mode #darkModeIcon .moon {
 
 /* Afficher le menu burger et gérer l'affichage sur les petits écrans */
 @media (max-width: 1228px) {
+
+  #menuCheckbox:checked ~ main {
+    filter: blur(5px);
+}
+
   #menuToggle {
     display: block; /* Affiche le menu burger uniquement sur les petits écrans */
 }
@@ -1095,7 +1136,7 @@ body.dark-mode #darkModeIcon .moon {
         right: -21px;
         top: 46px;
         width: 26em;
-        height: 62em;
+        height: 71em;
         background: #ededed;
         list-style-type: none;
         margin: 0;

@@ -8,7 +8,7 @@ require_once './composant/admin_check.php'; // Inclure le fichier qui vérifie l
 <body>
     <?php include './../composants/navbar.php'; ?>
     <?php include './composant/database.php'; ?>
-    <?php include './composant/Countsite.php'; ?>
+    <?php  include './composant/Countsite.php'; ?>
 
 
     <main class="container">

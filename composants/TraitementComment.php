@@ -12,13 +12,13 @@ $parent_comment_id = isset($_POST['parent_comment_id']) ? $_POST['parent_comment
 if ($texte == "texte") {
     //verification
     if (empty($content) || $user_id) {
-        //header('Location:./../view/Abyss-Post.php?Post='.$Post_id);
-        //$pdo = null;
-        //exit();
+        header('Location:./../view/Abyss-Post.php?Post='.$Post_id);
+        $pdo = null;
+        exit();
     } else if (empty($Post_id)) {
-        //header('Location:./../view/Popular.php');
-        //$pdo = null;
-        //exit();
+        header('Location:./../view/Popular.php');
+        $pdo = null;
+        exit();
     }
 
     //verification
@@ -48,22 +48,22 @@ if ($texte == "texte") {
 
         if ($queryComment->execute()) {
             header('Location:./../view/Abyss-Post.php?Post='.$Post_id);
-            //$pdo = null;
-            //exit();
+            $pdo = null;
+            exit();
         } else {
-            //header('Location:./../view/Popular.php');
-            //$pdo = null;
-            //exit();
+            header('Location:./../view/Popular.php');
+            $pdo = null;
+            exit();
         }
     } else {
-        //header('Location:./../view/Popular.php');
-        //$pdo = null;
-        //exit();
+        header('Location:./../view/Popular.php');
+        $pdo = null;
+        exit();
     }
 } elseif ($file == "file") {
 
 } else {
-    //header('Location:./../view/Popular.php');
-    //$pdo = null;
-    //exit();
+    header('Location:./../view/Popular.php');
+    $pdo = null;
+    exit();
 }
