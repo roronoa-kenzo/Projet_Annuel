@@ -1,6 +1,6 @@
 
 <?php
-require_once './composant/admin_check.php'; // Inclure le fichier qui vérifie l'accès admin
+include './composant/admin_check.php'; // Inclure le fichier qui vérifie l'accès admin
 ?>
 
 <?php include './../composants/header.php'; ?>

@@ -165,7 +165,6 @@ if (isset($RemoveContent)) {
         $stmt->execute();
 
         $result = $stmt->fetch();
-        //
         //exit;*/
         if ($stmt->rowCount() > 0) {
             echo "Le post avec l'ID $link_id a été supprimé avec succès.";
