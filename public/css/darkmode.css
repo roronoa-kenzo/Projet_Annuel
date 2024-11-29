@@ -32,6 +32,7 @@ header {
   align-items: center;
   padding-top: 2em;
   height: 5em;
+  position: relative;
 }
 
 .nav_third {
@@ -127,6 +128,13 @@ option {
   background-color: #f0f0f0;
 }
 
+.li-info_user{
+  display: flex;
+      flex-direction: row;
+      align-items: center;
+  }
+
+
 .black-frame {
   background-color: black;
   color: white;
@@ -152,6 +160,7 @@ option {
   box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
 }
 .white-content-admin {
+  position: relative;
   background-color: #212020;
   padding: 20px;
   border-radius: 20px;
@@ -166,9 +175,12 @@ option {
   display: flex;
   justify-content: space-around;
   padding-bottom: 4em;
+  border-top-left-radius: 18px 25px;
+  border-top-right-radius: 18px 25px;
 }
 
 .white-content-secondary {
+  position: relative;
   background-color: #212020;
   height: 50em;
   padding: 20px;
@@ -183,6 +195,7 @@ option {
 }
 
 .white-content-description {
+  position: relative;
   background-color: #212020;
   padding: 20px;
   border-radius: 20px;
@@ -237,8 +250,8 @@ textarea {
 }
 
 .user-avatar {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -286,10 +299,11 @@ textarea {
 
 .iceberg-select-profile {
   display: flex;
-  border: none;
-  border-radius: 8px;
-  padding: 5px 10px;
-  font-size: 14px;
+      border: none;
+      border-radius: 8px;
+      padding: 5px 10px;
+      font-size: 15px;
+      align-items: center;
 }
 
 .post-textarea {
@@ -521,6 +535,9 @@ textarea {
 .main-index-admin {
   display: flex;
   justify-content: center;
+  border-top-left-radius: 18px 25px;
+  border-top-right-radius: 18px 25px;
+  position: relative;
 }
 span {
   font-family: "Josefin Sans", sans-serif;
@@ -1045,23 +1062,23 @@ btn-menu-admin:hover {
     transform: rotate(-45deg) translate(0, -1px);
   }
 
-  /* Menu list */
   #menu {
     display: flex;
-    position: absolute;
-    right: -21px;
-    top: 46px;
-    width: 26em;
-    height: 62em;
-    background: #ededed;
-    list-style-type: none;
-    margin: 0;
-    padding: 10px;
-    transform: translateX(100%);
-    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
+          position: absolute;
+          right: -21px;
+          top: 46px;
+          width: 26em;
+          height: 71em;
+          background: #ededed;
+          list-style-type: none;
+          margin: 0;
+          padding: 10px;
+          transform: translateX(100%);
+          transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+          flex-direction: column;
+          align-items: center;
+          align-content: center;
+  
   }
 
   #menu li {
@@ -1130,9 +1147,7 @@ btn-menu-admin:hover {
     background-color: #121212;
     color: #fff;
   }
-  .dark-mode .navbar {
-    background-color: #333;
-  }
+
   .dark-mode #navbar-menu li a {
     color: #fff;
   }

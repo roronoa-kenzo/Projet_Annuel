@@ -263,9 +263,9 @@
 <?php include './../composants/footer.php'; ?>
 <style>
     .forum_name {
-        display: flex;
-        justify-content: end;
-        margin: 0px 0px -55px 4px;
+       display: flex;
+       justify-content: end;
+       margin: 0px 0px -79px 4px;
     }
 
     .forum_left {

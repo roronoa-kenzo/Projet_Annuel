@@ -1,9 +1,9 @@
 <?php
 // Inclure la connexion à la base de données
-require './../serveur/database.php'; // Assure-toi que cette ligne contient la bonne configuration pour te connecter à la base de données
+include './../serveur/database.php'; // Assure-toi que cette ligne contient la bonne configuration pour te connecter à la base de données
 
 // Supposons que tu passes l'ID de l'utilisateur via un formulaire ou une autre méthode
-$userId = 1; // Remplace par l'ID réel de l'utilisateur
+$userId = $_SESSION['user_id']; // Remplace par l'ID réel de l'utilisateur
 
 // Récupérer les données d'XP et de niveau depuis la base de données
 $stmt = $pdo->prepare("SELECT xp, level FROM users WHERE id = ?");
@@ -11,8 +11,8 @@ $stmt->execute([$userId]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($user) {
-    $xp = (int)$user['xp']; // L'XP actuel de l'utilisateur
-    $level = (int)$user['level']; // Le niveau actuel de l'utilisateur
+    $xp = $user['xp']; // L'XP actuel de l'utilisateur
+    $level = $user['level']; // Le niveau actuel de l'utilisateur
 } else {
     $xp = 0;
     $level = 1;
@@ -56,7 +56,7 @@ $xpPercentage = min(($xpProgressInLevel / $xpForCurrentLevel) * 100, 100); // Cl
             text-align: center;
         }
     </style>
-<div class="xp-bar-container">
+    <div class="xp-bar-container">
         <div class="xp-bar-fill"></div>
     </div>
 
