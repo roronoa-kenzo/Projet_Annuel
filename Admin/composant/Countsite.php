@@ -33,13 +33,15 @@ $result = $stmt->fetch();
 $totalPendingReports = $result['total_pending_reports'];
 
 // recuperation rtiket
-$query = "SELECT COUNT(*) AS total_in_progress FROM tickets WHERE status = 'In Progress'";
-$stmt = $pdo->prepare($query);
+$sql = "SELECT COUNT(*) AS count FROM tickets";
+$stmt = $pdo->prepare($sql);
 $stmt->execute();
 
-// Récupération du résultat
-$tiketCount = $stmt->fetch(PDO::FETCH_ASSOC);
-$tiketCount = $tiketCount['total_in_progress'];
+// Récupérer le résultat
+$result = $stmt->fetch();
+
+// Stocker le nombre de tickets dans $tiketCount
+$tiketCount = $result['count'];
 //useconnectCount
 $sql = "SELECT COUNT(*) as connected_users FROM user_sessions WHERE is_connected = TRUE";
 $stmt = $pdo->prepare($sql);

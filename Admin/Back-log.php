@@ -67,7 +67,7 @@ require_once './composant/admin_check.php'; // Inclure le fichier qui vérifie l
                     </div>
                 </a>
 
-                <a href="./TiketPage.php">
+                <a href="./Ticket_page.php">
                     <div class="post-container-admin">
                         <div class="iceberg-select">
                             <p>Nombre de Tiket a resoudre: <?php echo $tiketCount ?></p>

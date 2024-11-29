@@ -19,7 +19,7 @@
         <a style="text-decoration: none;" class="btn-menu-admin" href="./ReportPage.php">Report</a>
     </ul>
     <ul>
-        <a style="text-decoration: none;" class="btn-menu-admin" href="#">Signalement</a>
+        <a style="text-decoration: none;" class="btn-menu-admin" href="./Ticket_page.php">Signalement</a>
     </ul>
     <ul>
         <a style="text-decoration: none;" class="btn-menu-admin" href="./composant/exportPDF.php">Export PDF</a>
