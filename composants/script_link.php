@@ -4,4 +4,6 @@
 <script src="./../public/js/createpost.js"></script>
 <script src="./../public/js/flag.js"></script>
 <script src="./../public/js/like.js"></script>
-<script src="./../public/js/modal.js"></script>
+<script src="./../public/js/modal/modal_create_forum.js"></script>
+<script src="./../public/js/modal/modal_edit_forum.js"></script>
+<script src="./../public/js/modal/modal_crud_user.js"></script>

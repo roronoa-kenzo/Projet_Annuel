@@ -12,6 +12,7 @@
                 <li><a href="#">Politique de confidentialité</a></li>
                 <li><a href="#">Conditions d'utilisation</a></li>
                 <li><a href="#">Contact</a></li>
+                <li><a href="./Create_Tiket.php">Faire un tiket</a></li>
             </ul>
         </div>
         
@@ -32,6 +33,7 @@
         <div class="footer-p">
         <p>&copy; <?php echo date("Y"); ?> ABYSS. Tous droits réservés.</p>
         </div>
+
     </div>
     
 </footer>

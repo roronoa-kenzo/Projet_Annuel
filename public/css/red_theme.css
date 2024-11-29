@@ -31,7 +31,8 @@ header {
     align-items: center;
     padding-top: 2em;
     height: 5em;
-    
+    position: relative;
+    z-index: 9999;
   }
 
 .nav_third{
@@ -141,6 +142,13 @@ option{
   background-color: #f0f0f0;
 }
 
+.li-info_user{
+  display: flex;
+      flex-direction: row;
+      align-items: center;
+  }
+
+
 .black-frame {
   background-color: black;
   color: white;
@@ -151,6 +159,8 @@ option{
   justify-content: center;
   height: 27vh;
   align-items: center;
+  position: relative;
+  z-index: -2;
 }
 
 .white-content {
@@ -166,6 +176,7 @@ option{
   box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
 }
 .white-content-admin {
+  position: relative;
   background-color: #750101;
   padding: 20px;
   border-radius: 20px;
@@ -183,9 +194,14 @@ option{
   justify-content: space-around;
   background-color: #820707;
   padding-bottom: 4em;
+  border-top-left-radius: 18px 25px;
+  border-top-right-radius: 18px 25px;
+  position: relative;
+  z-index: 4;
 }
 
 .white-content-secondary {
+  position: relative;
   background-color: #750101;
   height: 50em;
   padding: 20px;
@@ -200,6 +216,7 @@ option{
 }
 
 .white-content-description {
+  position: relative;
   background-color: #750101;
   padding: 20px;
   border-radius: 20px;
@@ -210,6 +227,7 @@ option{
   margin-left: 5vh;
   margin-right: 5vh;
   box-shadow: 2px 25px 15px rgba(0, 0, 0, 0.3);
+  z-index: 5;
 }
 
 .btn-menu{
@@ -269,8 +287,8 @@ textarea{
 }
 
 .user-avatar {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -316,12 +334,13 @@ textarea{
   background-color: #e8e8e8;
 }
 
-.iceberg-select-profile  {
+.iceberg-select-profile {
   display: flex;
-  border: none;
-  border-radius: 8px;
-  padding: 5px 10px;
-  font-size: 14px;
+      border: none;
+      border-radius: 8px;
+      padding: 5px 10px;
+      font-size: 15px;
+      align-items: center;
 }
 
 .post-textarea {
@@ -541,6 +560,9 @@ transform: translateY(2px);
 .main-index-admin{
   display: flex;
   justify-content: center;
+  border-top-left-radius: 18px 25px;
+  border-top-right-radius: 18px 25px;
+  position: relative;
 }
 span{
   font-family: "Josefin Sans", sans-serif;
@@ -941,14 +963,19 @@ btn-menu-admin:hover{
 
 
 
-
-
 /* Afficher le menu burger et gérer l'affichage sur les petits écrans */
 @media (max-width: 1228px) {
+
+  #menuCheckbox:checked ~ main {
+    filter: blur(5px);
+}
 
 #menuToggle {
   display: block; /* Affiche le menu burger uniquement sur les petits écrans */
 }
+
+
+
 .nav_buttons, .nav_third {
   display: none; /* Masque les autres éléments de la navbar sur mobile */
 }
@@ -1002,7 +1029,7 @@ btn-menu-admin:hover{
   right: -21px;
   top: 46px;
   width: 26em;
-  height: 62em;
+  height: 71em;
   background: rgb(117 1 1);
   list-style-type: none;
   margin: 0;

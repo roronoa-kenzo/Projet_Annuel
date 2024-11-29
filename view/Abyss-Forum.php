@@ -12,7 +12,7 @@ $backgroundPath = null;
 // Vérifiez si le forum_id est présent
 if ($forumId) {
     // Préparer la requête pour récupérer les informations de fond pour ce forum
-    $query = $pdo->prepare("SELECT background FROM forums WHERE id = :forum_id");
+    $query = $pdo->prepare("SELECT background, wallpaper, creator_id FROM forums WHERE id = :forum_id");
     $query->bindParam(':forum_id', $forumId, PDO::PARAM_INT);
     $query->execute();
 
@@ -23,6 +23,8 @@ if ($forumId) {
     if ($forumData && !empty($forumData['background'])) {
         $backgroundPath = $forumData['background'];
         $_SESSION['background'] = $backgroundPath;
+        $wallpaperPath = !empty($forumData['wallpaper']) ? $forumData['wallpaper'] : null;
+        $forumCreatorId = $forumData['creator_id']; // ID du créateur
 
     }
 
@@ -46,9 +48,14 @@ if ($forumId) {
 <body class="indexBody">
     <?php require_once("./../composants/navbar_forum.php"); ?>
     <main class="container">
+        <?php include './../composants/modal_edit_forum.php'; ?>
+        <?php include './../composants/modal_create_forum.php'; ?>
         <?php include './../composants/notification.php'; ?>
         <div class="black-frame">
-            <h1 id="forum-name"></h1>
+        <?php if ($wallpaperPath): ?>
+        <img src="<?php echo htmlspecialchars($wallpaperPath); ?>" style="position: fixed; height: 100%; width: 100%; filter: blur(7px) brightness(0.4);" alt="Background">
+    <?php endif; ?>
+            <h1 id="forum-name"  style="position: absolute;"></h1>
         </div>
         <div class="main-index">
             <?php include './../composants/white_content_left.php'; ?>
@@ -59,6 +66,9 @@ if ($forumId) {
                         <h3 id="creator-username"></h3>
                     </div>
                     <p id="forum-description"></p>
+                    <?php if (!empty($_SESSION['user_id']) && $_SESSION['user_id'] === $forumCreatorId): ?>
+                        <button id="openModalEditButton" class="btn-menu">Edit Iceberg</button>
+                    <?php endif; ?>
                 </div>
 
                 <?php include './../composants/Post-form.php'; ?>

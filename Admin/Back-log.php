@@ -8,7 +8,7 @@ include './composant/admin_check.php'; // Inclure le fichier qui v√©rifie l'acc√
 <body>
     <?php include './../composants/navbar.php'; ?>
     <?php include './composant/database.php'; ?>
-    <?php include './composant/Countsite.php'; ?>
+    <?php  include './composant/Countsite.php'; ?>
 
 
     <main class="container">
@@ -67,7 +67,7 @@ include './composant/admin_check.php'; // Inclure le fichier qui v√©rifie l'acc√
                     </div>
                 </a>
 
-                <a href="./TiketPage.php">
+                <a href="./Ticket_page.php">
                     <div class="post-container-admin">
                         <div class="iceberg-select">
                             <p>Nombre de Tiket a resoudre: <?php echo $tiketCount ?></p>
