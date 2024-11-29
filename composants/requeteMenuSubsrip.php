@@ -1,5 +1,5 @@
 <?php
-// Activer l'affichage des erreurs (à désactiver en production)
+// Activer l'affichage des erreurs 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
