@@ -16,6 +16,15 @@ if (isset($_GET['user']) && is_numeric($_GET['user'])) {
 
     // Si l'utilisateur existe, afficher ses informations
     if ($user) {
+        $user_email = $user['email'];
+        $user_username  =$user['username'];
+        $user_first_name  =$user['first_name'];
+        $user_last_name  =$user['last_name'];
+        $user_date_of_birth  =$user['date_of_birth'];
+        $user_created_at  =$user['created_at'];
+        $user_updated_at  =$user['updated_at'];
+        $userxp = $user['xp'];
+
         ?>
 
         <?php include './../composants/header.php'; ?>
@@ -31,17 +40,17 @@ if (isset($_GET['user']) && is_numeric($_GET['user'])) {
                     <div class="white-content-admin">
                         <div class="post-container-admin">
                             <div class="iceberg-select">
-                                <p><strong>Nom d'utilisateur :</strong> <?= htmlspecialchars($user['username']) ?></p>
-                                <p><strong>Prénom :</strong> <?= htmlspecialchars($user['first_name']) ?></p>
-                                <p><strong>Nom :</strong> <?= htmlspecialchars($user['last_name']) ?></p>
-                                <p><strong>Email :</strong> <?= htmlspecialchars($user['email']) ?></p>
-                                <p><strong>Date de naissance :</strong> <?= htmlspecialchars($user['date_of_birth']) ?></p>
-                                <p><strong>XP :</strong> <?= htmlspecialchars($user['xp']) ?></p>
-                                <p><strong>Niveau :</strong> <?= htmlspecialchars($user['level']) ?></p>
+                                <p><strong>Nom d'utilisateur :</strong> <?php echo $user_username; ?></p>
+                                <p><strong>Prénom :</strong> <?php echo $user_first_name; ?></p>
+                                <p><strong>Nom :</strong> <?php echo $user_last_name; ?></p>
+                                <p><strong>Email :</strong> <?php echo $user_email; ?></p>
+                                <p><strong>Date de naissance :</strong> <?php echo $user_date_of_birth; ?></p>
+                                <p><strong>XP :</strong> <?php echo $userxp; ?></p>
+                                <p><strong>Niveau :</strong> <?php echo $user['level']; ?></p>
                                 <p><strong>Administrateur :</strong> <?= $user['is_admin'] ? 'Oui' : 'Non' ?></p>
                                 <p><strong>Banni :</strong> <?= $user['is_banned'] ? 'Oui' : 'Non' ?></p>
-                                <p><strong>Date de création :</strong> <?= htmlspecialchars($user['created_at']) ?></p>
-                                <p><strong>Dernière mise à jour :</strong> <?= htmlspecialchars($user['updated_at']) ?></p>
+                                <p><strong>Date de création :</strong> <?php echo $user_created_at; ?></p>
+                                <p><strong>Dernière mise à jour :</strong> <?php echo $user_updated_at;  ?></p>
                             </div>
                         </div>
 

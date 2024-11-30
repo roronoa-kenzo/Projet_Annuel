@@ -1,6 +1,6 @@
 <?php
 // Connexion à la base de données
-require_once './composant/database.php';
+require_once './composant/database.php'; 
 
 // Vérifier si l'email est présent dans la session
 if (!isset($_COOKIE['email'])) {

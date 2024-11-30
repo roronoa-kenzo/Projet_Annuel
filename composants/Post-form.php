@@ -50,6 +50,5 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["user_profile"]) && !empty($_
     <?php
 } else {
     // Redirection ou message pour indiquer que l'utilisateur doit être connecté ou que le forum est non défini
-    echo "<p>Vous devez être connecté et avoir sélectionné un forum pour poster.</p>";
 }
 ?>
