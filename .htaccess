@@ -1,0 +1,9 @@
+RewriteEngine On 
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{RESQUEST_URI} [L,R=301]
+
+RewriteRule ^$ /location.php [L]
+
+ErrorDocument 404 /404/404.php
+
+#ErrorDocument 500 /404/404.php
