@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "Top Forums",
+    "version": "1.0",
+    "description": "Afficher les 3 premiers forums depuis le serveur.",
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "./img/abyssicon.png",
+            "48":"./img/abyssicon.png",
+            "128": "./img/abyssicon.png"
+        }
+    },
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
+    "host_permissions": [
+        "https://abyss.boats/extention/*"
+    ]
+}

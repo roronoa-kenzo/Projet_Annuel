@@ -1,4 +1,5 @@
 <?php
+
 include './../serveur/database.php';
 
 session_start();
@@ -19,15 +20,19 @@ if ($forumId) {
 
 
     $forumData = $query->fetch(PDO::FETCH_ASSOC);
+    if($forumData){
+        if ($forumData && !empty($forumData['background'])) {
+            $backgroundPath = $forumData['background'];
+            $_SESSION['background'] = $backgroundPath;
+            $wallpaperPath = !empty($forumData['wallpaper']) ? $forumData['wallpaper'] : null;
+            $forumCreatorId = $forumData['creator_id']; // ID du créateur
 
-    if ($forumData && !empty($forumData['background'])) {
-        $backgroundPath = $forumData['background'];
-        $_SESSION['background'] = $backgroundPath;
-        $wallpaperPath = !empty($forumData['wallpaper']) ? $forumData['wallpaper'] : null;
-        $forumCreatorId = $forumData['creator_id']; // ID du créateur
-
+        }
+    }else if($forumData == null){
+        echo "null";
+    }else{
+        echo "mauvais data";
     }
-
 }
 ?>
 <!DOCTYPE html>
@@ -37,7 +42,7 @@ if ($forumId) {
     <meta charset="UTF-8">
     <title id="page-title"></title>
     <link id="theme-stylesheet" rel="stylesheet"
-        href="<?php echo isset($backgroundPath) && $backgroundPath ? $backgroundPath : ($darkMode ? './../public/css/darkmode.css' : './../public/css/style.css'); ?>">
+        href="<?php echo isset($backgroundPath) && $backgroundPath ? $backgroundPath : ($darkMode ? './../../public/css/darkmode.css' : './../../public/css/style.css'); ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
@@ -67,7 +72,7 @@ if ($forumId) {
                     </div>
                     <p id="forum-description"></p>
                     <?php if (!empty($_SESSION['user_id']) && $_SESSION['user_id'] === $forumCreatorId): ?>
-                        <button id="openModalEditButton" class="btn-menu">Edit Iceberg</button>
+                        <button id="openModalEditButton" onclick="openModalEdit()" class="btn-menu">Edit Iceberg</button>
                     <?php endif; ?>
                 </div>
 
@@ -97,7 +102,9 @@ if ($forumId) {
                     updatePosts(data.posts);
                 } else {
                     console.error(data.error);
-                    alert(data.error);
+                    alert(data.error+"Page d'eurrer");
+                    
+                    //page erreur 
                 }
             } catch (error) {
                 console.error('Erreur lors de la récupération des données :', error);
@@ -109,7 +116,7 @@ if ($forumId) {
         function updateForumInfo(forum) {
             document.title = forum.name;
             document.getElementById('page-title').textContent = forum.name;
-            document.getElementById('forum-name').textContent = forum.name;
+            document.getElementById('forum-name').innerHTML = forum.name;
             document.getElementById('forum-description').textContent = forum.description;
             document.getElementById('creator-username').textContent = forum.creator.username;
             document.getElementById('creator-profile-picture').src = forum.creator.profile_picture || './default-profile.png';
@@ -121,7 +128,7 @@ if ($forumId) {
             buttonReport.setAttribute('style', 'cursor: pointer;');
             // Ajouter une image au bouton
             let imgReport = document.createElement('img');
-            imgReport.setAttribute('src', './../public/img/reportButton.png');
+            imgReport.setAttribute('src', './../../public/img/reportButton.png');
             imgReport.setAttribute('class', 'btnReport');
             buttonReport.appendChild(imgReport);
 
@@ -130,7 +137,7 @@ if ($forumId) {
                 // Créer un formulaire caché dynamiquement
                 let hiddenForm = document.createElement('form');
                 hiddenForm.setAttribute('method', 'POST');
-                hiddenForm.setAttribute('action', './../Report/ReportContent.php');
+                hiddenForm.setAttribute('action', './../../Report/ReportContent.php');
                 hiddenForm.style.display = 'none';
 
                 // Créer un champ input caché contenant l'URL du forum
@@ -153,7 +160,7 @@ if ($forumId) {
             buttonDiv.appendChild(buttonReport);
         }
         function clickLike(button, postId) {
-            fetch('./like_post.php', {
+            fetch('./../controleur/like_post.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -192,9 +199,9 @@ if ($forumId) {
                 <?php if (!empty($_SESSION["email"]) && !empty($_SESSION["user_profile"]) && !empty($_SESSION["user_id"])): ?>
 
                     const ReportDiv = document.createElement('div');
-                    ReportDiv.setAttribute('style', `margin: 0px 0px -35px 0px;`);
+                    ReportDiv.setAttribute('style', `margin: 0px 0px -45px 0px;`);
                     ReportDiv.classList.add('PalceReport');
-                    ReportDiv.setAttribute('style', `margin: 0px 0px -35px 0px;`);
+                    ReportDiv.setAttribute('style', `margin: 0px 0px -45px 0px;`);
                     postElement.appendChild(ReportDiv);
                 <?php endif; ?>
                 // Créer la div iceberg-select
@@ -308,7 +315,7 @@ if ($forumId) {
         fetchForumData();
 
         // Actualiser les données toutes les 10 secondes
-        setInterval(fetchForumData, 10000);
+        
     </script>
     <style>
         .buttonReport {
@@ -322,11 +329,6 @@ if ($forumId) {
             justify-content: end;
         }
 
-        .btnReport {
-            height: 2vh;
-            padding-left: 1rem;
-            filter: invert(100%);
-        }
     </style>
     <?php include './../composants/script_link.php'; ?>
     <?php include './../composants/footer.php'; ?>
